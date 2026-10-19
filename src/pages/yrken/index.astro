@@ -1,4 +1,5 @@
 ---
+import { url } from '../../lib/url';
 import Base from '../../layouts/Base.astro';
 import Sparkline from '../../components/Sparkline.astro';
 import { fields, meta, nationalWindow, occById } from '../../lib/data';
@@ -55,7 +56,7 @@ const vs = (x: { L12: number; B12: number }) => volumeVsMarket(x.L12, x.B12, nat
                 return (
                   <tr data-name={`${o.label} ${o.titles.join(' ')}`.toLowerCase()}>
                     <th scope="row">
-                      <a href={`/yrken/${o.id}/`}>{o.label}</a>
+                      <a href={url(`/yrken/${o.id}/`)}>{o.label}</a>
                       {o.titles.length > 0 && <span class="titles">{o.titles.slice(0, 4).join(', ')}</span>}
                     </th>
                     <td class="num">{int(o.L12)}</td>

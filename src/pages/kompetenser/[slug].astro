@@ -1,4 +1,5 @@
 ---
+import { url } from '../../lib/url';
 import Base from '../../layouts/Base.astro';
 import LineChart from '../../components/LineChart.astro';
 import { categoryName, KIND_NOUN, kindName, meta, occById, regionByCode, skill, skillById, skillIds, skillIndex } from '../../lib/data';
@@ -28,8 +29,8 @@ const description = `${s.name} nämns i ${pct(s.share.L12)} av alla platsannonse
   <article class="wrap">
     <header class="head">
       <p class="crumbs small">
-        <a href="/kompetenser/">Kompetenser och krav</a> / <a href={`/kompetenser/#${s.kind}`}>{kindName(s.kind)}</a> /
-        <a href={`/kompetenser/#${s.category}`}>{categoryName(s.category)}</a>
+        <a href={url('/kompetenser/')}>Kompetenser och krav</a> / <a href={url(`/kompetenser/#${s.kind}`)}>{kindName(s.kind)}</a> /
+        <a href={url(`/kompetenser/#${s.category}`)}>{categoryName(s.category)}</a>
       </p>
       <h1>{s.name}</h1>
       <p class="summary">
@@ -57,7 +58,7 @@ const description = `${s.name} nämns i ${pct(s.share.L12)} av alla platsannonse
         <p>Per kvartal sedan {m.years[0]}.</p>
       </div>
       <LineChart title={`Andel av platsannonserna som nämner ${s.name}, per kvartal`} x={qx} series={[{ label: s.name, values: qx.map((q) => s.quarters[q]) }]} format="pct" height={240} tickEvery={8} area />
-      <p class="small"><a href={`/jamfor/?k=${s.id}`}>Jämför med andra kompetenser</a></p>
+      <p class="small"><a href={url(`/jamfor/?k=${s.id}`)}>Jämför med andra kompetenser</a></p>
     </section>
 
     <section class="section">
@@ -76,7 +77,7 @@ const description = `${s.name} nämns i ${pct(s.share.L12)} av alla platsannonse
             <tbody>
               {s.occupations.slice(0, 15).map((r) => (
                 <tr>
-                  <th scope="row"><a href={`/yrken/${r.o}/#kompetenser`}>{occById(r.o)?.label ?? r.o}</a></th>
+                  <th scope="row"><a href={url(`/yrken/${r.o}/#kompetenser`)}>{occById(r.o)?.label ?? r.o}</a></th>
                   <td class="num">{int(r.n)}</td>
                   <td class="num">{pct(r.sh)}</td>
                 </tr>
@@ -97,7 +98,7 @@ const description = `${s.name} nämns i ${pct(s.share.L12)} av alla platsannonse
             <tbody>
               {s.occupationsByShare.slice(0, 15).map((r) => (
                 <tr>
-                  <th scope="row"><a href={`/yrken/${r.o}/#kompetenser`}>{occById(r.o)?.label ?? r.o}</a></th>
+                  <th scope="row"><a href={url(`/yrken/${r.o}/#kompetenser`)}>{occById(r.o)?.label ?? r.o}</a></th>
                   <td class="num">{pct(r.sh)}</td>
                 </tr>
               ))}
@@ -119,7 +120,7 @@ const description = `${s.name} nämns i ${pct(s.share.L12)} av alla platsannonse
                   const rs = skillById(r.s);
                   return rs ? (
                     <li>
-                      <a href={`/kompetenser/${r.s}/`}>{rs.name}</a>
+                      <a href={url(`/kompetenser/${r.s}/`)}>{rs.name}</a>
                       <span class="num muted">{pct(r.p)}</span>
                     </li>
                   ) : null;
@@ -136,7 +137,7 @@ const description = `${s.name} nämns i ${pct(s.share.L12)} av alla platsannonse
               const reg = regionByCode(r.r);
               return (
                 <li>
-                  {reg ? <a href={`/lan/${reg.id}/`}>{reg.label}</a> : r.r}
+                  {reg ? <a href={url(`/lan/${reg.id}/`)}>{reg.label}</a> : r.r}
                   <span class="rbar" aria-hidden="true"><span style={`width:${((r.sh / regMax) * 100).toFixed(1)}%`} /></span>
                   <span class="num">{pct(r.sh)}</span>
                 </li>

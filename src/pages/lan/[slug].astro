@@ -1,4 +1,5 @@
 ---
+import { url } from '../../lib/url';
 import Base from '../../layouts/Base.astro';
 import LineChart from '../../components/LineChart.astro';
 import { meta, occById, region, regionIds, skillById } from '../../lib/data';
@@ -34,7 +35,7 @@ const risingSkills = compSkills
 <Base title={r.label} description={`Platsannonser i ${r.label}: yrkena med flest annonser, yrken som är typiska för länet och kompetenser som efterfrågas allt oftare.`}>
   <article class="wrap">
     <header class="head">
-      <p class="crumbs small"><a href="/lan/">Län</a></p>
+      <p class="crumbs small"><a href={url('/lan/')}>Län</a></p>
       <h1>{r.label}</h1>
     </header>
 
@@ -62,7 +63,7 @@ const risingSkills = compSkills
             <tbody>
               {biggest.map((o) => (
                 <tr>
-                  <th scope="row"><a href={`/yrken/${o.o}/`}>{occById(o.o)?.label ?? o.o}</a></th>
+                  <th scope="row"><a href={url(`/yrken/${o.o}/`)}>{occById(o.o)?.label ?? o.o}</a></th>
                   <td class="num">{int(o.n)}</td>
                   <td class="num">
                     <strong class={signClass(occVs(o), 0.05)}>{relValue(occVs(o))}</strong> <span class="muted small">({rel(o.n, o.prev)})</span>
@@ -85,7 +86,7 @@ const risingSkills = compSkills
             <tbody>
               {typical.map((o) => (
                 <tr>
-                  <th scope="row"><a href={`/yrken/${o.o}/`}>{occById(o.o)?.label ?? o.o}</a></th>
+                  <th scope="row"><a href={url(`/yrken/${o.o}/`)}>{occById(o.o)?.label ?? o.o}</a></th>
                   <td class="num">{o.lq?.toLocaleString('sv-SE', { minimumFractionDigits: 1, maximumFractionDigits: 1 })}</td>
                 </tr>
               ))}
@@ -116,7 +117,7 @@ const risingSkills = compSkills
         <tbody>
           {risingSkills.map((s) => (
             <tr>
-              <th scope="row"><a href={`/kompetenser/${s.s}/`}>{skillById(s.s)?.name ?? s.s}</a></th>
+              <th scope="row"><a href={url(`/kompetenser/${s.s}/`)}>{skillById(s.s)?.name ?? s.s}</a></th>
               <td class="num">{pct(s.sh3)}</td>
               <td class="num">{pct(s.sh)}</td>
               <td class={`num strong ${signClass(s.rel)}`}><span class="delta-mark">{ppValue(s.rel)}</span></td>

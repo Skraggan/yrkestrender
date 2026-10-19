@@ -3,7 +3,14 @@
 Allt i koden är klart. Det här behöver göras av dig, eftersom det kräver inloggning
 eller beslut som är dina. Allt ryms i gratisnivåerna.
 
-## 1. Publicera sajten på Cloudflare Pages (cirka 5 minuter)
+## 0. Sajten är redan publicerad
+
+<https://skraggan.github.io/yrkestrender/> byggs och publiceras av
+`.github/workflows/pages.yml` vid varje push till `main` (gratis, ingen inloggning
+behövs). Cloudflare Pages nedan är valfritt men ger kortare adress, egen domän och
+snabbare CDN, precis som för Tentalabbet.
+
+## 1. Publicera sajten på Cloudflare Pages (valfritt, cirka 5 minuter)
 
 1. Logga in på <https://dash.cloudflare.com> → **Workers & Pages** → **Create** →
    **Pages** → **Connect to Git**.
@@ -17,7 +24,10 @@ eller beslut som är dina. Allt ryms i gratisnivåerna.
    `https://yrkestrender.pages.dev` (eller ett liknande namn om det är upptaget).
 
 Om Cloudflare ger projektet ett annat namn än `yrkestrender`: ändra standardadressen i
-`site.config.mjs` och `public/robots.txt`, eller sätt `SITE_URL` enligt ovan.
+`site.config.mjs` eller sätt `SITE_URL` enligt ovan (robots.txt och sitemap följer med).
+
+När Cloudflare-sajten fungerar kan du stänga av GitHub Pages under
+**Settings → Pages**, eller låta båda ligga kvar.
 
 Varje push till `main` bygger om sajten, även de veckovisa datauppdateringarna.
 
@@ -25,8 +35,7 @@ Varje push till `main` bygger om sajten, även de veckovisa datauppdateringarna.
 
 1. Köp t.ex. `yrkestrender.se` (kolla först att den är ledig).
 2. Cloudflare Pages → projektet → **Custom domains** → lägg till domänen.
-3. Sätt `SITE_URL=https://yrkestrender.se` i projektets miljövariabler och uppdatera
-   `public/robots.txt`.
+3. Sätt `SITE_URL=https://yrkestrender.se` i projektets miljövariabler.
 4. Google Search Console: lägg till domänen och skicka in `/sitemap-index.xml`.
 
 ## 3. Automatisk uppdatering (redan igång)

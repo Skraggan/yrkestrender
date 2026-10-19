@@ -1,0 +1,143 @@
+{
+ "files": {
+  "2006.jsonl.zip": {
+   "ads": 245227,
+   "last_modified": "Thu, 04 May 2023 07:55:09 GMT",
+   "max_term_id": 2174,
+   "size": 100408975
+  },
+  "2007.jsonl.zip": {
+   "ads": 284105,
+   "last_modified": "Thu, 04 May 2023 08:00:37 GMT",
+   "max_term_id": 2174,
+   "size": 140898338
+  },
+  "2008.jsonl.zip": {
+   "ads": 265223,
+   "last_modified": "Thu, 04 May 2023 08:03:14 GMT",
+   "max_term_id": 2174,
+   "size": 143765064
+  },
+  "2009.jsonl.zip": {
+   "ads": 196124,
+   "last_modified": "Thu, 04 May 2023 08:06:21 GMT",
+   "max_term_id": 2174,
+   "size": 103524142
+  },
+  "2010.jsonl.zip": {
+   "ads": 289254,
+   "last_modified": "Thu, 04 May 2023 08:08:18 GMT",
+   "max_term_id": 2174,
+   "size": 160873785
+  },
+  "2011.jsonl.zip": {
+   "ads": 364688,
+   "last_modified": "Thu, 04 May 2023 08:11:00 GMT",
+   "max_term_id": 2174,
+   "size": 219795585
+  },
+  "2012.jsonl.zip": {
+   "ads": 379358,
+   "last_modified": "Thu, 04 May 2023 08:23:03 GMT",
+   "max_term_id": 2174,
+   "size": 228230562
+  },
+  "2013.jsonl.zip": {
+   "ads": 390053,
+   "last_modified": "Thu, 04 May 2023 08:27:33 GMT",
+   "max_term_id": 2174,
+   "size": 241726208
+  },
+  "2014.jsonl.zip": {
+   "ads": 451985,
+   "last_modified": "Thu, 04 May 2023 08:31:59 GMT",
+   "max_term_id": 2174,
+   "size": 330240898
+  },
+  "2015.jsonl.zip": {
+   "ads": 613513,
+   "last_modified": "Thu, 04 May 2023 09:01:33 GMT",
+   "max_term_id": 2174,
+   "size": 481207723
+  },
+  "2016.jsonl.zip": {
+   "ads": 718046,
+   "last_modified": "Thu, 04 May 2023 09:09:24 GMT",
+   "max_term_id": 2174,
+   "size": 602252210
+  },
+  "2017.jsonl.zip": {
+   "ads": 715291,
+   "last_modified": "Thu, 04 May 2023 09:19:52 GMT",
+   "max_term_id": 2174,
+   "size": 652857977
+  },
+  "2018.jsonl.zip": {
+   "ads": 682969,
+   "last_modified": "Thu, 04 May 2023 09:31:10 GMT",
+   "max_term_id": 2174,
+   "size": 676849624
+  },
+  "2019.jsonl.zip": {
+   "ads": 640257,
+   "last_modified": "Thu, 04 May 2023 11:24:23 GMT",
+   "max_term_id": 2174,
+   "size": 654041669
+  },
+  "2020.jsonl.zip": {
+   "ads": 490713,
+   "last_modified": "Thu, 04 May 2023 11:54:37 GMT",
+   "max_term_id": 2174,
+   "size": 552526668
+  },
+  "2021.jsonl.zip": {
+   "ads": 730824,
+   "last_modified": "Thu, 04 May 2023 12:49:28 GMT",
+   "max_term_id": 2174,
+   "size": 833693311
+  },
+  "2022.jsonl.zip": {
+   "ads": 1082795,
+   "last_modified": "Thu, 04 May 2023 13:04:06 GMT",
+   "max_term_id": 2174,
+   "size": 1439407354
+  },
+  "2023.jsonl.zip": {
+   "ads": 1028074,
+   "last_modified": "Mon, 15 Jan 2024 14:19:46 GMT",
+   "max_term_id": 2174,
+   "size": 1160374572
+  },
+  "2024.jsonl.zip": {
+   "ads": 717094,
+   "last_modified": "Tue, 21 Jan 2025 10:41:18 GMT",
+   "max_term_id": 2174,
+   "size": 897367200
+  },
+  "2025.jsonl.zip": {
+   "ads": 582241,
+   "last_modified": "Tue, 24 Mar 2026 10:57:50 GMT",
+   "max_term_id": 2174,
+   "size": 797442953
+  },
+  "2026-Q1.jsonl.zip": {
+   "ads": 153287,
+   "last_modified": "Tue, 14 Apr 2026 09:03:27 GMT",
+   "max_term_id": 2174,
+   "size": 213826806
+  },
+  "2026-Q2.jsonl.zip": {
+   "ads": 140808,
+   "last_modified": "Thu, 16 Jul 2026 11:59:33 GMT",
+   "max_term_id": 2174,
+   "size": 196062630
+  },
+  "2026-Q3.jsonl.zip": {
+   "ads": 129721,
+   "last_modified": "Tue, 06 Oct 2026 14:21:41 GMT",
+   "max_term_id": 2174,
+   "size": 171017474
+  }
+ },
+ "vocab": "70d3a84a17035c1e"
+}

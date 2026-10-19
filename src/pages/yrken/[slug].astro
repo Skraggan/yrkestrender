@@ -1,4 +1,5 @@
 ---
+import { url } from '../../lib/url';
 import Base from '../../layouts/Base.astro';
 import LineChart from '../../components/LineChart.astro';
 import SkillList from '../../components/SkillList.astro';
@@ -37,7 +38,7 @@ const sections = kinds().map((k) => {
     return {
       id: s.s,
       name: meta.name,
-      href: `/kompetenser/${s.s}/`,
+      href: url(`/kompetenser/${s.s}/`),
       share: s.sh,
       share3: s.sh3,
       rel: excess(s.sh, s.sh3, base),
@@ -81,8 +82,8 @@ const vsWord = (x: number | null) => (x == null ? '' : x > 0.05 ? 'bättre än' 
   <article class="wrap">
     <header class="head">
       <p class="crumbs small">
-        <a href="/yrken/">Yrken</a>
-        {field && <> / <a href={`/yrken/#${field.id}`}>{field.label}</a></>}
+        <a href={url('/yrken/')}>Yrken</a>
+        {field && <> / <a href={url(`/yrken/#${field.id}`)}>{field.label}</a></>}
       </p>
       <h1>{o.label}</h1>
       {
@@ -227,7 +228,7 @@ const vsWord = (x: number | null) => (x == null ? '' : x > 0.05 ? 'bättre än' 
                 const reg = regionByCode(r.r);
                 return (
                   <tr>
-                    <th scope="row">{reg ? <a href={`/lan/${reg.id}/`}>{reg.label}</a> : r.r}</th>
+                    <th scope="row">{reg ? <a href={url(`/lan/${reg.id}/`)}>{reg.label}</a> : r.r}</th>
                     <td class="num">{int(r.n)}</td>
                     <td class="num">{pct(r.n / regionTotal, 0)}</td>
                     <td class="num">{r.lq?.toLocaleString('sv-SE', { minimumFractionDigits: 1, maximumFractionDigits: 1 }) ?? '–'}</td>
@@ -268,7 +269,7 @@ const vsWord = (x: number | null) => (x == null ? '' : x > 0.05 ? 'bättre än' 
                   const ro = occById(r.id);
                   return ro ? (
                     <li>
-                      <a href={`/yrken/${r.id}/`}>{ro.label}</a>
+                      <a href={url(`/yrken/${r.id}/`)}>{ro.label}</a>
                       <span class="num muted">{int(ro.L12)} annonser</span>
                     </li>
                   ) : null;

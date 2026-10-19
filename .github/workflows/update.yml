@@ -60,3 +60,4 @@ jobs:
           git push
           # Pushes made with GITHUB_TOKEN do not start other workflows; start CI explicitly.
           gh workflow run ci.yml --ref main
+          gh workflow run pages.yml --ref main

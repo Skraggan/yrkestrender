@@ -61,7 +61,8 @@ const id = `sok-${variant}`;
       .replace(/[̀-ͯ]/g, (m) => m) // keep å/ä/ö intact
       .replace(/[^a-zåäöéü0-9#+ ]/g, ' ')
       .trim();
-  const load = () => (loading ??= fetch('/sok.json').then((r) => r.json()).then((d: Entry[]) => (index = d)));
+  const BASE = document.documentElement.dataset.base ?? '';
+  const load = () => (loading ??= fetch(`${BASE}/sok.json`).then((r) => r.json()).then((d: Entry[]) => (index = d)));
 
   function rank(q: string, items: Entry[]) {
     const nq = norm(q);
@@ -100,7 +101,7 @@ const id = `sok-${variant}`;
     let active = -1;
     let hits: [number, Entry, string][] = [];
 
-    const href = (e: Entry) => (e.k === 'o' ? `/yrken/${e.id}/` : `/kompetenser/${e.id}/`);
+    const href = (e: Entry) => (e.k === 'o' ? `${BASE}/yrken/${e.id}/` : `${BASE}/kompetenser/${e.id}/`);
     const close = () => {
       list.hidden = true;
       input.setAttribute('aria-expanded', 'false');

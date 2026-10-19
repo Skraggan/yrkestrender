@@ -59,6 +59,7 @@ const occ = [...occupationIndex()].sort((a, b) => a.label.localeCompare(b.label,
 
 <script>
   type Series = { id: string; name: string; values: (number | null)[] };
+  const BASE = document.documentElement.dataset.base ?? '';
   const COLORS = ['var(--blue)', 'var(--signal)', 'var(--chart-3)', 'var(--chart-2)', 'var(--chart-4)'];
   const form = document.querySelector<HTMLFormElement>('[data-compare]')!;
   const add = form.querySelector<HTMLSelectElement>('[data-add]')!;
@@ -224,7 +225,7 @@ const occ = [...occupationIndex()].sort((a, b) => a.label.localeCompare(b.label,
     }
     const occ = occSel.value;
     if (!occ) {
-      national ??= await fetch('/data/kompetenser.json').then((r) => r.json());
+      national ??= await fetch(`${BASE}/data/kompetenser.json`).then((r) => r.json());
       const q = national!.quarters;
       draw(
         q,
@@ -233,7 +234,7 @@ const occ = [...occupationIndex()].sort((a, b) => a.label.localeCompare(b.label,
       );
       note.textContent = 'Andel av alla platsannonser per kvartal.';
     } else {
-      if (!occCache.has(occ)) occCache.set(occ, await fetch(`/data/yrken/${occ}.json`).then((r) => r.json()));
+      if (!occCache.has(occ)) occCache.set(occ, await fetch(`${BASE}/data/yrken/${occ}.json`).then((r) => r.json()));
       const d = occCache.get(occ)!;
       draw(
         d.years,

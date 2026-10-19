@@ -1,4 +1,5 @@
 ---
+import { url } from '../lib/url';
 import '@fontsource-variable/archivo/wdth.css';
 import '../styles/global.css';
 import Search from '../components/Search.astro';
@@ -16,23 +17,23 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
 const fullTitle = title === 'Yrkestrender' ? 'Yrkestrender – vad arbetsgivarna efterfrågar' : `${title} – Yrkestrender`;
 const path = Astro.url.pathname;
 const nav = [
-  { href: '/yrken/', label: 'Yrken' },
-  { href: '/kompetenser/', label: 'Kompetenser och krav' },
-  { href: '/lan/', label: 'Län' },
-  { href: '/jamfor/', label: 'Jämför' },
-  { href: '/om/', label: 'Om datan' },
+  { href: url('/yrken/'), label: 'Yrken' },
+  { href: url('/kompetenser/'), label: 'Kompetenser och krav' },
+  { href: url('/lan/'), label: 'Län' },
+  { href: url('/jamfor/'), label: 'Jämför' },
+  { href: url('/om/'), label: 'Om datan' },
 ];
 ---
 
 <!doctype html>
-<html lang="sv">
+<html lang="sv" data-base={url('')}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href={url('/favicon.svg')} type="image/svg+xml" />
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
@@ -45,7 +46,7 @@ const nav = [
     <a class="skip" href="#main">Hoppa till innehållet</a>
     <header class="site">
       <div class="wrap bar">
-        <a class="brand" href="/" aria-label="Yrkestrender, startsida">Yrkestrender</a>
+        <a class="brand" href={url('/')} aria-label="Yrkestrender, startsida">Yrkestrender</a>
         <nav aria-label="Huvudmeny">
           <ul>
             {
@@ -73,7 +74,7 @@ const nav = [
         </p>
         <p class="muted small">
           Siffrorna visar hur ofta annonser nämner något, inte hur många som anställs.{' '}
-          <a href="/om/">Så räknar vi</a>. Uppdaterad {m.generated}.
+          <a href={url('/om/')}>Så räknar vi</a>. Uppdaterad {m.generated}.
         </p>
       </div>
     </footer>

@@ -335,7 +335,9 @@ def main():
             for (gi, e), c in part["emp"].items():
                 emp[(remap[gi], e)] += c
             for k, v in part["emp_names"].items():
-                emp_names.setdefault(k, v)
+                # Keep one spelling per employer regardless of the order parts finish in.
+                if k not in emp_names or v < emp_names[k]:
+                    emp_names[k] = v
             cooc.update(part["cooc"]); cooc_n.update(part["cooc_n"]); cooc_ads += part["cooc_ads"]
             for k in ("dupes", "ads", "no_group", "no_region"):
                 stats[k] += part[k]
@@ -458,14 +460,14 @@ def build_site(out, tax, vocab, skill_list, groups, tot, skill, reg, reg_skill, 
                     "sh3": r4(sh_B12) if sh_B12 is not None else None,
                     "y": by_year,
                 })
-        skills_out.sort(key=lambda x: -(x["sh"] or 0))
+        skills_out.sort(key=lambda x: (-(x["sh"] or 0), x["s"]))
         profiles[g] = prof
 
         reg_counts = reg_recent_by_g.get(g, Counter())
         g_reg_total = sum(reg_counts.values())
         all_reg_total = sum(region_total.values())
         regions_out = []
-        for r, c in reg_counts.most_common():
+        for r, c in sorted(reg_counts.items(), key=lambda x: (-x[1], x[0])):
             lq = (c / g_reg_total) / (region_total[r] / all_reg_total) if g_reg_total and region_total[r] else None
             regions_out.append({"r": r, "n": c, "lq": round(lq, 2) if lq else None})
 
@@ -477,10 +479,10 @@ def build_site(out, tax, vocab, skill_list, groups, tot, skill, reg, reg_skill, 
             cond_out[str(y)] = {"fulltime": frac("hours_H", "hours_D"), "permanent": frac("perm", "temp"),
                                 "experience": frac("exp_1", "exp_0"), "english": frac("lang_en", "lang_other")}
 
-        name_counts = sorted(names_by_g.get(g, {}).items(), key=lambda x: -x[1])
+        name_counts = sorted(names_by_g.get(g, {}).items(), key=lambda x: (-x[1], x[0]))
         titles = [{"t": tax["occupations"].get(o, {}).get("label", o), "n": c} for o, c in name_counts[:15]
                   if o in tax["occupations"]]
-        emp_counts = sorted(emp_by_g.get(g, {}).items(), key=lambda x: -x[1])
+        emp_counts = sorted(emp_by_g.get(g, {}).items(), key=lambda x: (-x[1], x[0]))
         employers = [{"e": tidy_name(emp_names.get(e, e[2:] if e.startswith("n:") else e)), "n": c} for e, c in emp_counts[:12]]
 
         page = {
@@ -552,8 +554,8 @@ def build_site(out, tax, vocab, skill_list, groups, tot, skill, reg, reg_skill, 
             n = wsum(g_tot_ym[g], L12)
             if c >= MIN_SKILL_ADS and n:
                 occ_rows.append({"o": slug, "n": c, "sh": r4(c / n)})
-        by_count = sorted(occ_rows, key=lambda x: -x["n"])[:20]
-        by_share = sorted([r for r in occ_rows if r["n"] >= 20], key=lambda x: -x["sh"])[:20]
+        by_count = sorted(occ_rows, key=lambda x: (-x["n"], x["o"]))[:20]
+        by_share = sorted([r for r in occ_rows if r["n"] >= 20], key=lambda x: (-x["sh"], x["o"]))[:20]
         reg_rows = []
         for r in region_label:
             ry = [last_year] + ([last_year - 1] if partial_last_year else [])
@@ -574,7 +576,7 @@ def build_site(out, tax, vocab, skill_list, groups, tot, skill, reg, reg_skill, 
                 lift = both * cooc_ads / (cooc_n[s] * cooc_n[t])
                 co.append({"s": skill_meta[t]["id"], "n": both, "lift": round(lift, 2),
                            "p": r4(both / cooc_n[s])})
-        co.sort(key=lambda x: -(x["p"] * math.log(max(x["lift"], 1.0001))))
+        co.sort(key=lambda x: (-(x["p"] * math.log(max(x["lift"], 1.0001))), x["s"]))
         page = {
             **meta, "terms": skill_list[s]["terms"],
             "ads": {"L12": c_L12, "P12": c_P12, "B12": c_B12},
@@ -582,7 +584,7 @@ def build_site(out, tax, vocab, skill_list, groups, tot, skill, reg, reg_skill, 
                       "B12": r4(c_B12 / wsum(nat_ym, B12)) if wsum(nat_ym, B12) else None},
             "years": by_year, "quarters": quarters,
             "occupations": by_count, "occupationsByShare": by_share,
-            "regions": sorted(reg_rows, key=lambda x: -x["sh"]),
+            "regions": sorted(reg_rows, key=lambda x: (-x["sh"], x["r"])),
             "related": co[:14],
         }
         write_json(out / "skills" / f"{meta['id']}.json", page)
@@ -610,7 +612,7 @@ def build_site(out, tax, vocab, skill_list, groups, tot, skill, reg, reg_skill, 
                     g_recent[g] += c
             if rr == r and y in [x - 3 for x in ry]:
                 g_prev[g] += c
-        for g, c in g_recent.most_common():
+        for g, c in sorted(g_recent.items(), key=lambda x: (-x[1], x[0])):
             if g not in group_slug:
                 continue
             lq = (c / reg_total_recent) / (g_nat_recent[g] / nat_total_recent) if reg_total_recent else None
@@ -629,7 +631,7 @@ def build_site(out, tax, vocab, skill_list, groups, tot, skill, reg, reg_skill, 
                 skills_rows.append({"s": meta["id"], "n": c, "sh": r4(c / n), "sh3": r4(cb / nb)})
         page = {"id": region_slug[r], "code": r, "label": lbl,
                 "months": {ym_str(ym): c for ym, c in sorted(rym.items())},
-                "occupations": occ_rows[:60], "skills": sorted(skills_rows, key=lambda x: -x["sh"])}
+                "occupations": occ_rows[:60], "skills": sorted(skills_rows, key=lambda x: (-x["sh"], x["s"]))}
         write_json(out / "regions" / f"{region_slug[r]}.json", page)
         regions_out.append({"id": region_slug[r], "code": r, "label": lbl,
                             "L12": sum(rym.get(i, 0) for i in L12), "B12": sum(rym.get(i, 0) for i in B12)})
@@ -644,13 +646,13 @@ def build_site(out, tax, vocab, skill_list, groups, tot, skill, reg, reg_skill, 
             continue
         fields_out.append({"id": slugify(f["label"]), "cid": fid, "label": f["label"],
                            "L12": sum(o["L12"] for o in members), "B12": sum(o["B12"] for o in members),
-                           "occupations": [o["id"] for o in sorted(members, key=lambda o: -o["L12"])]})
-    fields_out.sort(key=lambda f: -f["L12"])
+                           "occupations": [o["id"] for o in sorted(members, key=lambda o: (-o["L12"], o["id"]))]})
+    fields_out.sort(key=lambda f: (-f["L12"], f["id"]))
     field_slug = {f["cid"]: f["id"] for f in fields_out}
     for o in occ_index:
         o["field"] = field_slug.get(o["field"])
 
-    occ_index.sort(key=lambda o: -o["L12"])
+    occ_index.sort(key=lambda o: (-o["L12"], o["id"]))
     write_json(out / "occupations.json", occ_index)
     write_json(out / "skills.json", skill_index_out)
     write_json(out / "regions.json", regions_out)

@@ -1,4 +1,5 @@
 ---
+import { url } from '../lib/url';
 import Base from '../layouts/Base.astro';
 import Search from '../components/Search.astro';
 import LineChart from '../components/LineChart.astro';
@@ -26,7 +27,7 @@ const kindBlocks = kinds().map((k) => {
   const toRow = ({ s, r }: { s: SkillIndexItem; r: number }) => ({
     id: s.id,
     name: s.name,
-    href: `/kompetenser/${s.id}/`,
+    href: url(`/kompetenser/${s.id}/`),
     share: s.sh,
     share3: s.sh3,
     rel: r,
@@ -56,7 +57,7 @@ const quick = ['Undersköterska', 'Elektriker', 'Grundskollärare', 'Lastbilsfö
 const quickLinks = quick
   .map((t) => ({ label: t, o: occ.find((o) => o.titles.some((x) => x.startsWith(t)) || o.label.startsWith(t)) }))
   .filter((q) => q.o != null)
-  .map((q) => ({ label: q.label, href: `/yrken/${q.o!.id}/` }));
+  .map((q) => ({ label: q.label, href: url(`/yrken/${q.o!.id}/`) }));
 const allFields = fields();
 const firstYear = m.years[0];
 ---
@@ -146,7 +147,7 @@ const firstYear = m.years[0];
       {
         stories.map((s) => (
           <li>
-            <a href={`/kompetenser/${s.id}/`}>
+            <a href={url(`/kompetenser/${s.id}/`)}>
               <span class="name">{s.name}</span>
               <span class="fig num">{pct(s.sh)}</span>
               <span class="was muted small">
@@ -171,7 +172,7 @@ const firstYear = m.years[0];
           {
             biggest.map((o) => (
               <li>
-                <a href={`/yrken/${o.id}/`}>{o.label}</a>
+                <a href={url(`/yrken/${o.id}/`)}>{o.label}</a>
                 <span class="num">{int(o.L12)}</span>
               </li>
             ))
@@ -187,7 +188,7 @@ const firstYear = m.years[0];
           {
             growing.map(({ o, g }) => (
               <li>
-                <a href={`/yrken/${o.id}/`}>{o.label}</a>
+                <a href={url(`/yrken/${o.id}/`)}>{o.label}</a>
                 <span class="num">
                   <strong class={signClass(g, 0.05)}>{relValue(g)}</strong> <span class="muted small">({rel(o.L12, o.B12)})</span>
                 </span>
@@ -210,7 +211,7 @@ const firstYear = m.years[0];
           const g = vs(f);
           return (
             <li>
-              <a href={`/yrken/#${f.id}`}>{f.label}</a>
+              <a href={url(`/yrken/#${f.id}`)}>{f.label}</a>
               <span class="num">{int(f.L12)}</span>
               <span class="num small">
                 <strong class={signClass(g, 0.05)}>{relValue(g)}</strong> <span class="muted">({rel(f.L12, f.B12)})</span>

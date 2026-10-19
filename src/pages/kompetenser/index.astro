@@ -1,4 +1,5 @@
 ---
+import { url } from '../../lib/url';
 import Base from '../../layouts/Base.astro';
 import SkillList from '../../components/SkillList.astro';
 import { categories, KIND_NOUN, kinds, meta, skillIndex } from '../../lib/data';
@@ -22,7 +23,7 @@ const groups = kinds().map((k) => {
         rows: items
           .filter((s) => s.category === c.id)
           .sort((a, b) => (b.sh ?? 0) - (a.sh ?? 0))
-          .map((s) => ({ id: s.id, name: s.name, href: `/kompetenser/${s.id}/`, share: s.sh, share3: s.sh3, rel: excess(s.sh, s.sh3, base), spark: s.spark })),
+          .map((s) => ({ id: s.id, name: s.name, href: url(`/kompetenser/${s.id}/`), share: s.sh, share3: s.sh3, rel: excess(s.sh, s.sh3, base), spark: s.spark })),
       })),
   };
 });
