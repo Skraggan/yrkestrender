@@ -1,0 +1,44 @@
+---
+// Tiny trend line for table rows. The last point is marked.
+import { linePath } from '../lib/chart';
+
+interface Props {
+  values: (number | null)[];
+  width?: number;
+  height?: number;
+  label?: string;
+  max?: number;
+}
+const { values, width = 96, height = 24, label, max: fixedMax } = Astro.props;
+const nums = values.filter((v): v is number => v != null);
+const max = fixedMax ?? Math.max(...nums, 0.0001);
+const n = Math.max(1, values.length - 1);
+const x = (i: number) => 1 + ((width - 4) * i) / n;
+const y = (v: number) => height - 2 - (height - 4) * (v / max);
+const lastIdx = values.map((v, i) => (v != null ? i : -1)).filter((i) => i >= 0).pop();
+---
+
+<svg class="spark" viewBox={`0 0 ${width} ${height}`} width={width} height={height} role={label ? 'img' : undefined} aria-label={label} aria-hidden={label ? undefined : 'true'}>
+  <line x1="0" x2={width} y1={height - 1.5} y2={height - 1.5} />
+  <path d={linePath(values, x, y)} />
+  {lastIdx != null && <circle cx={x(lastIdx)} cy={y(values[lastIdx] as number)} r="2.2" />}
+</svg>
+
+<style>
+  .spark {
+    display: block;
+    overflow: visible;
+  }
+  line {
+    stroke: var(--rule);
+  }
+  path {
+    fill: none;
+    stroke: var(--blue);
+    stroke-width: 1.5;
+    stroke-linejoin: round;
+  }
+  circle {
+    fill: var(--blue);
+  }
+</style>

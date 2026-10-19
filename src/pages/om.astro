@@ -1,0 +1,135 @@
+---
+import Base from '../layouts/Base.astro';
+import { categories, meta, skillIndex } from '../lib/data';
+import { int, monthName, windowLabel } from '../lib/format';
+
+const m = meta();
+const nSkills = skillIndex().length;
+const nCats = categories().length;
+---
+
+<Base title="Om datan" description="Hur Yrkestrender räknar: källor, metod och begränsningar.">
+  <article class="wrap prose">
+    <h1>Om datan</h1>
+
+    <p class="lede">
+      Yrkestrender visar hur ofta arbetsgivare nämner olika kompetenser, körkort, språk, utbildningar och villkor i sina
+      platsannonser, och hur det har förändrats sedan {m.years[0]}.
+    </p>
+
+    <h2>Källan</h2>
+    <p>
+      Alla annonser kommer från Arbetsförmedlingens Platsbanken, som JobTech Development publicerar som öppna data under
+      licensen CC0. Här ingår {int(m.totalAds)} annonser publicerade mellan {monthName(m.firstMonth)} och
+      {monthName(m.lastMonth)}. Annonser som finns i två årsfiler räknas bara en gång.
+    </p>
+    <p>
+      Yrkena följer Arbetsförmedlingens yrkesindelning (SSYK, fyrsiffrig nivå), så att {m.occupationCount} yrkesgrupper kan
+      jämföras över alla år. Äldre annonser har gamla yrkeskoder som vi översätter med JobTechs taxonomi. Koder som
+      saknas i taxonomin har vi kopplat till yrken utifrån annonsrubrikerna. Annonserna från 2006 och 2007 saknar för
+      det mesta yrke, så siffror per yrke börjar {m.occupationFirstYear}. Siffror för hela landet börjar {m.years[0]}.
+    </p>
+
+    <h2>Hur vi räknar</h2>
+    <p>
+      Vi följer {nSkills} saker i {nCats} kategorier. Varje sak har en lista med ord och uttryck, till exempel räknas
+      ”B-körkort” när annonsen skriver ”B-körkort”, ”körkort B” eller ”B-behörighet”. Listan för varje kompetens står på
+      dess sida.
+    </p>
+    <p>
+      En annons räknas en gång per kompetens, oavsett hur många gånger ordet förekommer. Andelen är antalet annonser som
+      nämner något delat med alla annonser i samma yrke, län eller period. Andelar gör år med många och få annonser
+      jämförbara.
+    </p>
+    <p>
+      ”Senaste tolv månaderna” betyder {windowLabel(m.windows.L12)}. ”Tre år sedan” är samma tolv månader tre år tidigare,
+      {windowLabel(m.windows.B12)}, så att säsonger inte påverkar jämförelsen.
+    </p>
+    <p>
+      Allt vi räknar hör till en av fyra sorter: <strong>kompetenser</strong> (vad man ska kunna),
+      <strong>krav och behörigheter</strong> (körkort, legitimation, utbildning, språk och kontroller),
+      <strong>personliga egenskaper</strong> och <strong>villkor och förmåner</strong>. Sorterna visas och jämförs var för sig.
+    </p>
+    <p>
+      <strong>Mot snittet</strong> är huvudjämförelsen för trender. Annonserna har blivit längre och nämner fler saker, så
+      nästan allt ökar lite. Därför jämför vi förändringen på tre år med hur alla saker av samma sort har ändrats i
+      genomsnitt, i samma yrke, län eller i hela landet. För antal annonser jämför vi med arbetsmarknaden i stort.
+      <strong>Totalt</strong> visar hela förändringen.
+    </p>
+    <p>
+      Yrken med liknande krav räknas fram genom att jämföra vilka kompetenser och behörigheter som nämns i yrkenas
+      annonser. Personliga egenskaper, språk, kontroller och villkor ingår inte i den jämförelsen eftersom de nämns i nästan
+      alla yrken.
+    </p>
+
+    <h2>Det här ska du veta</h2>
+    <ul>
+      <li>
+        <strong>En annons är inte ett jobb.</strong> Siffrorna visar vad som efterfrågas i annonser, inte hur många som
+        anställs. Ett företag kan annonsera flera tjänster i en annons, och många jobb tillsätts utan annons.
+      </li>
+      <li>
+        <strong>Ord kan betyda flera saker.</strong> Vi har valt bort ord som ofta betyder något annat, men enstaka annonser
+        räknas fel. Små andelar och små yrken är mer osäkra.
+      </li>
+      <li>
+        <strong>Annonserna har ändrats över tid.</strong> Äldre annonser är kortare och nämner därför färre saker. Jämför
+        helst närliggande år, eller se på hur kompetenser rör sig i förhållande till varandra.
+      </li>
+      <li>
+        <strong>Platsbanken täcker inte alla annonser.</strong> Vilka annonser som publiceras i Platsbanken har varierat,
+        till exempel när annonser från andra jobbsajter började tas med.
+      </li>
+      <li>
+        <strong>Antalet annonser kan skilja sig från andra källor.</strong> Vi räknar annonserna i JobTechs historiska
+        filer. För delar av 2025 och 2026 innehåller filerna färre annonser än JobTechs sök-API visar. Andelar påverkas
+        lite av det, men antal annonser per månad bör läsas som en trend snarare än som exakta tal.
+      </li>
+      <li>
+        <strong>Ort saknas ibland.</strong> {int(m.noRegion)} annonser saknar arbetsort, de flesta från 2019 och 2020. De
+        räknas i hela landet men inte i något län.
+      </li>
+      <li>
+        <strong>Bemanningsföretag</strong> annonserar ofta för andra arbetsgivares räkning och syns därför högt i listorna över
+        annonsörer.
+      </li>
+    </ul>
+
+    <h2>Uppdateringar</h2>
+    <p>
+      JobTech publicerar nya annonser kvartalsvis. Sajten uppdateras automatiskt när en ny fil finns. Senaste
+      uppdatering: {m.generated}.
+    </p>
+
+    <h2>Öppen källkod</h2>
+    <p>
+      Koden och kompetenslistan finns på
+      <a href="https://github.com/Skraggan/yrkestrender">GitHub</a>. Saknas en kompetens eller räknas något fel? Skapa ett
+      ärende där.
+    </p>
+  </article>
+</Base>
+
+<style>
+  .prose {
+    max-width: 46rem;
+    padding-block: 2.5rem 1rem;
+  }
+  .prose h1 {
+    margin-bottom: 1.25rem;
+  }
+  .prose h2 {
+    font-size: var(--t-lg);
+    margin: 2.25rem 0 0.75rem;
+  }
+  .lede {
+    font-size: var(--t-md);
+  }
+  .prose ul {
+    padding-left: 1.2rem;
+  }
+  .prose li {
+    margin-bottom: 0.75rem;
+    max-width: 68ch;
+  }
+</style>

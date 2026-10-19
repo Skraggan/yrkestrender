@@ -1,0 +1,358 @@
+---
+import Base from '../layouts/Base.astro';
+import { categories, kindName, occupationIndex, skillIndex } from '../lib/data';
+
+const skills = [...skillIndex()].sort((a, b) => a.name.localeCompare(b.name, 'sv'));
+const cats = categories();
+const occ = [...occupationIndex()].sort((a, b) => a.label.localeCompare(b.label, 'sv'));
+---
+
+<Base title="Jämför" description="Jämför hur ofta olika kompetenser, krav, egenskaper och villkor nämns i platsannonser över tid, i hela landet eller inom ett yrke.">
+  <div class="wrap">
+    <header class="head">
+      <h1>Jämför</h1>
+      <p class="summary">
+        Välj upp till fem kompetenser, krav, egenskaper eller villkor och se hur ofta de nämns i annonserna över tid, i hela
+        landet eller inom ett yrke. Håll muspekaren över diagrammet för exakta värden.
+      </p>
+    </header>
+
+    <form class="controls" data-compare onsubmit="return false">
+      <div class="row">
+        <label>
+          <span>Lägg till</span>
+          <select data-add>
+            <option value="">Välj…</option>
+            {
+              cats.map((c) => (
+                <optgroup label={`${kindName(c.kind)}: ${c.name}`}>
+                  {skills
+                    .filter((s) => s.category === c.id)
+                    .map((s) => (
+                      <option value={s.id}>{s.name}</option>
+                    ))}
+                </optgroup>
+              ))
+            }
+          </select>
+        </label>
+        <label>
+          <span>Inom yrke</span>
+          <select data-occ>
+            <option value="">Alla annonser</option>
+            {occ.map((o) => <option value={o.id}>{o.label}</option>)}
+          </select>
+        </label>
+      </div>
+      <ul class="picked" data-picked aria-live="polite"></ul>
+    </form>
+
+    <figure class="chart-box">
+      <svg data-chart-out viewBox="0 0 720 320" role="img" aria-label="Jämförelse av andel annonser över tid"></svg>
+      <div class="readout" data-readout aria-hidden="true"></div>
+      <figcaption class="legend" data-legend></figcaption>
+    </figure>
+    <div class="visually-hidden" aria-live="polite" data-live></div>
+    <p class="muted small" data-note></p>
+  </div>
+</Base>
+
+<script>
+  type Series = { id: string; name: string; values: (number | null)[] };
+  const COLORS = ['var(--blue)', 'var(--signal)', 'var(--chart-3)', 'var(--chart-2)', 'var(--chart-4)'];
+  const form = document.querySelector<HTMLFormElement>('[data-compare]')!;
+  const add = form.querySelector<HTMLSelectElement>('[data-add]')!;
+  const occSel = form.querySelector<HTMLSelectElement>('[data-occ]')!;
+  const pickedEl = form.querySelector<HTMLUListElement>('[data-picked]')!;
+  const svg = document.querySelector<SVGSVGElement>('[data-chart-out]')!;
+  const legend = document.querySelector<HTMLElement>('[data-legend]')!;
+  const note = document.querySelector<HTMLElement>('[data-note]')!;
+  const names = new Map(Array.from(add.querySelectorAll('option')).filter((o) => o.value).map((o) => [o.value, o.textContent!]));
+
+  const params = new URLSearchParams(location.search);
+  let picked: string[] = (params.get('k') || 'distansarbete,hybridarbete,ai').split(',').filter((k) => names.has(k)).slice(0, 5);
+  occSel.value = params.get('yrke') || '';
+
+  let national: { quarters: string[]; skills: Record<string, { n: string; q: (number | null)[] }> } | null = null;
+  const occCache = new Map<string, { label: string; years: string[]; skills: Record<string, (number | null)[]> }>();
+
+  const pct = (v: number) => `${(v * 100).toLocaleString('sv-SE', { maximumFractionDigits: v < 0.1 ? 1 : 0 })} %`;
+  const pct1 = (v: number) => `${(v * 100).toLocaleString('sv-SE', { minimumFractionDigits: 1, maximumFractionDigits: 1 })} %`;
+  const readout = document.querySelector<HTMLElement>('[data-readout]')!;
+  const live = document.querySelector<HTMLElement>('[data-live]')!;
+  // Quarter keys are the quarter's first month ("2024-04" -> "kvartal 2 2024"); years pass through.
+  const xLabel = (s: string) => (/^\d{4}-\d{2}$/.test(s) ? `kvartal ${Math.floor((Number(s.slice(5)) - 1) / 3) + 1} ${s.slice(0, 4)}` : s);
+  let current: {
+    x: string[];
+    series: Series[];
+    xs: (i: number) => number;
+    ys: (v: number) => number;
+    pad: { l: number; r: number; t: number; b: number };
+    W: number;
+    H: number;
+    n: number;
+  } | null = null;
+
+  function showAt(i: number) {
+    if (!current) return;
+    const { x, series, xs, ys, pad, H } = current;
+    const layer = svg.querySelector('.hover');
+    if (!layer) return;
+    const cx = xs(i);
+    let dots = `<line x1="${cx}" x2="${cx}" y1="${pad.t}" y2="${H - pad.b}" stroke="var(--ink)" stroke-opacity=".35"/>`;
+    const rows = series
+      .map((s, k) => ({ s, k, v: s.values[i] }))
+      .sort((a, b) => (b.v ?? -1) - (a.v ?? -1));
+    for (const { k, v } of rows) if (v != null) dots += `<circle cx="${cx}" cy="${ys(v)}" r="4.5" fill="${COLORS[k]}" stroke="var(--paper)" stroke-width="2"/>`;
+    layer.innerHTML = dots;
+    readout.innerHTML =
+      `<strong>${xLabel(x[i])}</strong>` +
+      rows.map(({ s, k, v }) => `<span><i style="background:${COLORS[k]}"></i>${s.name}<b>${v == null ? '–' : pct1(v)}</b></span>`).join('');
+    readout.classList.add('on');
+    const r = svg.getBoundingClientRect();
+    const left = (cx / current.W) * r.width;
+    const w = readout.offsetWidth;
+    readout.style.left = `${Math.min(r.width - w, Math.max(0, left + (left > r.width / 2 ? -w - 12 : 12)))}px`;
+    live.textContent = `${xLabel(x[i])}: ` + rows.map(({ s, v }) => `${s.name} ${v == null ? 'saknas' : pct1(v)}`).join(', ');
+  }
+  function hide() {
+    svg.querySelector('.hover')?.replaceChildren();
+    readout.classList.remove('on');
+  }
+  svg.addEventListener('pointermove', (ev) => {
+    if (!current) return;
+    const r = svg.getBoundingClientRect();
+    const px = ((ev.clientX - r.left) / r.width) * current.W;
+    const i = Math.max(0, Math.min(current.n, Math.round(((px - current.pad.l) / (current.W - current.pad.l - current.pad.r)) * current.n)));
+    showAt(i);
+  });
+  svg.addEventListener('pointerleave', hide);
+  // Keyboard: focus the chart and use arrow keys.
+  svg.tabIndex = 0;
+  let kbIndex = -1;
+  svg.addEventListener('keydown', (ev) => {
+    if (!current || (ev.key !== 'ArrowLeft' && ev.key !== 'ArrowRight')) return;
+    ev.preventDefault();
+    kbIndex = kbIndex < 0 ? current.n : Math.max(0, Math.min(current.n, kbIndex + (ev.key === 'ArrowRight' ? 1 : -1)));
+    showAt(kbIndex);
+  });
+  svg.addEventListener('blur', hide);
+
+  function syncUrl() {
+    const p = new URLSearchParams();
+    if (picked.length) p.set('k', picked.join(','));
+    if (occSel.value) p.set('yrke', occSel.value);
+    history.replaceState(null, '', `${location.pathname}${p.toString() ? '?' + p : ''}`);
+  }
+
+  function renderPicked() {
+    pickedEl.innerHTML = '';
+    picked.forEach((id, i) => {
+      const li = document.createElement('li');
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'chip';
+      b.innerHTML = `<i style="background:${COLORS[i]}"></i>`;
+      b.append(`${names.get(id)} `);
+      const x = document.createElement('span');
+      x.setAttribute('aria-hidden', 'true');
+      x.textContent = '×';
+      b.append(x);
+      b.setAttribute('aria-label', `Ta bort ${names.get(id)}`);
+      b.addEventListener('click', () => {
+        picked = picked.filter((p) => p !== id);
+        update();
+      });
+      li.append(b);
+      pickedEl.append(li);
+    });
+    add.disabled = picked.length >= 5;
+  }
+
+  function draw(x: string[], series: Series[], tick: (s: string, i: number) => string | null) {
+    const W = 720, H = 320, pad = { l: 46, r: 14, t: 14, b: 28 };
+    const all = series.flatMap((s) => s.values.filter((v): v is number => v != null));
+    // Round gridline step (1, 2, 2.5 or 5 × 10^n) and an axis max that is a whole number of steps.
+    const raw = Math.max(0.001, ...all) * 1.03;
+    const exp = Math.pow(10, Math.floor(Math.log10(raw / 4)));
+    const f = raw / 4 / exp;
+    const step = (f <= 1 ? 1 : f <= 2 ? 2 : f <= 2.5 ? 2.5 : f <= 5 ? 5 : 10) * exp;
+    const steps = Math.ceil(raw / step - 1e-9);
+    const max = steps * step;
+    const n = Math.max(1, x.length - 1);
+    const xs = (i: number) => pad.l + ((W - pad.l - pad.r) * i) / n;
+    const ys = (v: number) => pad.t + (H - pad.t - pad.b) * (1 - v / max);
+    let out = '';
+    for (let k = 0; k <= steps; k++) {
+      const v = step * k;
+      out += `<line x1="${pad.l}" x2="${W - pad.r}" y1="${ys(v)}" y2="${ys(v)}" stroke="var(--rule)"/>`;
+      out += `<text x="${pad.l - 8}" y="${ys(v) + 4}" text-anchor="end" fill="var(--graphite)" font-size="12">${pct(v)}</text>`;
+    }
+    x.forEach((lbl, i) => {
+      const t = tick(lbl, i);
+      if (t) out += `<text x="${xs(i)}" y="${H - 8}" text-anchor="middle" fill="var(--graphite)" font-size="12">${t}</text>`;
+    });
+    series.forEach((s, k) => {
+      let d = '';
+      let pen = false;
+      s.values.forEach((v, i) => {
+        if (v == null) return void (pen = false);
+        d += `${pen ? 'L' : 'M'}${xs(i).toFixed(1)} ${ys(v).toFixed(1)}`;
+        pen = true;
+      });
+      out += `<path d="${d}" fill="none" stroke="${COLORS[k]}" stroke-width="2.25" stroke-linejoin="round"/>`;
+    });
+    out += `<g class="hover"></g>`;
+    svg.innerHTML = out;
+    current = { x, series, xs, ys, pad, W, H, n };
+    legend.innerHTML = series
+      .map((s, k) => {
+        const last = [...s.values].reverse().find((v) => v != null);
+        return `<span><i style="background:${COLORS[k]}"></i>${s.name}${last != null ? ` <b>${pct(last)}</b>` : ''}</span>`;
+      })
+      .join('');
+  }
+
+  async function update() {
+    renderPicked();
+    syncUrl();
+    if (!picked.length) {
+      svg.innerHTML = '';
+      legend.innerHTML = '';
+      note.textContent = 'Välj minst en kompetens.';
+      return;
+    }
+    const occ = occSel.value;
+    if (!occ) {
+      national ??= await fetch('/data/kompetenser.json').then((r) => r.json());
+      const q = national!.quarters;
+      draw(
+        q,
+        picked.map((id) => ({ id, name: names.get(id)!, values: national!.skills[id]?.q ?? [] })),
+        (s, i) => (s.endsWith('-01') && Number(s.slice(0, 4)) % 2 === 0 ? s.slice(0, 4) : i === 0 ? s.slice(0, 4) : null),
+      );
+      note.textContent = 'Andel av alla platsannonser per kvartal.';
+    } else {
+      if (!occCache.has(occ)) occCache.set(occ, await fetch(`/data/yrken/${occ}.json`).then((r) => r.json()));
+      const d = occCache.get(occ)!;
+      draw(
+        d.years,
+        picked.map((id) => ({ id, name: names.get(id)!, values: d.skills[id] ?? d.years.map(() => null) })),
+        (s, i) => (i % 2 === 0 ? s : null),
+      );
+      const missing = picked.filter((id) => !d.skills[id]).map((id) => names.get(id));
+      note.textContent = `Andel av annonserna för ${d.label} per år. År med färre än 40 annonser visas inte.${missing.length ? ` Nämns för sällan för att visas: ${missing.join(', ')}.` : ''}`;
+    }
+  }
+
+  add.addEventListener('change', () => {
+    if (add.value && !picked.includes(add.value) && picked.length < 5) picked.push(add.value);
+    add.value = '';
+    update();
+  });
+  occSel.addEventListener('change', update);
+  update();
+</script>
+
+<style>
+  .head {
+    padding-block: 2.5rem 1.5rem;
+  }
+  .summary {
+    font-size: var(--t-md);
+    max-width: 58ch;
+    margin-top: 1rem;
+  }
+  .controls .row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem 2rem;
+  }
+  label span {
+    display: block;
+    font-size: var(--t-sm);
+    color: var(--graphite);
+    margin-bottom: 0.25rem;
+  }
+  .controls label {
+    max-width: 100%;
+  }
+  select {
+    width: 100%;
+    font: inherit;
+    padding: 0.5rem 0.6rem;
+    border: 1px solid var(--rule-strong);
+    border-radius: var(--radius);
+    background: var(--paper-raised);
+    color: var(--ink);
+    max-width: 22rem;
+  }
+  .picked {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding: 0;
+    margin: 1.25rem 0 1.5rem;
+    min-height: 2.2rem;
+  }
+  .picked :global(i),
+  .legend :global(i) {
+    display: inline-block;
+    width: 12px;
+    height: 3px;
+    border-radius: 2px;
+    vertical-align: middle;
+    margin-right: 0.35rem;
+  }
+  .chart-box {
+    margin: 0;
+    position: relative;
+  }
+  .readout {
+    position: absolute;
+    top: 0.5rem;
+    pointer-events: none;
+    background: var(--ink);
+    color: var(--paper);
+    font-size: var(--t-sm);
+    padding: 0.5rem 0.7rem;
+    border-radius: var(--radius);
+    display: grid;
+    gap: 0.2rem;
+    min-width: 12rem;
+    opacity: 0;
+    font-variant-numeric: tabular-nums;
+  }
+  .readout.on {
+    opacity: 1;
+  }
+  .readout :global(span) {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+  .readout :global(b) {
+    margin-left: auto;
+    padding-left: 1rem;
+  }
+  .readout :global(i) {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+  }
+  .chart-box svg {
+    width: 100%;
+    height: auto;
+    display: block;
+    font-variant-numeric: tabular-nums;
+  }
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 1.5rem;
+    margin-top: 0.75rem;
+    font-size: var(--t-sm);
+  }
+</style>

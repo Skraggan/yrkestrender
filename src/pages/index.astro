@@ -1,0 +1,370 @@
+---
+import Base from '../layouts/Base.astro';
+import Search from '../components/Search.astro';
+import LineChart from '../components/LineChart.astro';
+import SkillList from '../components/SkillList.astro';
+import Sparkline from '../components/Sparkline.astro';
+import { fields, KIND_NOUN, kinds, meta, nationalWindow, occupationIndex, skillById, skillIndex, type SkillIndexItem } from '../lib/data';
+import { int, monthName, pct, rel, relValue, signClass, windowLabel } from '../lib/format';
+import { monthRange, smooth } from '../lib/chart';
+import { baseline, excess, volumeVsMarket } from '../lib/trend';
+
+const m = meta();
+const months = monthRange(m.firstMonth, m.lastMonth);
+const monthly = smooth(months.map((x) => m.nationalMonths[x] ?? null), 1);
+const natL12 = nationalWindow('L12');
+const natB12 = nationalWindow('B12');
+
+// What changed most over three years, per kind, measured against the kind's average change.
+const allSkills = skillIndex();
+const kindBlocks = kinds().map((k) => {
+  const items = allSkills.filter((s) => s.kind === k.id && s.sh != null && s.sh3 != null);
+  const base = baseline(items);
+  const scored = items
+    .filter((s) => s.L12 >= 300 || s.B12 >= 300)
+    .map((s) => ({ s, r: excess(s.sh, s.sh3, base)! }));
+  const toRow = ({ s, r }: { s: SkillIndexItem; r: number }) => ({
+    id: s.id,
+    name: s.name,
+    href: `/kompetenser/${s.id}/`,
+    share: s.sh,
+    share3: s.sh3,
+    rel: r,
+    spark: s.spark,
+  });
+  return {
+    kind: k,
+    base,
+    up: [...scored].sort((a, b) => b.r - a.r).slice(0, 8).map(toRow),
+    down: [...scored].sort((a, b) => a.r - b.r).slice(0, 8).map(toRow),
+  };
+});
+
+// Six long-running shifts, shown as small multiples.
+const storyIds = ['distansarbete', 'generativ-ai', 'utdrag-ur-belastningsregistret', 'hallbarhet', 'engelska', 'kollektivavtal'];
+const stories = storyIds.map((id) => skillById(id)).filter((s) => s != null);
+
+const occ = occupationIndex();
+const biggest = occ.slice(0, 10);
+const vs = (o: { L12: number; B12: number }) => volumeVsMarket(o.L12, o.B12, natL12, natB12);
+const growing = occ
+  .filter((o) => o.B12 >= 300 && o.L12 >= 300)
+  .map((o) => ({ o, g: vs(o)! }))
+  .sort((a, b) => b.g - a.g)
+  .slice(0, 10);
+const quick = ['Undersköterska', 'Elektriker', 'Grundskollärare', 'Lastbilsförare', 'Redovisningsekonom', 'Kock'];
+const quickLinks = quick
+  .map((t) => ({ label: t, o: occ.find((o) => o.titles.some((x) => x.startsWith(t)) || o.label.startsWith(t)) }))
+  .filter((q) => q.o != null)
+  .map((q) => ({ label: q.label, href: `/yrken/${q.o!.id}/` }));
+const allFields = fields();
+const firstYear = m.years[0];
+---
+
+<Base title="Yrkestrender" description="Se vad arbetsgivare efterfrågar i platsannonser för varje yrke i Sverige, år för år sedan 2006: kompetenser, krav, egenskaper och villkor." hideSearch>
+  <section class="hero wrap">
+    <Search variant="hero" />
+    <p class="lede">
+      {`Skriv ett yrke eller en kompetens och se vad arbetsgivarna har efterfrågat i ${int(m.totalAds)} platsannonser sedan ${firstYear}.`}
+    </p>
+    {
+      quickLinks.length > 0 && (
+        <p class="quick">
+          <span class="muted">Till exempel</span>
+          {quickLinks.map((q) => (
+            <a href={q.href}>{q.label}</a>
+          ))}
+        </p>
+      )
+    }
+  </section>
+
+  <section class="section wrap">
+    <div class="section-head">
+      <h2>Platsannonser per månad</h2>
+      <p>
+        {`${int(m.adsL12)} annonser de senaste tolv månaderna (${windowLabel(m.windows.L12)}), ${rel(natL12, natB12)} jämfört med samma period för tre år sedan.`}
+      </p>
+    </div>
+    <LineChart
+      title={`Antal publicerade platsannonser per månad, ${monthName(m.firstMonth)} till ${monthName(m.lastMonth)}`}
+      x={months}
+      series={[{ label: 'Annonser', values: monthly }]}
+      format="int"
+      height={250}
+      tickEvery={24}
+      area
+      annotations={[
+        { at: '2009-01', label: 'Finanskrisen' },
+        { at: '2020-03', label: 'Pandemin' },
+      ]}
+    />
+  </section>
+
+  <section class="section wrap" data-kind-tabs>
+    <div class="section-head">
+      <h2>Vad som ökar och minskar</h2>
+      <p>
+        Jämfört med samma tolv månader tre år tidigare. Huvudsiffran visar förändringen utöver snittet för samma sort, eftersom
+        annonserna med tiden nämner fler saker. Totalt visar hela förändringen.
+      </p>
+    </div>
+    <div class="tabs" role="tablist" aria-label="Sort">
+      {
+        kindBlocks.map((b, i) => (
+          <button type="button" class="chip" role="tab" id={`tab-${b.kind.id}`} aria-controls={`panel-${b.kind.id}`} aria-selected={i === 0 ? 'true' : 'false'} aria-pressed={i === 0 ? 'true' : 'false'}>
+            {b.kind.name}
+          </button>
+        ))
+      }
+    </div>
+    {
+      kindBlocks.map((b, i) => (
+        <div class="grid-2 panel" role="tabpanel" id={`panel-${b.kind.id}`} aria-labelledby={`tab-${b.kind.id}`} hidden={i !== 0}>
+          <div>
+            <h3 class="list-h">Nämns oftare</h3>
+            <SkillList rows={b.up} caption={`${b.kind.name} som nämns oftare`} showBar={false} showSpark={false} shareLabel="Andel" />
+          </div>
+          <div>
+            <h3 class="list-h">Nämns mer sällan</h3>
+            <SkillList rows={b.down} caption={`${b.kind.name} som nämns mer sällan`} showBar={false} showSpark={false} shareLabel="Andel" />
+          </div>
+          <p class="muted small base-note">
+            {`I genomsnitt nämns ${KIND_NOUN[b.kind.id]} ${pct(Math.abs(b.base - 1), 0)} ${b.base >= 1 ? 'oftare' : 'mer sällan'} än för tre år sedan.`}
+          </p>
+        </div>
+      ))
+    }
+  </section>
+
+  <section class="section wrap">
+    <div class="section-head">
+      <h2>Sex saker som har ändrats</h2>
+      <p>Andel av alla platsannonser per år som nämner något av det här.</p>
+    </div>
+    <ul class="multiples">
+      {
+        stories.map((s) => (
+          <li>
+            <a href={`/kompetenser/${s.id}/`}>
+              <span class="name">{s.name}</span>
+              <span class="fig num">{pct(s.sh)}</span>
+              <span class="was muted small">
+                {`${pct(s.spark.find((v) => v != null) ?? null)} år ${m.years[s.spark.findIndex((v) => v != null)]}`}
+              </span>
+              <Sparkline values={s.spark} width={220} height={56} label={`${s.name}, andel per år`} />
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <section class="section wrap">
+    <div class="grid-2">
+      <div>
+        <div class="section-head">
+          <h2>Flest annonser</h2>
+          <p>{windowLabel(m.windows.L12)}</p>
+        </div>
+        <ol class="occ">
+          {
+            biggest.map((o) => (
+              <li>
+                <a href={`/yrken/${o.id}/`}>{o.label}</a>
+                <span class="num">{int(o.L12)}</span>
+              </li>
+            ))
+          }
+        </ol>
+      </div>
+      <div>
+        <div class="section-head">
+          <h2>Växer mest</h2>
+          <p>Antal annonser på tre år jämfört med arbetsmarknaden i stort ({rel(natL12, natB12)}). Totalt inom parentes.</p>
+        </div>
+        <ol class="occ">
+          {
+            growing.map(({ o, g }) => (
+              <li>
+                <a href={`/yrken/${o.id}/`}>{o.label}</a>
+                <span class="num">
+                  <strong class={signClass(g, 0.05)}>{relValue(g)}</strong> <span class="muted small">({rel(o.L12, o.B12)})</span>
+                </span>
+              </li>
+            ))
+          }
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="section wrap">
+    <div class="section-head">
+      <h2>Yrkesområden</h2>
+      <p>Annonser de senaste tolv månaderna. Förändring på tre år mot arbetsmarknaden i stort, totalt inom parentes.</p>
+    </div>
+    <ul class="fields">
+      {
+        allFields.map((f) => {
+          const g = vs(f);
+          return (
+            <li>
+              <a href={`/yrken/#${f.id}`}>{f.label}</a>
+              <span class="num">{int(f.L12)}</span>
+              <span class="num small">
+                <strong class={signClass(g, 0.05)}>{relValue(g)}</strong> <span class="muted">({rel(f.L12, f.B12)})</span>
+              </span>
+            </li>
+          );
+        })
+      }
+    </ul>
+  </section>
+</Base>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-kind-tabs]').forEach((root) => {
+    const tabs = Array.from(root.querySelectorAll<HTMLButtonElement>('[role=tab]'));
+    const select = (t: HTMLButtonElement) => {
+      tabs.forEach((x) => {
+        const on = x === t;
+        x.setAttribute('aria-selected', String(on));
+        x.setAttribute('aria-pressed', String(on));
+        x.tabIndex = on ? 0 : -1;
+        root.querySelector<HTMLElement>(`#${x.getAttribute('aria-controls')}`)!.hidden = !on;
+      });
+    };
+    tabs.forEach((t, i) => {
+      t.tabIndex = i === 0 ? 0 : -1;
+      t.addEventListener('click', () => select(t));
+      t.addEventListener('keydown', (ev) => {
+        const d = ev.key === 'ArrowRight' ? 1 : ev.key === 'ArrowLeft' ? -1 : 0;
+        if (!d) return;
+        const next = tabs[(i + d + tabs.length) % tabs.length];
+        next.focus();
+        select(next);
+      });
+    });
+  });
+</script>
+
+<style>
+  .hero {
+    padding-block: clamp(3rem, 9vw, 6.5rem) 3rem;
+  }
+  .lede {
+    font-size: var(--t-md);
+    margin-top: 1.75rem;
+    max-width: 44ch;
+  }
+  .quick {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 1rem;
+    font-size: var(--t-sm);
+    align-items: baseline;
+  }
+  .tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-bottom: 1.5rem;
+  }
+  .tabs [aria-selected='true'] {
+    background: var(--ink);
+    color: var(--paper);
+    border-color: var(--ink);
+  }
+  .list-h {
+    margin-bottom: 0.5rem;
+  }
+  .base-note {
+    grid-column: 1 / -1;
+    margin: 0;
+  }
+  .multiples {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+    gap: 2rem 2.5rem;
+  }
+  .multiples a {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 0.1rem 1rem;
+    color: var(--ink);
+    text-decoration: none;
+    padding-top: 0.75rem;
+    border-top: 2px solid var(--ink);
+  }
+  .multiples a:hover .name {
+    text-decoration: underline;
+  }
+  .multiples .name {
+    font-weight: 600;
+  }
+  .multiples .fig {
+    font-stretch: 125%;
+    font-weight: 800;
+    font-size: var(--t-lg);
+    line-height: 1;
+    grid-row: span 2;
+    align-self: start;
+  }
+  .multiples .was {
+    grid-column: 1;
+  }
+  .multiples :global(svg) {
+    grid-column: 1 / -1;
+    margin-top: 0.75rem;
+    width: 100%;
+    height: auto;
+  }
+  .occ {
+    margin: 0;
+    padding-left: 1.6rem;
+  }
+  .occ li {
+    padding: 0.42rem 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .occ li,
+  .fields li {
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+  .occ li::marker {
+    color: var(--graphite);
+    font-size: var(--t-sm);
+  }
+  .occ a,
+  .fields a {
+    color: var(--ink);
+  }
+  .occ .num {
+    white-space: nowrap;
+  }
+  .fields {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    columns: 2 22rem;
+    column-gap: 3rem;
+  }
+  .fields li {
+    break-inside: avoid;
+    padding: 0.45rem 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .fields a {
+    flex: 1;
+  }
+  .fields .num {
+    white-space: nowrap;
+  }
+</style>

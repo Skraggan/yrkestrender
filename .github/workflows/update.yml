@@ -1,0 +1,62 @@
+name: Update data
+
+# Checks JobTech for new or changed ad files every Monday and rebuilds the
+# site data when something changed. Per-ad facts are stored on the "facts"
+# release, so only new files are downloaded and read.
+on:
+  schedule:
+    - cron: '17 5 * * 1'
+  workflow_dispatch:
+    inputs:
+      force:
+        description: 'Re-aggregate even if nothing changed'
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: update-data
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.14'
+      - name: Update facts and site data
+        id: update
+        run: |
+          python -I pipeline/update.py --store github | tee update.log
+          if grep -q '^changed=true' update.log; then echo "changed=true" >> "$GITHUB_OUTPUT"; fi
+      - name: Force re-aggregation
+        if: steps.update.outputs.changed != 'true' && inputs.force
+        run: |
+          python -I - <<'PY'
+          import subprocess, json
+          stems = [n.split('.')[0] for n in json.load(open('data/manifest.json'))['files']]
+          for s in stems:
+              for suf in ('.jsonl.gz', '.meta.json'):
+                  subprocess.run(['gh', 'release', 'download', 'facts', '-p', s + suf, '-D', 'data/facts', '--clobber'], check=True)
+          PY
+          python -I pipeline/aggregate.py
+          echo "FORCED=1" >> "$GITHUB_ENV"
+      - name: Commit and push
+        if: steps.update.outputs.changed == 'true' || env.FORCED == '1'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/site data/manifest.json pipeline/vocab/term_ids.json
+          if git diff --cached --quiet; then echo "No changes to commit"; exit 0; fi
+          git commit -m "Uppdatera annonsdata"
+          git push
+          # Pushes made with GITHUB_TOKEN do not start other workflows; start CI explicitly.
+          gh workflow run ci.yml --ref main

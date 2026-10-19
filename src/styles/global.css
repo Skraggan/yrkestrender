@@ -1,0 +1,306 @@
+/* Yrkestrender – design tokens and base styles.
+   One typeface (Archivo) used at two widths: expanded and heavy for headings,
+   normal for reading. Signal yellow is a highlighter, never a fill colour. */
+
+:root {
+  --paper: #f4f5f1;
+  --paper-raised: #fbfbf8;
+  --ink: #16202a;
+  --graphite: #5a6470;
+  --rule: #d8dcd4;
+  --rule-strong: #b9bfb5;
+  --blue: #2b4c8c;
+  --blue-soft: #dfe6f2;
+  --signal: #f2b705;
+  --signal-soft: #fbe7a3;
+  --down: #9a4a32;
+  --chart-2: #7a8a3a;
+  --chart-3: #8b5a9c;
+  --chart-4: #c06c1c;
+  --focus: #2b4c8c;
+
+  --font: 'Archivo Variable', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  /* Modular scale, ratio 1.25 from 17px */
+  --t-xs: 0.8rem;
+  --t-sm: 0.889rem;
+  --t-base: 1rem;
+  --t-md: 1.25rem;
+  --t-lg: 1.563rem;
+  --t-xl: 1.953rem;
+  --t-2xl: 2.441rem;
+  --t-3xl: clamp(2.2rem, 5.2vw, 3.815rem);
+
+  --gap: 1.5rem;
+  --max: 74rem;
+  --radius: 3px;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --paper: #12181f;
+    --paper-raised: #182029;
+    --ink: #e9ebe6;
+    --graphite: #9aa3ad;
+    --rule: #28323c;
+    --rule-strong: #3a4652;
+    --blue: #8eaee6;
+    --blue-soft: #1e2b40;
+    --signal: #f2c230;
+    --signal-soft: #4a3d10;
+    --down: #e08a6e;
+    --chart-2: #b8c56a;
+    --chart-3: #c79bd6;
+    --chart-4: #eb9a52;
+    --focus: #f2c230;
+    color-scheme: dark;
+  }
+}
+:root[data-theme='dark'] {
+  --paper: #12181f;
+  --paper-raised: #182029;
+  --ink: #e9ebe6;
+  --graphite: #9aa3ad;
+  --rule: #28323c;
+  --rule-strong: #3a4652;
+  --blue: #8eaee6;
+  --blue-soft: #1e2b40;
+  --signal: #f2c230;
+  --signal-soft: #4a3d10;
+  --down: #e08a6e;
+  --chart-2: #b8c56a;
+  --chart-3: #c79bd6;
+  --chart-4: #eb9a52;
+  --focus: #f2c230;
+  color-scheme: dark;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 106.25%; /* 17px */
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font);
+  font-stretch: 100%;
+  line-height: 1.5;
+  font-feature-settings: 'tnum' 0;
+}
+
+h1,
+h2,
+h3 {
+  font-stretch: 125%;
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  margin: 0;
+  text-wrap: balance;
+}
+h1 {
+  font-size: var(--t-3xl);
+}
+h2 {
+  font-size: clamp(1.45rem, 4.6vw, var(--t-xl));
+}
+h3 {
+  font-size: var(--t-md);
+  font-weight: 700;
+}
+p {
+  margin: 0 0 1em;
+  max-width: 68ch;
+}
+
+a {
+  color: var(--blue);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+}
+a:hover {
+  text-decoration-thickness: 2px;
+}
+:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+.num,
+td.num,
+.tnum {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: 'tnum' 1;
+}
+
+.wrap {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+@media (min-width: 700px) {
+  .wrap {
+    padding: 0 2rem;
+  }
+}
+
+.muted {
+  color: var(--graphite);
+}
+.small {
+  font-size: var(--t-sm);
+}
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* Highlighter: the signal yellow under a few characters, as on paper. */
+.mark {
+  background: linear-gradient(transparent 58%, var(--signal) 58%, var(--signal) 92%, transparent 92%);
+  padding: 0 0.08em;
+}
+
+.up {
+  color: var(--ink);
+}
+.up .delta-mark {
+  background: var(--signal-soft);
+}
+.down {
+  color: var(--down);
+}
+
+/* Section rhythm */
+.section {
+  padding-block: 2.75rem;
+  border-top: 1px solid var(--rule);
+}
+.section-head {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.5rem;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+.section-head p {
+  margin: 0;
+  color: var(--graphite);
+  max-width: 52ch;
+}
+
+.grid-2 {
+  display: grid;
+  gap: 2.5rem;
+}
+@media (min-width: 900px) {
+  .grid-2 {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+.grid-2 > * {
+  min-width: 0;
+}
+.scroll-x {
+  overflow-x: auto;
+}
+th[scope='row'] {
+  overflow-wrap: anywhere;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+th {
+  text-align: left;
+  font-weight: 600;
+  font-size: var(--t-sm);
+  color: var(--graphite);
+  padding: 0.4rem 0.75rem 0.4rem 0;
+  border-bottom: 1px solid var(--rule-strong);
+}
+td {
+  padding: 0.45rem 0.75rem 0.45rem 0;
+  border-bottom: 1px solid var(--rule);
+  vertical-align: middle;
+}
+th.num,
+td.num {
+  text-align: right;
+}
+td.num {
+  white-space: nowrap;
+}
+@media (max-width: 520px) {
+  th,
+  td {
+    padding-right: 0.5rem;
+  }
+  th.num {
+    font-size: var(--t-xs);
+  }
+  td.num {
+    font-size: var(--t-sm);
+  }
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  border: 1px solid var(--rule-strong);
+  background: transparent;
+  color: var(--ink);
+  border-radius: 999px;
+  padding: 0.3rem 0.8rem;
+  font: inherit;
+  font-size: var(--t-sm);
+  cursor: pointer;
+}
+.chip[aria-pressed='true'] {
+  background: var(--ink);
+  color: var(--paper);
+  border-color: var(--ink);
+}
+
+.btn {
+  display: inline-block;
+  font: inherit;
+  font-weight: 600;
+  padding: 0.55rem 1rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--ink);
+  background: var(--ink);
+  color: var(--paper);
+  text-decoration: none;
+  cursor: pointer;
+}
+.btn.ghost {
+  background: transparent;
+  color: var(--ink);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

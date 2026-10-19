@@ -1,0 +1,155 @@
+---
+import Base from '../../layouts/Base.astro';
+import Sparkline from '../../components/Sparkline.astro';
+import { fields, meta, nationalWindow, occById } from '../../lib/data';
+import { int, rel, relValue, signClass, windowLabel } from '../../lib/format';
+import { volumeVsMarket } from '../../lib/trend';
+
+const m = meta();
+const years = m.years.filter((y) => y >= m.occupationFirstYear).map(String);
+const allFields = fields();
+const natL12 = nationalWindow('L12');
+const natB12 = nationalWindow('B12');
+const vs = (x: { L12: number; B12: number }) => volumeVsMarket(x.L12, x.B12, natL12, natB12);
+---
+
+<Base title="Alla yrken" description={`${m.occupationCount} yrken i ${allFields.length} yrkesområden. Se vad arbetsgivarna efterfrågar i annonserna för varje yrke.`}>
+  <div class="wrap">
+    <header class="head">
+      <h1>Alla yrken</h1>
+      <p class="summary">
+        {`${m.occupationCount} yrkesgrupper enligt Arbetsförmedlingens yrkesindelning, sorterade på antal annonser ${windowLabel(m.windows.L12)}. Förändringen på tre år visas mot arbetsmarknaden i stort (${rel(natL12, natB12)}), totalt bredvid.`}
+      </p>
+      <label class="filter">
+        <span class="visually-hidden">Filtrera yrken</span>
+        <input type="search" placeholder="Filtrera, t.ex. lärare" data-occ-filter />
+      </label>
+    </header>
+
+    <nav class="toc small" aria-label="Yrkesområden">
+      {allFields.map((f) => <a href={`#${f.id}`}>{f.label}</a>)}
+    </nav>
+
+    {
+      allFields.map((f) => (
+        <section class="section field" id={f.id} data-field>
+          <div class="section-head">
+            <h2>{f.label}</h2>
+            <p class="num">
+              {`${int(f.L12)} annonser, ${relValue(vs(f))} mot snittet (totalt ${rel(f.L12, f.B12)})`}
+            </p>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Yrke</th>
+                <th scope="col" class="num">Annonser</th>
+                <th scope="col" class="num">Mot snittet</th>
+                <th scope="col" class="num tot">Totalt</th>
+                <th scope="col" class="spark-col">Annonser per år</th>
+              </tr>
+            </thead>
+            <tbody>
+              {f.occupations.map((id) => {
+                const o = occById(id)!;
+                return (
+                  <tr data-name={`${o.label} ${o.titles.join(' ')}`.toLowerCase()}>
+                    <th scope="row">
+                      <a href={`/yrken/${o.id}/`}>{o.label}</a>
+                      {o.titles.length > 0 && <span class="titles">{o.titles.slice(0, 4).join(', ')}</span>}
+                    </th>
+                    <td class="num">{int(o.L12)}</td>
+                    <td class={`num strong ${signClass(vs(o), 0.05)}`}>{relValue(vs(o))}</td>
+                    <td class="num muted small tot">{rel(o.L12, o.B12)}</td>
+                    <td class="spark-col">
+                      <Sparkline values={years.map((y) => o.years[y] ?? 0).slice(0, m.partialLastYear ? -1 : undefined)} />
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </section>
+      ))
+    }
+    <p class="none muted" hidden>Inget yrke matchar filtret.</p>
+  </div>
+</Base>
+
+<script>
+  const input = document.querySelector<HTMLInputElement>('[data-occ-filter]')!;
+  const rows = Array.from(document.querySelectorAll<HTMLTableRowElement>('tr[data-name]'));
+  const sections = Array.from(document.querySelectorAll<HTMLElement>('[data-field]'));
+  const none = document.querySelector<HTMLElement>('.none')!;
+  input.addEventListener('input', () => {
+    const q = input.value.trim().toLowerCase();
+    rows.forEach((r) => (r.hidden = !!q && !r.dataset.name!.includes(q)));
+    let any = false;
+    sections.forEach((s) => {
+      const visible = s.querySelectorAll('tr[data-name]:not([hidden])').length > 0;
+      s.hidden = !visible;
+      any ||= visible;
+    });
+    none.hidden = any;
+  });
+</script>
+
+<style>
+  .head {
+    padding-block: 2.5rem 1.5rem;
+  }
+  .summary {
+    font-size: var(--t-md);
+    max-width: 58ch;
+    margin-top: 1rem;
+  }
+  .filter input {
+    font: inherit;
+    width: min(100%, 26rem);
+    padding: 0.6rem 0.8rem;
+    border: 1px solid var(--rule-strong);
+    border-radius: var(--radius);
+    background: var(--paper-raised);
+    color: var(--ink);
+  }
+  .toc {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 1.1rem;
+    padding-bottom: 2rem;
+  }
+  .toc a {
+    color: var(--ink);
+  }
+  th[scope='row'] {
+    font-weight: 500;
+    font-size: var(--t-base);
+    color: var(--ink);
+    border-bottom: 1px solid var(--rule);
+  }
+  th[scope='row'] a {
+    color: var(--ink);
+  }
+  .titles {
+    display: block;
+    font-weight: 400;
+    font-size: var(--t-xs);
+    color: var(--graphite);
+  }
+  .spark-col {
+    width: 7rem;
+  }
+  .strong {
+    font-weight: 700;
+  }
+  @media (max-width: 620px) {
+    .spark-col {
+      display: none;
+    }
+  }
+  @media (max-width: 420px) {
+    .tot {
+      display: none;
+    }
+  }
+</style>

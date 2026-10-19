@@ -1,0 +1,10 @@
+node_modules/
+dist/
+.astro/
+.DS_Store
+.env
+__pycache__/
+# Raw downloads (10+ GB) and per-ad facts (stored as GitHub release assets)
+data/raw/
+data/facts/
+data/work/

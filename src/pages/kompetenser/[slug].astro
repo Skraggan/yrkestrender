@@ -1,0 +1,250 @@
+---
+import Base from '../../layouts/Base.astro';
+import LineChart from '../../components/LineChart.astro';
+import { categoryName, KIND_NOUN, kindName, meta, occById, regionByCode, skill, skillById, skillIds, skillIndex } from '../../lib/data';
+import { int, pct, pp, ppValue, signClass, trendClass, windowLabel } from '../../lib/format';
+import { baseline, excess } from '../../lib/trend';
+
+export function getStaticPaths() {
+  return skillIds().map((slug) => ({ params: { slug } }));
+}
+
+const { slug } = Astro.params;
+const s = skill(slug!);
+const m = meta();
+const years = m.years.map(String);
+const qx = Object.keys(s.quarters);
+const firstYear = years[0];
+const firstShare = s.years[firstYear] ?? 0;
+const base = baseline(skillIndex().filter((x) => x.kind === s.kind));
+const relChange = excess(s.share.L12, s.share.B12, base);
+const then = firstShare < 0.0005 ? `År ${firstYear} nämndes det nästan aldrig.` : `År ${firstYear} var andelen ${pct(firstShare)}.`;
+const terms = s.terms.map((t) => t.replace(/\*$/, '…'));
+const regMax = Math.max(...s.regions.map((r) => r.sh), 0.0001);
+const description = `${s.name} nämns i ${pct(s.share.L12)} av alla platsannonser i Sverige. Se vilka yrken som efterfrågar ${s.name.toLowerCase()}, hur det har förändrats sedan ${m.years[0]} och i vilka län.`;
+---
+
+<Base title={s.name} description={description}>
+  <article class="wrap">
+    <header class="head">
+      <p class="crumbs small">
+        <a href="/kompetenser/">Kompetenser och krav</a> / <a href={`/kompetenser/#${s.kind}`}>{kindName(s.kind)}</a> /
+        <a href={`/kompetenser/#${s.category}`}>{categoryName(s.category)}</a>
+      </p>
+      <h1>{s.name}</h1>
+      <p class="summary">
+        Nämns i <span class="mark">{pct(s.share.L12)} av alla platsannonser</span>
+        {` de senaste tolv månaderna, ${int(s.ads.L12)} annonser. För tre år sedan var andelen ${pct(s.share.B12)}. ${then}`}
+      </p>
+      <dl class="vol">
+        <div>
+          <dt>Mot snittet för {KIND_NOUN[s.kind]}, 3 år</dt>
+          <dd class={`num ${signClass(relChange)}`}>{ppValue(relChange)}</dd>
+        </div>
+        <div class="secondary">
+          <dt>Totalt, 3 år</dt>
+          <dd class={`num ${trendClass(s.share.L12, s.share.B12)}`}>{pp(s.share.L12, s.share.B12)}</dd>
+        </div>
+      </dl>
+      <p class="terms small muted">
+        Räknas när annonsen innehåller: {terms.join(', ')}.
+      </p>
+    </header>
+
+    <section class="section">
+      <div class="section-head">
+        <h2>Andel av alla annonser</h2>
+        <p>Per kvartal sedan {m.years[0]}.</p>
+      </div>
+      <LineChart title={`Andel av platsannonserna som nämner ${s.name}, per kvartal`} x={qx} series={[{ label: s.name, values: qx.map((q) => s.quarters[q]) }]} format="pct" height={240} tickEvery={8} area />
+      <p class="small"><a href={`/jamfor/?k=${s.id}`}>Jämför med andra kompetenser</a></p>
+    </section>
+
+    <section class="section">
+      <div class="grid-2">
+        <div>
+          <h2 class="h-sub">Yrken med flest sådana annonser</h2>
+          <p class="muted small">{windowLabel(m.windows.L12)}. Andel = hur stor del av yrkets annonser som nämner det.</p>
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Yrke</th>
+                <th scope="col" class="num">Annonser</th>
+                <th scope="col" class="num">Andel</th>
+              </tr>
+            </thead>
+            <tbody>
+              {s.occupations.slice(0, 15).map((r) => (
+                <tr>
+                  <th scope="row"><a href={`/yrken/${r.o}/#kompetenser`}>{occById(r.o)?.label ?? r.o}</a></th>
+                  <td class="num">{int(r.n)}</td>
+                  <td class="num">{pct(r.sh)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <h2 class="h-sub">Där det nämns oftast</h2>
+          <p class="muted small">Yrken med minst 20 annonser som nämner det, sorterade på andel.</p>
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Yrke</th>
+                <th scope="col" class="num">Andel</th>
+              </tr>
+            </thead>
+            <tbody>
+              {s.occupationsByShare.slice(0, 15).map((r) => (
+                <tr>
+                  <th scope="row"><a href={`/yrken/${r.o}/#kompetenser`}>{occById(r.o)?.label ?? r.o}</a></th>
+                  <td class="num">{pct(r.sh)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="grid-2">
+        {
+          s.related.length > 0 && (
+            <div>
+              <h2 class="h-sub">Nämns ofta tillsammans med</h2>
+              <p class="muted small">Andel av annonserna som nämner {s.name} och som också nämner följande, de senaste två åren.</p>
+              <ul class="plain">
+                {s.related.map((r) => {
+                  const rs = skillById(r.s);
+                  return rs ? (
+                    <li>
+                      <a href={`/kompetenser/${r.s}/`}>{rs.name}</a>
+                      <span class="num muted">{pct(r.p)}</span>
+                    </li>
+                  ) : null;
+                })}
+              </ul>
+            </div>
+          )
+        }
+        <div>
+          <h2 class="h-sub">Per län</h2>
+          <p class="muted small">Andel av länets annonser det senaste året.</p>
+          <ul class="plain regions">
+            {s.regions.map((r) => {
+              const reg = regionByCode(r.r);
+              return (
+                <li>
+                  {reg ? <a href={`/lan/${reg.id}/`}>{reg.label}</a> : r.r}
+                  <span class="rbar" aria-hidden="true"><span style={`width:${((r.sh / regMax) * 100).toFixed(1)}%`} /></span>
+                  <span class="num">{pct(r.sh)}</span>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      </div>
+    </section>
+  </article>
+</Base>
+
+<style>
+  .head {
+    padding-block: 2.5rem 2rem;
+  }
+  .crumbs {
+    margin-bottom: 0.75rem;
+  }
+  .crumbs a {
+    color: var(--graphite);
+  }
+  .summary {
+    font-size: var(--t-md);
+    max-width: 58ch;
+    margin-top: 1.25rem;
+  }
+  .terms {
+    max-width: 75ch;
+    margin-top: 1rem;
+  }
+  .vol {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem 2.25rem;
+    margin: 1rem 0 0;
+  }
+  .vol div {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  .vol dt {
+    font-size: var(--t-xs);
+    color: var(--graphite);
+  }
+  .vol dd {
+    margin: 0;
+    font-stretch: 125%;
+    font-weight: 800;
+    font-size: var(--t-lg);
+    line-height: 1.1;
+  }
+  .vol .secondary dd {
+    font-weight: 500;
+    font-size: var(--t-md);
+    color: var(--graphite);
+  }
+  .h-sub {
+    font-size: var(--t-lg);
+    margin-bottom: 0.5rem;
+  }
+  table {
+    margin-top: 0.5rem;
+  }
+  td,
+  th[scope='row'] {
+    font-weight: 400;
+    font-size: var(--t-base);
+    color: var(--ink);
+    border-bottom: 1px solid var(--rule);
+  }
+  th[scope='row'] a {
+    color: var(--ink);
+  }
+  .plain {
+    list-style: none;
+    margin: 0.5rem 0 0;
+    padding: 0;
+  }
+  .plain li {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    padding: 0.42rem 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .plain li > a {
+    flex: 1;
+    color: var(--ink);
+  }
+  .regions li > a {
+    flex: 0 0 11rem;
+  }
+  .rbar {
+    flex: 1;
+    height: 0.5rem;
+    background: var(--rule);
+    position: relative;
+    overflow: hidden;
+    border-radius: 1px;
+  }
+  .rbar span {
+    position: absolute;
+    inset: 0 auto 0 0;
+    background: var(--blue);
+  }
+  .regions .num {
+    width: 3.5rem;
+    text-align: right;
+  }
+</style>

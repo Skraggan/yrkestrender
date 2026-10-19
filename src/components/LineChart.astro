@@ -1,0 +1,213 @@
+---
+// Line chart rendered as SVG at build time. Optional hover readout is added by
+// the small script in Base.astro, which reads data-* attributes.
+import { axis, linePath, type Series } from '../lib/chart';
+
+interface Annotation {
+  at: string;
+  label: string;
+}
+interface Props {
+  x: string[]; // category labels ("2016", "2024-03"...)
+  series: Series[];
+  format?: 'pct' | 'int';
+  height?: number;
+  tickEvery?: number; // show every n-th x label
+  tickLabel?: (x: string) => string;
+  annotations?: Annotation[];
+  title: string; // accessible name
+  minMax?: number;
+  area?: boolean;
+}
+
+const { x, series, format = 'pct', height = 260, tickEvery, annotations = [], title, minMax = 0, area = false } = Astro.props;
+const tickLabel = Astro.props.tickLabel ?? ((s: string) => s.slice(0, 4));
+const W = 720;
+const H = height;
+const pad = { l: 46, r: 14, t: 14, b: 28 };
+const all = series.flatMap((s) => s.values.filter((v): v is number => v != null));
+const { max, ticks: yt } = axis(Math.max(minMax, ...all, 0) * 1.03, 4);
+const n = Math.max(1, x.length - 1);
+const xs = (i: number) => pad.l + ((W - pad.l - pad.r) * i) / n;
+const ys = (v: number) => pad.t + (H - pad.t - pad.b) * (1 - v / max);
+const fmt = (v: number) =>
+  format === 'pct'
+    ? `${(v * 100).toLocaleString('sv-SE', { maximumFractionDigits: max < 0.05 ? 1 : 0 })} %`
+    : v >= 1000
+      ? `${(v / 1000).toLocaleString('sv-SE', { maximumFractionDigits: 1 })} tn`
+      : v.toLocaleString('sv-SE');
+const every = tickEvery ?? Math.max(1, Math.ceil(x.length / 10));
+const colors = ['var(--blue)', 'var(--signal)', 'var(--chart-3)', 'var(--chart-2)', 'var(--chart-4)'];
+const payload = JSON.stringify({
+  x,
+  format,
+  series: series.map((s) => ({ label: s.label, values: s.values })),
+});
+---
+
+<figure class="chart">
+  <svg
+    viewBox={`0 0 ${W} ${H}`}
+    role="img"
+    aria-label={title}
+    data-chart={payload}
+    data-pad={JSON.stringify(pad)}
+    data-w={W}
+    data-h={H}
+    data-max={max}
+  >
+    <title>{title}</title>
+    {
+      yt.map((t) => (
+        <g class="grid">
+          <line x1={pad.l} x2={W - pad.r} y1={ys(t)} y2={ys(t)} />
+          <text x={pad.l - 8} y={ys(t) + 4} text-anchor="end">
+            {fmt(t)}
+          </text>
+        </g>
+      ))
+    }
+    {
+      x.map((lbl, i) =>
+        i % every === 0 ? (
+          <text class="xt" x={xs(i)} y={H - 8} text-anchor="middle">
+            {tickLabel(lbl)}
+          </text>
+        ) : null,
+      )
+    }
+    {
+      annotations.map((a) => {
+        const i = x.indexOf(a.at);
+        if (i < 0) return null;
+        return (
+          <g class="note">
+            <line x1={xs(i)} x2={xs(i)} y1={pad.t} y2={H - pad.b} />
+            <text x={xs(i) + 5} y={pad.t + 11}>
+              {a.label}
+            </text>
+          </g>
+        );
+      })
+    }
+    {
+      area && series[0] && (
+        <path
+          class="area"
+          d={`${linePath(series[0].values, xs, ys)} L${xs(x.length - 1)} ${ys(0)} L${xs(series[0].values.findIndex((v) => v != null))} ${ys(0)} Z`}
+        />
+      )
+    }
+    {
+      series.map((s, i) => (
+        <path
+          class="line"
+          d={linePath(s.values, xs, ys)}
+          stroke={s.color ?? colors[i % colors.length]}
+          stroke-dasharray={s.dashed ? '5 4' : undefined}
+        />
+      ))
+    }
+    <g class="hover" aria-hidden="true"></g>
+  </svg>
+  {
+    series.length > 1 && (
+      <figcaption class="legend">
+        {series.map((s, i) => (
+          <span>
+            <i style={`background:${s.color ?? colors[i % colors.length]}`} />
+            {s.label}
+          </span>
+        ))}
+      </figcaption>
+    )
+  }
+  <div class="readout" aria-hidden="true"></div>
+</figure>
+
+<style>
+  .chart {
+    margin: 0;
+    position: relative;
+  }
+  svg {
+    width: 100%;
+    height: auto;
+    display: block;
+    overflow: visible;
+  }
+  .grid line {
+    stroke: var(--rule);
+    stroke-width: 1;
+  }
+  .grid text,
+  .xt {
+    fill: var(--graphite);
+    font-size: 12px;
+    font-variant-numeric: tabular-nums;
+  }
+  @media (max-width: 640px) {
+    .grid text,
+    .xt,
+    .note text {
+      font-size: 22px;
+    }
+  }
+  .line {
+    fill: none;
+    stroke-width: 2.25;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+  }
+  .area {
+    fill: var(--blue-soft);
+    opacity: 0.7;
+  }
+  .note line {
+    stroke: var(--rule-strong);
+    stroke-dasharray: 2 3;
+  }
+  .note text {
+    fill: var(--graphite);
+    font-size: 11.5px;
+  }
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 1.25rem;
+    font-size: var(--t-sm);
+    margin-top: 0.5rem;
+  }
+  .legend i {
+    display: inline-block;
+    width: 14px;
+    height: 3px;
+    border-radius: 2px;
+    vertical-align: middle;
+    margin-right: 0.4rem;
+  }
+  .readout {
+    position: absolute;
+    pointer-events: none;
+    background: var(--ink);
+    color: var(--paper);
+    font-size: var(--t-xs);
+    padding: 0.35rem 0.55rem;
+    border-radius: var(--radius);
+    white-space: nowrap;
+    opacity: 0;
+    font-variant-numeric: tabular-nums;
+  }
+  .readout.on {
+    opacity: 1;
+  }
+  :global(.hover line) {
+    stroke: var(--ink);
+    stroke-width: 1;
+    opacity: 0.35;
+  }
+  :global(.hover circle) {
+    stroke: var(--paper);
+    stroke-width: 2;
+  }
+</style>

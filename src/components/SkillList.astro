@@ -1,0 +1,227 @@
+---
+// Ranked list of skills/requirements/etc. with share, change against the
+// average (main) and total change (secondary) over three years, and a sparkline.
+import Sparkline from './Sparkline.astro';
+import { pct, pp, ppValue, signClass, trendClass } from '../lib/format';
+
+export interface Row {
+  id: string;
+  name: string;
+  href: string;
+  share: number | null;
+  share3: number | null;
+  /** Change beyond the average of the same kind (see lib/trend.ts). */
+  rel: number | null;
+  spark: (number | null)[];
+  note?: string;
+  category?: string;
+}
+interface Props {
+  rows: Row[];
+  caption: string;
+  shareLabel?: string;
+  showBar?: boolean;
+  /** Category chips above the table: [id, name] pairs. */
+  filters?: [string, string][];
+  /** Rows shown before "Visa alla". */
+  limit?: number;
+  showSpark?: boolean;
+}
+const { rows, caption, shareLabel = 'Andel annonser', showBar = true, filters = [], limit = 0, showSpark = true } = Astro.props;
+const maxShare = Math.max(...rows.map((r) => r.share ?? 0), 0.0001);
+const collapsed = limit > 0 && rows.length > limit;
+---
+
+<div class="skill-list" data-skill-list data-limit={limit || undefined}>
+  {
+    filters.length > 1 && (
+      <div class="filters" role="group" aria-label="Visa kategori">
+        <button type="button" class="chip" aria-pressed="true" data-filter="">
+          Allt
+        </button>
+        {filters.map(([id, name]) => (
+          <button type="button" class="chip" aria-pressed="false" data-filter={id}>
+            {name}
+          </button>
+        ))}
+      </div>
+    )
+  }
+  <table class="skills">
+    <caption class="visually-hidden">{caption}</caption>
+    <thead>
+      <tr>
+        <th scope="col">Namn</th>
+        <th scope="col" class="num">{shareLabel}</th>
+        <th scope="col" class="num rel-col" title="Förändring på tre år utöver den genomsnittliga förändringen">Mot snittet</th>
+        <th scope="col" class="num tot-col" title="Hela förändringen på tre år">Totalt</th>
+        {showSpark && <th scope="col" class="spark-col">Sedan start</th>}
+      </tr>
+    </thead>
+    <tbody>
+      {
+        rows.map((r, i) => (
+          <tr data-cat={r.category} hidden={collapsed && i >= limit ? true : undefined}>
+            <th scope="row">
+              <a href={r.href}>{r.name}</a>
+              {r.note && <span class="note">{r.note}</span>}
+            </th>
+            <td class="num share">
+              {showBar && (
+                <span class="bar" aria-hidden="true">
+                  <span style={`width:${(((r.share ?? 0) / maxShare) * 100).toFixed(1)}%`} />
+                </span>
+              )}
+              {pct(r.share)}
+            </td>
+            <td class={`num delta rel-col ${signClass(r.rel)}`}>
+              <span class="delta-mark">{ppValue(r.rel)}</span>
+            </td>
+            <td class={`num tot-col muted ${trendClass(r.share, r.share3)}`}>{pp(r.share, r.share3)}</td>
+            {showSpark && (
+              <td class="spark-col">
+                <Sparkline values={r.spark} />
+              </td>
+            )}
+          </tr>
+        ))
+      }
+    </tbody>
+  </table>
+  {
+    collapsed && (
+      <button type="button" class="btn ghost more" data-more>
+        Visa alla {rows.length}
+      </button>
+    )
+  }
+  <p class="empty muted" hidden>Inget i den här kategorin nämns tillräckligt ofta för att visas.</p>
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-skill-list]').forEach((root) => {
+    const limit = Number(root.dataset.limit || 0);
+    const rows = Array.from(root.querySelectorAll<HTMLTableRowElement>('tbody tr'));
+    const more = root.querySelector<HTMLButtonElement>('[data-more]');
+    const empty = root.querySelector<HTMLElement>('.empty')!;
+    let filter = '';
+    let expanded = false;
+    const apply = () => {
+      const matching = rows.filter((r) => !filter || r.dataset.cat === filter);
+      rows.forEach((r) => (r.hidden = true));
+      matching.forEach((r, i) => (r.hidden = !(expanded || filter || !limit || i < limit)));
+      if (more) more.hidden = expanded || !!filter || matching.length <= limit;
+      empty.hidden = matching.length > 0;
+    };
+    root.querySelectorAll<HTMLButtonElement>('[data-filter]').forEach((b) =>
+      b.addEventListener('click', () => {
+        filter = b.dataset.filter || '';
+        root.querySelectorAll('[data-filter]').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+        apply();
+      }),
+    );
+    more?.addEventListener('click', () => {
+      expanded = true;
+      apply();
+    });
+  });
+</script>
+
+<style>
+  .filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-bottom: 1rem;
+  }
+  @media (max-width: 700px) {
+    .filters {
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      margin-inline: -1rem;
+      padding: 0 1rem 0.4rem;
+      scrollbar-width: thin;
+    }
+    .filters .chip {
+      flex: none;
+    }
+  }
+  .more {
+    margin-top: 1rem;
+  }
+  .empty {
+    margin-top: 1rem;
+  }
+  .skills th[scope='row'] {
+    font-weight: 500;
+    font-size: var(--t-base);
+    color: var(--ink);
+    border-bottom: 1px solid var(--rule);
+    padding-block: 0.55rem;
+  }
+  .skills th[scope='row'] a {
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .skills th[scope='row'] a:hover {
+    text-decoration: underline;
+  }
+  .note {
+    display: block;
+    font-size: var(--t-xs);
+    color: var(--graphite);
+    font-weight: 400;
+  }
+  .share {
+    white-space: nowrap;
+    width: 28%;
+  }
+  .bar {
+    display: inline-block;
+    width: calc(100% - 4.2rem);
+    max-width: 10rem;
+    height: 0.55rem;
+    background: var(--rule);
+    border-radius: 1px;
+    margin-right: 0.6rem;
+    vertical-align: middle;
+    position: relative;
+    overflow: hidden;
+  }
+  .bar span {
+    position: absolute;
+    inset: 0 auto 0 0;
+    background: var(--blue);
+  }
+  .delta {
+    white-space: nowrap;
+    font-weight: 600;
+  }
+  .delta-mark {
+    padding: 0.05rem 0.3rem;
+    border-radius: 2px;
+  }
+  .tot-col {
+    font-size: var(--t-sm);
+  }
+  .spark-col {
+    width: 7rem;
+  }
+  @media (max-width: 620px) {
+    .spark-col,
+    .bar {
+      display: none;
+    }
+    .share {
+      width: auto;
+    }
+    .skills th[scope='row'] {
+      font-size: var(--t-sm);
+    }
+  }
+  @media (max-width: 420px) {
+    .tot-col {
+      display: none;
+    }
+  }
+</style>

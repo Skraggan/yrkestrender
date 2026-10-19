@@ -1,0 +1,204 @@
+---
+import '@fontsource-variable/archivo/wdth.css';
+import '../styles/global.css';
+import Search from '../components/Search.astro';
+import { meta } from '../lib/data';
+import { monthName } from '../lib/format';
+
+interface Props {
+  title: string;
+  description: string;
+  hideSearch?: boolean;
+}
+const { title, description, hideSearch = false } = Astro.props;
+const m = meta();
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const fullTitle = title === 'Yrkestrender' ? 'Yrkestrender – vad arbetsgivarna efterfrågar' : `${title} – Yrkestrender`;
+const path = Astro.url.pathname;
+const nav = [
+  { href: '/yrken/', label: 'Yrken' },
+  { href: '/kompetenser/', label: 'Kompetenser och krav' },
+  { href: '/lan/', label: 'Län' },
+  { href: '/jamfor/', label: 'Jämför' },
+  { href: '/om/', label: 'Om datan' },
+];
+---
+
+<!doctype html>
+<html lang="sv">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:locale" content="sv_SE" />
+    <meta name="theme-color" content="#f4f5f1" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#12181f" media="(prefers-color-scheme: dark)" />
+  </head>
+  <body>
+    <a class="skip" href="#main">Hoppa till innehållet</a>
+    <header class="site">
+      <div class="wrap bar">
+        <a class="brand" href="/" aria-label="Yrkestrender, startsida">Yrkestrender</a>
+        <nav aria-label="Huvudmeny">
+          <ul>
+            {
+              nav.map((n) => (
+                <li>
+                  <a href={n.href} aria-current={path.startsWith(n.href) ? 'page' : undefined}>
+                    {n.label}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </nav>
+        {!hideSearch && <div class="header-search"><Search variant="compact" /></div>}
+      </div>
+    </header>
+    <main id="main">
+      <slot />
+    </main>
+    <footer class="site">
+      <div class="wrap foot">
+        <p>
+          {`Byggt på ${m.totalAds.toLocaleString('sv-SE')} platsannonser från Arbetsförmedlingens Platsbanken, ${monthName(m.firstMonth)} – ${monthName(m.lastMonth)}. Annonsdata från `}
+          <a href="https://data.jobtechdev.se/annonser/historiska/">JobTech Development</a> (CC0).
+        </p>
+        <p class="muted small">
+          Siffrorna visar hur ofta annonser nämner något, inte hur många som anställs.{' '}
+          <a href="/om/">Så räknar vi</a>. Uppdaterad {m.generated}.
+        </p>
+      </div>
+    </footer>
+    <script>
+      // Hover readout for LineChart: nearest x value, all series.
+      const fmt = (v: number | null, f: string) =>
+        v == null
+          ? '–'
+          : f === 'pct'
+            ? `${(v * 100).toLocaleString('sv-SE', { maximumFractionDigits: v < 0.1 ? 1 : 0 })} %`
+            : Math.round(v).toLocaleString('sv-SE');
+      const label = (x: string) => {
+        if (/^\d{4}-\d{2}$/.test(x)) {
+          const m = ['jan', 'feb', 'mar', 'apr', 'maj', 'jun', 'jul', 'aug', 'sep', 'okt', 'nov', 'dec'];
+          return `${m[Number(x.slice(5)) - 1]} ${x.slice(0, 4)}`;
+        }
+        return x;
+      };
+      document.querySelectorAll<SVGSVGElement>('svg[data-chart]').forEach((svg) => {
+        const data = JSON.parse(svg.dataset.chart!);
+        const pad = JSON.parse(svg.dataset.pad!);
+        const W = Number(svg.dataset.w), H = Number(svg.dataset.h), max = Number(svg.dataset.max);
+        const fig = svg.closest('figure')!;
+        const out = fig.querySelector<HTMLElement>('.readout')!;
+        const layer = svg.querySelector('.hover')!;
+        const n = Math.max(1, data.x.length - 1);
+        const colors = Array.from(svg.querySelectorAll<SVGPathElement>('path.line')).map((p) => p.getAttribute('stroke'));
+        const move = (ev: PointerEvent) => {
+          const r = svg.getBoundingClientRect();
+          const px = ((ev.clientX - r.left) / r.width) * W;
+          const i = Math.max(0, Math.min(n, Math.round(((px - pad.l) / (W - pad.l - pad.r)) * n)));
+          const cx = pad.l + ((W - pad.l - pad.r) * i) / n;
+          let html = `<strong>${label(data.x[i])}</strong>`;
+          let dots = '';
+          data.series.forEach((s: { label: string; values: (number | null)[] }, k: number) => {
+            const v = s.values[i];
+            html += `<br>${data.series.length > 1 ? s.label + ': ' : ''}${fmt(v, data.format)}`;
+            if (v != null) dots += `<circle cx="${cx}" cy="${pad.t + (H - pad.t - pad.b) * (1 - v / max)}" r="4" fill="${colors[k]}"/>`;
+          });
+          layer.innerHTML = `<line x1="${cx}" x2="${cx}" y1="${pad.t}" y2="${H - pad.b}"/>${dots}`;
+          out.innerHTML = html;
+          out.classList.add('on');
+          const left = (cx / W) * r.width;
+          out.style.left = `${Math.min(r.width - out.offsetWidth, Math.max(0, left - out.offsetWidth / 2))}px`;
+          out.style.top = `-8px`;
+          out.style.transform = 'translateY(-100%)';
+        };
+        svg.addEventListener('pointermove', move);
+        svg.addEventListener('pointerleave', () => {
+          layer.innerHTML = '';
+          out.classList.remove('on');
+        });
+      });
+    </script>
+  </body>
+</html>
+
+<style>
+  .skip {
+    position: absolute;
+    left: -999px;
+    top: 0;
+    background: var(--ink);
+    color: var(--paper);
+    padding: 0.5rem 1rem;
+    z-index: 10;
+  }
+  .skip:focus {
+    left: 0.5rem;
+  }
+  header.site {
+    border-bottom: 1px solid var(--rule);
+    background: var(--paper);
+  }
+  .bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem 1.75rem;
+    padding-block: 0.9rem;
+  }
+  .brand {
+    font-stretch: 125%;
+    font-weight: 850;
+    font-size: 1.2rem;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    text-decoration: none;
+    background: linear-gradient(transparent 62%, var(--signal) 62%, var(--signal) 90%, transparent 90%);
+    padding: 0 0.1em;
+  }
+  nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 1.25rem;
+  }
+  nav a {
+    color: var(--ink);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: var(--t-sm);
+    padding-block: 0.3rem;
+    border-bottom: 2px solid transparent;
+  }
+  nav a:hover,
+  nav a[aria-current='page'] {
+    border-bottom-color: var(--ink);
+  }
+  .header-search {
+    margin-left: auto;
+    width: min(100%, 19rem);
+  }
+  @media (max-width: 760px) {
+    .header-search {
+      width: 100%;
+      margin-left: 0;
+    }
+  }
+  footer.site {
+    border-top: 1px solid var(--rule);
+    margin-top: 3rem;
+    padding-block: 2rem 3rem;
+    font-size: var(--t-sm);
+  }
+</style>

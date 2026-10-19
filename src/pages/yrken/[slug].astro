@@ -1,0 +1,401 @@
+---
+import Base from '../../layouts/Base.astro';
+import LineChart from '../../components/LineChart.astro';
+import SkillList from '../../components/SkillList.astro';
+import { categories, fieldById, KIND_NOUN, kinds, meta, nationalWindow, occById, occupation, occupationIds, regionByCode, skillById, type OccSkill } from '../../lib/data';
+import { int, pct, rel, relValue, signClass, windowLabel } from '../../lib/format';
+import { monthRange, smooth } from '../../lib/chart';
+import { baseline, excess, volumeVsMarket } from '../../lib/trend';
+
+export function getStaticPaths() {
+  return occupationIds().map((slug) => ({ params: { slug } }));
+}
+
+const { slug } = Astro.params;
+const o = occupation(slug!);
+const m = meta();
+const field = fieldById(occById(o.id)?.field ?? null);
+const occFirst = m.occupationFirstYear;
+const years = m.years.filter((y) => y >= occFirst).map(String);
+
+const months = monthRange(`${occFirst}-01`, m.lastMonth);
+const monthly = smooth(months.map((x) => o.months[x] ?? 0), 1);
+
+// Volume: against the whole job market first, raw change second.
+const natL12 = nationalWindow('L12');
+const vsMarket3 = volumeVsMarket(o.ads.L12, o.ads.B12, natL12, nationalWindow('B12'));
+const vsMarket1 = volumeVsMarket(o.ads.L12, o.ads.P12, natL12, nationalWindow('P12'));
+
+// Items grouped by kind; each kind's trend is measured against its own average.
+const known = o.skills.filter((s) => skillById(s.s) && s.sh != null);
+const cats = categories();
+const sections = kinds().map((k) => {
+  const items = known.filter((s) => skillById(s.s)!.kind === k.id);
+  const base = baseline(items);
+  const rows = items.map((s: OccSkill) => {
+    const meta = skillById(s.s)!;
+    return {
+      id: s.s,
+      name: meta.name,
+      href: `/kompetenser/${s.s}/`,
+      share: s.sh,
+      share3: s.sh3,
+      rel: excess(s.sh, s.sh3, base),
+      spark: years.map((y) => s.y[y] ?? null),
+      category: meta.category,
+      n: s.n,
+    };
+  });
+  const present = new Set(rows.map((r) => r.category));
+  const filters = cats.filter((c) => c.kind === k.id && present.has(c.id)).map((c) => [c.id, c.name] as [string, string]);
+  const movable = rows.filter((r) => r.rel != null && (r.n >= 10 || (r.share3 ?? 0) * o.ads.B12 >= 10));
+  const up = [...movable].sort((a, b) => b.rel! - a.rel!).filter((r) => r.rel! > 0.01).slice(0, 4);
+  const down = [...movable].sort((a, b) => a.rel! - b.rel!).filter((r) => r.rel! < -0.01).slice(0, 4);
+  return { kind: k, rows, filters, up, down, base };
+});
+
+const intro: Record<string, string> = {
+  kompetens: 'Vad man ska kunna: yrkeskunskaper, verktyg och arbetssätt.',
+  krav: 'Förutsättningar för att få jobbet: körkort, behörigheter, utbildning, legitimation, språk och kontroller.',
+  egenskap: 'Personliga egenskaper som arbetsgivarna skriver att de söker.',
+  villkor: 'Vad arbetsgivarna erbjuder och hur anställningen ser ut.',
+};
+
+// Conditions: a few years spread over the period, plus the latest.
+const condYears = years.filter((y) => o.conditions[y] && Object.values(o.conditions[y]).some((v) => v != null));
+const pickYears = condYears.length <= 6 ? condYears : [...condYears.filter((_, i) => i % Math.ceil(condYears.length / 5) === 0).slice(0, 5), condYears[condYears.length - 1]];
+const condRows: [keyof (typeof o.conditions)[string], string][] = [
+  ['fulltime', 'Heltid'],
+  ['permanent', 'Tillsvidareanställning'],
+  ['experience', 'Kräver erfarenhet'],
+  ['english', 'Annonsen är på engelska'],
+];
+const regionTotal = o.regions.reduce((a, r) => a + r.n, 0);
+const topSkills = sections[0].rows.slice(0, 3);
+const description = `Vad efterfrågas i platsannonser för ${o.label.toLowerCase()}? ${topSkills.map((s) => `${s.name} (${pct(s.share)})`).join(', ')}, krav, villkor och trender sedan ${occFirst}.`;
+const lastYear = String(m.years[m.years.length - 1]);
+const vsWord = (x: number | null) => (x == null ? '' : x > 0.05 ? 'bättre än' : x < -0.05 ? 'sämre än' : 'ungefär som');
+---
+
+<Base title={o.label} description={description}>
+  <article class="wrap">
+    <header class="head">
+      <p class="crumbs small">
+        <a href="/yrken/">Yrken</a>
+        {field && <> / <a href={`/yrken/#${field.id}`}>{field.label}</a></>}
+      </p>
+      <h1>{o.label}</h1>
+      {
+        o.titles.length > 0 && (
+          <p class="titles">
+            <span class="muted">Vanliga titlar i annonserna:</span> {o.titles.slice(0, 8).map((t) => t.t).join(', ')}
+          </p>
+        )
+      }
+      <p class="summary">
+        <span class="mark">{int(o.ads.L12)} annonser</span>
+        {` de senaste tolv månaderna (${windowLabel(m.windows.L12)}). `}
+        {
+          vsMarket3 != null && (
+            <>
+              Mot arbetsmarknaden i stort har yrket gått <strong class={signClass(vsMarket3, 0.05)}>{relValue(vsMarket3)}</strong>
+              {` på tre år, alltså ${vsWord(vsMarket3)} snittet.`}
+            </>
+          )
+        }
+      </p>
+      <dl class="vol">
+        <div>
+          <dt>Mot snittet, 3 år</dt>
+          <dd class={`num ${signClass(vsMarket3, 0.05)}`}>{relValue(vsMarket3)}</dd>
+        </div>
+        <div>
+          <dt>Mot snittet, 1 år</dt>
+          <dd class={`num ${signClass(vsMarket1, 0.05)}`}>{relValue(vsMarket1)}</dd>
+        </div>
+        <div class="secondary">
+          <dt>Totalt, 3 år</dt>
+          <dd class="num">{rel(o.ads.L12, o.ads.B12)}</dd>
+        </div>
+        <div class="secondary">
+          <dt>Totalt, 1 år</dt>
+          <dd class="num">{rel(o.ads.L12, o.ads.P12)}</dd>
+        </div>
+      </dl>
+    </header>
+
+    <section class="section">
+      <div class="section-head">
+        <h2>Annonser per månad</h2>
+        <p>Glidande medelvärde över tre månader.</p>
+      </div>
+      <LineChart title={`Platsannonser per månad för ${o.label}`} x={months} series={[{ label: 'Annonser', values: monthly }]} format="int" height={220} tickEvery={24} area />
+    </section>
+
+    <nav class="kind-nav small" aria-label="Delar av sidan">
+      {sections.filter((s) => s.rows.length).map((s) => <a href={`#${s.kind.id}`}>{s.kind.name}</a>)}
+      <a href="#villkor-i-annonsen">Anställningen</a>
+      <a href="#var">Län</a>
+    </nav>
+
+    {
+      sections.map((s, i) =>
+        s.rows.length ? (
+          <section class="section" id={s.kind.id}>
+            <div class="section-head">
+              <h2>{s.kind.name}</h2>
+              <p>{intro[s.kind.id]}</p>
+            </div>
+            {(s.up.length > 0 || s.down.length > 0) && (
+              <p class="movers">
+                {s.up.length > 0 && (
+                  <span>
+                    <span class="muted">Ökar mest mot snittet:</span>{' '}
+                    {s.up.map((r, j) => (
+                      <>
+                        <a href={r.href}>{r.name}</a>
+                        {j < s.up.length - 1 ? ', ' : ''}
+                      </>
+                    ))}
+                  </span>
+                )}
+                {s.down.length > 0 && (
+                  <span>
+                    <span class="muted">Minskar mest:</span>{' '}
+                    {s.down.map((r, j) => (
+                      <>
+                        <a href={r.href}>{r.name}</a>
+                        {j < s.down.length - 1 ? ', ' : ''}
+                      </>
+                    ))}
+                  </span>
+                )}
+              </p>
+            )}
+            <SkillList rows={s.rows} caption={`${s.kind.name} i annonser för ${o.label}`} filters={s.filters} limit={i === 0 ? 20 : 12} />
+            {i === 0 && (
+              <p class="muted small explain">
+                Andel = hur stor del av yrkets annonser de senaste tolv månaderna som nämner det. Mot snittet = hur mycket
+                andelen har ändrats på tre år utöver hur {KIND_NOUN[s.kind.id]} i yrkets annonser har ändrats i genomsnitt.
+                Totalt = hela förändringen.
+              </p>
+            )}
+          </section>
+        ) : null,
+      )
+    }
+
+    <section class="section" id="villkor-i-annonsen">
+      <div class="grid-2">
+        <div>
+          <h2 class="h-sub">Anställningen</h2>
+          <p class="muted small">Andel av annonserna där uppgiften finns.</p>
+          <div class="scroll-x">
+            <table class="cond">
+              <thead>
+                <tr>
+                  <th scope="col"><span class="visually-hidden">Villkor</span></th>
+                  {pickYears.map((y) => <th scope="col" class="num">{y === lastYear && m.partialLastYear ? `${y}*` : y}</th>)}
+                </tr>
+              </thead>
+              <tbody>
+                {condRows.map(([k, label]) => (
+                  <tr>
+                    <th scope="row">{label}</th>
+                    {pickYears.map((y) => <td class="num">{pct(o.conditions[y]?.[k] ?? null, 0)}</td>)}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          {m.partialLastYear && <p class="muted small">* Hittills i år.</p>}
+        </div>
+        <div id="var">
+          <h2 class="h-sub">Var finns jobben</h2>
+          <p class="muted small">Annonser per län det senaste året. Index över 1 betyder att yrket är vanligare i länet än i landet i stort.</p>
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Län</th>
+                <th scope="col" class="num">Annonser</th>
+                <th scope="col" class="num">Andel</th>
+                <th scope="col" class="num">Index</th>
+              </tr>
+            </thead>
+            <tbody>
+              {o.regions.slice(0, 10).map((r) => {
+                const reg = regionByCode(r.r);
+                return (
+                  <tr>
+                    <th scope="row">{reg ? <a href={`/lan/${reg.id}/`}>{reg.label}</a> : r.r}</th>
+                    <td class="num">{int(r.n)}</td>
+                    <td class="num">{pct(r.n / regionTotal, 0)}</td>
+                    <td class="num">{r.lq?.toLocaleString('sv-SE', { minimumFractionDigits: 1, maximumFractionDigits: 1 }) ?? '–'}</td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="grid-2">
+        {
+          o.employers.length > 0 && (
+            <div>
+              <h2 class="h-sub">Flest annonser de senaste tre åren</h2>
+              <ol class="emp">
+                {o.employers.slice(0, 10).map((e) => (
+                  <li>
+                    <span>{e.e}</span>
+                    <span class="num muted">{int(e.n)}</span>
+                  </li>
+                ))}
+              </ol>
+              <p class="muted small">Bemanningsföretag annonserar ofta för andras räkning.</p>
+            </div>
+          )
+        }
+        {
+          o.related.length > 0 && (
+            <div>
+              <h2 class="h-sub">Yrken med liknande krav</h2>
+              <p class="muted small">Yrken vars annonser efterfrågar liknande kompetenser och behörigheter. Bra att känna till inför ett yrkesbyte.</p>
+              <ul class="related">
+                {o.related.map((r) => {
+                  const ro = occById(r.id);
+                  return ro ? (
+                    <li>
+                      <a href={`/yrken/${r.id}/`}>{ro.label}</a>
+                      <span class="num muted">{int(ro.L12)} annonser</span>
+                    </li>
+                  ) : null;
+                })}
+              </ul>
+            </div>
+          )
+        }
+      </div>
+    </section>
+  </article>
+</Base>
+
+<style>
+  .head {
+    padding-block: 2.5rem 1rem;
+  }
+  .crumbs {
+    margin-bottom: 0.75rem;
+    color: var(--graphite);
+  }
+  .crumbs a {
+    color: var(--graphite);
+  }
+  .titles {
+    margin-top: 1rem;
+    max-width: 75ch;
+  }
+  .summary {
+    font-size: var(--t-md);
+    max-width: 60ch;
+    margin-top: 1.25rem;
+  }
+  .summary strong {
+    font-weight: 700;
+  }
+  .vol {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem 2.25rem;
+    margin: 1.25rem 0 0;
+  }
+  .vol div {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  .vol dt {
+    font-size: var(--t-xs);
+    color: var(--graphite);
+  }
+  .vol dd {
+    margin: 0;
+    font-stretch: 125%;
+    font-weight: 800;
+    font-size: var(--t-lg);
+    line-height: 1.1;
+  }
+  .vol .secondary dd {
+    font-weight: 500;
+    font-size: var(--t-md);
+    color: var(--graphite);
+  }
+  .kind-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 1.25rem;
+    padding-block: 0 1.25rem;
+  }
+  .kind-nav a {
+    color: var(--ink);
+  }
+  .movers {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 2rem;
+    font-size: var(--t-sm);
+    max-width: none;
+  }
+  .movers a {
+    color: var(--ink);
+  }
+  .explain {
+    margin-top: 1rem;
+  }
+  .h-sub {
+    font-size: var(--t-lg);
+    margin-bottom: 0.75rem;
+  }
+  .related {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .related li,
+  .emp li {
+    display: flex;
+    gap: 1rem;
+    align-items: baseline;
+    padding: 0.45rem 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .related li a {
+    flex: 1;
+    color: var(--ink);
+  }
+  .emp {
+    margin: 0;
+    padding-left: 1.6rem;
+  }
+  .emp li {
+    display: list-item;
+  }
+  .emp li span:first-child {
+    display: inline-block;
+    width: calc(100% - 4rem);
+  }
+  .emp li::marker {
+    color: var(--graphite);
+    font-size: var(--t-sm);
+  }
+  .cond th[scope='row'] {
+    font-weight: 500;
+    color: var(--ink);
+    font-size: var(--t-base);
+    border-bottom: 1px solid var(--rule);
+  }
+  table {
+    margin-top: 0.5rem;
+  }
+</style>

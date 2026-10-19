@@ -1,0 +1,89 @@
+---
+import Base from '../../layouts/Base.astro';
+import { meta, nationalWindow, regionIndex } from '../../lib/data';
+import { int, rel, relValue, signClass, windowLabel } from '../../lib/format';
+import { volumeVsMarket } from '../../lib/trend';
+
+const m = meta();
+const regions = [...regionIndex()].sort((a, b) => b.L12 - a.L12);
+const max = Math.max(...regions.map((r) => r.L12));
+const natL12 = nationalWindow('L12');
+const natB12 = nationalWindow('B12');
+---
+
+<Base title="Län" description="Platsannonser per län: vilka yrken som annonseras mest, vad som är typiskt för länet och vilka kompetenser som efterfrågas.">
+  <div class="wrap">
+    <header class="head">
+      <h1>Län</h1>
+      <p class="summary">
+        {`Antal platsannonser ${windowLabel(m.windows.L12)}. Förändringen på tre år visas mot hela landet (${rel(natL12, natB12)}), med länets totala förändring bredvid.`}
+      </p>
+    </header>
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Län</th>
+          <th scope="col" class="num">Annonser</th>
+          <th scope="col" class="bar-col"><span class="visually-hidden">Stapel</span></th>
+          <th scope="col" class="num">Mot snittet</th>
+          <th scope="col" class="num">Totalt</th>
+        </tr>
+      </thead>
+      <tbody>
+        {
+          regions.map((r) => (
+            <tr>
+              <th scope="row">
+                <a href={`/lan/${r.id}/`}>{r.label}</a>
+              </th>
+              <td class="num">{int(r.L12)}</td>
+              <td class="bar-col">
+                <span class="bar" style={`width:${((r.L12 / max) * 100).toFixed(1)}%`} />
+              </td>
+              <td class={`num strong ${signClass(volumeVsMarket(r.L12, r.B12, natL12, natB12), 0.05)}`}>{relValue(volumeVsMarket(r.L12, r.B12, natL12, natB12))}</td>
+              <td class="num muted small">{rel(r.L12, r.B12)}</td>
+            </tr>
+          ))
+        }
+      </tbody>
+    </table>
+    <p class="muted small">Annonser utan angiven arbetsort ingår inte.</p>
+  </div>
+</Base>
+
+<style>
+  .head {
+    padding-block: 2.5rem 1.5rem;
+  }
+  .summary {
+    font-size: var(--t-md);
+    max-width: 58ch;
+    margin-top: 1rem;
+  }
+  th[scope='row'] {
+    font-weight: 500;
+    font-size: var(--t-base);
+    color: var(--ink);
+    border-bottom: 1px solid var(--rule);
+  }
+  th[scope='row'] a {
+    color: var(--ink);
+  }
+  .bar-col {
+    width: 36%;
+  }
+  .strong {
+    font-weight: 700;
+  }
+  .bar {
+    display: block;
+    height: 0.6rem;
+    background: var(--blue);
+    border-radius: 1px;
+  }
+  @media (max-width: 620px) {
+    .bar-col {
+      display: none;
+    }
+  }
+</style>

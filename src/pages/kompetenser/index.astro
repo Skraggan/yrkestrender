@@ -1,0 +1,112 @@
+---
+import Base from '../../layouts/Base.astro';
+import SkillList from '../../components/SkillList.astro';
+import { categories, KIND_NOUN, kinds, meta, skillIndex } from '../../lib/data';
+import { pct, windowLabel } from '../../lib/format';
+import { baseline, excess } from '../../lib/trend';
+
+const m = meta();
+const all = skillIndex();
+const cats = categories();
+const groups = kinds().map((k) => {
+  const items = all.filter((s) => s.kind === k.id);
+  const base = baseline(items);
+  return {
+    kind: k,
+    base,
+    count: items.length,
+    cats: cats
+      .filter((c) => c.kind === k.id)
+      .map((c) => ({
+        ...c,
+        rows: items
+          .filter((s) => s.category === c.id)
+          .sort((a, b) => (b.sh ?? 0) - (a.sh ?? 0))
+          .map((s) => ({ id: s.id, name: s.name, href: `/kompetenser/${s.id}/`, share: s.sh, share3: s.sh3, rel: excess(s.sh, s.sh3, base), spark: s.spark })),
+      })),
+  };
+});
+---
+
+<Base title="Kompetenser och krav" description={`${all.length} kompetenser, krav, personliga egenskaper och villkor som vi följer i platsannonserna sedan ${m.years[0]}.`}>
+  <div class="wrap">
+    <header class="head">
+      <h1>Kompetenser och krav</h1>
+      <p class="summary">
+        {`${all.length} saker som arbetsgivare skriver i annonserna, i fyra sorter. Andelen gäller alla annonser ${windowLabel(m.windows.L12)}. Mot snittet jämför förändringen på tre år med hur sorten ändrats i genomsnitt.`}
+      </p>
+    </header>
+    <nav class="toc" aria-label="Sorter och kategorier">
+      {
+        groups.map((g) => (
+          <div>
+            <a class="kind" href={`#${g.kind.id}`}>{g.kind.name}</a>
+            <span class="small">
+              {g.cats.map((c, i) => (
+                <>
+                  <a href={`#${c.id}`}>{c.name}</a>
+                  {i < g.cats.length - 1 ? ', ' : ''}
+                </>
+              ))}
+            </span>
+          </div>
+        ))
+      }
+    </nav>
+    {
+      groups.map((g) => (
+        <section class="kind-section" id={g.kind.id}>
+          <header class="kind-head">
+            <h2>{g.kind.name}</h2>
+            <p class="muted">
+              {`${g.count} st. I genomsnitt nämns ${KIND_NOUN[g.kind.id]} ${pct(Math.abs(g.base - 1), 0)} ${g.base >= 1 ? 'oftare' : 'mer sällan'} än för tre år sedan.`}
+            </p>
+          </header>
+          {g.cats.map((c) => (
+            <section class="section" id={c.id}>
+              <h3 class="cat-h">{c.name}</h3>
+              <SkillList rows={c.rows} caption={c.name} shareLabel="Andel av alla annonser" />
+            </section>
+          ))}
+        </section>
+      ))
+    }
+  </div>
+</Base>
+
+<style>
+  .head {
+    padding-block: 2.5rem 1.5rem;
+  }
+  .summary {
+    font-size: var(--t-md);
+    max-width: 60ch;
+    margin-top: 1rem;
+  }
+  .toc {
+    display: grid;
+    gap: 0.75rem;
+    padding-bottom: 2rem;
+    max-width: 60rem;
+  }
+  .toc .kind {
+    font-weight: 700;
+    color: var(--ink);
+    margin-right: 0.75rem;
+  }
+  .toc .small a {
+    color: var(--graphite);
+  }
+  .kind-section {
+    border-top: 3px solid var(--ink);
+    padding-top: 2rem;
+    margin-top: 2rem;
+  }
+  .kind-head p {
+    margin-top: 0.5rem;
+  }
+  .cat-h {
+    font-size: var(--t-lg);
+    margin-bottom: 0.75rem;
+  }
+</style>

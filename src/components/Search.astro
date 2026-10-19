@@ -1,0 +1,267 @@
+---
+// Search over occupations (with their common job titles) and skills.
+// "hero" renders the fill-in-the-blank ad line "Vi söker en ____".
+interface Props {
+  variant?: 'hero' | 'compact';
+}
+const { variant = 'compact' } = Astro.props;
+const id = `sok-${variant}`;
+---
+
+<div class={`search ${variant}`} data-search>
+  {
+    variant === 'hero' ? (
+      <label class="line" for={id}>
+        <span class="lead">Vi söker en</span>
+        <span class="blank">
+          <input
+            id={id}
+            type="search"
+            autocomplete="off"
+            spellcheck="false"
+            placeholder="kock"
+            aria-label="Vi söker en … (sök yrke eller kompetens)"
+            role="combobox"
+            aria-expanded="false"
+            aria-controls={`${id}-list`}
+            aria-autocomplete="list"
+          />
+        </span>
+      </label>
+    ) : (
+      <>
+        <label class="visually-hidden" for={id}>
+          Sök yrke eller kompetens
+        </label>
+        <input
+          id={id}
+          type="search"
+          autocomplete="off"
+          spellcheck="false"
+          placeholder="Sök yrke eller kompetens"
+          role="combobox"
+          aria-expanded="false"
+          aria-controls={`${id}-list`}
+          aria-autocomplete="list"
+        />
+      </>
+    )
+  }
+  <ul id={`${id}-list`} class="results" role="listbox" hidden></ul>
+</div>
+
+<script>
+  type Entry = { k: 'o' | 's'; id: string; l: string; a: string[]; c: string; n: number };
+  let index: Entry[] | null = null;
+  let loading: Promise<Entry[]> | null = null;
+  const norm = (s: string) =>
+    s
+      .toLowerCase()
+      .normalize('NFD')
+      .replace(/[̀-ͯ]/g, (m) => m) // keep å/ä/ö intact
+      .replace(/[^a-zåäöéü0-9#+ ]/g, ' ')
+      .trim();
+  const load = () => (loading ??= fetch('/sok.json').then((r) => r.json()).then((d: Entry[]) => (index = d)));
+
+  function rank(q: string, items: Entry[]) {
+    const nq = norm(q);
+    if (!nq) return [];
+    const words = nq.split(/\s+/);
+    const scored: [number, Entry, string][] = [];
+    for (const e of items) {
+      const names = [e.l, ...e.a];
+      let best = 0;
+      let via = '';
+      for (const name of names) {
+        const n = norm(name);
+        let s = 0;
+        if (n === nq) s = 100;
+        else if (n.startsWith(nq)) s = 80;
+        else if (n.split(/\s+/).some((w) => w.startsWith(nq))) s = 60;
+        else if (words.length > 1 && words.every((w) => n.split(/\s+/).some((x) => x.startsWith(w)))) s = 50;
+        else if (nq.length >= 4 && n.includes(nq)) s = nq.length >= 6 ? 50 : 25; // inside a compound word: "serviceelektriker"
+        // Job titles are almost as good as the group name; a skill's search terms less so.
+        if (s && name !== e.l) s -= e.k === 'o' ? 5 : 20;
+        if (s > best) {
+          best = s;
+          via = name === e.l ? '' : name;
+        }
+      }
+      // Popular occupations and skills first among similar matches.
+      if (best) scored.push([best + Math.log10((e.n || 0) + 10) * 2 + (e.k === 'o' ? 20 : 0), e, via]);
+    }
+    scored.sort((a, b) => b[0] - a[0] || a[1].l.length - b[1].l.length);
+    return scored.slice(0, 9);
+  }
+
+  document.querySelectorAll<HTMLElement>('[data-search]').forEach((root) => {
+    const input = root.querySelector('input')!;
+    const list = root.querySelector<HTMLUListElement>('.results')!;
+    let active = -1;
+    let hits: [number, Entry, string][] = [];
+
+    const href = (e: Entry) => (e.k === 'o' ? `/yrken/${e.id}/` : `/kompetenser/${e.id}/`);
+    const close = () => {
+      list.hidden = true;
+      input.setAttribute('aria-expanded', 'false');
+      active = -1;
+    };
+    const render = () => {
+      if (!input.value.trim()) return close();
+      if (!index) {
+        load().then(render);
+        return;
+      }
+      hits = rank(input.value, index);
+      list.innerHTML = '';
+      if (!hits.length) {
+        const li = document.createElement('li');
+        li.className = 'empty';
+        li.textContent = 'Inget yrke eller kompetens matchar. Prova ett kortare ord.';
+        list.append(li);
+      }
+      hits.forEach(([, e, via], i) => {
+        const li = document.createElement('li');
+        li.id = `${list.id}-${i}`;
+        li.setAttribute('role', 'option');
+        const a = document.createElement('a');
+        a.href = href(e);
+        a.tabIndex = -1;
+        const name = document.createElement('span');
+        name.textContent = e.l;
+        const kind = document.createElement('small');
+        kind.textContent = e.k === 'o' ? (via ? `Yrke, bl.a. ${via}` : 'Yrke') : e.c;
+        a.append(name, kind);
+        li.append(a);
+        list.append(li);
+      });
+      list.hidden = false;
+      input.setAttribute('aria-expanded', 'true');
+      setActive(hits.length ? 0 : -1);
+    };
+    const setActive = (i: number) => {
+      active = i;
+      list.querySelectorAll('[role=option]').forEach((el, k) => el.setAttribute('aria-selected', String(k === i)));
+      if (i >= 0) input.setAttribute('aria-activedescendant', `${list.id}-${i}`);
+      else input.removeAttribute('aria-activedescendant');
+    };
+    input.addEventListener('focus', () => load());
+    input.addEventListener('input', render);
+    input.addEventListener('keydown', (ev) => {
+      if (ev.key === 'ArrowDown' && hits.length) {
+        ev.preventDefault();
+        setActive((active + 1) % hits.length);
+      } else if (ev.key === 'ArrowUp' && hits.length) {
+        ev.preventDefault();
+        setActive((active - 1 + hits.length) % hits.length);
+      } else if (ev.key === 'Enter' && hits[active]) {
+        ev.preventDefault();
+        location.href = href(hits[active][1]);
+      } else if (ev.key === 'Escape') {
+        close();
+      }
+    });
+    document.addEventListener('click', (ev) => {
+      if (!root.contains(ev.target as Node)) close();
+    });
+  });
+</script>
+
+<style>
+  .search {
+    position: relative;
+  }
+  input {
+    font: inherit;
+    color: var(--ink);
+    background: var(--paper-raised);
+    border: 1px solid var(--rule-strong);
+    border-radius: var(--radius);
+    padding: 0.5rem 0.75rem;
+    width: 100%;
+  }
+  input::placeholder {
+    color: var(--graphite);
+  }
+  .hero .line {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0 0.35em;
+    font-stretch: 125%;
+    font-weight: 800;
+    font-size: clamp(2rem, 6vw, 4.2rem);
+    line-height: 1.12;
+    letter-spacing: -0.015em;
+    cursor: text;
+  }
+  .hero .blank {
+    flex: 1 1 8ch;
+    min-width: 8ch;
+    position: relative;
+  }
+  .hero input {
+    font: inherit;
+    font-stretch: 125%;
+    border: 0;
+    border-radius: 0;
+    background: linear-gradient(transparent 60%, var(--signal) 60%, var(--signal) 94%, transparent 94%);
+    padding: 0 0.05em;
+    border-bottom: 3px solid var(--ink);
+  }
+  .hero input::placeholder {
+    color: color-mix(in oklab, var(--ink) 35%, transparent);
+  }
+  .hero input:focus-visible {
+    outline: none;
+    border-bottom-color: var(--blue);
+  }
+  .hero input::-webkit-search-cancel-button {
+    display: none;
+  }
+  .results {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: calc(100% + 4px);
+    z-index: 20;
+    list-style: none;
+    margin: 0;
+    padding: 0.3rem;
+    background: var(--paper-raised);
+    border: 1px solid var(--rule-strong);
+    border-radius: var(--radius);
+    box-shadow: 0 10px 30px -12px color-mix(in oklab, var(--ink) 40%, transparent);
+    max-height: 26rem;
+    overflow: auto;
+    font-size: var(--t-base);
+    font-weight: 400;
+    font-stretch: 100%;
+    letter-spacing: 0;
+  }
+  .hero .results {
+    max-width: 40rem;
+  }
+  .results :global(a) {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.5rem 0.6rem;
+    color: var(--ink);
+    text-decoration: none;
+    border-radius: 2px;
+  }
+  .results :global(small) {
+    color: var(--graphite);
+    font-size: var(--t-xs);
+    text-align: right;
+  }
+  .results :global([aria-selected='true'] a),
+  .results :global(a:hover) {
+    background: var(--blue-soft);
+  }
+  .results :global(.empty) {
+    padding: 0.6rem;
+    color: var(--graphite);
+  }
+</style>

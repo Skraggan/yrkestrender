@@ -1,0 +1,7573 @@
+{
+ "1002": {
+  "ads": 3,
+  "confidence": 0.37,
+  "group": "vaEp_iBS_c5h",
+  "label": "Maskinställare och maskinoperatörer, metallarbete",
+  "words": [
+   "maskinoperatör",
+   "fiskindustri",
+   "fiskhanterare",
+   "maskinoperatörer",
+   "teknikkompetens"
+  ]
+ },
+ "1003": {
+  "ads": 7,
+  "confidence": 0.56,
+  "group": "s1Qk_o98_2o1",
+  "label": "Butikssäljare, dagligvaror",
+  "words": [
+   "filéskärare",
+   "fiskfileare",
+   "knivskarp",
+   "fena",
+   "fisk",
+   "fileskärare"
+  ]
+ },
+ "1004": {
+  "ads": 3,
+  "confidence": 0.41,
+  "group": "s1Qk_o98_2o1",
+  "label": "Butikssäljare, dagligvaror",
+  "words": [
+   "diverse",
+   "fiskeodling",
+   "fiskrensare",
+   "fisk",
+   "fileare"
+  ]
+ },
+ "1006": {
+  "ads": 2,
+  "confidence": 0.43,
+  "group": "s1Qk_o98_2o1",
+  "label": "Butikssäljare, dagligvaror",
+  "words": [
+   "fisk",
+   "kårehamn",
+   "jobba",
+   "praktik",
+   "urval",
+   "produktionsmedarbetare"
+  ]
+ },
+ "1067": {
+  "ads": 2,
+  "confidence": 0.28,
+  "group": "5qT8_z9d_8rw",
+  "label": "Bagare och konditorer",
+  "words": [
+   "bageri",
+   "ugnsarbetare",
+   "letar"
+  ]
+ },
+ "1071": {
+  "ads": 5,
+  "confidence": 0.49,
+  "group": "vaEp_iBS_c5h",
+  "label": "Maskinställare och maskinoperatörer, metallarbete",
+  "words": [
+   "maskinoperatörer",
+   "processoperatör",
+   "direktförslag",
+   "maskinoperatör",
+   "formsprutning",
+   "formsprutningserfarenhet"
+  ]
+ },
+ "1074": {
+  "ads": 3,
+  "confidence": 0.61,
+  "group": "vaEp_iBS_c5h",
+  "label": "Maskinställare och maskinoperatörer, metallarbete",
+  "words": [
+   "formpressare",
+   "direktförslag",
+   "operatör",
+   "produktionspersonal"
+  ]
+ },
+ "1077": {
+  "ads": 3,
+  "confidence": 0.44,
+  "group": "vaEp_iBS_c5h",
+  "label": "Maskinställare och maskinoperatörer, metallarbete",
+  "words": [
+   "manpower",
+   "operatör",
+   "ängelholm",
+   "maskinoperatör",
+   "knivsta",
+   "industriarbetare"
+  ]
+ },
+ "1082": {
+  "ads": 7,
+  "confidence": 0.35,
+  "group": "vaEp_iBS_c5h",
+  "label": "Maskinställare och maskinoperatörer, metallarbete",
+  "words": [
+   "däckskärning",
+   "omgående",
+   "industriarbetare",
+   "sportmattotillverkare",
+   "manpower",
+   "operatör"
+  ]
+ },
+ "1100": {
+  "ads": 2,
+  "confidence": 0.6,
+  "group": "4DET_dLf_iB9",
+  "label": "Maskinoperatörer, blekning, färgning och tvättning",
+  "words": [
+   "tvätteriarbetare",
+   "flexibelt"
+  ]
+ },
+ "1101": {
+  "ads": 7,
+  "confidence": 0.39,
+  "group": "Z6TY_xDf_Yup",
+  "label": "Städare",
+  "words": [
+   "maskintvättare",
+   "brunn",
+   "ronneby",
+   "tvätteriarbetare",
+   "tvätteriarbete",
+   "lokalvårdare"
+  ]
+ },
+ "1156": {
+  "ads": 1,
+  "confidence": 0.33,
+  "group": "vaEp_iBS_c5h",
+  "label": "Maskinställare och maskinoperatörer, metallarbete",
+  "words": [
+   "maskinoperatör",
+   "livsmedel"
+  ]
+ },
+ "1162": {
+  "ads": 1,
+  "confidence": 0.32,
+  "group": "Lzpv_ofL_3H5",
+  "label": "Motorfordonsmekaniker och fordonsreparatörer",
+  "words": [
+   "operating",
+   "servicetekniker"
+  ]
+ },
+ "1197": {
+  "ads": 1,
+  "confidence": 1.0,
+  "group": "XeJB_bkn_mRn",
+  "label": "Tryckare",
+  "words": [
+   "flexotryckare"
+  ]
+ },
+ "1199": {
+  "ads": 5,
+  "confidence": 0.25,
+  "group": "3J38_DNz_YKK",
+  "label": "Fotografer",
+  "words": [
+   "fotobearbetare",
+   "retuschör",
+   "rekryteringsuppdrag",
+   "foto",
+   "fotoredigerare"
+  ]
+ },
+ "1219": {
+  "ads": 3,
+  "confidence": 0.81,
+  "group": "qhbP_JEJ_HtK",
+  "label": "Reklamutdelare och tidningsdistributörer",
+  "words": [
+   "cykel",
+   "mopedmekaniker",
+   "butiksansvar",
+   "hopsättare",
+   "finmekaniker"
+  ]
+ },
+ "1249": {
+  "ads": 21,
+  "confidence": 0.4,
+  "group": "fsnw_ZCu_v2U",
+  "label": "Arbetsförmedlare",
+  "words": [
+   "jobbcoach",
+   "poolia",
+   "personalkonsulent",
+   "offentlig",
+   "konsult",
+   "arbetskonsulent"
+  ]
+ },
+ "1256": {
+  "ads": 2,
+  "confidence": 0.9,
+  "group": "jJF3_qaQ_Zsh",
+  "label": "Studie- och yrkesvägledare",
+  "words": [
+   "syv",
+   "särskolan",
+   "studie",
+   "alg",
+   "yrkesvägledare"
+  ]
+ },
+ "1257": {
+  "ads": 1,
+  "confidence": 0.28,
+  "group": "Fp7x_Yqt_bx9",
+  "label": "Säljande butikschefer och avdelningschefer i butik",
+  "words": [
+   "gross",
+   "skara",
+   "kassaledare",
+   "city"
+  ]
+ },
+ "1258": {
+  "ads": 8,
+  "confidence": 0.34,
+  "group": "tPox_ie4_X9X",
+  "label": "Restaurang- och köksbiträden m.fl.",
+  "words": [
+   "kopiering",
+   "kopieringsbiträde",
+   "scanning",
+   "biträde",
+   "kopierare",
+   "prepress"
+  ]
+ },
+ "1288": {
+  "ads": 2,
+  "confidence": 0.39,
+  "group": "tPox_ie4_X9X",
+  "label": "Restaurang- och köksbiträden m.fl.",
+  "words": [
+   "spinnmaskinskötare",
+   "ullspinneri",
+   "medarbetare"
+  ]
+ },
+ "1319": {
+  "ads": 1,
+  "confidence": 0.26,
+  "group": "oXSW_fbY_XrY",
+  "label": "Företagssäljare",
+  "words": [
+   "driven",
+   "entreprenadinköpare"
+  ]
+ },
+ "1355": {
+  "ads": 1,
+  "confidence": 0.86,
+  "group": "9mJN_VwW_Xjg",
+  "label": "Träarbetare, snickare m.fl.",
+  "words": [
+   "träarbetare"
+  ]
+ },
+ "1360": {
+  "ads": 3,
+  "confidence": 0.37,
+  "group": "vaEp_iBS_c5h",
+  "label": "Maskinställare och maskinoperatörer, metallarbete",
+  "words": [
+   "lamellfabriken",
+   "operatörer",
+   "nya",
+   "jobb",
+   "tusen",
+   "kunds"
+  ]
+ },
+ "1366": {
+  "ads": 1,
+  "confidence": 0.73,
+  "group": "vaEp_iBS_c5h",
+  "label": "Maskinställare och maskinoperatörer, metallarbete",
+  "words": [
+   "scannare",
+   "rek",
+   "uppdrag",
+   "fräsare"
+  ]
+ },
+ "1416": {
+  "ads": 1,
+  "confidence": 0.3,
+  "group": "skLS_kpa_Ui1",
+  "label": "Övriga maskinoperatörer, textil-, skinn- och läderindustri",
+  "words": [
+   "sömmerska",
+   "extra"
+  ]
+ },
+ "1430": {
+  "ads": 5,
+  "confidence": 0.4,
+  "group": "skLS_kpa_Ui1",
+  "label": "Övriga maskinoperatörer, textil-, skinn- och läderindustri",
+  "words": [
+   "sömmare",
+   "skinn",
+   "uppdr",
+   "bussäten",
+   "omklädning",
+   "rekr"
+  ]
+ },
+ "1431": {
+  "ads": 1,
+  "confidence": 0.4,
+  "group": "skLS_kpa_Ui1",
+  "label": "Övriga maskinoperatörer, textil-, skinn- och läderindustri",
+  "words": [
+   "sömmerska"
+  ]
+ },
+ "1476": {
+  "ads": 23,
+  "confidence": 0.31,
+  "group": "pok1_ipJ_yzD",
+  "label": "Socialsekreterare",
+  "words": [
+   "familjeterapeut",
+   "terapeut",
+   "mst",
+   "ungdomsenheten",
+   "familieterapeut",
+   "bupa"
+  ]
+ },
+ "1508": {
+  "ads": 70,
+  "confidence": 0.63,
+  "group": "5uP5_Ugw_aVE",
+  "label": "Biståndsbedömare m.fl.",
+  "words": [
+   "biståndshandläggare",
+   "sol",
+   "omsorgshandläggare",
+   "vik",
+   "biståndsbedömare",
+   "lss"
+  ]
+ },
+ "1540": {
+  "ads": 9,
+  "confidence": 0.94,
+  "group": "Hi9c_iTe_gHH",
+  "label": "Barnskötare",
+  "words": [
+   "dagbarnvårdare",
+   "dagmamma",
+   "månaders",
+   "baby",
+   "frånöområdet",
+   "lunde"
+  ]
+ },
+ "1583": {
+  "ads": 7,
+  "confidence": 0.26,
+  "group": "aA2Z_9XX_R1v",
+  "label": "Fritidsledare m.fl.",
+  "words": [
+   "friskvårdsassistent",
+   "plats",
+   "apr",
+   "gyminstruktör",
+   "ref",
+   "fritidsassistent"
+  ]
+ },
+ "1594": {
+  "ads": 121,
+  "confidence": 0.62,
+  "group": "TPH4_2AM_isT",
+  "label": "Arbetsterapeuter",
+  "words": [
+   "distriktsarbetsterapeut",
+   "arbetsterapeut",
+   "vik",
+   "vikarierande",
+   "distriktsarbetsterapeuter",
+   "borlänge"
+  ]
+ },
+ "1599": {
+  "ads": 1,
+  "confidence": 0.83,
+  "group": "TMsM_oNw_j6z",
+  "label": "Apotekare",
+  "words": [
+   "sjukhusapoteket",
+   "umeå",
+   "apotekare"
+  ]
+ },
+ "1778": {
+  "ads": 25,
+  "confidence": 0.45,
+  "group": "EA6o_N1N_QtT",
+  "label": "Idrottstränare och instruktörer m.fl.",
+  "words": [
+   "barnledare",
+   "barn",
+   "församling",
+   "ungdomsledare",
+   "konfirmandledare",
+   "ungdoms"
+  ]
+ },
+ "1783": {
+  "ads": 5,
+  "confidence": 0.7,
+  "group": "aA2Z_9XX_R1v",
+  "label": "Fritidsledare m.fl.",
+  "words": [
+   "ungdomskonsulent",
+   "ungdomspräst",
+   "blå",
+   "träffen",
+   "medarbetare"
+  ]
+ },
+ "1784": {
+  "ads": 21,
+  "confidence": 0.77,
+  "group": "aA2Z_9XX_R1v",
+  "label": "Fritidsledare m.fl.",
+  "words": [
+   "ungdomsledare",
+   "barn",
+   "ungdomspastor",
+   "verksamheten",
+   "assistent",
+   "volontärer"
+  ]
+ },
+ "1793": {
+  "ads": 320,
+  "confidence": 0.32,
+  "group": "7pz9_eY9_D2s",
+  "label": "Vårdare, boendestödjare",
+  "words": [
+   "omsorgsassistent",
+   "assistent",
+   "verksamhet",
+   "daglig",
+   "habiliteringspersonal",
+   "pedagogisk"
+  ]
+ },
+ "1806": {
+  "ads": 7,
+  "confidence": 0.3,
+  "group": "pok1_ipJ_yzD",
+  "label": "Socialsekreterare",
+  "words": [
+   "enhetschef",
+   "skolkurator",
+   "utredare",
+   "barn",
+   "familj",
+   "ungdomssektionen"
+  ]
+ },
+ "1808": {
+  "ads": 501,
+  "confidence": 0.37,
+  "group": "pok1_ipJ_yzD",
+  "label": "Socialsekreterare",
+  "words": [
+   "socionom",
+   "projektledare",
+   "socialsekreterare",
+   "enhetschef",
+   "ref",
+   "samordnare"
+  ]
+ },
+ "182": {
+  "ads": 304,
+  "confidence": 0.93,
+  "group": "GMDo_DVo_Yzh",
+  "label": "Lantmätare",
+  "words": [
+   "förrättningslantmätare",
+   "jurist",
+   "samhällsbyggare",
+   "förättningslantmätare",
+   "lantmätare",
+   "erfaren"
+  ]
+ },
+ "1839": {
+  "ads": 23,
+  "confidence": 0.33,
+  "group": "bExu_8gk_azk",
+  "label": "Laboratorieingenjörer",
+  "words": [
+   "laboratorieingenjör",
+   "labbassistent",
+   "under",
+   "uppdrag",
+   "sommaren",
+   "dmpk"
+  ]
+ },
+ "1881": {
+  "ads": 5,
+  "confidence": 0.36,
+  "group": "PxXc_16t_oZo",
+  "label": "Telefonförsäljare m.fl.",
+  "words": [
+   "informatör",
+   "handläggare",
+   "organisationssekreterare",
+   "intresseorganisation",
+   "medlemsvärvare",
+   "hyresgästföreningen"
+  ]
+ },
+ "1882": {
+  "ads": 30,
+  "confidence": 0.27,
+  "group": "2kLc_pto_DpV",
+  "label": "Medicinska sekreterare, vårdadministratörer m.fl.",
+  "words": [
+   "ombudsman",
+   "ssu",
+   "sekreterare",
+   "politisk",
+   "valombudsman",
+   "centerpartiet"
+  ]
+ },
+ "1913": {
+  "ads": 2,
+  "confidence": 0.65,
+  "group": "rE1E_m3d_cx1",
+  "label": "Specialister inom miljöskydd och miljöteknik",
+  "words": [
+   "miljöcontr",
+   "ledningskansliet",
+   "miljöfunktionen",
+   "miljösamordnare",
+   "kemikaliecontroller"
+  ]
+ },
+ "1915": {
+  "ads": 16,
+  "confidence": 0.64,
+  "group": "puim_6PY_DGj",
+  "label": "Miljö- och hälsoskyddsinspektörer",
+  "words": [
+   "hälsoskyddsinspektör",
+   "miljö",
+   "hälsoskyddförvaltningen",
+   "projektledare",
+   "inventerare",
+   "avloppshandläggare"
+  ]
+ },
+ "1924": {
+  "ads": 35,
+  "confidence": 0.61,
+  "group": "puim_6PY_DGj",
+  "label": "Miljö- och hälsoskyddsinspektörer",
+  "words": [
+   "miljö",
+   "miljöskyddsinspektör",
+   "hälsoskyddsinspektör",
+   "miljöskyddshandläggare",
+   "inriktning",
+   "kommun"
+  ]
+ },
+ "1929": {
+  "ads": 25,
+  "confidence": 0.37,
+  "group": "Z8ci_bBE_tmx",
+  "label": "Grundutbildade sjuksköterskor",
+  "words": [
+   "sjuksköterska",
+   "leg",
+   "asih",
+   "sih",
+   "kvalitetsutvecklare",
+   "projektledare"
+  ]
+ },
+ "1963": {
+  "ads": 1,
+  "confidence": 0.9,
+  "group": "LP4Z_ABV_gRm",
+  "label": "Undersköterskor, vård- och specialavdelning och mottagning",
+  "words": [
+   "steriltekniker"
+  ]
+ },
+ "198": {
+  "ads": 6,
+  "confidence": 0.63,
+  "group": "K8yg_U4C_gkY",
+  "label": "Ingenjörer och tekniker inom maskinteknik",
+  "words": [
+   "gjuteritekniker",
+   "konstruktionschef",
+   "produktionstekniker",
+   "beredare",
+   "modellkonstruktör"
+  ]
+ },
+ "2029": {
+  "ads": 13,
+  "confidence": 0.3,
+  "group": "NxXz_fBh_w7j",
+  "label": "Chefer inom socialt och kurativt arbete",
+  "words": [
+   "föreståndare",
+   "enhetschef",
+   "arbetscenter",
+   "dagcenter",
+   "grupphandledare",
+   "verksamhetsledare"
+  ]
+ },
+ "2041": {
+  "ads": 229,
+  "confidence": 0.25,
+  "group": "womV_SEj_CAH",
+  "label": "Chefer inom hälso- och sjukvård",
+  "words": [
+   "verksamhetschef",
+   "vårdcentralschef",
+   "vårdcentral",
+   "vårdcentralen",
+   "vårdcentralchef",
+   "vårdenhetschef"
+  ]
+ },
+ "2044": {
+  "ads": 4,
+  "confidence": 0.45,
+  "group": "QG4f_MCh_vND",
+  "label": "Forsknings- och utvecklingschefer",
+  "words": [
+   "laboratoriechef",
+   "kvalitetskontroll",
+   "clinical",
+   "research",
+   "manager",
+   "produktutvecklare"
+  ]
+ },
+ "2045": {
+  "ads": 4,
+  "confidence": 0.58,
+  "group": "QG4f_MCh_vND",
+  "label": "Forsknings- och utvecklingschefer",
+  "words": [
+   "laboratoriechef",
+   "ref",
+   "analytiker",
+   "kärnvapenfrågor",
+   "testchef",
+   "nationellt"
+  ]
+ },
+ "2063": {
+  "ads": 25,
+  "confidence": 0.59,
+  "group": "wzeq_No2_LF1",
+  "label": "Diakoner",
+  "words": [
+   "diakoniassistent",
+   "diakon",
+   "inriktning",
+   "assistent",
+   "projektledare",
+   "diakonal"
+  ]
+ },
+ "2114": {
+  "ads": 1,
+  "confidence": 0.97,
+  "group": "AWJF_wqZ_va9",
+  "label": "Musiker, sångare och kompositörer",
+  "words": [
+   "kyrkomusiker"
+  ]
+ },
+ "2148": {
+  "ads": 16,
+  "confidence": 0.27,
+  "group": "tPox_ie4_X9X",
+  "label": "Restaurang- och köksbiträden m.fl.",
+  "words": [
+   "badhuskassör",
+   "ekonomibiträde",
+   "simhall",
+   "härnösands",
+   "kassa",
+   "friskvårdspersonal"
+  ]
+ },
+ "215": {
+  "ads": 5,
+  "confidence": 0.4,
+  "group": "tPox_ie4_X9X",
+  "label": "Restaurang- och köksbiträden m.fl.",
+  "words": [
+   "verksamhetsansvarig",
+   "skolcafeterian",
+   "bryggan",
+   "restaurangbiträde",
+   "restaurangbranschen",
+   "pensionär"
+  ]
+ },
+ "2150": {
+  "ads": 16,
+  "confidence": 0.51,
+  "group": "PxXc_16t_oZo",
+  "label": "Telefonförsäljare m.fl.",
+  "words": [
+   "skicklighetsspel",
+   "lotteri",
+   "spel",
+   "lotterier",
+   "lottförsäljare",
+   "varuspelsförsäljare"
+  ]
+ },
+ "2157": {
+  "ads": 8,
+  "confidence": 0.47,
+  "group": "pwRH_MT1_8nR",
+  "label": "Kundtjänstpersonal",
+  "words": [
+   "banksäljare",
+   "bank",
+   "studenter",
+   "norsktalende",
+   "kundeservicemedarbejder",
+   "köping"
+  ]
+ },
+ "2158": {
+  "ads": 15,
+  "confidence": 0.25,
+  "group": "pwRH_MT1_8nR",
+  "label": "Kundtjänstpersonal",
+  "words": [
+   "vill",
+   "nordea",
+   "bank",
+   "studenter",
+   "arbeta",
+   "kundtjänstmedarbetare"
+  ]
+ },
+ "216": {
+  "ads": 1023,
+  "confidence": 0.73,
+  "group": "BStc_SJh_DKG",
+  "label": "Kockar och kallskänkor",
+  "words": [
+   "kock",
+   "kockar",
+   "erfaren",
+   "köksansvarig",
+   "köksmästare",
+   "kokerska"
+  ]
+ },
+ "2167": {
+  "ads": 1,
+  "confidence": 0.82,
+  "group": "dKUb_KBP_mw3",
+  "label": "Lackerare och industrimålare",
+  "words": [
+   "stort",
+   "lackerare",
+   "stockholmsföretag"
+  ]
+ },
+ "2182": {
+  "ads": 3,
+  "confidence": 0.41,
+  "group": "vPP6_rsw_dck",
+  "label": "Planerare och utredare m.fl.",
+  "words": [
+   "folkbokföringen",
+   "handläggare",
+   "folbokföringshandläggare",
+   "församlingsspecialist"
+  ]
+ },
+ "2185": {
+  "ads": 4,
+  "confidence": 0.82,
+  "group": "sq3e_WVv_Fjd",
+  "label": "Personliga assistenter",
+  "words": [
+   "kyrkokamrer",
+   "expeditionen",
+   "assistent",
+   "högsby",
+   "pastorat"
+  ]
+ },
+ "2186": {
+  "ads": 3,
+  "confidence": 0.44,
+  "group": "sq3e_WVv_Fjd",
+  "label": "Personliga assistenter",
+  "words": [
+   "kyrkoskrivare",
+   "kanslist",
+   "assistent"
+  ]
+ },
+ "2192": {
+  "ads": 3,
+  "confidence": 0.27,
+  "group": "eQ4M_CNm_ozj",
+  "label": "Övriga kontorsassistenter och sekreterare",
+  "words": [
+   "facklig",
+   "organisation",
+   "expeditör",
+   "ombudsman",
+   "kanslist"
+  ]
+ },
+ "2195": {
+  "ads": 47,
+  "confidence": 0.32,
+  "group": "eQ4M_CNm_ozj",
+  "label": "Övriga kontorsassistenter och sekreterare",
+  "words": [
+   "kanslibiträde",
+   "kanslist",
+   "kansliassistent",
+   "praktik",
+   "administratör",
+   "kontorist"
+  ]
+ },
+ "2218": {
+  "ads": 37,
+  "confidence": 0.46,
+  "group": "kLyY_rwr_aJr",
+  "label": "Lager- och terminalpersonal",
+  "words": [
+   "lagerarbetare",
+   "expeditör",
+   "lager",
+   "lagermedarbetare",
+   "menigo",
+   "expeditörer"
+  ]
+ },
+ "2219": {
+  "ads": 12,
+  "confidence": 0.55,
+  "group": "kLyY_rwr_aJr",
+  "label": "Lager- och terminalpersonal",
+  "words": [
+   "lager",
+   "lagerarbetare",
+   "expeditör",
+   "uppdrag",
+   "kundmottagare",
+   "montering"
+  ]
+ },
+ "2220": {
+  "ads": 14,
+  "confidence": 0.58,
+  "group": "kLyY_rwr_aJr",
+  "label": "Lager- och terminalpersonal",
+  "words": [
+   "lagerarbetare",
+   "frys",
+   "truckförare",
+   "fryslager",
+   "truckkort",
+   "lagerpersonal"
+  ]
+ },
+ "2222": {
+  "ads": 19,
+  "confidence": 0.48,
+  "group": "kLyY_rwr_aJr",
+  "label": "Lager- och terminalpersonal",
+  "words": [
+   "förrådsman",
+   "mekaniker",
+   "sysav",
+   "lagerarbetare",
+   "truckkort",
+   "erfaren"
+  ]
+ },
+ "2224": {
+  "ads": 19,
+  "confidence": 0.36,
+  "group": "s1Qk_o98_2o1",
+  "label": "Butikssäljare, dagligvaror",
+  "words": [
+   "inventerare",
+   "inventering",
+   "nattarbete",
+   "student",
+   "varuhus",
+   "välbetalt"
+  ]
+ },
+ "2225": {
+  "ads": 12,
+  "confidence": 0.57,
+  "group": "kLyY_rwr_aJr",
+  "label": "Lager- och terminalpersonal",
+  "words": [
+   "lager",
+   "livsmedelskunskap",
+   "jobb",
+   "kyllagerarbetare",
+   "extra",
+   "förslagsorder"
+  ]
+ },
+ "2226": {
+  "ads": 96,
+  "confidence": 0.59,
+  "group": "kLyY_rwr_aJr",
+  "label": "Lager- och terminalpersonal",
+  "words": [
+   "lagerbiträde",
+   "lagerarbetare",
+   "lagerpersonal",
+   "lager",
+   "lagermedarbetare",
+   "lagerarbete"
+  ]
+ },
+ "2227": {
+  "ads": 10,
+  "confidence": 0.73,
+  "group": "kLyY_rwr_aJr",
+  "label": "Lager- och terminalpersonal",
+  "words": [
+   "lagerexpedit",
+   "lagerarbetare",
+   "teknikintresserad",
+   "lagerpersonal",
+   "trälagerarbetare",
+   "bygg"
+  ]
+ },
+ "2228": {
+  "ads": 5,
+  "confidence": 0.49,
+  "group": "kLyY_rwr_aJr",
+  "label": "Lager- och terminalpersonal",
+  "words": [
+   "trosa",
+   "camfil",
+   "svenska",
+   "lagret",
+   "klädintresserad",
+   "lagerpersonal"
+  ]
+ },
+ "2230": {
+  "ads": 402,
+  "confidence": 0.55,
+  "group": "kLyY_rwr_aJr",
+  "label": "Lager- och terminalpersonal",
+  "words": [
+   "orderplockare",
+   "lagerarbetare",
+   "extra",
+   "lagerpersonal",
+   "lager",
+   "studenter"
+  ]
+ },
+ "2232": {
+  "ads": 89,
+  "confidence": 0.51,
+  "group": "Lzpv_ofL_3H5",
+  "label": "Motorfordonsmekaniker och fordonsreparatörer",
+  "words": [
+   "reservdelsman",
+   "lager",
+   "lageransvarig",
+   "reservdelsansvarig",
+   "reservdelssäljare",
+   "lagerarbete"
+  ]
+ },
+ "2236": {
+  "ads": 4,
+  "confidence": 0.3,
+  "group": "kLyY_rwr_aJr",
+  "label": "Lager- och terminalpersonal",
+  "words": [
+   "lager",
+   "godspersonal",
+   "terminalavdelningen",
+   "semestervikarier",
+   "moving",
+   "skeppning"
+  ]
+ },
+ "2237": {
+  "ads": 69,
+  "confidence": 0.27,
+  "group": "kLyY_rwr_aJr",
+  "label": "Lager- och terminalpersonal",
+  "words": [
+   "varumottagare",
+   "logistik",
+   "logistikmedarbetare",
+   "medarbetare",
+   "säsong",
+   "bromma"
+  ]
+ },
+ "2238": {
+  "ads": 150,
+  "confidence": 0.44,
+  "group": "s1Qk_o98_2o1",
+  "label": "Butikssäljare, dagligvaror",
+  "words": [
+   "varuplockare",
+   "varupåfyllare",
+   "egen",
+   "bil",
+   "merchandiser",
+   "butik"
+  ]
+ },
+ "2239": {
+  "ads": 1,
+  "confidence": 0.39,
+  "group": "tPox_ie4_X9X",
+  "label": "Restaurang- och köksbiträden m.fl.",
+  "words": [
+   "pressverktygsförrådet",
+   "medarbetare"
+  ]
+ },
+ "2240": {
+  "ads": 2,
+  "confidence": 0.88,
+  "group": "kLyY_rwr_aJr",
+  "label": "Lager- och terminalpersonal",
+  "words": [
+   "lagerarbetare"
+  ]
+ },
+ "2241": {
+  "ads": 3,
+  "confidence": 0.36,
+  "group": "sq3e_WVv_Fjd",
+  "label": "Personliga assistenter",
+  "words": [
+   "arlanda",
+   "materialplanerare",
+   "assistent",
+   "designavdelningen",
+   "materialhanterare",
+   "rek"
+  ]
+ },
+ "2242": {
+  "ads": 177,
+  "confidence": 0.34,
+  "group": "kLyY_rwr_aJr",
+  "label": "Lager- och terminalpersonal",
+  "words": [
+   "lageradministratör",
+   "lager",
+   "administratör",
+   "lagerarbetare",
+   "ordermottagare",
+   "uppdrag"
+  ]
+ },
+ "2245": {
+  "ads": 11,
+  "confidence": 0.27,
+  "group": "kLyY_rwr_aJr",
+  "label": "Lager- och terminalpersonal",
+  "words": [
+   "gåshaga",
+   "rosersberg",
+   "lagerpersonal",
+   "logistikadministratör",
+   "funktion",
+   "central"
+  ]
+ },
+ "2252": {
+  "ads": 3169,
+  "confidence": 0.35,
+  "group": "s1Qk_o98_2o1",
+  "label": "Butikssäljare, dagligvaror",
+  "words": [
+   "butiksbiträde",
+   "affärsbiträde",
+   "butikssäljare",
+   "praktik",
+   "säljare",
+   "butik"
+  ]
+ },
+ "2272": {
+  "ads": 133,
+  "confidence": 0.53,
+  "group": "AQrL_tTu_Wbg",
+  "label": "Optikerassistenter",
+  "words": [
+   "optikerassistent",
+   "optikerbiträde",
+   "butikssäljare",
+   "säljare",
+   "optik",
+   "driven"
+  ]
+ },
+ "2281": {
+  "ads": 10,
+  "confidence": 0.5,
+  "group": "Lzpv_ofL_3H5",
+  "label": "Motorfordonsmekaniker och fordonsreparatörer",
+  "words": [
+   "reservdelsbiträde",
+   "resevdelsbiträde",
+   "reservdelspersonal",
+   "erfarenhet",
+   "kundmottagare",
+   "bilverkstad"
+  ]
+ },
+ "2287": {
+  "ads": 134,
+  "confidence": 0.41,
+  "group": "s1Qk_o98_2o1",
+  "label": "Butikssäljare, dagligvaror",
+  "words": [
+   "livsmedelsbiträde",
+   "butiksbiträde",
+   "butiksmedarbetare",
+   "frukt",
+   "butik",
+   "butiksbiträden"
+  ]
+ },
+ "2296": {
+  "ads": 80,
+  "confidence": 0.45,
+  "group": "V79C_DD2_3Gj",
+  "label": "Golvläggare",
+  "words": [
+   "mattläggare",
+   "golvläggare",
+   "golv",
+   "plattsättare",
+   "rekryteringsuppdrag",
+   "norge"
+  ]
+ },
+ "2298": {
+  "ads": 16,
+  "confidence": 0.44,
+  "group": "YKL2_FCB_1yr",
+  "label": "Butikssäljare, fackhandel",
+  "words": [
+   "blomsterbutik",
+   "butiksbiträde",
+   "affärsbiträde",
+   "blomsterbindare",
+   "florist",
+   "blomsterförsäljare"
+  ]
+ },
+ "2299": {
+  "ads": 6,
+  "confidence": 0.8,
+  "group": "YKL2_FCB_1yr",
+  "label": "Butikssäljare, fackhandel",
+  "words": [
+   "blomsterdekoratör",
+   "blomsterdekoratrör",
+   "urval",
+   "florist",
+   "yrkesvana",
+   "försäljare"
+  ]
+ },
+ "2307": {
+  "ads": 6,
+  "confidence": 0.27,
+  "group": "M47D_MU2_dhS",
+  "label": "Uthyrare",
+  "words": [
+   "cykeluthyrare",
+   "uthyrare",
+   "solacykeln",
+   "umeåregion",
+   "hållbart",
+   "resande"
+  ]
+ },
+ "231": {
+  "ads": 329,
+  "confidence": 0.25,
+  "group": "hZLv_S5f_jo2",
+  "label": "Restaurang- och kökschefer",
+  "words": [
+   "restaurangchef",
+   "restaurangchefsassistent",
+   "bofhus",
+   "arbetsledare",
+   "skiftledare",
+   "jensens"
+  ]
+ },
+ "2310": {
+  "ads": 24,
+  "confidence": 0.25,
+  "group": "NCeZ_rSk_B4D",
+  "label": "Eventsäljare och butiksdemonstratörer m.fl.",
+  "words": [
+   "eventpersonal",
+   "mässpersonal",
+   "omgående",
+   "extra",
+   "värdar",
+   "sommar"
+  ]
+ },
+ "2314": {
+  "ads": 9,
+  "confidence": 0.34,
+  "group": "M47D_MU2_dhS",
+  "label": "Uthyrare",
+  "words": [
+   "videouthyrare",
+   "praktik",
+   "uthyrare",
+   "vidoebutik",
+   "säljare",
+   "butiksbiträde"
+  ]
+ },
+ "2317": {
+  "ads": 6,
+  "confidence": 0.33,
+  "group": "pwRH_MT1_8nR",
+  "label": "Kundtjänstpersonal",
+  "words": [
+   "informatörer",
+   "köpenhamn",
+   "säljande",
+   "telefonackvisitör",
+   "kundbokare"
+  ]
+ },
+ "2320": {
+  "ads": 14,
+  "confidence": 0.66,
+  "group": "thZP_oR7_WrY",
+  "label": "Ingenjörer och tekniker inom bygg och anläggning",
+  "words": [
+   "banverket",
+   "byggledare",
+   "signalteknik",
+   "arbetsledare",
+   "strukton",
+   "rail"
+  ]
+ },
+ "2355": {
+  "ads": 1,
+  "confidence": 0.38,
+  "group": "NCeZ_rSk_B4D",
+  "label": "Eventsäljare och butiksdemonstratörer m.fl.",
+  "words": [
+   "plats",
+   "torvmaskinförare",
+   "intern"
+  ]
+ },
+ "2362": {
+  "ads": 1,
+  "confidence": 0.82,
+  "group": "sq3e_WVv_Fjd",
+  "label": "Personliga assistenter",
+  "words": [
+   "tjej",
+   "kille",
+   "serviceminded",
+   "händig"
+  ]
+ },
+ "2363": {
+  "ads": 7,
+  "confidence": 0.29,
+  "group": "bwnk_nv2_1cR",
+  "label": "Ramppersonal, flyttkarlar och varupåfyllare m.fl.",
+  "words": [
+   "glasare",
+   "fönster",
+   "kittning",
+   "solfilmsmontör",
+   "erfarenhet",
+   "montering"
+  ]
+ },
+ "2384": {
+  "ads": 116,
+  "confidence": 0.28,
+  "group": "df9D_e6y_61z",
+  "label": "Fastighetsskötare",
+  "words": [
+   "drifttekniker",
+   "driftstekniker",
+   "fastighetstekniker",
+   "vvs",
+   "west",
+   "ingenjör"
+  ]
+ },
+ "2390": {
+  "ads": 22,
+  "confidence": 0.6,
+  "group": "df9D_e6y_61z",
+  "label": "Fastighetsskötare",
+  "words": [
+   "fastighetsreparatör",
+   "fastighetsskötare",
+   "reparatör",
+   "jcdecaux",
+   "allmänreparatör",
+   "reparatörer"
+  ]
+ },
+ "2391": {
+  "ads": 20,
+  "confidence": 0.26,
+  "group": "df9D_e6y_61z",
+  "label": "Fastighetsskötare",
+  "words": [
+   "gårdskarl",
+   "allo",
+   "allt",
+   "vaktmästare",
+   "gårdsarbetare",
+   "funktionshindrad"
+  ]
+ },
+ "2408": {
+  "ads": 136,
+  "confidence": 0.34,
+  "group": "DJh5_yyF_hEM",
+  "label": "Mjukvaru- och systemutvecklare m.fl.",
+  "words": [
+   "dataingenjör",
+   "engineer",
+   "utvecklare",
+   "ingenjör",
+   "testare",
+   "systemutvecklare"
+  ]
+ },
+ "2409": {
+  "ads": 15858,
+  "confidence": 0.5,
+  "group": "DJh5_yyF_hEM",
+  "label": "Mjukvaru- och systemutvecklare m.fl.",
+  "words": [
+   "utvecklare",
+   "projektledare",
+   "systemutvecklare",
+   "konsult",
+   "ref",
+   "java"
+  ]
+ },
+ "2412": {
+  "ads": 110,
+  "confidence": 0.37,
+  "group": "DJh5_yyF_hEM",
+  "label": "Mjukvaru- och systemutvecklare m.fl.",
+  "words": [
+   "systemarkitekt",
+   "java",
+   "arkitekt",
+   "architect",
+   "systemarkitekter",
+   "systemutvecklare"
+  ]
+ },
+ "2414": {
+  "ads": 78,
+  "confidence": 0.31,
+  "group": "DJh5_yyF_hEM",
+  "label": "Mjukvaru- och systemutvecklare m.fl.",
+  "words": [
+   "systemingenjör",
+   "engineer",
+   "support",
+   "system",
+   "systemutvecklare",
+   "vara"
+  ]
+ },
+ "2415": {
+  "ads": 30,
+  "confidence": 0.36,
+  "group": "DJh5_yyF_hEM",
+  "label": "Mjukvaru- och systemutvecklare m.fl.",
+  "words": [
+   "konstruktör",
+   "systemkonstruktörer",
+   "systemkonstruktör",
+   "system",
+   "cad",
+   "systemingenjör"
+  ]
+ },
+ "2416": {
+  "ads": 2,
+  "confidence": 0.51,
+  "group": "cBBa_ngH_fCx",
+  "label": "Systemförvaltare m.fl.",
+  "words": [
+   "projektledare",
+   "systemförvaltare",
+   "superuser",
+   "licenshanteringsverktyg",
+   "elis"
+  ]
+ },
+ "2418": {
+  "ads": 6,
+  "confidence": 0.61,
+  "group": "DJh5_yyF_hEM",
+  "label": "Mjukvaru- och systemutvecklare m.fl.",
+  "words": [
+   "har",
+   "java",
+   "hjärnan",
+   "applikationsutvecklare",
+   "tritech",
+   "aps"
+  ]
+ },
+ "242": {
+  "ads": 34,
+  "confidence": 0.36,
+  "group": "ayQ4_G3W_A2w",
+  "label": "Övrig bevaknings- och säkerhetspersonal",
+  "words": [
+   "badbiträde",
+   "badvärd",
+   "vik",
+   "badpersonal",
+   "badhus",
+   "storumans"
+  ]
+ },
+ "2420": {
+  "ads": 249,
+  "confidence": 0.62,
+  "group": "DJh5_yyF_hEM",
+  "label": "Mjukvaru- och systemutvecklare m.fl.",
+  "words": [
+   "webbutvecklare",
+   "utvecklare",
+   "net",
+   "programmerare",
+   "junior",
+   "web"
+  ]
+ },
+ "2425": {
+  "ads": 1,
+  "confidence": 0.67,
+  "group": "pwRH_MT1_8nR",
+  "label": "Kundtjänstpersonal",
+  "words": [
+   "keybroker",
+   "sökanalytiker",
+   "dansktalande",
+   "norsk"
+  ]
+ },
+ "2428": {
+  "ads": 159,
+  "confidence": 0.56,
+  "group": "DJh5_yyF_hEM",
+  "label": "Mjukvaru- och systemutvecklare m.fl.",
+  "words": [
+   "programmerare",
+   "utvecklare",
+   "software",
+   "net",
+   "företag",
+   "developer"
+  ]
+ },
+ "2430": {
+  "ads": 175,
+  "confidence": 0.7,
+  "group": "DJh5_yyF_hEM",
+  "label": "Mjukvaru- och systemutvecklare m.fl.",
+  "words": [
+   "programmerare",
+   "utvecklare",
+   "systemutvecklare",
+   "programvaruutvecklare",
+   "net",
+   "software"
+  ]
+ },
+ "2431": {
+  "ads": 37,
+  "confidence": 0.5,
+  "group": "DJh5_yyF_hEM",
+  "label": "Mjukvaru- och systemutvecklare m.fl.",
+  "words": [
+   "mjukvaruutvecklare",
+   "programvarukonstruktör",
+   "programmerare",
+   "system",
+   "konstruktör",
+   "inbyggda"
+  ]
+ },
+ "2432": {
+  "ads": 182,
+  "confidence": 0.6,
+  "group": "DJh5_yyF_hEM",
+  "label": "Mjukvaru- och systemutvecklare m.fl.",
+  "words": [
+   "programmerare",
+   "utvecklare",
+   "systemutvecklare",
+   "net",
+   "java",
+   "projektledande"
+  ]
+ },
+ "2434": {
+  "ads": 1,
+  "confidence": 0.54,
+  "group": "wVfo_Njx_1rB",
+  "label": "Bibliotekarier och arkivarier",
+  "words": [
+   "arkivarie"
+  ]
+ },
+ "2444": {
+  "ads": 149,
+  "confidence": 0.62,
+  "group": "wVfo_Njx_1rB",
+  "label": "Bibliotekarier och arkivarier",
+  "words": [
+   "barnbibliotekarie",
+   "barn",
+   "bibliotekarie",
+   "ungdomsbibliotekarie",
+   "skolbibliotekarie",
+   "vik"
+  ]
+ },
+ "2445": {
+  "ads": 99,
+  "confidence": 0.78,
+  "group": "wVfo_Njx_1rB",
+  "label": "Bibliotekarier och arkivarier",
+  "words": [
+   "bibliotekarie",
+   "inriktning",
+   "bibliotekschef",
+   "biblioteket",
+   "kungliga",
+   "vik"
+  ]
+ },
+ "2447": {
+  "ads": 15,
+  "confidence": 0.73,
+  "group": "wVfo_Njx_1rB",
+  "label": "Bibliotekarier och arkivarier",
+  "words": [
+   "bibliotekarie",
+   "bokbussen",
+   "bokbussbibliotekarie",
+   "stadsbibliotek",
+   "norrtälje",
+   "enhetschef"
+  ]
+ },
+ "2448": {
+  "ads": 16,
+  "confidence": 0.93,
+  "group": "wVfo_Njx_1rB",
+  "label": "Bibliotekarier och arkivarier",
+  "words": [
+   "bibliotekarie",
+   "skolbibliotek",
+   "folk",
+   "bibliotikarie",
+   "bibliotekrie",
+   "kulturförvaltningen"
+  ]
+ },
+ "2449": {
+  "ads": 12,
+  "confidence": 0.69,
+  "group": "wVfo_Njx_1rB",
+  "label": "Bibliotekarier och arkivarier",
+  "words": [
+   "bibliotekarie",
+   "umeå",
+   "vid",
+   "bibilotekarie",
+   "bibliometriker",
+   "universit"
+  ]
+ },
+ "2450": {
+  "ads": 5,
+  "confidence": 0.93,
+  "group": "wVfo_Njx_1rB",
+  "label": "Bibliotekarier och arkivarier",
+  "words": [
+   "bibliotekarie",
+   "vinge",
+   "fmv",
+   "projektledare"
+  ]
+ },
+ "2452": {
+  "ads": 10,
+  "confidence": 0.78,
+  "group": "wVfo_Njx_1rB",
+  "label": "Bibliotekarier och arkivarier",
+  "words": [
+   "bibliotekarie",
+   "sjukhusbibliotekarie",
+   "ansvar",
+   "medicinsk",
+   "placering",
+   "varbergs"
+  ]
+ },
+ "2458": {
+  "ads": 3,
+  "confidence": 0.44,
+  "group": "sq3e_WVv_Fjd",
+  "label": "Personliga assistenter",
+  "words": [
+   "museilärare",
+   "assistent",
+   "vaktmästare",
+   "valla",
+   "chef",
+   "fritidsområde"
+  ]
+ },
+ "246": {
+  "ads": 15,
+  "confidence": 0.35,
+  "group": "s1Qk_o98_2o1",
+  "label": "Butikssäljare, dagligvaror",
+  "words": [
+   "makeup",
+   "make",
+   "artister",
+   "glamourevent",
+   "artist",
+   "lärare"
+  ]
+ },
+ "2461": {
+  "ads": 2,
+  "confidence": 0.79,
+  "group": "XW9L_tA9_WaX",
+  "label": "Elevassistenter m.fl.",
+  "words": [
+   "resursperson",
+   "biblioteksbiträde"
+  ]
+ },
+ "2462": {
+  "ads": 1,
+  "confidence": 0.89,
+  "group": "sWzF_6pd_Y6L",
+  "label": "Övriga chefer inom samhällsservice",
+  "words": [
+   "bibliotekschef"
+  ]
+ },
+ "2463": {
+  "ads": 4,
+  "confidence": 0.76,
+  "group": "TQkt_eeK_eNp",
+  "label": "Arkiv- och biblioteksassistenter m.fl.",
+  "words": [
+   "bibliotekskontorist",
+   "biblioteksassistent"
+  ]
+ },
+ "2469": {
+  "ads": 21,
+  "confidence": 0.55,
+  "group": "ug5y_o6z_U3L",
+  "label": "Brandmän",
+  "words": [
+   "instruktör",
+   "brandman",
+   "utbildare",
+   "sjukvårdare",
+   "arbeten",
+   "heta"
+  ]
+ },
+ "2471": {
+  "ads": 22,
+  "confidence": 0.77,
+  "group": "ug5y_o6z_U3L",
+  "label": "Brandmän",
+  "words": [
+   "brandman",
+   "brandmän",
+   "insatsledare",
+   "styrkeledare",
+   "räddningslärare",
+   "instruktör"
+  ]
+ },
+ "2472": {
+  "ads": 18,
+  "confidence": 0.31,
+  "group": "ug5y_o6z_U3L",
+  "label": "Brandmän",
+  "words": [
+   "insatsledare",
+   "brandmästare",
+   "räddning",
+   "lärare",
+   "brand",
+   "stabsbrandmästare"
+  ]
+ },
+ "2473": {
+  "ads": 3,
+  "confidence": 0.35,
+  "group": "ug5y_o6z_U3L",
+  "label": "Brandmän",
+  "words": [
+   "civilingenjör",
+   "riskhantering",
+   "förebyggare",
+   "insatsledare",
+   "brandskyddskoordinator"
+  ]
+ },
+ "248": {
+  "ads": 3,
+  "confidence": 0.27,
+  "group": "s1Qk_o98_2o1",
+  "label": "Butikssäljare, dagligvaror",
+  "words": [
+   "makeup",
+   "artist",
+   "stylist",
+   "spa",
+   "hud",
+   "terapeuter"
+  ]
+ },
+ "2481": {
+  "ads": 19,
+  "confidence": 0.58,
+  "group": "iqZh_3yX_i8n",
+  "label": "Väktare och ordningsvakter",
+  "words": [
+   "nattvakt",
+   "camping",
+   "väktare",
+   "brandvakt",
+   "nattvak",
+   "vaktmästare"
+  ]
+ },
+ "250": {
+  "ads": 2,
+  "confidence": 0.99,
+  "group": "ezKk_kss_CiQ",
+  "label": "Övriga skönhets- och kroppsterapeuter",
+  "words": [
+   "nagelskulptör",
+   "nagelteknolog"
+  ]
+ },
+ "2501": {
+  "ads": 2,
+  "confidence": 0.4,
+  "group": "hgAg_gLr_YGg",
+  "label": "Kriminalvårdare",
+  "words": [
+   "anstalten",
+   "salberga",
+   "underrättelseoperatör",
+   "polisen",
+   "turlagsadministratör"
+  ]
+ },
+ "2534": {
+  "ads": 13,
+  "confidence": 0.26,
+  "group": "MGk3_LvL_AU2",
+  "label": "Backofficepersonal m.fl.",
+  "words": [
+   "medarbetare",
+   "backoffice",
+   "trainee",
+   "förmögenhetsförvaltare",
+   "middleoffice",
+   "investor"
+  ]
+ },
+ "2570": {
+  "ads": 20,
+  "confidence": 0.29,
+  "group": "Ru4W_zn2_LEz",
+  "label": "Skadereglerare och värderare",
+  "words": [
+   "besiktningsman",
+   "länsförsäkringar",
+   "besiktningstekniker",
+   "byggskador",
+   "rekryteringsuppdrag",
+   "skadereglerare"
+  ]
+ },
+ "2572": {
+  "ads": 7,
+  "confidence": 0.49,
+  "group": "idjo_2Wr_a3E",
+  "label": "Saneringsarbetare m.fl.",
+  "words": [
+   "skadeinspektör",
+   "erfarenhet",
+   "från",
+   "folksam",
+   "sakskadereglare",
+   "hygien"
+  ]
+ },
+ "2593": {
+  "ads": 7,
+  "confidence": 0.26,
+  "group": "oXSW_fbY_XrY",
+  "label": "Företagssäljare",
+  "words": [
+   "manager",
+   "travel",
+   "mci",
+   "account",
+   "servitör",
+   "servitris"
+  ]
+ },
+ "2596": {
+  "ads": 56,
+  "confidence": 0.52,
+  "group": "oXSW_fbY_XrY",
+  "label": "Företagssäljare",
+  "words": [
+   "exportsäljare",
+   "sales",
+   "manager",
+   "area",
+   "säljare",
+   "exportförsäljare"
+  ]
+ },
+ "2599": {
+  "ads": 4760,
+  "confidence": 0.31,
+  "group": "oXSW_fbY_XrY",
+  "label": "Företagssäljare",
+  "words": [
+   "säljare",
+   "mediasäljare",
+   "fältsäljare",
+   "försäljare",
+   "försäljning",
+   "marknadsföring"
+  ]
+ },
+ "2600": {
+  "ads": 88,
+  "confidence": 0.28,
+  "group": "oXSW_fbY_XrY",
+  "label": "Företagssäljare",
+  "words": [
+   "säljare",
+   "försäljning",
+   "service",
+   "brandsläckare",
+   "försäljare",
+   "partihandel"
+  ]
+ },
+ "2602": {
+  "ads": 148,
+  "confidence": 0.26,
+  "group": "oXSW_fbY_XrY",
+  "label": "Företagssäljare",
+  "words": [
+   "säljare",
+   "servicekänsla",
+   "butiksrepresentanter",
+   "säljande",
+   "projektledare",
+   "ledarskalle"
+  ]
+ },
+ "2605": {
+  "ads": 8,
+  "confidence": 0.28,
+  "group": "qhbP_JEJ_HtK",
+  "label": "Reklamutdelare och tidningsdistributörer",
+  "words": [
+   "dryckeskonsult",
+   "distributörer",
+   "polfärskt",
+   "sommarvikariat",
+   "säljande",
+   "norrland"
+  ]
+ },
+ "2611": {
+  "ads": 2855,
+  "confidence": 0.35,
+  "group": "oXSW_fbY_XrY",
+  "label": "Företagssäljare",
+  "words": [
+   "säljare",
+   "teknisk",
+   "sales",
+   "manager",
+   "innesäljare",
+   "projektledare"
+  ]
+ },
+ "2612": {
+  "ads": 844,
+  "confidence": 0.43,
+  "group": "oXSW_fbY_XrY",
+  "label": "Företagssäljare",
+  "words": [
+   "säljare",
+   "utesäljare",
+   "fältsäljare",
+   "godel",
+   "sommar",
+   "högpresterande"
+  ]
+ },
+ "2636": {
+  "ads": 8,
+  "confidence": 0.26,
+  "group": "Lzpv_ofL_3H5",
+  "label": "Motorfordonsmekaniker och fordonsreparatörer",
+  "words": [
+   "verktygstekniker",
+   "linsmakare",
+   "teknisk",
+   "åmål",
+   "mekaniker",
+   "verkstad"
+  ]
+ },
+ "2647": {
+  "ads": 1,
+  "confidence": 0.43,
+  "group": "vaEp_iBS_c5h",
+  "label": "Maskinställare och maskinoperatörer, metallarbete",
+  "words": [
+   "maskinoperatör",
+   "hålbearbetning"
+  ]
+ },
+ "2651": {
+  "ads": 1,
+  "confidence": 0.38,
+  "group": "vaEp_iBS_c5h",
+  "label": "Maskinställare och maskinoperatörer, metallarbete",
+  "words": [
+   "verkstadsarbetare"
+  ]
+ },
+ "2661": {
+  "ads": 9,
+  "confidence": 0.32,
+  "group": "4bxV_58E_P9N",
+  "label": "Slipare m.fl.",
+  "words": [
+   "slipare",
+   "maskinskötare",
+   "maskinslipare",
+   "metall",
+   "industriarbetare",
+   "maskinarbetare"
+  ]
+ },
+ "2663": {
+  "ads": 3,
+  "confidence": 0.28,
+  "group": "4bxV_58E_P9N",
+  "label": "Slipare m.fl.",
+  "words": [
+   "uthyrningsverksamhet",
+   "verkstadsarbetare",
+   "rundslipare",
+   "slipare"
+  ]
+ },
+ "2678": {
+  "ads": 11,
+  "confidence": 0.32,
+  "group": "KttZ_Skc_bMR",
+  "label": "Underhållsmekaniker och maskinreparatörer",
+  "words": [
+   "servicekonsulent",
+   "catering",
+   "serviceman",
+   "servicetekniker",
+   "operatör",
+   "serviceoperatör"
+  ]
+ },
+ "2679": {
+  "ads": 1,
+  "confidence": 0.94,
+  "group": "vaEp_iBS_c5h",
+  "label": "Maskinställare och maskinoperatörer, metallarbete",
+  "words": [
+   "svarvare",
+   "fräsare"
+  ]
+ },
+ "268": {
+  "ads": 5,
+  "confidence": 0.33,
+  "group": "s1Qk_o98_2o1",
+  "label": "Butikssäljare, dagligvaror",
+  "words": [
+   "maker",
+   "sausage",
+   "styckare",
+   "charkuterist",
+   "korvmästare",
+   "korv"
+  ]
+ },
+ "2683": {
+  "ads": 6,
+  "confidence": 0.8,
+  "group": "vaEp_iBS_c5h",
+  "label": "Maskinställare och maskinoperatörer, metallarbete",
+  "words": [
+   "cnc",
+   "operatörer",
+   "operatör"
+  ]
+ },
+ "2684": {
+  "ads": 7,
+  "confidence": 0.64,
+  "group": "vaEp_iBS_c5h",
+  "label": "Maskinställare och maskinoperatörer, metallarbete",
+  "words": [
+   "cnc",
+   "operatör",
+   "verktygsmakare",
+   "förman",
+   "arbetande",
+   "karlstad"
+  ]
+ },
+ "269": {
+  "ads": 4,
+  "confidence": 0.34,
+  "group": "gJtZ_EBc_n2z",
+  "label": "Maskinoperatörer, kött- och fiskberedningsindustri",
+  "words": [
+   "livsmedelsarbetare",
+   "saltare",
+   "boskapsslakten",
+   "skånestyckarna"
+  ]
+ },
+ "2694": {
+  "ads": 4,
+  "confidence": 0.6,
+  "group": "vaEp_iBS_c5h",
+  "label": "Maskinställare och maskinoperatörer, metallarbete",
+  "words": [
+   "skicklig",
+   "operatör",
+   "cnc",
+   "svetsare",
+   "omgående",
+   "maskinoperatör"
+  ]
+ },
+ "2705": {
+  "ads": 11,
+  "confidence": 0.52,
+  "group": "vaEp_iBS_c5h",
+  "label": "Maskinställare och maskinoperatörer, metallarbete",
+  "words": [
+   "kantpressare",
+   "fast",
+   "torshälla",
+   "kantbockare",
+   "anställning",
+   "operatör"
+  ]
+ },
+ "2711": {
+  "ads": 2,
+  "confidence": 0.43,
+  "group": "vaEp_iBS_c5h",
+  "label": "Maskinställare och maskinoperatörer, metallarbete",
+  "words": [
+   "maskinoperatör",
+   "metallarbete"
+  ]
+ },
+ "2712": {
+  "ads": 2,
+  "confidence": 0.6,
+  "group": "vaEp_iBS_c5h",
+  "label": "Maskinställare och maskinoperatörer, metallarbete",
+  "words": [
+   "operatör",
+   "laserskärmaskin",
+   "job",
+   "plåtklippare"
+  ]
+ },
+ "2714": {
+  "ads": 1,
+  "confidence": 0.75,
+  "group": "vaEp_iBS_c5h",
+  "label": "Maskinställare och maskinoperatörer, metallarbete",
+  "words": [
+   "operatör",
+   "skärmaskiner"
+  ]
+ },
+ "2723": {
+  "ads": 62,
+  "confidence": 0.88,
+  "group": "wQ1E_Bzk_ZyA",
+  "label": "Svetsare och gasskärare",
+  "words": [
+   "svetsare",
+   "tig",
+   "erfaren",
+   "kärnkraftverk",
+   "montör",
+   "kunskaper"
+  ]
+ },
+ "2729": {
+  "ads": 25,
+  "confidence": 0.69,
+  "group": "wQ1E_Bzk_ZyA",
+  "label": "Svetsare och gasskärare",
+  "words": [
+   "svetsare",
+   "rörsvetsare",
+   "industrimontörer",
+   "rörläggare",
+   "montör",
+   "licens"
+  ]
+ },
+ "2746": {
+  "ads": 15,
+  "confidence": 0.3,
+  "group": "oXSW_fbY_XrY",
+  "label": "Företagssäljare",
+  "words": [
+   "innesäljare",
+   "försäljningsingenjör",
+   "initiativrik",
+   "teknisk",
+   "logistik",
+   "förpackning"
+  ]
+ },
+ "2772": {
+  "ads": 2,
+  "confidence": 0.45,
+  "group": "uxst_tkg_zDh",
+  "label": "Övriga administrations- och servicechefer",
+  "words": [
+   "iso",
+   "certifierare",
+   "samferdsel",
+   "rådgiver"
+  ]
+ },
+ "2798": {
+  "ads": 9,
+  "confidence": 0.59,
+  "group": "vaEp_iBS_c5h",
+  "label": "Maskinställare och maskinoperatörer, metallarbete",
+  "words": [
+   "stansoperatör",
+   "tariffkoordinator",
+   "schenker",
+   "pris",
+   "produktionskontorist",
+   "tomteboda"
+  ]
+ },
+ "2806": {
+  "ads": 5,
+  "confidence": 0.51,
+  "group": "5dxv_nVQ_N8o",
+  "label": "Tandsköterskor",
+  "words": [
+   "sektionsassistent",
+   "kliniksamordnare",
+   "folktandvården",
+   "teamsekreterare",
+   "sekreterarenheten",
+   "kliniksekreterare"
+  ]
+ },
+ "282": {
+  "ads": 4,
+  "confidence": 0.6,
+  "group": "fLKb_bJ3_69p",
+  "label": "VVS-montörer m.fl.",
+  "words": [
+   "ventilationsmontörer",
+   "ventilationstekniker",
+   "drifttekniker",
+   "city",
+   "maskinist"
+  ]
+ },
+ "2825": {
+  "ads": 7,
+  "confidence": 0.83,
+  "group": "vaEp_iBS_c5h",
+  "label": "Maskinställare och maskinoperatörer, metallarbete",
+  "words": [
+   "kantpressare",
+   "kantpressoperatör",
+   "plåtpressare",
+   "kantbockare",
+   "medarbetare",
+   "urval"
+  ]
+ },
+ "283": {
+  "ads": 17,
+  "confidence": 0.4,
+  "group": "Lzpv_ofL_3H5",
+  "label": "Motorfordonsmekaniker och fordonsreparatörer",
+  "words": [
+   "bilarbetare",
+   "bilmekaniker",
+   "mekaniker",
+   "rekryteras",
+   "countermine",
+   "rekryteringsuppdrag"
+  ]
+ },
+ "2830": {
+  "ads": 16,
+  "confidence": 0.35,
+  "group": "bXfo_4hb_SXx",
+  "label": "Byggnads- och ventilationsplåtslagare",
+  "words": [
+   "plåtslagare",
+   "norge",
+   "byggnadsplåtslagare",
+   "stfold",
+   "kes",
+   "til"
+  ]
+ },
+ "2831": {
+  "ads": 13,
+  "confidence": 0.45,
+  "group": "L4hA_SJP_SFi",
+  "label": "Tunnplåtslagare",
+  "words": [
+   "bilskadereparatör",
+   "plåt",
+   "biloppretter",
+   "bilplottslagere",
+   "skadereparatör",
+   "bilmekaniker"
+  ]
+ },
+ "2833": {
+  "ads": 9,
+  "confidence": 0.51,
+  "group": "L4hA_SJP_SFi",
+  "label": "Tunnplåtslagare",
+  "words": [
+   "skadereparatör",
+   "bilskadereparatör",
+   "bilplåt",
+   "bilplåtslagare",
+   "lastbil",
+   "buss"
+  ]
+ },
+ "284": {
+  "ads": 3,
+  "confidence": 0.39,
+  "group": "tPox_ie4_X9X",
+  "label": "Restaurang- och köksbiträden m.fl.",
+  "words": [
+   "medarbetare",
+   "bilskåpsbyggare"
+  ]
+ },
+ "2846": {
+  "ads": 4,
+  "confidence": 0.39,
+  "group": "wQ1E_Bzk_ZyA",
+  "label": "Svetsare och gasskärare",
+  "words": [
+   "plåt",
+   "varvsarbetare",
+   "svets",
+   "maskin",
+   "svetsare",
+   "plåtslagare"
+  ]
+ },
+ "285": {
+  "ads": 22,
+  "confidence": 0.31,
+  "group": "Lzpv_ofL_3H5",
+  "label": "Motorfordonsmekaniker och fordonsreparatörer",
+  "words": [
+   "montör",
+   "montörer",
+   "ombyggnation",
+   "bilar",
+   "bransjen",
+   "innen"
+  ]
+ },
+ "2851": {
+  "ads": 7,
+  "confidence": 0.38,
+  "group": "KttZ_Skc_bMR",
+  "label": "Underhållsmekaniker och maskinreparatörer",
+  "words": [
+   "norge",
+   "rekuppdrag",
+   "kabelgjutare",
+   "kabelmontör",
+   "kabelfels",
+   "reparatör"
+  ]
+ },
+ "2879": {
+  "ads": 11,
+  "confidence": 0.27,
+  "group": "kLyY_rwr_aJr",
+  "label": "Lager- och terminalpersonal",
+  "words": [
+   "produktionspersonal",
+   "sommarvikarierande",
+   "underhållsoperatörer",
+   "lagerarbetare",
+   "produktionsarbetare",
+   "fordonsindustrin"
+  ]
+ },
+ "2887": {
+  "ads": 7,
+  "confidence": 0.43,
+  "group": "X7HR_rZK_4wj",
+  "label": "Renhållnings- och återvinningsarbetare",
+  "words": [
+   "sophämtare",
+   "resta",
+   "återvinningsarbetare",
+   "medåkande",
+   "sopbilsförare",
+   "renhållningsarbetare"
+  ]
+ },
+ "2889": {
+  "ads": 81,
+  "confidence": 0.47,
+  "group": "iHrC_aRv_fVm",
+  "label": "Grovarbetare inom bygg och anläggning",
+  "words": [
+   "grovarbetare",
+   "diverse",
+   "diversearbetare",
+   "hantlangare",
+   "medhjälpare",
+   "rekryteringsuppdrag"
+  ]
+ },
+ "289": {
+  "ads": 1,
+  "confidence": 0.32,
+  "group": "Lzpv_ofL_3H5",
+  "label": "Motorfordonsmekaniker och fordonsreparatörer",
+  "words": [
+   "mekaniker",
+   "kort"
+  ]
+ },
+ "2898": {
+  "ads": 4,
+  "confidence": 0.73,
+  "group": "q81z_3oD_1qu",
+  "label": "Redovisningsekonomer",
+  "words": [
+   "redovisningsekonom",
+   "lantbruksbokförare",
+   "urvalsuppdrag",
+   "superuser",
+   "lön",
+   "sap"
+  ]
+ },
+ "2907": {
+  "ads": 10,
+  "confidence": 0.37,
+  "group": "iHrC_aRv_fVm",
+  "label": "Grovarbetare inom bygg och anläggning",
+  "words": [
+   "hantlangare",
+   "borrare",
+   "provborrare",
+   "borrledare",
+   "lönebidrag",
+   "anställning"
+  ]
+ },
+ "2928": {
+  "ads": 5,
+  "confidence": 0.7,
+  "group": "vaEp_iBS_c5h",
+  "label": "Maskinställare och maskinoperatörer, metallarbete",
+  "words": [
+   "svarvare",
+   "verktygsmakare",
+   "fräsare",
+   "operatör",
+   "plåttillverkning",
+   "verktygsarbetare"
+  ]
+ },
+ "2929": {
+  "ads": 242,
+  "confidence": 0.33,
+  "group": "vaEp_iBS_c5h",
+  "label": "Maskinställare och maskinoperatörer, metallarbete",
+  "words": [
+   "verkstadsarbetare",
+   "verkstadsarbete",
+   "maskinoperatör",
+   "montör",
+   "industriarbetare",
+   "verkstadsmekaniker"
+  ]
+ },
+ "2931": {
+  "ads": 28,
+  "confidence": 0.28,
+  "group": "vaEp_iBS_c5h",
+  "label": "Maskinställare och maskinoperatörer, metallarbete",
+  "words": [
+   "verkstadstekniker",
+   "tekniker",
+   "sverige",
+   "schaeffler",
+   "cnc",
+   "bearbetning"
+  ]
+ },
+ "2945": {
+  "ads": 73,
+  "confidence": 0.83,
+  "group": "vaEp_iBS_c5h",
+  "label": "Maskinställare och maskinoperatörer, metallarbete",
+  "words": [
+   "cnc",
+   "fräsare",
+   "operatör",
+   "beredare",
+   "operatörer",
+   "maskinoperatör"
+  ]
+ },
+ "2946": {
+  "ads": 74,
+  "confidence": 0.84,
+  "group": "vaEp_iBS_c5h",
+  "label": "Maskinställare och maskinoperatörer, metallarbete",
+  "words": [
+   "cnc",
+   "svarvare",
+   "operatör",
+   "erfaren",
+   "operatörer",
+   "axelsvarvare"
+  ]
+ },
+ "2947": {
+  "ads": 15,
+  "confidence": 0.75,
+  "group": "vaEp_iBS_c5h",
+  "label": "Maskinställare och maskinoperatörer, metallarbete",
+  "words": [
+   "operatör",
+   "cnc",
+   "maskinoperatör",
+   "laseroperatör",
+   "specialtillverkare",
+   "processoperatörer"
+  ]
+ },
+ "2948": {
+  "ads": 2,
+  "confidence": 0.75,
+  "group": "vaEp_iBS_c5h",
+  "label": "Maskinställare och maskinoperatörer, metallarbete",
+  "words": [
+   "rekryteringsuppdrag",
+   "fleroperatörsvarare",
+   "cnc",
+   "svarvning",
+   "inriktning",
+   "operatörer"
+  ]
+ },
+ "295": {
+  "ads": 2,
+  "confidence": 0.27,
+  "group": "Kxm9_N3V_shF",
+  "label": "Montörer, metall-, gummi- och plastprodukter",
+  "words": [
+   "renrum",
+   "montör",
+   "verkstadsmontörer"
+  ]
+ },
+ "296": {
+  "ads": 27,
+  "confidence": 0.36,
+  "group": "oQUQ_D11_HPx",
+  "label": "Grundskollärare",
+  "words": [
+   "hopsättare",
+   "metall",
+   "verkstadsarbetare",
+   "fagersta",
+   "skyltmakare",
+   "plåtslagare"
+  ]
+ },
+ "2961": {
+  "ads": 15,
+  "confidence": 0.33,
+  "group": "AD3U_cFH_rbe",
+  "label": "Övriga byggnads- och anläggningsarbetare",
+  "words": [
+   "demontör",
+   "rivningsarbetare",
+   "återvinningsverksamhet",
+   "svetsare",
+   "behörighet",
+   "elektronikdemontörer"
+  ]
+ },
+ "2984": {
+  "ads": 7,
+  "confidence": 0.43,
+  "group": "thZP_oR7_WrY",
+  "label": "Ingenjörer och tekniker inom bygg och anläggning",
+  "words": [
+   "anbudsingenjör",
+   "kalkylchef",
+   "projektledare",
+   "kalkylansvarig",
+   "skanska",
+   "teamchef"
+  ]
+ },
+ "2985": {
+  "ads": 68,
+  "confidence": 0.54,
+  "group": "thZP_oR7_WrY",
+  "label": "Ingenjörer och tekniker inom bygg och anläggning",
+  "words": [
+   "kalkylator",
+   "kalkylingenjör",
+   "kalkyl",
+   "projektingenjör",
+   "stora",
+   "skanska"
+  ]
+ },
+ "2986": {
+  "ads": 4,
+  "confidence": 0.25,
+  "group": "thZP_oR7_WrY",
+  "label": "Ingenjörer och tekniker inom bygg och anläggning",
+  "words": [
+   "ekonom",
+   "kvalitetsansvarig",
+   "kalkylator",
+   "nordic",
+   "salesplanner",
+   "electronics"
+  ]
+ },
+ "2992": {
+  "ads": 16,
+  "confidence": 0.29,
+  "group": "K8yg_U4C_gkY",
+  "label": "Ingenjörer och tekniker inom maskinteknik",
+  "words": [
+   "produktionsledare",
+   "produktionsteknik",
+   "ingenjör",
+   "produktionstekniker",
+   "förädlingsansvarig",
+   "produktionsplanerare"
+  ]
+ },
+ "301": {
+  "ads": 38,
+  "confidence": 0.77,
+  "group": "9mJN_VwW_Xjg",
+  "label": "Träarbetare, snickare m.fl.",
+  "words": [
+   "bänksnickare",
+   "kunds",
+   "räkning",
+   "snickare",
+   "montör",
+   "spismontör"
+  ]
+ },
+ "302": {
+  "ads": 3,
+  "confidence": 0.28,
+  "group": "bwnk_nv2_1cR",
+  "label": "Ramppersonal, flyttkarlar och varupåfyllare m.fl.",
+  "words": [
+   "vattentrumma",
+   "montering",
+   "rekryteringsuppdrag",
+   "träindustriarbetare",
+   "byggnadsmontör",
+   "plåtarbetare"
+  ]
+ },
+ "3038": {
+  "ads": 2,
+  "confidence": 0.75,
+  "group": "vaEp_iBS_c5h",
+  "label": "Maskinställare och maskinoperatörer, metallarbete",
+  "words": [
+   "smältverksoperatörer",
+   "operatör"
+  ]
+ },
+ "3046": {
+  "ads": 5,
+  "confidence": 0.44,
+  "group": "EA6o_N1N_QtT",
+  "label": "Idrottstränare och instruktörer m.fl.",
+  "words": [
+   "dykarbiträde",
+   "simlärare",
+   "badvakter",
+   "urval",
+   "dykare"
+  ]
+ },
+ "3047": {
+  "ads": 2,
+  "confidence": 0.29,
+  "group": "bZ4J_riZ_zK6",
+  "label": "Anläggningsarbetare",
+  "words": [
+   "yrkesarbetare",
+   "hantverkare",
+   "grovjobbare",
+   "dykning",
+   "intresserad"
+  ]
+ },
+ "3064": {
+  "ads": 5,
+  "confidence": 0.28,
+  "group": "vaEp_iBS_c5h",
+  "label": "Maskinställare och maskinoperatörer, metallarbete",
+  "words": [
+   "värmebehandlare",
+   "värmebehandlingsoperatörer",
+   "verkstads",
+   "produktionspersonal",
+   "rekryteringsuppdrag"
+  ]
+ },
+ "3085": {
+  "ads": 8,
+  "confidence": 0.45,
+  "group": "ij8k_EwC_zyB",
+  "label": "Ekonomiassistenter m.fl.",
+  "words": [
+   "ekonom",
+   "administratör",
+   "förvaltningsassistent",
+   "ansvar",
+   "gällande",
+   "danmark"
+  ]
+ },
+ "3089": {
+  "ads": 6,
+  "confidence": 0.42,
+  "group": "eQ4M_CNm_ozj",
+  "label": "Övriga kontorsassistenter och sekreterare",
+  "words": [
+   "kyrkokamrer",
+   "kanslist",
+   "kyrkokassör",
+   "ekonom",
+   "kamrer"
+  ]
+ },
+ "309": {
+  "ads": 7,
+  "confidence": 0.26,
+  "group": "Lzpv_ofL_3H5",
+  "label": "Motorfordonsmekaniker och fordonsreparatörer",
+  "words": [
+   "elektronikprovare",
+   "provare",
+   "kvalitetsavdelning",
+   "tekniker",
+   "felsökare"
+  ]
+ },
+ "310": {
+  "ads": 6,
+  "confidence": 0.5,
+  "group": "kLyY_rwr_aJr",
+  "label": "Lager- och terminalpersonal",
+  "words": [
+   "automationsmontör",
+   "studenter",
+   "lager",
+   "industri"
+  ]
+ },
+ "311": {
+  "ads": 2,
+  "confidence": 0.34,
+  "group": "Z8ci_bBE_tmx",
+  "label": "Grundutbildade sjuksköterskor",
+  "words": [
+   "uppdrag",
+   "kabeltestare"
+  ]
+ },
+ "3122": {
+  "ads": 2,
+  "confidence": 0.81,
+  "group": "MYAz_x9m_2LJ",
+  "label": "Systemadministratörer",
+  "words": [
+   "systemadministratör"
+  ]
+ },
+ "315": {
+  "ads": 1,
+  "confidence": 0.43,
+  "group": "vaEp_iBS_c5h",
+  "label": "Maskinställare och maskinoperatörer, metallarbete",
+  "words": [
+   "maskinoperatör"
+  ]
+ },
+ "3193": {
+  "ads": 2,
+  "confidence": 0.97,
+  "group": "XW9L_tA9_WaX",
+  "label": "Elevassistenter m.fl.",
+  "words": [
+   "gymnasiesärskolan",
+   "elevassistent",
+   "vuxendövtolk"
+  ]
+ },
+ "320": {
+  "ads": 3,
+  "confidence": 0.49,
+  "group": "Lrsj_wRZ_sFV",
+  "label": "Övriga djuruppfödare och djurskötare",
+  "words": [
+   "försöksdjurstekniker",
+   "djurvårdare"
+  ]
+ },
+ "3220": {
+  "ads": 4,
+  "confidence": 0.58,
+  "group": "34Tn_BQQ_tfo",
+  "label": "Bildkonstnärer m.fl.",
+  "words": [
+   "konsthantverk",
+   "ledare",
+   "conservator",
+   "konservator",
+   "möbelkonservator"
+  ]
+ },
+ "3230": {
+  "ads": 4,
+  "confidence": 0.8,
+  "group": "34Tn_BQQ_tfo",
+  "label": "Bildkonstnärer m.fl.",
+  "words": [
+   "konservator",
+   "renevator",
+   "dekorationsmåleri",
+   "til",
+   "kund",
+   "avdelingsleder"
+  ]
+ },
+ "3231": {
+  "ads": 4,
+  "confidence": 0.81,
+  "group": "Z8ci_bBE_tmx",
+  "label": "Grundutbildade sjuksköterskor",
+  "words": [
+   "textilkonservator",
+   "sjuksköterskor",
+   "semestervikarierande",
+   "textilvårdare"
+  ]
+ },
+ "3235": {
+  "ads": 9,
+  "confidence": 0.57,
+  "group": "34Tn_BQQ_tfo",
+  "label": "Bildkonstnärer m.fl.",
+  "words": [
+   "textilkonservator",
+   "mattrepartör",
+   "media",
+   "kultur",
+   "design",
+   "konservator"
+  ]
+ },
+ "3440": {
+  "ads": 15,
+  "confidence": 0.63,
+  "group": "34Tn_BQQ_tfo",
+  "label": "Bildkonstnärer m.fl.",
+  "words": [
+   "konservator",
+   "metallkonservator",
+   "arbetsledare",
+   "riksantikvarieämbetet",
+   "kulturvårdare",
+   "projektledare"
+  ]
+ },
+ "3441": {
+  "ads": 1,
+  "confidence": 0.88,
+  "group": "34Tn_BQQ_tfo",
+  "label": "Bildkonstnärer m.fl.",
+  "words": [
+   "byggnadsvårdare",
+   "konservator"
+  ]
+ },
+ "3442": {
+  "ads": 10,
+  "confidence": 0.5,
+  "group": "34Tn_BQQ_tfo",
+  "label": "Bildkonstnärer m.fl.",
+  "words": [
+   "målerikonservator",
+   "konservator",
+   "dnr",
+   "tavelinramning",
+   "praktik",
+   "glasskärning"
+  ]
+ },
+ "3443": {
+  "ads": 3,
+  "confidence": 0.57,
+  "group": "34Tn_BQQ_tfo",
+  "label": "Bildkonstnärer m.fl.",
+  "words": [
+   "skulpturkonservator",
+   "nationalmuseum",
+   "erfaren",
+   "konservator",
+   "skulptörer",
+   "renovering"
+  ]
+ },
+ "3444": {
+  "ads": 3,
+  "confidence": 0.62,
+  "group": "34Tn_BQQ_tfo",
+  "label": "Bildkonstnärer m.fl.",
+  "words": [
+   "tavelkonservator",
+   "tavlemontör",
+   "etnografiska",
+   "konservator",
+   "museet"
+  ]
+ },
+ "3460": {
+  "ads": 3,
+  "confidence": 0.37,
+  "group": "sWzF_6pd_Y6L",
+  "label": "Övriga chefer inom samhällsservice",
+  "words": [
+   "alinea",
+   "frivårdsinspektör",
+   "anstalten",
+   "kriminalvårdsinspektör",
+   "nyköping",
+   "projektledare"
+  ]
+ },
+ "3461": {
+  "ads": 3,
+  "confidence": 0.7,
+  "group": "BWwk_fYX_S5B",
+  "label": "Behandlingsassistenter och socialpedagoger m.fl.",
+  "words": [
+   "vik",
+   "behandlingsassistenter",
+   "behandlingsassistent",
+   "underrättelseroteln",
+   "analytiker"
+  ]
+ },
+ "3469": {
+  "ads": 6,
+  "confidence": 0.3,
+  "group": "DxiF_hTo_b3X",
+  "label": "Handpaketerare och andra fabriksarbetare",
+  "words": [
+   "affärsbud",
+   "erikshjälpen",
+   "distrubutör",
+   "pizzabud",
+   "bud",
+   "packare"
+  ]
+ },
+ "3474": {
+  "ads": 2,
+  "confidence": 0.42,
+  "group": "3MBw_pDA_P2F",
+  "label": "Lastbilsförare m.fl.",
+  "words": [
+   "distributionschaufför",
+   "distributör",
+   "säljande"
+  ]
+ },
+ "3475": {
+  "ads": 251,
+  "confidence": 0.31,
+  "group": "qhbP_JEJ_HtK",
+  "label": "Reklamutdelare och tidningsdistributörer",
+  "words": [
+   "tidningsbud",
+   "chaufför",
+   "tidningsdistributör",
+   "reklamutdelare",
+   "relationsansvarig",
+   "service"
+  ]
+ },
+ "3488": {
+  "ads": 8,
+  "confidence": 0.39,
+  "group": "tPox_ie4_X9X",
+  "label": "Restaurang- och köksbiträden m.fl.",
+  "words": [
+   "dykinstruktör",
+   "medlevare",
+   "naui",
+   "euro",
+   "zone",
+   "divning"
+  ]
+ },
+ "3491": {
+  "ads": 2,
+  "confidence": 0.96,
+  "group": "EA6o_N1N_QtT",
+  "label": "Idrottstränare och instruktörer m.fl.",
+  "words": [
+   "gruppträningsinstruktör",
+   "företagssjukgymnast"
+  ]
+ },
+ "3492": {
+  "ads": 5,
+  "confidence": 0.25,
+  "group": "YKL2_FCB_1yr",
+  "label": "Butikssäljare, fackhandel",
+  "words": [
+   "galopp",
+   "hopptränare",
+   "jockey",
+   "arbetsryttare",
+   "galopphästtränare",
+   "galoppbana"
+  ]
+ },
+ "3493": {
+  "ads": 23,
+  "confidence": 0.47,
+  "group": "bYde_Frc_xcB",
+  "label": "Hotellreceptionister m.fl.",
+  "words": [
+   "golfinstruktör",
+   "golfvärd",
+   "golftränare",
+   "turkiet",
+   "golfpro",
+   "golf"
+  ]
+ },
+ "3497": {
+  "ads": 3141,
+  "confidence": 0.58,
+  "group": "EA6o_N1N_QtT",
+  "label": "Idrottstränare och instruktörer m.fl.",
+  "words": [
+   "knatteskutt",
+   "idrottsledare",
+   "huvudledare",
+   "idrott",
+   "assisterande",
+   "gruppledare"
+  ]
+ },
+ "3498": {
+  "ads": 76,
+  "confidence": 0.26,
+  "group": "EA6o_N1N_QtT",
+  "label": "Idrottstränare och instruktörer m.fl.",
+  "words": [
+   "instruktörer",
+   "instruktör",
+   "gruppträningsinstruktörer",
+   "spinningsinstruktör",
+   "gympaledare",
+   "lärare"
+  ]
+ },
+ "3499": {
+  "ads": 17,
+  "confidence": 0.32,
+  "group": "EA6o_N1N_QtT",
+  "label": "Idrottstränare och instruktörer m.fl.",
+  "words": [
+   "ishockeytränare",
+   "instruktör",
+   "ishockey",
+   "hocheytränare",
+   "lärare",
+   "specialidrott"
+  ]
+ },
+ "3501": {
+  "ads": 100,
+  "confidence": 0.58,
+  "group": "EA6o_N1N_QtT",
+  "label": "Idrottstränare och instruktörer m.fl.",
+  "words": [
+   "ridinstruktör",
+   "ridlärare",
+   "ridskolechef",
+   "instruktör",
+   "hästskötare",
+   "ridledare"
+  ]
+ },
+ "3502": {
+  "ads": 263,
+  "confidence": 0.83,
+  "group": "EA6o_N1N_QtT",
+  "label": "Idrottstränare och instruktörer m.fl.",
+  "words": [
+   "ridlärare",
+   "ridinstruktör",
+   "ridskolechef",
+   "ridklubb",
+   "instruktör",
+   "gårdsassistent"
+  ]
+ },
+ "3503": {
+  "ads": 743,
+  "confidence": 0.36,
+  "group": "EA6o_N1N_QtT",
+  "label": "Idrottstränare och instruktörer m.fl.",
+  "words": [
+   "simlärare",
+   "babysiminstruktör",
+   "baby",
+   "instruktör",
+   "minisim",
+   "simlärarassistent"
+  ]
+ },
+ "3504": {
+  "ads": 11,
+  "confidence": 0.47,
+  "group": "EA6o_N1N_QtT",
+  "label": "Idrottstränare och instruktörer m.fl.",
+  "words": [
+   "skidlärare",
+   "tränare",
+   "skidskola",
+   "snowboardlärare",
+   "instruktör",
+   "specialidrott"
+  ]
+ },
+ "3508": {
+  "ads": 2,
+  "confidence": 0.31,
+  "group": "pok1_ipJ_yzD",
+  "label": "Socialsekreterare",
+  "words": [
+   "intendent",
+   "fullerö",
+   "stockholms",
+   "korpen",
+   "län",
+   "utvecklingskonsulent"
+  ]
+ },
+ "3510": {
+  "ads": 61,
+  "confidence": 0.88,
+  "group": "EA6o_N1N_QtT",
+  "label": "Idrottstränare och instruktörer m.fl.",
+  "words": [
+   "tennistränare",
+   "tennis",
+   "academy",
+   "mitt",
+   "city",
+   "tränare"
+  ]
+ },
+ "3511": {
+  "ads": 14,
+  "confidence": 0.25,
+  "group": "P7Ay_ooF_pri",
+  "label": "Övriga bil-, motorcykel- och cykelförare",
+  "words": [
+   "travtränare",
+   "rider",
+   "mindre",
+   "travstall",
+   "stallhjälp",
+   "stallförman"
+  ]
+ },
+ "3513": {
+  "ads": 527,
+  "confidence": 0.47,
+  "group": "EA6o_N1N_QtT",
+  "label": "Idrottstränare och instruktörer m.fl.",
+  "words": [
+   "gruppträningsinstruktör",
+   "gruppträningsinstruktörer",
+   "instruktör",
+   "instruktörer",
+   "träningsträff",
+   "gym"
+  ]
+ },
+ "3585": {
+  "ads": 1,
+  "confidence": 0.44,
+  "group": "Lzpv_ofL_3H5",
+  "label": "Motorfordonsmekaniker och fordonsreparatörer",
+  "words": [
+   "servicetekniker",
+   "hörselvårdstekniker"
+  ]
+ },
+ "3848": {
+  "ads": 8,
+  "confidence": 0.3,
+  "group": "CSUf_ZVM_a7Z",
+  "label": "Inredare, dekoratörer och scenografer m.fl.",
+  "words": [
+   "visual",
+   "merchandiser",
+   "butik",
+   "dekoratör",
+   "timmar",
+   "veckan"
+  ]
+ },
+ "3852": {
+  "ads": 21,
+  "confidence": 0.31,
+  "group": "sq3e_WVv_Fjd",
+  "label": "Personliga assistenter",
+  "words": [
+   "dekoratör",
+   "utställningstekniker",
+   "museitekniker",
+   "lyftet",
+   "utställning",
+   "avdelningschef"
+  ]
+ },
+ "393": {
+  "ads": 1,
+  "confidence": 0.39,
+  "group": "df9D_e6y_61z",
+  "label": "Fastighetsskötare",
+  "words": [
+   "slott",
+   "vaktmästare",
+   "hovdala"
+  ]
+ },
+ "3973": {
+  "ads": 4,
+  "confidence": 0.33,
+  "group": "vaEp_iBS_c5h",
+  "label": "Maskinställare och maskinoperatörer, metallarbete",
+  "words": [
+   "tegelvaruarbetare",
+   "industriarbetare"
+  ]
+ },
+ "3989": {
+  "ads": 1,
+  "confidence": 0.4,
+  "group": "sq3e_WVv_Fjd",
+  "label": "Personliga assistenter",
+  "words": [
+   "plusrådgivare",
+   "bankmän",
+   "personliga",
+   "chef"
+  ]
+ },
+ "4052": {
+  "ads": 12,
+  "confidence": 0.9,
+  "group": "kDnq_Q98_sD3",
+  "label": "Fartygsbefäl m.fl.",
+  "words": [
+   "befälhavare",
+   "färjförare",
+   "linfärja",
+   "rek",
+   "färjskötare",
+   "dieselfartyg"
+  ]
+ },
+ "4083": {
+  "ads": 13,
+  "confidence": 0.53,
+  "group": "idjo_2Wr_a3E",
+  "label": "Saneringsarbetare m.fl.",
+  "words": [
+   "sanerare",
+   "fukttekniker",
+   "rekryteringsträff",
+   "extrapersonal",
+   "under",
+   "semesterersättare"
+  ]
+ },
+ "4094": {
+  "ads": 2,
+  "confidence": 0.38,
+  "group": "KttZ_Skc_bMR",
+  "label": "Underhållsmekaniker och maskinreparatörer",
+  "words": [
+   "underhållstekniker",
+   "refnr",
+   "mekaniker",
+   "tekniker"
+  ]
+ },
+ "4102": {
+  "ads": 1,
+  "confidence": 0.45,
+  "group": "MSnK_3Z8_4qA",
+  "label": "Verktygsmakare",
+  "words": [
+   "operatör",
+   "form",
+   "verktygsmakare",
+   "nässjö"
+  ]
+ },
+ "4176": {
+  "ads": 1,
+  "confidence": 0.31,
+  "group": "MYAz_x9m_2LJ",
+  "label": "Systemadministratörer",
+  "words": [
+   "studentjobb",
+   "bevakare"
+  ]
+ },
+ "4192": {
+  "ads": 218,
+  "confidence": 0.28,
+  "group": "thZP_oR7_WrY",
+  "label": "Ingenjörer och tekniker inom bygg och anläggning",
+  "words": [
+   "projektledare",
+   "bygg",
+   "planeringsingenjör",
+   "kalkylator",
+   "projektingenjör",
+   "planerare"
+  ]
+ },
+ "4206": {
+  "ads": 43,
+  "confidence": 0.48,
+  "group": "bZ4J_riZ_zK6",
+  "label": "Anläggningsarbetare",
+  "words": [
+   "bantekniker",
+   "tekniker",
+   "system",
+   "järnvägstekniska",
+   "besiktningsman",
+   "ban"
+  ]
+ },
+ "430": {
+  "ads": 2,
+  "confidence": 0.93,
+  "group": "UGgc_Vm9_Bog",
+  "label": "Lokförare",
+  "words": [
+   "lokförare",
+   "godståg"
+  ]
+ },
+ "4375": {
+  "ads": 517,
+  "confidence": 0.38,
+  "group": "9mJN_VwW_Xjg",
+  "label": "Träarbetare, snickare m.fl.",
+  "words": [
+   "träindustriarbetare",
+   "produktionspersonal",
+   "industriarbetare",
+   "rekryteringsuppdrag",
+   "träindustri",
+   "internorder"
+  ]
+ },
+ "4376": {
+  "ads": 27,
+  "confidence": 0.26,
+  "group": "vaEp_iBS_c5h",
+  "label": "Maskinställare och maskinoperatörer, metallarbete",
+  "words": [
+   "trämaskinskötare",
+   "urval",
+   "industriarbetare",
+   "urvalsorder",
+   "maskinsnickare",
+   "maskinskötare"
+  ]
+ },
+ "4377": {
+  "ads": 3,
+  "confidence": 0.39,
+  "group": "vaEp_iBS_c5h",
+  "label": "Maskinställare och maskinoperatörer, metallarbete",
+  "words": [
+   "trämaskinställare",
+   "cnc",
+   "operatör",
+   "montör",
+   "maskinsnickare",
+   "hyvlare"
+  ]
+ },
+ "4390": {
+  "ads": 5,
+  "confidence": 0.42,
+  "group": "YKL2_FCB_1yr",
+  "label": "Butikssäljare, fackhandel",
+  "words": [
+   "tillskärare",
+   "textiler",
+   "maskinfilter",
+   "tyger",
+   "möbler",
+   "apr"
+  ]
+ },
+ "4394": {
+  "ads": 1,
+  "confidence": 0.34,
+  "group": "Z8ci_bBE_tmx",
+  "label": "Grundutbildade sjuksköterskor",
+  "words": [
+   "uppdrag",
+   "kartongmaskinskötare"
+  ]
+ },
+ "4422": {
+  "ads": 1,
+  "confidence": 0.36,
+  "group": "br6a_VVS_V3y",
+  "label": "Övriga jurister",
+  "words": [
+   "jurister"
+  ]
+ },
+ "4428": {
+  "ads": 1,
+  "confidence": 0.26,
+  "group": "vPP6_rsw_dck",
+  "label": "Planerare och utredare m.fl.",
+  "words": [
+   "gårda",
+   "nfc",
+   "arbetsskador",
+   "handläggare"
+  ]
+ },
+ "445": {
+  "ads": 21,
+  "confidence": 0.49,
+  "group": "Z6TY_xDf_Yup",
+  "label": "Städare",
+  "words": [
+   "gruppledare",
+   "städare",
+   "arbetsledaraspirant",
+   "teamledare",
+   "lokalvård",
+   "byggstädning"
+  ]
+ },
+ "4502": {
+  "ads": 2,
+  "confidence": 0.59,
+  "group": "oXSW_fbY_XrY",
+  "label": "Företagssäljare",
+  "words": [
+   "nordöstra",
+   "skåne",
+   "lantbruk",
+   "säljare",
+   "lantmännen",
+   "account"
+  ]
+ },
+ "4520": {
+  "ads": 21,
+  "confidence": 0.28,
+  "group": "NNK9_F1o_pK5",
+  "label": "Doktorander",
+  "words": [
+   "position",
+   "doktorand",
+   "projektledare",
+   "riksskogstaxeringen",
+   "research",
+   "region"
+  ]
+ },
+ "4523": {
+  "ads": 6,
+  "confidence": 0.33,
+  "group": "puim_6PY_DGj",
+  "label": "Miljö- och hälsoskyddsinspektörer",
+  "words": [
+   "handläggare",
+   "skogs",
+   "lantbruksarbetare",
+   "kontrollanter",
+   "jordbruksstöden",
+   "fältförsökstekniker"
+  ]
+ },
+ "453": {
+  "ads": 22,
+  "confidence": 0.41,
+  "group": "Z6TY_xDf_Yup",
+  "label": "Städare",
+  "words": [
+   "flygplansstädare",
+   "kort",
+   "bagagehantering",
+   "arlanda",
+   "lokalvårdare",
+   "körkort"
+  ]
+ },
+ "4562": {
+  "ads": 45,
+  "confidence": 0.6,
+  "group": "2xQ4_4kh_kTZ",
+  "label": "Trädgårdsodlare",
+  "words": [
+   "växthusarbetare",
+   "växthusarbete",
+   "säsongsanställning",
+   "direktförslag",
+   "salladsskördare",
+   "internt"
+  ]
+ },
+ "457": {
+  "ads": 6,
+  "confidence": 0.69,
+  "group": "Z6TY_xDf_Yup",
+  "label": "Städare",
+  "words": [
+   "lokalvårdare",
+   "hyttvärdinna",
+   "jungman",
+   "kanal",
+   "göta",
+   "hyttvärdinnor"
+  ]
+ },
+ "4573": {
+  "ads": 183,
+  "confidence": 0.89,
+  "group": "XBh3_Xrm_C4R",
+  "label": "Trädgårdsanläggare m.fl.",
+  "words": [
+   "kyrkogårdsarbetare",
+   "säsong",
+   "rekryteringsuppdrag",
+   "säsongsanställning",
+   "kyrkogårdsarbete",
+   "skolungdom"
+  ]
+ },
+ "4574": {
+  "ads": 153,
+  "confidence": 0.48,
+  "group": "XBh3_Xrm_C4R",
+  "label": "Trädgårdsanläggare m.fl.",
+  "words": [
+   "kyrkogårdsvaktmästare",
+   "kyrkogårdsarbetare",
+   "kyrko",
+   "kyrkvaktmästare",
+   "kyrkovaktmästare",
+   "kyrk"
+  ]
+ },
+ "4576": {
+  "ads": 54,
+  "confidence": 0.48,
+  "group": "XBh3_Xrm_C4R",
+  "label": "Trädgårdsanläggare m.fl.",
+  "words": [
+   "trädgårdsanläggningsarbetare",
+   "trädgårdsanläggare",
+   "mark",
+   "trädgård",
+   "trädgårdsarbetare",
+   "mur"
+  ]
+ },
+ "4582": {
+  "ads": 1,
+  "confidence": 0.42,
+  "group": "k3R3_UkC_nK2",
+  "label": "Odlare av jordbruksväxter, frukt och bär",
+  "words": [
+   "lantarbetare"
+  ]
+ },
+ "4583": {
+  "ads": 1,
+  "confidence": 0.46,
+  "group": "KYmy_iqC_xiQ",
+  "label": "Uppfödare och skötare av lantbrukets husdjur",
+  "words": [
+   "arabstuteri",
+   "helger",
+   "kullatorp",
+   "hästskötare"
+  ]
+ },
+ "4585": {
+  "ads": 4,
+  "confidence": 0.73,
+  "group": "KYmy_iqC_xiQ",
+  "label": "Uppfödare och skötare av lantbrukets husdjur",
+  "words": [
+   "grisskötare",
+   "djurskötare",
+   "smågrisproduktion",
+   "svinuppfödare"
+  ]
+ },
+ "4599": {
+  "ads": 6,
+  "confidence": 0.29,
+  "group": "EA6o_N1N_QtT",
+  "label": "Idrottstränare och instruktörer m.fl.",
+  "words": [
+   "stallansvarig",
+   "stallförman",
+   "stallarbetare",
+   "instruktör",
+   "stallskötsel"
+  ]
+ },
+ "4603": {
+  "ads": 1,
+  "confidence": 0.73,
+  "group": "KYmy_iqC_xiQ",
+  "label": "Uppfödare och skötare av lantbrukets husdjur",
+  "words": [
+   "djurskötare",
+   "hönserimedarbetare"
+  ]
+ },
+ "4605": {
+  "ads": 1,
+  "confidence": 0.73,
+  "group": "KYmy_iqC_xiQ",
+  "label": "Uppfödare och skötare av lantbrukets husdjur",
+  "words": [
+   "djurskötare"
+  ]
+ },
+ "4614": {
+  "ads": 1,
+  "confidence": 0.35,
+  "group": "sq3e_WVv_Fjd",
+  "label": "Personliga assistenter",
+  "words": [
+   "husdjurstekniker",
+   "vännäs",
+   "västerbotten"
+  ]
+ },
+ "4615": {
+  "ads": 1,
+  "confidence": 0.73,
+  "group": "KYmy_iqC_xiQ",
+  "label": "Uppfödare och skötare av lantbrukets husdjur",
+  "words": [
+   "djurskötare",
+   "seminör"
+  ]
+ },
+ "4648": {
+  "ads": 30,
+  "confidence": 0.76,
+  "group": "ayQ4_G3W_A2w",
+  "label": "Övrig bevaknings- och säkerhetspersonal",
+  "words": [
+   "badmästare",
+   "badvaktmästare",
+   "vik",
+   "friskv",
+   "idrottshallsarbetare",
+   "bad"
+  ]
+ },
+ "4649": {
+  "ads": 10,
+  "confidence": 0.74,
+  "group": "df9D_e6y_61z",
+  "label": "Fastighetsskötare",
+  "words": [
+   "idrottsplatsarbetare",
+   "idrottsplatsvaktmästare",
+   "vik"
+  ]
+ },
+ "4672": {
+  "ads": 3,
+  "confidence": 0.28,
+  "group": "Z8ci_bBE_tmx",
+  "label": "Grundutbildade sjuksköterskor",
+  "words": [
+   "reprotekniker",
+   "reprooperatör",
+   "sommar"
+  ]
+ },
+ "469": {
+  "ads": 114,
+  "confidence": 0.27,
+  "group": "tPox_ie4_X9X",
+  "label": "Restaurang- och köksbiträden m.fl.",
+  "words": [
+   "barpersonal",
+   "barbiträde",
+   "cafébiträde",
+   "kassabiträde",
+   "bar",
+   "extra"
+  ]
+ },
+ "473": {
+  "ads": 90,
+  "confidence": 0.42,
+  "group": "tPox_ie4_X9X",
+  "label": "Restaurang- och köksbiträden m.fl.",
+  "words": [
+   "frukostbiträde",
+   "frukostpersonal",
+   "frukost",
+   "frukostvärdinna",
+   "personal",
+   "medarbetare"
+  ]
+ },
+ "4741": {
+  "ads": 8,
+  "confidence": 0.46,
+  "group": "Y6yY_SuR_hVh",
+  "label": "Övriga ekonomer",
+  "words": [
+   "konsumentsekreterare",
+   "budget",
+   "skuldrådgivare",
+   "kunsumentsekreterare",
+   "konsumentvägledare"
+  ]
+ },
+ "4751": {
+  "ads": 2,
+  "confidence": 0.42,
+  "group": "P7eS_nP8_3dy",
+  "label": "Forskarassistenter m.fl.",
+  "words": [
+   "forskningsassistent"
+  ]
+ },
+ "478": {
+  "ads": 279,
+  "confidence": 0.4,
+  "group": "BStc_SJh_DKG",
+  "label": "Kockar och kallskänkor",
+  "words": [
+   "kallskänka",
+   "kallskänksbiträde",
+   "cafebiträde",
+   "cafe",
+   "restaurangbiträde",
+   "konditoribiträde"
+  ]
+ },
+ "480": {
+  "ads": 569,
+  "confidence": 0.36,
+  "group": "tPox_ie4_X9X",
+  "label": "Restaurang- och köksbiträden m.fl.",
+  "words": [
+   "kassabiträde",
+   "restaurang",
+   "restaurangbiträde",
+   "cafebiträde",
+   "cafe",
+   "biträde"
+  ]
+ },
+ "4811": {
+  "ads": 20,
+  "confidence": 0.52,
+  "group": "3J38_DNz_YKK",
+  "label": "Fotografer",
+  "words": [
+   "fotograf",
+   "netclips",
+   "filmare",
+   "seclink",
+   "lokal",
+   "medhjälpare"
+  ]
+ },
+ "482": {
+  "ads": 277,
+  "confidence": 0.49,
+  "group": "BStc_SJh_DKG",
+  "label": "Kockar och kallskänkor",
+  "words": [
+   "kockbiträde",
+   "kock",
+   "köksbiträde",
+   "kökspersonal",
+   "restaurangbiträde",
+   "kokerska"
+  ]
+ },
+ "4836": {
+  "ads": 19,
+  "confidence": 0.64,
+  "group": "XeJB_bkn_mRn",
+  "label": "Tryckare",
+  "words": [
+   "tryckare",
+   "kuverttryckare",
+   "tryckerimedarbetare",
+   "operatör",
+   "kuvertryckare",
+   "kuvertteamet"
+  ]
+ },
+ "4837": {
+  "ads": 2,
+  "confidence": 0.27,
+  "group": "thZP_oR7_WrY",
+  "label": "Ingenjörer och tekniker inom bygg och anläggning",
+  "words": [
+   "projektledare"
+  ]
+ },
+ "4857": {
+  "ads": 4,
+  "confidence": 0.5,
+  "group": "3MBw_pDA_P2F",
+  "label": "Lastbilsförare m.fl.",
+  "words": [
+   "incheckningspersonal",
+   "ramppersonal",
+   "intresserad",
+   "att",
+   "arbeta",
+   "ballongflygning"
+  ]
+ },
+ "4861": {
+  "ads": 1,
+  "confidence": 0.71,
+  "group": "1Nwn_GYH_wkH",
+  "label": "Fin-, inrednings- och möbelsnickare",
+  "words": [
+   "bildhuggare",
+   "möbelsnickare"
+  ]
+ },
+ "4864": {
+  "ads": 1,
+  "confidence": 0.44,
+  "group": "1Nwn_GYH_wkH",
+  "label": "Fin-, inrednings- och möbelsnickare",
+  "words": [
+   "finsnickare"
+  ]
+ },
+ "4867": {
+  "ads": 13,
+  "confidence": 0.45,
+  "group": "9mJN_VwW_Xjg",
+  "label": "Träarbetare, snickare m.fl.",
+  "words": [
+   "möbelrestauratör",
+   "allo",
+   "allt",
+   "möbelrenoverare",
+   "möbelrestaurerare",
+   "fininrednings"
+  ]
+ },
+ "4872": {
+  "ads": 2,
+  "confidence": 0.62,
+  "group": "dKUb_KBP_mw3",
+  "label": "Lackerare och industrimålare",
+  "words": [
+   "ytbehandlare",
+   "reparationssnickare"
+  ]
+ },
+ "489": {
+  "ads": 1036,
+  "confidence": 0.37,
+  "group": "UjoW_meY_Zwt",
+  "label": "Hovmästare och servitörer",
+  "words": [
+   "serveringsbiträde",
+   "serveringspersonal",
+   "servitris",
+   "medarbetare",
+   "mcdonalds",
+   "servering"
+  ]
+ },
+ "4899": {
+  "ads": 11,
+  "confidence": 0.48,
+  "group": "pwRH_MT1_8nR",
+  "label": "Kundtjänstpersonal",
+  "words": [
+   "malta",
+   "jobbmöjlighet",
+   "svensktalande",
+   "annonsgranskare",
+   "kunskaper",
+   "flytande"
+  ]
+ },
+ "490": {
+  "ads": 503,
+  "confidence": 0.37,
+  "group": "tPox_ie4_X9X",
+  "label": "Restaurang- och köksbiträden m.fl.",
+  "words": [
+   "skolmåltidsbiträde",
+   "måltidsbiträde",
+   "ekonomibiträde",
+   "kök",
+   "köksbiträde",
+   "förskola"
+  ]
+ },
+ "4912": {
+  "ads": 207,
+  "confidence": 0.4,
+  "group": "pwRH_MT1_8nR",
+  "label": "Kundtjänstpersonal",
+  "words": [
+   "kundtjänstmedarbetare",
+   "orderadministratör",
+   "ordermottagare",
+   "order",
+   "orderberedare",
+   "kundservicemedarbetare"
+  ]
+ },
+ "4913": {
+  "ads": 11,
+  "confidence": 0.47,
+  "group": "pwRH_MT1_8nR",
+  "label": "Kundtjänstpersonal",
+  "words": [
+   "kundtjänstmedarbetare",
+   "controller",
+   "finsk",
+   "order",
+   "finland",
+   "norge"
+  ]
+ },
+ "4914": {
+  "ads": 123,
+  "confidence": 0.35,
+  "group": "pwRH_MT1_8nR",
+  "label": "Kundtjänstpersonal",
+  "words": [
+   "orderadministratör",
+   "order",
+   "kundtjänst",
+   "orderhandläggare",
+   "företag",
+   "kundtjänstmedarbetare"
+  ]
+ },
+ "4915": {
+  "ads": 69,
+  "confidence": 0.36,
+  "group": "pwRH_MT1_8nR",
+  "label": "Kundtjänstpersonal",
+  "words": [
+   "kundtjänstmedarbetare",
+   "orderadministratör",
+   "administratör",
+   "orderkontorist",
+   "ordermottagare",
+   "kundservice"
+  ]
+ },
+ "4916": {
+  "ads": 5,
+  "confidence": 0.28,
+  "group": "83wV_GJa_vMd",
+  "label": "Marknadsundersökare och intervjuare",
+  "words": [
+   "kontrollant",
+   "process",
+   "inköpsassistent",
+   "kvalite",
+   "provkörning",
+   "shopper"
+  ]
+ },
+ "4936": {
+  "ads": 1,
+  "confidence": 0.38,
+  "group": "7mn2_kA9_ftp",
+  "label": "Driftchefer inom bygg, anläggning och gruva",
+  "words": [
+   "filialchef"
+  ]
+ },
+ "494": {
+  "ads": 65,
+  "confidence": 0.41,
+  "group": "KwVo_sQu_G2e",
+  "label": "Förare av jordbruks- och skogsmaskiner",
+  "words": [
+   "traktorförare",
+   "lantbruk",
+   "medarbetare",
+   "maskinförare",
+   "lantarbetare",
+   "reparatör"
+  ]
+ },
+ "4988": {
+  "ads": 21,
+  "confidence": 0.43,
+  "group": "957L_kZK_rHZ",
+  "label": "Transportledare och transportsamordnare",
+  "words": [
+   "driftledare",
+   "trafikledare",
+   "trafikplanerare",
+   "duktig",
+   "nobina",
+   "arriva"
+  ]
+ },
+ "4990": {
+  "ads": 1,
+  "confidence": 0.48,
+  "group": "7fNG_sve_JWU",
+  "label": "Skötare",
+  "words": [
+   "skötare",
+   "event",
+   "aktivitets"
+  ]
+ },
+ "4991": {
+  "ads": 22,
+  "confidence": 0.27,
+  "group": "3MBw_pDA_P2F",
+  "label": "Lastbilsförare m.fl.",
+  "words": [
+   "godsexpeditör",
+   "chaufför",
+   "vill",
+   "västerås",
+   "jobba",
+   "logistikadministratörer"
+  ]
+ },
+ "4999": {
+  "ads": 14,
+  "confidence": 0.31,
+  "group": "ayQ4_G3W_A2w",
+  "label": "Övrig bevaknings- och säkerhetspersonal",
+  "words": [
+   "trafikassistent",
+   "administratör",
+   "vid",
+   "vägarbetare",
+   "behov",
+   "trafikledarassistent"
+  ]
+ },
+ "5004": {
+  "ads": 1,
+  "confidence": 0.82,
+  "group": "thZP_oR7_WrY",
+  "label": "Ingenjörer och tekniker inom bygg och anläggning",
+  "words": [
+   "trafikingenjör",
+   "dreamwork"
+  ]
+ },
+ "5008": {
+  "ads": 27,
+  "confidence": 0.25,
+  "group": "wQ1E_Bzk_ZyA",
+  "label": "Svetsare och gasskärare",
+  "words": [
+   "ådalsbanan",
+   "mittbanan",
+   "signaltekniker",
+   "spårsvetsare",
+   "kontaktledningstekniker",
+   "omgående"
+  ]
+ },
+ "5018": {
+  "ads": 3,
+  "confidence": 0.4,
+  "group": "fWrt_sLg_koW",
+  "label": "Elektronikreparatörer och kommunikationselektriker m.fl.",
+  "words": [
+   "arbetsledare",
+   "stationsverksamheten",
+   "flygplatsman",
+   "signaltekniker"
+  ]
+ },
+ "5019": {
+  "ads": 7,
+  "confidence": 0.48,
+  "group": "kLyY_rwr_aJr",
+  "label": "Lager- och terminalpersonal",
+  "words": [
+   "lagerarbetare",
+   "mottagningsansvarig",
+   "världens",
+   "jobb",
+   "lagerförman",
+   "glassigaste"
+  ]
+ },
+ "5020": {
+  "ads": 23,
+  "confidence": 0.39,
+  "group": "kLyY_rwr_aJr",
+  "label": "Lager- och terminalpersonal",
+  "words": [
+   "teamledare",
+   "arbetsledare",
+   "lageransvarig",
+   "lagerarbetare",
+   "lager",
+   "expeditionsansvarig"
+  ]
+ },
+ "5023": {
+  "ads": 95,
+  "confidence": 0.32,
+  "group": "kLyY_rwr_aJr",
+  "label": "Lager- och terminalpersonal",
+  "words": [
+   "lageransvarig",
+   "arbetsledare",
+   "lager",
+   "lagerförman",
+   "lagerföreståndare",
+   "teamledare"
+  ]
+ },
+ "5031": {
+  "ads": 28,
+  "confidence": 0.32,
+  "group": "Lzpv_ofL_3H5",
+  "label": "Motorfordonsmekaniker och fordonsreparatörer",
+  "words": [
+   "reservdelschef",
+   "reservdelsansvarig",
+   "butiks",
+   "internationell",
+   "reservdelar",
+   "godsmottagnin"
+  ]
+ },
+ "5035": {
+  "ads": 1,
+  "confidence": 0.33,
+  "group": "oXSW_fbY_XrY",
+  "label": "Företagssäljare",
+  "words": [
+   "sales",
+   "representative",
+   "traffic"
+  ]
+ },
+ "5041": {
+  "ads": 1,
+  "confidence": 0.45,
+  "group": "eQ4M_CNm_ozj",
+  "label": "Övriga kontorsassistenter och sekreterare",
+  "words": [
+   "administrativ",
+   "stationsansvarig"
+  ]
+ },
+ "5084": {
+  "ads": 21,
+  "confidence": 0.39,
+  "group": "oXSW_fbY_XrY",
+  "label": "Företagssäljare",
+  "words": [
+   "account",
+   "bästa",
+   "key",
+   "marknadens",
+   "manager",
+   "butikschef"
+  ]
+ },
+ "5086": {
+  "ads": 18,
+  "confidence": 0.28,
+  "group": "oXSW_fbY_XrY",
+  "label": "Företagssäljare",
+  "words": [
+   "manager",
+   "sales",
+   "exportansvarig",
+   "area",
+   "export",
+   "exportchef"
+  ]
+ },
+ "5088": {
+  "ads": 34,
+  "confidence": 0.34,
+  "group": "oXSW_fbY_XrY",
+  "label": "Företagssäljare",
+  "words": [
+   "sales",
+   "manager",
+   "director",
+   "försäljningsdirektör",
+   "business",
+   "account"
+  ]
+ },
+ "5091": {
+  "ads": 14,
+  "confidence": 0.29,
+  "group": "WX67_Pfb_WMN",
+  "label": "Marknadsanalytiker och marknadsförare m.fl.",
+  "words": [
+   "marketing",
+   "director",
+   "marknadsdirektör",
+   "development",
+   "global",
+   "klubbdirektör"
+  ]
+ },
+ "5112": {
+  "ads": 15,
+  "confidence": 0.41,
+  "group": "85cq_6uK_4cK",
+  "label": "Inköpare och upphandlare",
+  "words": [
+   "inköpsdirektör",
+   "inköpare",
+   "sourcing",
+   "manager",
+   "inköp",
+   "inköpsprocessutvecklare"
+  ]
+ },
+ "5139": {
+  "ads": 1,
+  "confidence": 0.55,
+  "group": "bwnk_nv2_1cR",
+  "label": "Ramppersonal, flyttkarlar och varupåfyllare m.fl.",
+  "words": [
+   "montering",
+   "handpaketering"
+  ]
+ },
+ "5183": {
+  "ads": 219,
+  "confidence": 0.35,
+  "group": "oQUQ_D11_HPx",
+  "label": "Grundskollärare",
+  "words": [
+   "lärare",
+   "sfi",
+   "svenska",
+   "invandrare",
+   "andraspråk",
+   "språk"
+  ]
+ },
+ "5188": {
+  "ads": 36,
+  "confidence": 0.28,
+  "group": "3MBw_pDA_P2F",
+  "label": "Lastbilsförare m.fl.",
+  "words": [
+   "brädgårdsarbetare",
+   "rekryteringsuppdrag",
+   "säljare",
+   "annonseras",
+   "bygghandel",
+   "chaufför"
+  ]
+ },
+ "5197": {
+  "ads": 3,
+  "confidence": 0.66,
+  "group": "vaEp_iBS_c5h",
+  "label": "Maskinställare och maskinoperatörer, metallarbete",
+  "words": [
+   "torkskötare",
+   "torkansvarig",
+   "operatör",
+   "avdelningen",
+   "virkestork"
+  ]
+ },
+ "5272": {
+  "ads": 3,
+  "confidence": 0.4,
+  "group": "kLyY_rwr_aJr",
+  "label": "Lager- och terminalpersonal",
+  "words": [
+   "hissmontörer",
+   "manpower",
+   "lagerarbetare",
+   "truckförare",
+   "ledarskap",
+   "intresse"
+  ]
+ },
+ "5275": {
+  "ads": 11,
+  "confidence": 0.7,
+  "group": "bwnk_nv2_1cR",
+  "label": "Ramppersonal, flyttkarlar och varupåfyllare m.fl.",
+  "words": [
+   "expressarbetare",
+   "medarbetare",
+   "flyttpersonal",
+   "flexibla",
+   "personal",
+   "extra"
+  ]
+ },
+ "5276": {
+  "ads": 9,
+  "confidence": 0.3,
+  "group": "P7Ay_ooF_pri",
+  "label": "Övriga bil-, motorcykel- och cykelförare",
+  "words": [
+   "kort",
+   "budbilschaufför",
+   "adr",
+   "semestervik",
+   "medarbetare",
+   "flyttavdelningen"
+  ]
+ },
+ "5282": {
+  "ads": 12,
+  "confidence": 0.43,
+  "group": "bwnk_nv2_1cR",
+  "label": "Ramppersonal, flyttkarlar och varupåfyllare m.fl.",
+  "words": [
+   "hjälplastare",
+   "bärhjälp",
+   "möbler",
+   "vid",
+   "leverans",
+   "ikea"
+  ]
+ },
+ "5311": {
+  "ads": 141,
+  "confidence": 0.54,
+  "group": "DJh5_yyF_hEM",
+  "label": "Mjukvaru- och systemutvecklare m.fl.",
+  "words": [
+   "application",
+   "applikationsutvecklare",
+   "utvecklare",
+   "developer",
+   "applikationskonsult",
+   "java"
+  ]
+ },
+ "5347": {
+  "ads": 366,
+  "confidence": 0.32,
+  "group": "s1Qk_o98_2o1",
+  "label": "Butikssäljare, dagligvaror",
+  "words": [
+   "butiksbiträde",
+   "säljare",
+   "stormarknad",
+   "butikssäljare",
+   "butiksmedarbetare",
+   "medarbetare"
+  ]
+ },
+ "5355": {
+  "ads": 979,
+  "confidence": 0.27,
+  "group": "s1Qk_o98_2o1",
+  "label": "Butikssäljare, dagligvaror",
+  "words": [
+   "säljare",
+   "butikssäljare",
+   "sommarpersonal",
+   "systembolaget",
+   "butiksmedarbetare",
+   "ica"
+  ]
+ },
+ "5356": {
+  "ads": 1075,
+  "confidence": 0.38,
+  "group": "s1Qk_o98_2o1",
+  "label": "Butikssäljare, dagligvaror",
+  "words": [
+   "sommarpersonal",
+   "butiksmedarbetare",
+   "butikspersonal",
+   "butikssäljare",
+   "butiksbiträde",
+   "livsmedelsaffär"
+  ]
+ },
+ "536": {
+  "ads": 13,
+  "confidence": 0.91,
+  "group": "3MBw_pDA_P2F",
+  "label": "Lastbilsförare m.fl.",
+  "words": [
+   "dumperförare",
+   "dumpersförare",
+   "internorder",
+   "chaufförer"
+  ]
+ },
+ "5360": {
+  "ads": 134,
+  "confidence": 0.58,
+  "group": "DJh5_yyF_hEM",
+  "label": "Mjukvaru- och systemutvecklare m.fl.",
+  "words": [
+   "webbutvecklare",
+   "utvecklare",
+   "webbprogrammerare",
+   "programmerare",
+   "net",
+   "web"
+  ]
+ },
+ "5374": {
+  "ads": 71,
+  "confidence": 0.29,
+  "group": "SgNH_hag_n9D",
+  "label": "Journalister m.fl.",
+  "words": [
+   "mediasäljare",
+   "reporter",
+   "säljare",
+   "annonssäljare",
+   "media",
+   "butiksreklam"
+  ]
+ },
+ "5376": {
+  "ads": 509,
+  "confidence": 0.26,
+  "group": "pwRH_MT1_8nR",
+  "label": "Kundtjänstpersonal",
+  "words": [
+   "kommunikatör",
+   "telefonkommunikatör",
+   "kommunikatörer",
+   "säljare",
+   "kundtjänstmedarbetare",
+   "telekommunikatör"
+  ]
+ },
+ "5382": {
+  "ads": 37,
+  "confidence": 0.39,
+  "group": "bYde_Frc_xcB",
+  "label": "Hotellreceptionister m.fl.",
+  "words": [
+   "hotel",
+   "hotellvärd",
+   "doorman",
+   "nattportier",
+   "porter",
+   "piccolo"
+  ]
+ },
+ "5387": {
+  "ads": 676,
+  "confidence": 0.6,
+  "group": "7pz9_eY9_D2s",
+  "label": "Vårdare, boendestödjare",
+  "words": [
+   "boendestödjare",
+   "boendehandledare",
+   "vårdare",
+   "beteendevetare",
+   "habiliteringspersonal",
+   "skötare"
+  ]
+ },
+ "5394": {
+  "ads": 195,
+  "confidence": 0.69,
+  "group": "uxHV_KXc_PKD",
+  "label": "Massörer och massageterapeuter",
+  "words": [
+   "massageterapeut",
+   "massör",
+   "massörer",
+   "spaterapeut",
+   "spa",
+   "massage"
+  ]
+ },
+ "5407": {
+  "ads": 3,
+  "confidence": 0.77,
+  "group": "mcRJ_kq2_jFr",
+  "label": "Övriga pedagoger med teoretisk specialistkompetens",
+  "words": [
+   "repetitör",
+   "danslärare",
+   "danskonsulent",
+   "kulturutveckling"
+  ]
+ },
+ "5411": {
+  "ads": 26,
+  "confidence": 0.26,
+  "group": "rYSG_3WJ_LmC",
+  "label": "Regissörer och producenter av film, teater m.m.",
+  "words": [
+   "producent",
+   "dansproducent",
+   "dans",
+   "verksamhetschef",
+   "projektledare",
+   "norrlandsoperan"
+  ]
+ },
+ "5414": {
+  "ads": 25,
+  "confidence": 0.49,
+  "group": "vaEp_iBS_c5h",
+  "label": "Maskinställare och maskinoperatörer, metallarbete",
+  "words": [
+   "plåtbearbetare",
+   "kantpressare",
+   "plåtarbetare",
+   "bockare",
+   "produktionspersonal",
+   "verktygsmakare"
+  ]
+ },
+ "542": {
+  "ads": 18,
+  "confidence": 0.55,
+  "group": "3MBw_pDA_P2F",
+  "label": "Lastbilsförare m.fl.",
+  "words": [
+   "timmerbilsförare",
+   "timmerbil",
+   "chaufför",
+   "rundvirkestransportör",
+   "lastbilschaufför",
+   "fordonsförare"
+  ]
+ },
+ "543": {
+  "ads": 40,
+  "confidence": 0.31,
+  "group": "3MBw_pDA_P2F",
+  "label": "Lastbilsförare m.fl.",
+  "words": [
+   "chaufför",
+   "säljande",
+   "utkörare",
+   "distributör",
+   "försäljare",
+   "säljare"
+  ]
+ },
+ "5438": {
+  "ads": 39,
+  "confidence": 0.52,
+  "group": "kLyY_rwr_aJr",
+  "label": "Lager- och terminalpersonal",
+  "words": [
+   "förrådsarbetare",
+   "lager",
+   "lagerarbetare",
+   "student",
+   "rekr",
+   "byggföretag"
+  ]
+ },
+ "5440": {
+  "ads": 1,
+  "confidence": 0.96,
+  "group": "HATH_AfN_RRz",
+  "label": "Fotterapeuter",
+  "words": [
+   "fotvårdare",
+   "nagelspecialist"
+  ]
+ },
+ "5481": {
+  "ads": 105,
+  "confidence": 0.43,
+  "group": "FtyZ_Joo_tB8",
+  "label": "Städledare och husfruar",
+  "words": [
+   "husfru",
+   "hotell",
+   "restaurang",
+   "husmor",
+   "hotel",
+   "assistent"
+  ]
+ },
+ "5482": {
+  "ads": 45974,
+  "confidence": 0.74,
+  "group": "BStc_SJh_DKG",
+  "label": "Kockar och kallskänkor",
+  "words": [
+   "kock",
+   "kokerska",
+   "kockar",
+   "restaurang",
+   "kallskänka",
+   "urval"
+  ]
+ },
+ "5495": {
+  "ads": 37,
+  "confidence": 0.72,
+  "group": "HATH_AfN_RRz",
+  "label": "Fotterapeuter",
+  "words": [
+   "fotvårdsspecialist",
+   "fotvårdsterapeut",
+   "diplomerad",
+   "fotvårdare",
+   "medicinsk",
+   "skoghall"
+  ]
+ },
+ "5503": {
+  "ads": 166,
+  "confidence": 0.76,
+  "group": "5qT8_z9d_8rw",
+  "label": "Bagare och konditorer",
+  "words": [
+   "konditor",
+   "bagare",
+   "sommar",
+   "urval",
+   "tillverkning",
+   "semlor"
+  ]
+ },
+ "5542": {
+  "ads": 29,
+  "confidence": 0.25,
+  "group": "KiVA_anS_RJh",
+  "label": "Officerare",
+  "words": [
+   "stabsofficer",
+   "chef",
+   "staben",
+   "flygtaktiska",
+   "säkerhetstjänst",
+   "försvarsmeteorolog"
+  ]
+ },
+ "5553": {
+  "ads": 157,
+  "confidence": 0.26,
+  "group": "Z6TY_xDf_Yup",
+  "label": "Städare",
+  "words": [
+   "arbetsledare",
+   "städledare",
+   "teamledare",
+   "arbetande",
+   "hotellstädpersonal",
+   "lokalvård"
+  ]
+ },
+ "5562": {
+  "ads": 2144,
+  "confidence": 0.72,
+  "group": "3MBw_pDA_P2F",
+  "label": "Lastbilsförare m.fl.",
+  "words": [
+   "lastbilsförare",
+   "chaufför",
+   "chaufförer",
+   "lastbilschaufför",
+   "kort",
+   "lastbilschaufförer"
+  ]
+ },
+ "5563": {
+  "ads": 12,
+  "confidence": 0.42,
+  "group": "kLyY_rwr_aJr",
+  "label": "Lager- och terminalpersonal",
+  "words": [
+   "simulatorpiloter",
+   "luftfartsverket",
+   "sturup",
+   "arlanda",
+   "atcc",
+   "luftfart"
+  ]
+ },
+ "5573": {
+  "ads": 1032,
+  "confidence": 0.67,
+  "group": "Lzpv_ofL_3H5",
+  "label": "Motorfordonsmekaniker och fordonsreparatörer",
+  "words": [
+   "bilmekaniker",
+   "personbilsmekaniker",
+   "mekaniker",
+   "däckmontörer",
+   "juniormekaniker",
+   "hjulbytare"
+  ]
+ },
+ "5582": {
+  "ads": 11,
+  "confidence": 0.6,
+  "group": "nuXg_Wjc_JPd",
+  "label": "Säkerhetsinspektörer m.fl.",
+  "words": [
+   "besiktningstekniker",
+   "bilbesiktningsman",
+   "svensk",
+   "bilprovning",
+   "piteå",
+   "besiktningtekniker"
+  ]
+ },
+ "5592": {
+  "ads": 284,
+  "confidence": 0.38,
+  "group": "fdLf_oPp_wVw",
+  "label": "Resesäljare och trafikassistenter m.fl.",
+  "words": [
+   "resesäljare",
+   "resebyråtjänsteman",
+   "travel",
+   "ticket",
+   "säljare",
+   "specialist"
+  ]
+ },
+ "5610": {
+  "ads": 33,
+  "confidence": 0.25,
+  "group": "Lzpv_ofL_3H5",
+  "label": "Motorfordonsmekaniker och fordonsreparatörer",
+  "words": [
+   "servicetekniker",
+   "vitvarureparatör",
+   "service",
+   "vitvaror",
+   "storkök",
+   "ungdom"
+  ]
+ },
+ "5613": {
+  "ads": 39,
+  "confidence": 0.49,
+  "group": "fWrt_sLg_koW",
+  "label": "Elektronikreparatörer och kommunikationselektriker m.fl.",
+  "words": [
+   "teletekniker",
+   "signaltekniker",
+   "tele",
+   "telereparatör",
+   "telemontör",
+   "montör"
+  ]
+ },
+ "5627": {
+  "ads": 23,
+  "confidence": 0.28,
+  "group": "vaEp_iBS_c5h",
+  "label": "Maskinställare och maskinoperatörer, metallarbete",
+  "words": [
+   "operatör",
+   "maskinoperatör",
+   "processoperatörer",
+   "läkemedelsoperatörer",
+   "farmacevtisk",
+   "södertälje"
+  ]
+ },
+ "5628": {
+  "ads": 11,
+  "confidence": 0.41,
+  "group": "vaEp_iBS_c5h",
+  "label": "Maskinställare och maskinoperatörer, metallarbete",
+  "words": [
+   "ammunitionsarbetare",
+   "montör",
+   "cnc",
+   "operatör",
+   "industriarbetare",
+   "montörer"
+  ]
+ },
+ "5630": {
+  "ads": 2,
+  "confidence": 0.37,
+  "group": "dKUb_KBP_mw3",
+  "label": "Lackerare och industrimålare",
+  "words": [
+   "ytbehandlare",
+   "maskinoperatör"
+  ]
+ },
+ "5639": {
+  "ads": 113,
+  "confidence": 0.56,
+  "group": "vaEp_iBS_c5h",
+  "label": "Maskinställare och maskinoperatörer, metallarbete",
+  "words": [
+   "ställare",
+   "formsprutning",
+   "maskinställare",
+   "formsprutställare",
+   "formsprutare",
+   "kvalificerad"
+  ]
+ },
+ "5641": {
+  "ads": 229,
+  "confidence": 0.36,
+  "group": "skLS_kpa_Ui1",
+  "label": "Övriga maskinoperatörer, textil-, skinn- och läderindustri",
+  "words": [
+   "sömmerska",
+   "praktik",
+   "industrisömmerska",
+   "sömnad",
+   "skräddare",
+   "rekryteringsuppdrag"
+  ]
+ },
+ "5644": {
+  "ads": 4,
+  "confidence": 0.34,
+  "group": "Z8ci_bBE_tmx",
+  "label": "Grundutbildade sjuksköterskor",
+  "words": [
+   "lädervaruarbetare",
+   "uppdrag"
+  ]
+ },
+ "5647": {
+  "ads": 109,
+  "confidence": 0.44,
+  "group": "5qT8_z9d_8rw",
+  "label": "Bagare och konditorer",
+  "words": [
+   "bageriarbetare",
+   "bageri",
+   "bagare",
+   "brödpackare",
+   "praktik",
+   "konditor"
+  ]
+ },
+ "5658": {
+  "ads": 2,
+  "confidence": 0.54,
+  "group": "vaEp_iBS_c5h",
+  "label": "Maskinställare och maskinoperatörer, metallarbete",
+  "words": [
+   "maskinoperatör",
+   "operatör",
+   "tekniker"
+  ]
+ },
+ "5667": {
+  "ads": 36,
+  "confidence": 0.25,
+  "group": "fWrt_sLg_koW",
+  "label": "Elektronikreparatörer och kommunikationselektriker m.fl.",
+  "words": [
+   "instrumenttekniker",
+   "finmekanik",
+   "tekniker",
+   "hybridmontör",
+   "instrumentmekaniker",
+   "mekaniker"
+  ]
+ },
+ "5674": {
+  "ads": 410,
+  "confidence": 0.32,
+  "group": "bjqk_F3A_5Hk",
+  "label": "Personal- och HR-specialister",
+  "words": [
+   "personalkonsult",
+   "jobbcoacher",
+   "rekryteringskonsult",
+   "personalkonsulent",
+   "personalstrategerna",
+   "växer"
+  ]
+ },
+ "5679": {
+  "ads": 1,
+  "confidence": 0.43,
+  "group": "vaEp_iBS_c5h",
+  "label": "Maskinställare och maskinoperatörer, metallarbete",
+  "words": [
+   "maskinoperatör"
+  ]
+ },
+ "5683": {
+  "ads": 1,
+  "confidence": 0.37,
+  "group": "NCeZ_rSk_B4D",
+  "label": "Eventsäljare och butiksdemonstratörer m.fl.",
+  "words": [
+   "vävare",
+   "upp",
+   "rekr"
+  ]
+ },
+ "569": {
+  "ads": 2,
+  "confidence": 0.31,
+  "group": "nuXg_Wjc_JPd",
+  "label": "Säkerhetsinspektörer m.fl.",
+  "words": [
+   "sjöfart",
+   "studenter",
+   "erfarenhet",
+   "jobba",
+   "säkerhetssamordnare"
+  ]
+ },
+ "5700": {
+  "ads": 19,
+  "confidence": 0.44,
+  "group": "skLS_kpa_Ui1",
+  "label": "Övriga maskinoperatörer, textil-, skinn- och läderindustri",
+  "words": [
+   "sömmerska",
+   "sömmare",
+   "övriga",
+   "produktionsmedarbetare",
+   "duktig",
+   "sömnadsarbetare"
+  ]
+ },
+ "5706": {
+  "ads": 24978,
+  "confidence": 0.5,
+  "group": "jY19_knH_MJp",
+  "label": "Undersköterskor, hemtjänst, hemsjukvård, äldreboende och habilitering",
+  "words": [
+   "undersköterska",
+   "undersköterskor",
+   "vårdbiträde",
+   "hemtjänst",
+   "semestervikarier",
+   "natt"
+  ]
+ },
+ "5729": {
+  "ads": 234,
+  "confidence": 0.46,
+  "group": "TMsM_oNw_j6z",
+  "label": "Apotekare",
+  "words": [
+   "apotekare",
+   "apotekschef",
+   "apoteket",
+   "leg",
+   "cura",
+   "maxi"
+  ]
+ },
+ "5730": {
+  "ads": 591,
+  "confidence": 0.29,
+  "group": "XjcN_5LT_bWx",
+  "label": "Receptarier",
+  "words": [
+   "receptarie",
+   "apoteket",
+   "leg",
+   "farmaceut",
+   "shop",
+   "kronan"
+  ]
+ },
+ "577": {
+  "ads": 8,
+  "confidence": 0.41,
+  "group": "oEmP_NC1_sXE",
+  "label": "Övriga handläggare",
+  "words": [
+   "servicekontoret",
+   "handläggare",
+   "servicehandläggare",
+   "vilhelmina",
+   "åmål",
+   "lindesberg"
+  ]
+ },
+ "5771": {
+  "ads": 55,
+  "confidence": 0.6,
+  "group": "Z8ci_bBE_tmx",
+  "label": "Grundutbildade sjuksköterskor",
+  "words": [
+   "sjuksköterska",
+   "ögonsjuksköterska",
+   "ögonmottagningen",
+   "sjuksköterskor",
+   "allmänsjuksköterska",
+   "ögonsjuksköterskor"
+  ]
+ },
+ "5772": {
+  "ads": 88,
+  "confidence": 0.73,
+  "group": "Z8ci_bBE_tmx",
+  "label": "Grundutbildade sjuksköterskor",
+  "words": [
+   "sjuksköterska",
+   "sjuksköterskor",
+   "natt",
+   "asih",
+   "sih",
+   "dag"
+  ]
+ },
+ "579": {
+  "ads": 7,
+  "confidence": 0.28,
+  "group": "sq3e_WVv_Fjd",
+  "label": "Personliga assistenter",
+  "words": [
+   "handläggare",
+   "handl",
+   "östersund",
+   "detektionskontoret",
+   "sjukförmåner",
+   "lfc"
+  ]
+ },
+ "5791": {
+  "ads": 2,
+  "confidence": 0.93,
+  "group": "6zAR_EHM_Kwj",
+  "label": "Övriga specialistsjuksköterskor",
+  "words": [
+   "ortoptist"
+  ]
+ },
+ "5794": {
+  "ads": 31,
+  "confidence": 0.26,
+  "group": "nuXg_Wjc_JPd",
+  "label": "Säkerhetsinspektörer m.fl.",
+  "words": [
+   "inspektör",
+   "strålskydd",
+   "strålskyddstekniker",
+   "strålskyddsingenjör",
+   "strålskyddare",
+   "området"
+  ]
+ },
+ "5823": {
+  "ads": 129,
+  "confidence": 0.74,
+  "group": "2L2s_EU8_PzR",
+  "label": "Präster",
+  "words": [
+   "komminister",
+   "präst",
+   "kyrkoherde",
+   "vik",
+   "församling",
+   "arbetsledande"
+  ]
+ },
+ "583": {
+  "ads": 3,
+  "confidence": 0.52,
+  "group": "sq3e_WVv_Fjd",
+  "label": "Personliga assistenter",
+  "words": [
+   "personlig",
+   "sjukförsäkring",
+   "handläggare",
+   "rehab",
+   "hansa",
+   "trygg"
+  ]
+ },
+ "5836": {
+  "ads": 102,
+  "confidence": 0.75,
+  "group": "dKUb_KBP_mw3",
+  "label": "Lackerare och industrimålare",
+  "words": [
+   "billackerare",
+   "lackerare",
+   "bilplastreparatör",
+   "billackering",
+   "lackering",
+   "köksinr"
+  ]
+ },
+ "5837": {
+  "ads": 1,
+  "confidence": 0.37,
+  "group": "D9SL_mtn_vGM",
+  "label": "Systemtestare och testledare",
+  "words": [
+   "bruce",
+   "test"
+  ]
+ },
+ "5843": {
+  "ads": 36,
+  "confidence": 0.26,
+  "group": "kLyY_rwr_aJr",
+  "label": "Lager- och terminalpersonal",
+  "words": [
+   "materialhanterare",
+   "norge",
+   "materialchef",
+   "förrådsman",
+   "omgående",
+   "materialare"
+  ]
+ },
+ "5845": {
+  "ads": 47,
+  "confidence": 0.32,
+  "group": "tPox_ie4_X9X",
+  "label": "Restaurang- och köksbiträden m.fl.",
+  "words": [
+   "restaurangkassör",
+   "kassörska",
+   "kassör",
+   "kassabiträde",
+   "entrevärdinna",
+   "värd"
+  ]
+ },
+ "5847": {
+  "ads": 52,
+  "confidence": 0.82,
+  "group": "YHwG_fk2_MDL",
+  "label": "Croupierer och oddssättare m.fl.",
+  "words": [
+   "bingovärd",
+   "bingovärdinna",
+   "värdinna",
+   "bingolive",
+   "bingovärdar",
+   "bingo"
+  ]
+ },
+ "585": {
+  "ads": 3,
+  "confidence": 0.41,
+  "group": "vPP6_rsw_dck",
+  "label": "Planerare och utredare m.fl.",
+  "words": [
+   "kassehandläggare",
+   "arbetslöshetskassa",
+   "metalls",
+   "handläggare"
+  ]
+ },
+ "5853": {
+  "ads": 151,
+  "confidence": 0.43,
+  "group": "Lzpv_ofL_3H5",
+  "label": "Motorfordonsmekaniker och fordonsreparatörer",
+  "words": [
+   "reservdelsförsäljare",
+   "reservdelsman",
+   "butiksförsäljare",
+   "reservdelssäljare",
+   "säljare",
+   "mekonomen"
+  ]
+ },
+ "5855": {
+  "ads": 3825,
+  "confidence": 0.29,
+  "group": "s1Qk_o98_2o1",
+  "label": "Butikssäljare, dagligvaror",
+  "words": [
+   "säljare",
+   "anonym",
+   "konsument",
+   "ica",
+   "varuplockare",
+   "butik"
+  ]
+ },
+ "5865": {
+  "ads": 1824,
+  "confidence": 0.28,
+  "group": "dUuh_wwa_FGj",
+  "label": "Övriga förmedlare",
+  "words": [
+   "mediasäljare",
+   "säljare",
+   "annonssäljare",
+   "innesäljare",
+   "eventsäljare",
+   "media"
+  ]
+ },
+ "5867": {
+  "ads": 6117,
+  "confidence": 0.28,
+  "group": "PxXc_16t_oZo",
+  "label": "Telefonförsäljare m.fl.",
+  "words": [
+   "säljare",
+   "telefonförsäljare",
+   "innesäljare",
+   "telefonsäljare",
+   "vill",
+   "besöksbokare"
+  ]
+ },
+ "5870": {
+  "ads": 14,
+  "confidence": 0.58,
+  "group": "bZ4J_riZ_zK6",
+  "label": "Anläggningsarbetare",
+  "words": [
+   "bantekniker",
+   "signaltekniker",
+   "banreparatör",
+   "ban",
+   "servicereparatör",
+   "uppdrag"
+  ]
+ },
+ "5895": {
+  "ads": 1444,
+  "confidence": 0.52,
+  "group": "DJh5_yyF_hEM",
+  "label": "Mjukvaru- och systemutvecklare m.fl.",
+  "words": [
+   "systemutvecklare",
+   "utvecklare",
+   "projektledare",
+   "testare",
+   "konsult",
+   "system"
+  ]
+ },
+ "5897": {
+  "ads": 2688,
+  "confidence": 0.61,
+  "group": "DJh5_yyF_hEM",
+  "label": "Mjukvaru- och systemutvecklare m.fl.",
+  "words": [
+   "utvecklare",
+   "programmerare",
+   "systemutvecklare",
+   "java",
+   "net",
+   "javautvecklare"
+  ]
+ },
+ "5908": {
+  "ads": 80,
+  "confidence": 0.48,
+  "group": "hgAg_gLr_YGg",
+  "label": "Kriminalvårdare",
+  "words": [
+   "kriminalvårdare",
+   "vårdare",
+   "region",
+   "frivårdsinspektörer",
+   "kriminalvård",
+   "anstalten"
+  ]
+ },
+ "5917": {
+  "ads": 650,
+  "confidence": 0.41,
+  "group": "9dLz_BCK_oDA",
+  "label": "Försäkringssäljare och försäkringsrådgivare",
+  "words": [
+   "försäkringssäljare",
+   "säljare",
+   "folksam",
+   "innesäljare",
+   "länsförsäkringar",
+   "vill"
+  ]
+ },
+ "5925": {
+  "ads": 19577,
+  "confidence": 0.31,
+  "group": "oXSW_fbY_XrY",
+  "label": "Företagssäljare",
+  "words": [
+   "säljare",
+   "erfarenhet",
+   "utan",
+   "viasat",
+   "mediasäljare",
+   "innesäljare"
+  ]
+ },
+ "593": {
+  "ads": 30,
+  "confidence": 0.42,
+  "group": "dUuh_wwa_FGj",
+  "label": "Övriga förmedlare",
+  "words": [
+   "kundmottagare",
+   "servicerådgivare",
+   "bilbranschen",
+   "skåne",
+   "södertälje",
+   "verkstad"
+  ]
+ },
+ "5939": {
+  "ads": 46,
+  "confidence": 0.51,
+  "group": "vaEp_iBS_c5h",
+  "label": "Maskinställare och maskinoperatörer, metallarbete",
+  "words": [
+   "maskinoperatör",
+   "automatmaskinskötare",
+   "kantpressare",
+   "internannons",
+   "verkstadsarbetare",
+   "operatörer"
+  ]
+ },
+ "594": {
+  "ads": 48,
+  "confidence": 0.41,
+  "group": "dUuh_wwa_FGj",
+  "label": "Övriga förmedlare",
+  "words": [
+   "verkmästare",
+   "kundmottagare",
+   "busslink",
+   "servicerådgivare",
+   "arbetsledare",
+   "verkstadschef"
+  ]
+ },
+ "5941": {
+  "ads": 57,
+  "confidence": 0.83,
+  "group": "vaEp_iBS_c5h",
+  "label": "Maskinställare och maskinoperatörer, metallarbete",
+  "words": [
+   "kantpressare",
+   "metallpressare",
+   "pressoperatörer",
+   "företagslärling",
+   "verkstadsmekaniker",
+   "verkstadsarbetare"
+  ]
+ },
+ "5943": {
+  "ads": 14,
+  "confidence": 0.62,
+  "group": "vaEp_iBS_c5h",
+  "label": "Maskinställare och maskinoperatörer, metallarbete",
+  "words": [
+   "operatör",
+   "gas",
+   "kantpressare",
+   "aluminiumsarbeidere",
+   "platearbeidere",
+   "vattenskäransvarig"
+  ]
+ },
+ "5951": {
+  "ads": 4,
+  "confidence": 0.27,
+  "group": "oXSW_fbY_XrY",
+  "label": "Företagssäljare",
+  "words": [
+   "sverige",
+   "nordöstra",
+   "sales",
+   "promotor",
+   "provision",
+   "textilföretag"
+  ]
+ },
+ "596": {
+  "ads": 93,
+  "confidence": 0.78,
+  "group": "Lzpv_ofL_3H5",
+  "label": "Motorfordonsmekaniker och fordonsreparatörer",
+  "words": [
+   "bilmekaniker",
+   "bilreparatör",
+   "fordonsmekaniker",
+   "värmlandslärling",
+   "bildemonterare",
+   "verkstadsmekaniker"
+  ]
+ },
+ "5974": {
+  "ads": 2,
+  "confidence": 0.52,
+  "group": "L4hA_SJP_SFi",
+  "label": "Tunnplåtslagare",
+  "words": [
+   "rekryteringsuppdrag",
+   "arlandaplåtslagare",
+   "plåtslagare"
+  ]
+ },
+ "5983": {
+  "ads": 15,
+  "confidence": 0.42,
+  "group": "Lzpv_ofL_3H5",
+  "label": "Motorfordonsmekaniker och fordonsreparatörer",
+  "words": [
+   "mekaniker",
+   "förman",
+   "oljerigg",
+   "norge",
+   "supervisor",
+   "wireline"
+  ]
+ },
+ "6001": {
+  "ads": 326,
+  "confidence": 0.37,
+  "group": "vaEp_iBS_c5h",
+  "label": "Maskinställare och maskinoperatörer, metallarbete",
+  "words": [
+   "verkstadsmekaniker",
+   "allround",
+   "verkstadsarbetare",
+   "mekaniker",
+   "maskinoperatör",
+   "cnc"
+  ]
+ },
+ "6005": {
+  "ads": 1,
+  "confidence": 0.75,
+  "group": "vaEp_iBS_c5h",
+  "label": "Maskinställare och maskinoperatörer, metallarbete",
+  "words": [
+   "operatör",
+   "fms"
+  ]
+ },
+ "6014": {
+  "ads": 151,
+  "confidence": 0.61,
+  "group": "thZP_oR7_WrY",
+  "label": "Ingenjörer och tekniker inom bygg och anläggning",
+  "words": [
+   "kalkylator",
+   "bygg",
+   "kalkylingenjör",
+   "kalkylerare",
+   "kalkylatorer",
+   "erfaren"
+  ]
+ },
+ "6025": {
+  "ads": 352,
+  "confidence": 0.65,
+  "group": "L7eh_ihX_vM5",
+  "label": "Löne- och personaladministratörer",
+  "words": [
+   "löneadministratör",
+   "löneadministratörer",
+   "lönekontorist",
+   "löneassistent",
+   "lönekonsult",
+   "erfaren"
+  ]
+ },
+ "604": {
+  "ads": 25,
+  "confidence": 0.32,
+  "group": "Kxm9_N3V_shF",
+  "label": "Montörer, metall-, gummi- och plastprodukter",
+  "words": [
+   "däckbytare",
+   "serviceman",
+   "bilmekaniker",
+   "däckmontör",
+   "busslinks",
+   "medarbetare"
+  ]
+ },
+ "6045": {
+  "ads": 32,
+  "confidence": 0.26,
+  "group": "oQUQ_D11_HPx",
+  "label": "Grundskollärare",
+  "words": [
+   "textil",
+   "läder",
+   "konsthantverkare",
+   "sem",
+   "vik",
+   "nyköping"
+  ]
+ },
+ "605": {
+  "ads": 36,
+  "confidence": 0.74,
+  "group": "Lzpv_ofL_3H5",
+  "label": "Motorfordonsmekaniker och fordonsreparatörer",
+  "words": [
+   "bilmekaniker",
+   "servicemekaniker",
+   "volvoerfarenhet",
+   "fordonsmekaniker",
+   "mekaniker",
+   "servicetekniker"
+  ]
+ },
+ "606": {
+  "ads": 3,
+  "confidence": 0.47,
+  "group": "Lzpv_ofL_3H5",
+  "label": "Motorfordonsmekaniker och fordonsreparatörer",
+  "words": [
+   "mekanikerbiträde",
+   "uppdrag",
+   "hjulskiftare",
+   "bilmekaniker"
+  ]
+ },
+ "6070": {
+  "ads": 1,
+  "confidence": 0.37,
+  "group": "w6ud_quG_dgh",
+  "label": "Arbetsledare inom bygg, anläggning och gruva",
+  "words": [
+   "arbetsledare"
+  ]
+ },
+ "6075": {
+  "ads": 7,
+  "confidence": 0.73,
+  "group": "34Tn_BQQ_tfo",
+  "label": "Bildkonstnärer m.fl.",
+  "words": [
+   "konservator",
+   "placering",
+   "vasamu",
+   "vikarierande",
+   "art",
+   "steve"
+  ]
+ },
+ "6079": {
+  "ads": 2,
+  "confidence": 0.62,
+  "group": "vaEp_iBS_c5h",
+  "label": "Maskinställare och maskinoperatörer, metallarbete",
+  "words": [
+   "operatörer",
+   "säkerhetsinspektör"
+  ]
+ },
+ "611": {
+  "ads": 40,
+  "confidence": 0.38,
+  "group": "Lzpv_ofL_3H5",
+  "label": "Motorfordonsmekaniker och fordonsreparatörer",
+  "words": [
+   "reparatör",
+   "mekaniker",
+   "servicetekniker",
+   "entreprenadmaskiner",
+   "verkstadsmekaniker",
+   "fältmekaniker"
+  ]
+ },
+ "6115": {
+  "ads": 85,
+  "confidence": 0.44,
+  "group": "3FP7_4Eg_x8P",
+  "label": "Speciallärare och specialpedagoger m.fl.",
+  "words": [
+   "talpedagog",
+   "specialpedagog",
+   "logoped",
+   "tal",
+   "språk",
+   "alt"
+  ]
+ },
+ "613": {
+  "ads": 9,
+  "confidence": 0.33,
+  "group": "Lzpv_ofL_3H5",
+  "label": "Motorfordonsmekaniker och fordonsreparatörer",
+  "words": [
+   "servicemekaniker",
+   "motorfordonsmekaniker",
+   "dieselmotorreparatör",
+   "mekaniker",
+   "tekniker",
+   "två"
+  ]
+ },
+ "618": {
+  "ads": 37,
+  "confidence": 0.53,
+  "group": "Lzpv_ofL_3H5",
+  "label": "Motorfordonsmekaniker och fordonsreparatörer",
+  "words": [
+   "servicemekaniker",
+   "mekaniker",
+   "fältmekaniker",
+   "reparatör",
+   "servicetekniker",
+   "fordon"
+  ]
+ },
+ "620": {
+  "ads": 10,
+  "confidence": 0.36,
+  "group": "KttZ_Skc_bMR",
+  "label": "Underhållsmekaniker och maskinreparatörer",
+  "words": [
+   "traktor",
+   "reparatör",
+   "mekaniker",
+   "lantbruksmaskinreparatör",
+   "urval",
+   "traktormekaniker"
+  ]
+ },
+ "6203": {
+  "ads": 15399,
+  "confidence": 0.37,
+  "group": "df9D_e6y_61z",
+  "label": "Fastighetsskötare",
+  "words": [
+   "vaktmästare",
+   "allo",
+   "allt",
+   "urval",
+   "fastighetsskötare",
+   "praktik"
+  ]
+ },
+ "6246": {
+  "ads": 296,
+  "confidence": 0.61,
+  "group": "VKKg_e4t_t46",
+  "label": "Maskinsnickare och maskinoperatörer, träindustri",
+  "words": [
+   "maskinsnickare",
+   "rekryteringsuppdrag",
+   "finsnickare",
+   "träarbetare",
+   "träindustriarbetare",
+   "verkstadssnickare"
+  ]
+ },
+ "6256": {
+  "ads": 28,
+  "confidence": 0.4,
+  "group": "NNK9_F1o_pK5",
+  "label": "Doktorander",
+  "words": [
+   "doktorand",
+   "projektledare",
+   "chef",
+   "kulturråd",
+   "samordnare",
+   "koordinator"
+  ]
+ },
+ "626": {
+  "ads": 2,
+  "confidence": 0.73,
+  "group": "nuXg_Wjc_JPd",
+  "label": "Säkerhetsinspektörer m.fl.",
+  "words": [
+   "besiktningstekniker"
+  ]
+ },
+ "627": {
+  "ads": 1,
+  "confidence": 0.65,
+  "group": "vPP6_rsw_dck",
+  "label": "Planerare och utredare m.fl.",
+  "words": [
+   "utredare",
+   "ursprungskontroll"
+  ]
+ },
+ "6276": {
+  "ads": 396,
+  "confidence": 0.75,
+  "group": "XBh3_Xrm_C4R",
+  "label": "Trädgårdsanläggare m.fl.",
+  "words": [
+   "parkarbetare",
+   "trädgårdsarbetare",
+   "kyrkogårdsarbetare",
+   "park",
+   "säsong",
+   "säsongsarbete"
+  ]
+ },
+ "6290": {
+  "ads": 273,
+  "confidence": 0.53,
+  "group": "KYmy_iqC_xiQ",
+  "label": "Uppfödare och skötare av lantbrukets husdjur",
+  "words": [
+   "djurskötare",
+   "drift",
+   "blandad",
+   "lantarbetare",
+   "lantbruk",
+   "praktik"
+  ]
+ },
+ "6312": {
+  "ads": 58,
+  "confidence": 0.35,
+  "group": "3J38_DNz_YKK",
+  "label": "Fotografer",
+  "words": [
+   "filmare",
+   "netclips",
+   "filmfotograf",
+   "filmproducent",
+   "fotograf",
+   "film"
+  ]
+ },
+ "6316": {
+  "ads": 76,
+  "confidence": 0.43,
+  "group": "XeJB_bkn_mRn",
+  "label": "Tryckare",
+  "words": [
+   "tryckare",
+   "grafisk",
+   "industri",
+   "maskinoperatör",
+   "offsettryckare",
+   "prepress"
+  ]
+ },
+ "632": {
+  "ads": 14,
+  "confidence": 0.25,
+  "group": "vPP6_rsw_dck",
+  "label": "Planerare och utredare m.fl.",
+  "words": [
+   "inspektör",
+   "drift",
+   "utredare",
+   "avveckling",
+   "krisberedskap",
+   "handläggare"
+  ]
+ },
+ "6331": {
+  "ads": 134,
+  "confidence": 0.28,
+  "group": "Fu4x_7KG_YgC",
+  "label": "Chefer inom handel",
+  "words": [
+   "butikschef",
+   "butiksföreståndare",
+   "butik",
+   "manager",
+   "butiksansvarig",
+   "synoptik"
+  ]
+ },
+ "6351": {
+  "ads": 144,
+  "confidence": 0.35,
+  "group": "rYSG_3WJ_LmC",
+  "label": "Regissörer och producenter av film, teater m.m.",
+  "words": [
+   "producent",
+   "teaterproducent",
+   "teater",
+   "säljare",
+   "urval",
+   "riksteatern"
+  ]
+ },
+ "6386": {
+  "ads": 2,
+  "confidence": 0.91,
+  "group": "vaEp_iBS_c5h",
+  "label": "Maskinställare och maskinoperatörer, metallarbete",
+  "words": [
+   "lavalverkstaden",
+   "filare",
+   "kantpressare"
+  ]
+ },
+ "6396": {
+  "ads": 49,
+  "confidence": 0.26,
+  "group": "mZsb_A1K_Gec",
+  "label": "Ekonomi- och finanschefer",
+  "words": [
+   "finance",
+   "finanschef",
+   "controller",
+   "director",
+   "chef",
+   "manager"
+  ]
+ },
+ "6399": {
+  "ads": 46,
+  "confidence": 0.26,
+  "group": "4GAs_rKs_2Ne",
+  "label": "Fastighets- och förvaltningschefer",
+  "words": [
+   "kyrkogårdsföreståndare",
+   "kyrkogårdschef",
+   "fastighets",
+   "kyrkogårds",
+   "fastighetschef",
+   "kyrkogårdsvaktmästare"
+  ]
+ },
+ "6419": {
+  "ads": 15,
+  "confidence": 0.34,
+  "group": "KYmy_iqC_xiQ",
+  "label": "Uppfödare och skötare av lantbrukets husdjur",
+  "words": [
+   "grisskötare",
+   "lantarbetare",
+   "djurskötare",
+   "smågrisskötare",
+   "suggskötare",
+   "rekryteringsuppdrag"
+  ]
+ },
+ "6425": {
+  "ads": 12,
+  "confidence": 0.37,
+  "group": "MSzH_F2n_Emb",
+  "label": "Uppfödare och skötare av sällskapsdjur",
+  "words": [
+   "drift",
+   "husdjursskötare",
+   "blandad",
+   "hunddagis",
+   "katter",
+   "hundskötare"
+  ]
+ },
+ "6428": {
+  "ads": 27,
+  "confidence": 0.65,
+  "group": "KYmy_iqC_xiQ",
+  "label": "Uppfödare och skötare av lantbrukets husdjur",
+  "words": [
+   "djurskötare",
+   "mjölkkor",
+   "mjölkproduktion",
+   "instruktör",
+   "mjölkprduktion",
+   "ladugårdsskötare"
+  ]
+ },
+ "6431": {
+  "ads": 9,
+  "confidence": 0.67,
+  "group": "KYmy_iqC_xiQ",
+  "label": "Uppfödare och skötare av lantbrukets husdjur",
+  "words": [
+   "djurskötare",
+   "mjölkproduktion",
+   "jordbrukare",
+   "djuruppfödning",
+   "lantarbetare",
+   "dräng"
+  ]
+ },
+ "6432": {
+  "ads": 9,
+  "confidence": 0.26,
+  "group": "KYmy_iqC_xiQ",
+  "label": "Uppfödare och skötare av lantbrukets husdjur",
+  "words": [
+   "arbetsledare",
+   "vaxholm",
+   "katthemmet",
+   "husjursagronomer",
+   "gård",
+   "lantgårdslägerledare"
+  ]
+ },
+ "6512": {
+  "ads": 97,
+  "confidence": 0.29,
+  "group": "oXSW_fbY_XrY",
+  "label": "Företagssäljare",
+  "words": [
+   "manager",
+   "sales",
+   "engineer",
+   "konsultchef",
+   "teknisk",
+   "försäljningsingenjör"
+  ]
+ },
+ "6530": {
+  "ads": 6,
+  "confidence": 0.42,
+  "group": "DJh5_yyF_hEM",
+  "label": "Mjukvaru- och systemutvecklare m.fl.",
+  "words": [
+   "interaktionsdesigner",
+   "spelföretag",
+   "känt",
+   "konstnärlig",
+   "flashutvecklare",
+   "systemutvecklare"
+  ]
+ },
+ "654": {
+  "ads": 1,
+  "confidence": 0.43,
+  "group": "MrcX_RDn_N53",
+  "label": "Truckförare",
+  "words": [
+   "sorterare",
+   "direktförslag",
+   "plockare"
+  ]
+ },
+ "6546": {
+  "ads": 5,
+  "confidence": 0.63,
+  "group": "PQDm_Z63_zst",
+  "label": "Översättare, tolkar och lingvister m.fl.",
+  "words": [
+   "dövblindtolk",
+   "teckenspråkstolk",
+   "teckenspråk"
+  ]
+ },
+ "6547": {
+  "ads": 5,
+  "confidence": 0.42,
+  "group": "PQDm_Z63_zst",
+  "label": "Översättare, tolkar och lingvister m.fl.",
+  "words": [
+   "kontakttolk",
+   "tolk",
+   "internannons",
+   "handledare",
+   "medarbetare",
+   "tysktalande"
+  ]
+ },
+ "656": {
+  "ads": 1,
+  "confidence": 0.43,
+  "group": "MrcX_RDn_N53",
+  "label": "Truckförare",
+  "words": [
+   "hjälprullare",
+   "plockare"
+  ]
+ },
+ "6564": {
+  "ads": 6,
+  "confidence": 0.54,
+  "group": "XBh3_Xrm_C4R",
+  "label": "Trädgårdsanläggare m.fl.",
+  "words": [
+   "trädgårdstekniker",
+   "trädgårdsmästare",
+   "trädgårdsskötel",
+   "arbetsledare",
+   "butiksansvarig",
+   "naturbrukslärare"
+  ]
+ },
+ "6567": {
+  "ads": 10,
+  "confidence": 0.56,
+  "group": "nuXg_Wjc_JPd",
+  "label": "Säkerhetsinspektörer m.fl.",
+  "words": [
+   "trafikinspektörsaspirant",
+   "trafikinspektör",
+   "ewals",
+   "rekrytering",
+   "speditör",
+   "cargo"
+  ]
+ },
+ "6569": {
+  "ads": 3,
+  "confidence": 0.35,
+  "group": "oQUQ_D11_HPx",
+  "label": "Grundskollärare",
+  "words": [
+   "rekryteringsuppdrag",
+   "tufftare",
+   "textilmaskinställare",
+   "maskinoperatör",
+   "textil"
+  ]
+ },
+ "6588": {
+  "ads": 1,
+  "confidence": 0.5,
+  "group": "3MBw_pDA_P2F",
+  "label": "Lastbilsförare m.fl.",
+  "words": [
+   "lastare"
+  ]
+ },
+ "6598": {
+  "ads": 4,
+  "confidence": 0.35,
+  "group": "vaEp_iBS_c5h",
+  "label": "Maskinställare och maskinoperatörer, metallarbete",
+  "words": [
+   "operatörer",
+   "under",
+   "driftcentralen",
+   "jord",
+   "tidsbegränsad",
+   "anställning"
+  ]
+ },
+ "6605": {
+  "ads": 14,
+  "confidence": 0.38,
+  "group": "sq3e_WVv_Fjd",
+  "label": "Personliga assistenter",
+  "words": [
+   "assistent",
+   "ref",
+   "sekreterare",
+   "ekonomiassistent",
+   "prim",
+   "utveckling"
+  ]
+ },
+ "6664": {
+  "ads": 11,
+  "confidence": 0.46,
+  "group": "5ek3_Cgq_WeZ",
+  "label": "Förskollärare",
+  "words": [
+   "förskollärare",
+   "fritidspedagog",
+   "barnskötare",
+   "skolmåltidsföreståndare",
+   "placeringsassistent",
+   "förskolärare"
+  ]
+ },
+ "6673": {
+  "ads": 2,
+  "confidence": 0.64,
+  "group": "bwnk_nv2_1cR",
+  "label": "Ramppersonal, flyttkarlar och varupåfyllare m.fl.",
+  "words": [
+   "scenarbetare",
+   "allo",
+   "allt"
+  ]
+ },
+ "6718": {
+  "ads": 9,
+  "confidence": 0.29,
+  "group": "sq3e_WVv_Fjd",
+  "label": "Personliga assistenter",
+  "words": [
+   "teknisk",
+   "assistent",
+   "rådgivare",
+   "tekniska",
+   "platser",
+   "ledare"
+  ]
+ },
+ "6721": {
+  "ads": 9,
+  "confidence": 0.55,
+  "group": "XBh3_Xrm_C4R",
+  "label": "Trädgårdsanläggare m.fl.",
+  "words": [
+   "miljövärd",
+   "miljövärdar",
+   "säsongsanställda",
+   "urval",
+   "skötselansvarig",
+   "sophantering"
+  ]
+ },
+ "6727": {
+  "ads": 1,
+  "confidence": 0.41,
+  "group": "vPP6_rsw_dck",
+  "label": "Planerare och utredare m.fl.",
+  "words": [
+   "regioninspektör",
+   "handläggare"
+  ]
+ },
+ "6746": {
+  "ads": 18,
+  "confidence": 0.29,
+  "group": "NxXz_fBh_w7j",
+  "label": "Chefer inom socialt och kurativt arbete",
+  "words": [
+   "föreståndare",
+   "människan",
+   "hela",
+   "dshuset",
+   "vär",
+   "chef"
+  ]
+ },
+ "6749": {
+  "ads": 1,
+  "confidence": 0.8,
+  "group": "wzeq_No2_LF1",
+  "label": "Diakoner",
+  "words": [
+   "vik",
+   "täby",
+   "diakon"
+  ]
+ },
+ "6760": {
+  "ads": 37,
+  "confidence": 0.42,
+  "group": "MGk3_LvL_AU2",
+  "label": "Backofficepersonal m.fl.",
+  "words": [
+   "fondmäklare",
+   "investeringsrådgivare",
+   "backoffice",
+   "förmögenhetsförvaltare",
+   "backofficemedarbetare",
+   "junior"
+  ]
+ },
+ "6780": {
+  "ads": 2,
+  "confidence": 0.73,
+  "group": "KYmy_iqC_xiQ",
+  "label": "Uppfödare och skötare av lantbrukets husdjur",
+  "words": [
+   "gårdsmästare",
+   "djurskötare"
+  ]
+ },
+ "6781": {
+  "ads": 3,
+  "confidence": 0.43,
+  "group": "Lzpv_ofL_3H5",
+  "label": "Motorfordonsmekaniker och fordonsreparatörer",
+  "words": [
+   "reservdelsman",
+   "försäljningsassistent",
+   "tng",
+   "lantbruksbesikningsman",
+   "senior",
+   "avdelningschef"
+  ]
+ },
+ "6783": {
+  "ads": 1,
+  "confidence": 0.48,
+  "group": "QG4f_MCh_vND",
+  "label": "Forsknings- och utvecklingschefer",
+  "words": [
+   "utvecklingschef"
+  ]
+ },
+ "6784": {
+  "ads": 8,
+  "confidence": 0.53,
+  "group": "FtyZ_Joo_tB8",
+  "label": "Städledare och husfruar",
+  "words": [
+   "husfru",
+   "westmaster",
+   "fastighet",
+   "mån",
+   "florida",
+   "gäst"
+  ]
+ },
+ "6795": {
+  "ads": 1,
+  "confidence": 0.55,
+  "group": "vPP6_rsw_dck",
+  "label": "Planerare och utredare m.fl.",
+  "words": [
+   "ombudsman"
+  ]
+ },
+ "6799": {
+  "ads": 6,
+  "confidence": 0.67,
+  "group": "2L2s_EU8_PzR",
+  "label": "Präster",
+  "words": [
+   "komminister",
+   "präst",
+   "vuxenarbete",
+   "inriktning",
+   "församling",
+   "ödsmåls"
+  ]
+ },
+ "6816": {
+  "ads": 45,
+  "confidence": 0.33,
+  "group": "Kxm9_N3V_shF",
+  "label": "Montörer, metall-, gummi- och plastprodukter",
+  "words": [
+   "däcksman",
+   "däcksmän",
+   "däckspersonal",
+   "jungman",
+   "skärgårdsbåtarna",
+   "däckmontörer"
+  ]
+ },
+ "6837": {
+  "ads": 655,
+  "confidence": 0.69,
+  "group": "5uP5_Ugw_aVE",
+  "label": "Biståndsbedömare m.fl.",
+  "words": [
+   "biståndshandläggare",
+   "lss",
+   "handläggare",
+   "vik",
+   "sol",
+   "äldreomsorg"
+  ]
+ },
+ "6843": {
+  "ads": 10,
+  "confidence": 0.26,
+  "group": "uxst_tkg_zDh",
+  "label": "Övriga administrations- och servicechefer",
+  "words": [
+   "kvalitetssäkrare",
+   "kvalitetscontroller",
+   "miljöansvarig",
+   "kvalitets",
+   "projektledare",
+   "supplier"
+  ]
+ },
+ "685": {
+  "ads": 12,
+  "confidence": 0.32,
+  "group": "pwRH_MT1_8nR",
+  "label": "Kundtjänstpersonal",
+  "words": [
+   "biljettör",
+   "resebyrå",
+   "erfaren",
+   "rekryteringsorder",
+   "ticketing",
+   "agents"
+  ]
+ },
+ "6855": {
+  "ads": 288,
+  "confidence": 0.33,
+  "group": "7pz9_eY9_D2s",
+  "label": "Vårdare, boendestödjare",
+  "words": [
+   "boendeassistent",
+   "boendeassistenter",
+   "habiliteringspersonal",
+   "boendehandledare",
+   "handledare",
+   "assistent"
+  ]
+ },
+ "6859": {
+  "ads": 6,
+  "confidence": 0.38,
+  "group": "df9D_e6y_61z",
+  "label": "Fastighetsskötare",
+  "words": [
+   "husvärd",
+   "caretaker",
+   "sas",
+   "direktförslag",
+   "senior",
+   "resurs"
+  ]
+ },
+ "6860": {
+  "ads": 1164,
+  "confidence": 0.74,
+  "group": "2kLc_pto_DpV",
+  "label": "Medicinska sekreterare, vårdadministratörer m.fl.",
+  "words": [
+   "sekreterare",
+   "medicinsk",
+   "medicinska",
+   "vårdcentralen",
+   "läkarsekreterare",
+   "lund"
+  ]
+ },
+ "6861": {
+  "ads": 28,
+  "confidence": 0.45,
+  "group": "2kLc_pto_DpV",
+  "label": "Medicinska sekreterare, vårdadministratörer m.fl.",
+  "words": [
+   "teamsekreterare",
+   "sekreterare",
+   "mott",
+   "neuropsykiatrisk",
+   "erfaren",
+   "psykiatriska"
+  ]
+ },
+ "6864": {
+  "ads": 20,
+  "confidence": 0.59,
+  "group": "Lzpv_ofL_3H5",
+  "label": "Motorfordonsmekaniker och fordonsreparatörer",
+  "words": [
+   "reservdelsman",
+   "reservdelstekniker",
+   "kvinna",
+   "lager",
+   "säljare",
+   "packare"
+  ]
+ },
+ "6865": {
+  "ads": 4,
+  "confidence": 0.46,
+  "group": "Lzpv_ofL_3H5",
+  "label": "Motorfordonsmekaniker och fordonsreparatörer",
+  "words": [
+   "sortimentsberedare",
+   "ysps",
+   "reservdelar",
+   "reservdelsansvarig",
+   "servicemarknad",
+   "regionchef"
+  ]
+ },
+ "687": {
+  "ads": 26,
+  "confidence": 0.26,
+  "group": "pwRH_MT1_8nR",
+  "label": "Kundtjänstpersonal",
+  "words": [
+   "holiday",
+   "autos",
+   "bokningspersonal",
+   "agent",
+   "medarbetare",
+   "grupp"
+  ]
+ },
+ "6884": {
+  "ads": 2047,
+  "confidence": 0.52,
+  "group": "pwRH_MT1_8nR",
+  "label": "Kundtjänstpersonal",
+  "words": [
+   "kundtjänstmedarbetare",
+   "kundtjänst",
+   "norsktalande",
+   "kundservicemedarbetare",
+   "dansktalande",
+   "finsktalande"
+  ]
+ },
+ "6885": {
+  "ads": 66,
+  "confidence": 0.34,
+  "group": "pwRH_MT1_8nR",
+  "label": "Kundtjänstpersonal",
+  "words": [
+   "marknadsundersökare",
+   "telefonintervjuare",
+   "kommunikatör",
+   "intervjuare",
+   "besöksbokare",
+   "telefonister"
+  ]
+ },
+ "6895": {
+  "ads": 228,
+  "confidence": 0.45,
+  "group": "hmaC_cfi_UKg",
+  "label": "Supporttekniker, IT",
+  "words": [
+   "supporttekniker",
+   "support",
+   "omx",
+   "nasdaq",
+   "line",
+   "tekniker"
+  ]
+ },
+ "690": {
+  "ads": 66,
+  "confidence": 0.26,
+  "group": "fdLf_oPp_wVw",
+  "label": "Resesäljare och trafikassistenter m.fl.",
+  "words": [
+   "ticket",
+   "säljare",
+   "resesäljare",
+   "borlänge",
+   "privatresesäljare",
+   "centrum"
+  ]
+ },
+ "692": {
+  "ads": 37,
+  "confidence": 0.61,
+  "group": "fdLf_oPp_wVw",
+  "label": "Resesäljare och trafikassistenter m.fl.",
+  "words": [
+   "resesäljare",
+   "reseförsäljare",
+   "medarbetare",
+   "travel",
+   "norsktalande",
+   "grupp"
+  ]
+ },
+ "6940": {
+  "ads": 8,
+  "confidence": 0.39,
+  "group": "NNK9_F1o_pK5",
+  "label": "Doktorander",
+  "words": [
+   "doktorand",
+   "genus",
+   "samordnare",
+   "projektledare",
+   "medicin",
+   "tema"
+  ]
+ },
+ "6960": {
+  "ads": 7,
+  "confidence": 0.54,
+  "group": "Lzpv_ofL_3H5",
+  "label": "Motorfordonsmekaniker och fordonsreparatörer",
+  "words": [
+   "fältmekaniker",
+   "instruktör",
+   "teknikinriktad",
+   "reparatör",
+   "skogsmaskiner",
+   "resemontör"
+  ]
+ },
+ "6966": {
+  "ads": 9,
+  "confidence": 0.73,
+  "group": "3LdB_WEJ_8Ms",
+  "label": "Specialister och rådgivare inom skogsbruk",
+  "words": [
+   "virkesköpare",
+   "sca",
+   "skog",
+   "linköping",
+   "motala",
+   "västerbotten"
+  ]
+ },
+ "6967": {
+  "ads": 5,
+  "confidence": 0.77,
+  "group": "957L_kZK_rHZ",
+  "label": "Transportledare och transportsamordnare",
+  "words": [
+   "transportledare",
+   "bioenergi",
+   "tranportledare",
+   "logistiker"
+  ]
+ },
+ "7005": {
+  "ads": 115,
+  "confidence": 0.32,
+  "group": "hZLv_S5f_jo2",
+  "label": "Restaurang- och kökschefer",
+  "words": [
+   "restaurangchef",
+   "casino",
+   "cosmopol",
+   "manager",
+   "restaurangansvarig",
+   "cafe"
+  ]
+ },
+ "7006": {
+  "ads": 2,
+  "confidence": 0.27,
+  "group": "7mn2_kA9_ftp",
+  "label": "Driftchefer inom bygg, anläggning och gruva",
+  "words": [
+   "mindre",
+   "tvättchef",
+   "företag",
+   "platschef",
+   "verksamhetsledare"
+  ]
+ },
+ "701": {
+  "ads": 1,
+  "confidence": 0.46,
+  "group": "A6X3_efC_VNy",
+  "label": "Guider och reseledare",
+  "words": [
+   "helger",
+   "guide",
+   "kvällar",
+   "extra"
+  ]
+ },
+ "7016": {
+  "ads": 583,
+  "confidence": 0.56,
+  "group": "a8gg_ktU_w8V",
+  "label": "Pizzabagare m.fl.",
+  "words": [
+   "gatuköksbiträde",
+   "medarbetare",
+   "gatukök",
+   "restaurangbiträde",
+   "praktik",
+   "urval"
+  ]
+ },
+ "7026": {
+  "ads": 22,
+  "confidence": 0.68,
+  "group": "34Tn_BQQ_tfo",
+  "label": "Bildkonstnärer m.fl.",
+  "words": [
+   "konservator",
+   "papper",
+   "lyftplats",
+   "bokbindare",
+   "dnr",
+   "papperskonservator"
+  ]
+ },
+ "7027": {
+  "ads": 8,
+  "confidence": 0.51,
+  "group": "34Tn_BQQ_tfo",
+  "label": "Bildkonstnärer m.fl.",
+  "words": [
+   "konservator",
+   "foto",
+   "dnr",
+   "konservatorsbiträde",
+   "lyft",
+   "fotoavdelningen"
+  ]
+ },
+ "7056": {
+  "ads": 2,
+  "confidence": 0.37,
+  "group": "Qo7p_wjf_gtv",
+  "label": "Lednings- och organisationsutvecklare",
+  "words": [
+   "teaterkonsulent",
+   "verksamhetsutvecklare",
+   "utbildnings"
+  ]
+ },
+ "7063": {
+  "ads": 4,
+  "confidence": 0.34,
+  "group": "PQDm_Z63_zst",
+  "label": "Översättare, tolkar och lingvister m.fl.",
+  "words": [
+   "översättare",
+   "bearbetningsproducent",
+   "reklamproducent",
+   "adaptation",
+   "producer"
+  ]
+ },
+ "7107": {
+  "ads": 14,
+  "confidence": 0.47,
+  "group": "DJh5_yyF_hEM",
+  "label": "Mjukvaru- och systemutvecklare m.fl.",
+  "words": [
+   "msi",
+   "paketerare",
+   "bright",
+   "självgående",
+   "nya",
+   "utmaningar"
+  ]
+ },
+ "7115": {
+  "ads": 4,
+  "confidence": 0.59,
+  "group": "iHrC_aRv_fVm",
+  "label": "Grovarbetare inom bygg och anläggning",
+  "words": [
+   "byggprojektassistent",
+   "verkstadsarbete",
+   "grovarbetare",
+   "drift",
+   "vägunderhållsarbetare",
+   "lärling"
+  ]
+ },
+ "7121": {
+  "ads": 5,
+  "confidence": 0.43,
+  "group": "fsnw_ZCu_v2U",
+  "label": "Arbetsförmedlare",
+  "words": [
+   "arbetsmarknadskonsulent",
+   "behandlare",
+   "massör"
+  ]
+ },
+ "7123": {
+  "ads": 35028,
+  "confidence": 0.62,
+  "group": "oQUQ_D11_HPx",
+  "label": "Grundskollärare",
+  "words": [
+   "lärare",
+   "tidigare",
+   "grundskolans",
+   "grundskollärare",
+   "skola",
+   "klasslärare"
+  ]
+ },
+ "7124": {
+  "ads": 50425,
+  "confidence": 0.64,
+  "group": "oQUQ_D11_HPx",
+  "label": "Grundskollärare",
+  "words": [
+   "lärare",
+   "senare",
+   "svenska",
+   "engelska",
+   "grundskolans",
+   "grundskollärare"
+  ]
+ },
+ "7132": {
+  "ads": 66,
+  "confidence": 0.71,
+  "group": "wQ1E_Bzk_ZyA",
+  "label": "Svetsare och gasskärare",
+  "words": [
+   "svetsare",
+   "mig",
+   "mag",
+   "noggrann",
+   "licens",
+   "extra"
+  ]
+ },
+ "715": {
+  "ads": 200,
+  "confidence": 0.81,
+  "group": "bYde_Frc_xcB",
+  "label": "Hotellreceptionister m.fl.",
+  "words": [
+   "nattportier",
+   "scandic",
+   "nattreceptionist",
+   "hotel",
+   "hotell",
+   "night"
+  ]
+ },
+ "7151": {
+  "ads": 102,
+  "confidence": 0.26,
+  "group": "rYSG_3WJ_LmC",
+  "label": "Regissörer och producenter av film, teater m.m.",
+  "words": [
+   "producent",
+   "kulturproducent",
+   "operan",
+   "projektledare",
+   "kultur",
+   "urval"
+  ]
+ },
+ "7166": {
+  "ads": 4713,
+  "confidence": 0.38,
+  "group": "4KhP_FxL_uZ5",
+  "label": "Gymnasielärare",
+  "words": [
+   "lärare",
+   "gymnasielärare",
+   "matematik",
+   "svenska",
+   "gymnasiet",
+   "engelska"
+  ]
+ },
+ "7167": {
+  "ads": 1573,
+  "confidence": 0.31,
+  "group": "4KhP_FxL_uZ5",
+  "label": "Gymnasielärare",
+  "words": [
+   "lärare",
+   "gymnasielärare",
+   "yrkeslärare",
+   "gymnasiet",
+   "vårdlärare",
+   "barn"
+  ]
+ },
+ "717": {
+  "ads": 16,
+  "confidence": 0.33,
+  "group": "bYde_Frc_xcB",
+  "label": "Hotellreceptionister m.fl.",
+  "words": [
+   "pensionatvärd",
+   "fjällvärd",
+   "stf",
+   "ritsem",
+   "personal",
+   "gästservice"
+  ]
+ },
+ "7173": {
+  "ads": 117,
+  "confidence": 0.42,
+  "group": "bZ4J_riZ_zK6",
+  "label": "Anläggningsarbetare",
+  "words": [
+   "vägarbetare",
+   "arbetsledare",
+   "drift",
+   "produktionspersonal",
+   "vägservice",
+   "vägmarkering"
+  ]
+ },
+ "7179": {
+  "ads": 38,
+  "confidence": 0.65,
+  "group": "bZ4J_riZ_zK6",
+  "label": "Anläggningsarbetare",
+  "words": [
+   "stensättare",
+   "utan",
+   "yrkesbevis",
+   "sten",
+   "stenläggare",
+   "anläggningsarbetare"
+  ]
+ },
+ "718": {
+  "ads": 11,
+  "confidence": 0.26,
+  "group": "ByrL_ANp_UwV",
+  "label": "Kontorsreceptionister",
+  "words": [
+   "receptionist",
+   "hotell",
+   "guestservice",
+   "reception",
+   "grand",
+   "hotels"
+  ]
+ },
+ "7215": {
+  "ads": 50,
+  "confidence": 0.66,
+  "group": "3MBw_pDA_P2F",
+  "label": "Lastbilsförare m.fl.",
+  "words": [
+   "betongpumpförare",
+   "chaufför",
+   "betongbil",
+   "chaufförer",
+   "lernia",
+   "lärlingsplats"
+  ]
+ },
+ "7217": {
+  "ads": 396,
+  "confidence": 0.25,
+  "group": "3ZtN_hhA_SM7",
+  "label": "Anläggningsmaskinförare m.fl.",
+  "words": [
+   "hjullastarförare",
+   "hjullastare",
+   "maskinförare",
+   "godshantering",
+   "truckförare",
+   "erfarenhet"
+  ]
+ },
+ "7229": {
+  "ads": 2,
+  "confidence": 0.34,
+  "group": "3ZtN_hhA_SM7",
+  "label": "Anläggningsmaskinförare m.fl.",
+  "words": [
+   "hjullastarförare",
+   "gods",
+   "lärling",
+   "hjullastare"
+  ]
+ },
+ "725": {
+  "ads": 6,
+  "confidence": 0.32,
+  "group": "pwRH_MT1_8nR",
+  "label": "Kundtjänstpersonal",
+  "words": [
+   "reservations",
+   "sales",
+   "agent",
+   "bokningsassistent",
+   "marknadsassistenter",
+   "resekoordinator"
+  ]
+ },
+ "734": {
+  "ads": 2,
+  "confidence": 0.7,
+  "group": "kLyY_rwr_aJr",
+  "label": "Lager- och terminalpersonal",
+  "words": [
+   "terminalarbetare",
+   "järnvägspersonal",
+   "omgående",
+   "kontaktledning"
+  ]
+ },
+ "7342": {
+  "ads": 1679,
+  "confidence": 0.53,
+  "group": "k1Nx_auG_sNh",
+  "label": "Informatörer, kommunikatörer och PR-specialister",
+  "words": [
+   "kommunikatör",
+   "kommunikationsstrateg",
+   "kommunikationsansvarig",
+   "informatör",
+   "kommunikation",
+   "projektledare"
+  ]
+ },
+ "735": {
+  "ads": 6,
+  "confidence": 0.31,
+  "group": "vaEp_iBS_c5h",
+  "label": "Maskinställare och maskinoperatörer, metallarbete",
+  "words": [
+   "radioloksoperatör",
+   "bangårdstjänst",
+   "växlingspersonal",
+   "green",
+   "cargo",
+   "radioloks"
+  ]
+ },
+ "7356": {
+  "ads": 5,
+  "confidence": 0.87,
+  "group": "UGgc_Vm9_Bog",
+  "label": "Lokförare",
+  "words": [
+   "lokförare",
+   "växlingspersonal",
+   "biljettkontrollanter",
+   "kollektivtrafiken",
+   "nya",
+   "tillsyningsman"
+  ]
+ },
+ "7359": {
+  "ads": 141,
+  "confidence": 0.62,
+  "group": "3MBw_pDA_P2F",
+  "label": "Lastbilsförare m.fl.",
+  "words": [
+   "chaufför",
+   "transportförare",
+   "chaufförer",
+   "lastbilschaufför",
+   "körkort",
+   "kort"
+  ]
+ },
+ "736": {
+  "ads": 44,
+  "confidence": 0.25,
+  "group": "nk6Z_5oD_QoM",
+  "label": "Bangårdspersonal",
+  "words": [
+   "växlare",
+   "rangerare",
+   "servicehallsarbetare",
+   "truckförare",
+   "terminaloperatör",
+   "natt"
+  ]
+ },
+ "7379": {
+  "ads": 258,
+  "confidence": 0.33,
+  "group": "dUuh_wwa_FGj",
+  "label": "Övriga förmedlare",
+  "words": [
+   "mediasäljare",
+   "säljare",
+   "mediesäljare",
+   "driven",
+   "bli",
+   "internet"
+  ]
+ },
+ "7388": {
+  "ads": 187,
+  "confidence": 0.79,
+  "group": "s7vU_FhY_L5Z",
+  "label": "Fysioterapeuter och sjukgymnaster",
+  "words": [
+   "fysioterapeut",
+   "sjukgymnast",
+   "leg",
+   "legitimerad",
+   "vårdcentralen",
+   "vik"
+  ]
+ },
+ "7398": {
+  "ads": 7,
+  "confidence": 0.38,
+  "group": "wNrt_Ysj_WuT",
+  "label": "Biomedicinska analytiker m.fl.",
+  "words": [
+   "biomedicinsk",
+   "enhetschef",
+   "cytologi",
+   "driftchef",
+   "avdelningen",
+   "patologi"
+  ]
+ },
+ "7417": {
+  "ads": 1,
+  "confidence": 0.41,
+  "group": "9mJN_VwW_Xjg",
+  "label": "Träarbetare, snickare m.fl.",
+  "words": [
+   "byggnadsarbetare"
+  ]
+ },
+ "742": {
+  "ads": 1,
+  "confidence": 0.39,
+  "group": "Z6TY_xDf_Yup",
+  "label": "Städare",
+  "words": [
+   "fordonsoperatörer",
+   "trafficare",
+   "iss"
+  ]
+ },
+ "7423": {
+  "ads": 1,
+  "confidence": 0.33,
+  "group": "vaEp_iBS_c5h",
+  "label": "Maskinställare och maskinoperatörer, metallarbete",
+  "words": [
+   "hjullastarkort",
+   "industriarbetare"
+  ]
+ },
+ "743": {
+  "ads": 2,
+  "confidence": 0.52,
+  "group": "kLyY_rwr_aJr",
+  "label": "Lager- och terminalpersonal",
+  "words": [
+   "bandsågare",
+   "sågverk",
+   "internorder",
+   "sågverksarbetare",
+   "truckkort"
+  ]
+ },
+ "7434": {
+  "ads": 3,
+  "confidence": 0.64,
+  "group": "DJh5_yyF_hEM",
+  "label": "Mjukvaru- och systemutvecklare m.fl.",
+  "words": [
+   "programmerare",
+   "sweden",
+   "talaris",
+   "nintendo",
+   "storbank",
+   "javautvecklare"
+  ]
+ },
+ "7457": {
+  "ads": 17,
+  "confidence": 0.38,
+  "group": "8ddv_P8e_iYz",
+  "label": "Montörer, träprodukter",
+  "words": [
+   "safety",
+   "säkerhetsledare",
+   "eng",
+   "rcs",
+   "sest",
+   "skydds"
+  ]
+ },
+ "7482": {
+  "ads": 15,
+  "confidence": 0.56,
+  "group": "thZP_oR7_WrY",
+  "label": "Ingenjörer och tekniker inom bygg och anläggning",
+  "words": [
+   "byggledare",
+   "uppdragsledare",
+   "projektledare",
+   "inriktning",
+   "depå",
+   "spår"
+  ]
+ },
+ "7523": {
+  "ads": 542,
+  "confidence": 0.48,
+  "group": "jXUQ_rUV_iBv",
+  "label": "Soldater m.fl.",
+  "words": [
+   "soldater",
+   "soldat",
+   "vid",
+   "rekryterar",
+   "gss",
+   "förare"
+  ]
+ },
+ "7524": {
+  "ads": 99,
+  "confidence": 0.56,
+  "group": "jXUQ_rUV_iBv",
+  "label": "Soldater m.fl.",
+  "words": [
+   "flygflottilj",
+   "norrbottens",
+   "gss",
+   "soldater",
+   "blekinge",
+   "trossoldat"
+  ]
+ },
+ "7527": {
+  "ads": 4,
+  "confidence": 0.29,
+  "group": "dhgR_9jk_95r",
+  "label": "Specialistofficerare",
+  "words": [
+   "helikopterflottiljen",
+   "flygi",
+   "inspektör",
+   "flygmaterieltekniker",
+   "norrbottens",
+   "kvartermästare"
+  ]
+ },
+ "754": {
+  "ads": 6,
+  "confidence": 0.3,
+  "group": "vaEp_iBS_c5h",
+  "label": "Maskinställare och maskinoperatörer, metallarbete",
+  "words": [
+   "kapare",
+   "uppdrag",
+   "växjö",
+   "långt",
+   "kapning",
+   "aluminium"
+  ]
+ },
+ "7561": {
+  "ads": 26,
+  "confidence": 0.53,
+  "group": "wNrt_Ysj_WuT",
+  "label": "Biomedicinska analytiker m.fl.",
+  "words": [
+   "analytiker",
+   "biomedicinsk",
+   "chef",
+   "enhetschef",
+   "avdelningschef",
+   "director"
+  ]
+ },
+ "803": {
+  "ads": 30,
+  "confidence": 0.45,
+  "group": "yyF7_jsW_EeP",
+  "label": "Installations- och serviceelektriker",
+  "words": [
+   "servicetekniker",
+   "serviceelektriker",
+   "installationselektriker",
+   "elektriker",
+   "elkunskaper",
+   "inriktning"
+  ]
+ },
+ "807": {
+  "ads": 8,
+  "confidence": 0.43,
+  "group": "Lzpv_ofL_3H5",
+  "label": "Motorfordonsmekaniker och fordonsreparatörer",
+  "words": [
+   "bilelektriker",
+   "utrustningsmekaniker",
+   "elmontör",
+   "montörer",
+   "bilar",
+   "behörighet"
+  ]
+ },
+ "809": {
+  "ads": 3,
+  "confidence": 0.58,
+  "group": "SgAJ_DW2_FN5",
+  "label": "Montörer, elektrisk och elektronisk utrustning",
+  "words": [
+   "lastbilselektriker",
+   "sommar",
+   "elmontör",
+   "kungälv"
+  ]
+ },
+ "813": {
+  "ads": 19,
+  "confidence": 0.43,
+  "group": "fWrt_sLg_koW",
+  "label": "Elektronikreparatörer och kommunikationselektriker m.fl.",
+  "words": [
+   "instrumenttekniker",
+   "elektriker",
+   "instrumentrörläggare",
+   "industrielektriker",
+   "automationstekniker",
+   "svappavaara"
+  ]
+ },
+ "815": {
+  "ads": 5,
+  "confidence": 0.51,
+  "group": "fWrt_sLg_koW",
+  "label": "Elektronikreparatörer och kommunikationselektriker m.fl.",
+  "words": [
+   "reglertekniker",
+   "installationstekniker",
+   "montör",
+   "konstruktion",
+   "styr"
+  ]
+ },
+ "822": {
+  "ads": 2,
+  "confidence": 0.38,
+  "group": "KttZ_Skc_bMR",
+  "label": "Underhållsmekaniker och maskinreparatörer",
+  "words": [
+   "printtekniker",
+   "truck",
+   "reparatör"
+  ]
+ },
+ "834": {
+  "ads": 7,
+  "confidence": 0.38,
+  "group": "fWrt_sLg_koW",
+  "label": "Elektronikreparatörer och kommunikationselektriker m.fl.",
+  "words": [
+   "bredbandsinstallatör",
+   "tekniker",
+   "fibertekniker",
+   "falu",
+   "stadsnät",
+   "teleinstallatör"
+  ]
+ },
+ "835": {
+  "ads": 1,
+  "confidence": 0.87,
+  "group": "fWrt_sLg_koW",
+  "label": "Elektronikreparatörer och kommunikationselektriker m.fl.",
+  "words": [
+   "fibertekniker"
+  ]
+ },
+ "840": {
+  "ads": 2,
+  "confidence": 0.44,
+  "group": "fWrt_sLg_koW",
+  "label": "Elektronikreparatörer och kommunikationselektriker m.fl.",
+  "words": [
+   "tele",
+   "data",
+   "installatör",
+   "teletekniker"
+  ]
+ },
+ "841": {
+  "ads": 52,
+  "confidence": 0.27,
+  "group": "fWrt_sLg_koW",
+  "label": "Elektronikreparatörer och kommunikationselektriker m.fl.",
+  "words": [
+   "larmtekniker",
+   "säkerhet",
+   "tekniker",
+   "servicetekniker",
+   "larm",
+   "larminstallatör"
+  ]
+ },
+ "846": {
+  "ads": 1,
+  "confidence": 0.57,
+  "group": "KttZ_Skc_bMR",
+  "label": "Underhållsmekaniker och maskinreparatörer",
+  "words": [
+   "reparatör"
+  ]
+ },
+ "851": {
+  "ads": 7,
+  "confidence": 0.87,
+  "group": "fWrt_sLg_koW",
+  "label": "Elektronikreparatörer och kommunikationselektriker m.fl.",
+  "words": [
+   "fibertekniker",
+   "kabeltekniker",
+   "optokabelinstallatör",
+   "optotekniker",
+   "bredbandstekniker",
+   "ftth"
+  ]
+ },
+ "852": {
+  "ads": 1,
+  "confidence": 0.37,
+  "group": "w6ud_quG_dgh",
+  "label": "Arbetsledare inom bygg, anläggning och gruva",
+  "words": [
+   "järnvägserfarenhet",
+   "arbetsledare"
+  ]
+ },
+ "892": {
+  "ads": 10,
+  "confidence": 0.73,
+  "group": "e6nk_AGp_y28",
+  "label": "Finmekaniker",
+  "words": [
+   "låstekniker",
+   "projektör",
+   "projektörer",
+   "låssmedslärare",
+   "låssmed",
+   "larmansvarig"
+  ]
+ },
+ "893": {
+  "ads": 1,
+  "confidence": 0.39,
+  "group": "tPox_ie4_X9X",
+  "label": "Restaurang- och köksbiträden m.fl.",
+  "words": [
+   "medarbetare"
+  ]
+ },
+ "898": {
+  "ads": 4,
+  "confidence": 0.68,
+  "group": "kLyY_rwr_aJr",
+  "label": "Lager- och terminalpersonal",
+  "words": [
+   "färgbrytare",
+   "färgtekniker",
+   "kundvana",
+   "lagerarbetare",
+   "administration"
+  ]
+ },
+ "902": {
+  "ads": 4,
+  "confidence": 0.39,
+  "group": "vaEp_iBS_c5h",
+  "label": "Maskinställare och maskinoperatörer, metallarbete",
+  "words": [
+   "deltidspersonal",
+   "adecco",
+   "driftsansvarig",
+   "förzinkningsanläggning",
+   "indunstningsoperatör",
+   "operatör"
+  ]
+ },
+ "924": {
+  "ads": 9,
+  "confidence": 0.32,
+  "group": "vaEp_iBS_c5h",
+  "label": "Maskinställare och maskinoperatörer, metallarbete",
+  "words": [
+   "maskinoperatör",
+   "södertälje",
+   "läkemedelstillverkning",
+   "läkemedelsoperatörer",
+   "uthyrning",
+   "proffice"
+  ]
+ },
+ "938": {
+  "ads": 2,
+  "confidence": 0.62,
+  "group": "dKUb_KBP_mw3",
+  "label": "Lackerare och industrimålare",
+  "words": [
+   "förkromare",
+   "ytbehandlare",
+   "overflatearbeider"
+  ]
+ },
+ "941": {
+  "ads": 3,
+  "confidence": 0.45,
+  "group": "dKUb_KBP_mw3",
+  "label": "Lackerare och industrimålare",
+  "words": [
+   "södertälje",
+   "varmförzinkare",
+   "ytbehandlare"
+  ]
+ },
+ "945": {
+  "ads": 2,
+  "confidence": 0.39,
+  "group": "dKUb_KBP_mw3",
+  "label": "Lackerare och industrimålare",
+  "words": [
+   "ytbehandlare",
+   "analyslab",
+   "medarbetare"
+  ]
+ },
+ "966": {
+  "ads": 52,
+  "confidence": 0.27,
+  "group": "vaEp_iBS_c5h",
+  "label": "Maskinställare och maskinoperatörer, metallarbete",
+  "words": [
+   "formsprutstekniker",
+   "formsprutningstekniker",
+   "formsprutning",
+   "ställare",
+   "processtekniker",
+   "tekniker"
+  ]
+ },
+ "969": {
+  "ads": 118,
+  "confidence": 0.42,
+  "group": "vaEp_iBS_c5h",
+  "label": "Maskinställare och maskinoperatörer, metallarbete",
+  "words": [
+   "formsprutare",
+   "formsprutning",
+   "plast",
+   "ställare",
+   "maskinoperatör",
+   "maskinställare"
+  ]
+ },
+ "979": {
+  "ads": 8,
+  "confidence": 0.53,
+  "group": "vaEp_iBS_c5h",
+  "label": "Maskinställare och maskinoperatörer, metallarbete",
+  "words": [
+   "maskinoperatör",
+   "trioplast",
+   "sifab",
+   "skiftansvarig",
+   "plastpressare",
+   "praktikant"
+  ]
+ },
+ "982": {
+  "ads": 4,
+  "confidence": 0.56,
+  "group": "vaEp_iBS_c5h",
+  "label": "Maskinställare och maskinoperatörer, metallarbete",
+  "words": [
+   "operatör",
+   "urval",
+   "erfaren",
+   "formplastsprutare",
+   "materialhanterare",
+   "formplastsprutor"
+  ]
+ },
+ "999999": {
+  "ads": 320,
+  "confidence": 0.45,
+  "group": "BStc_SJh_DKG",
+  "label": "Kockar och kallskänkor",
+  "words": [
+   "kock",
+   "lärare",
+   "kokerska",
+   "vaktmästare",
+   "urval",
+   "skola"
+  ]
+ }
+}
