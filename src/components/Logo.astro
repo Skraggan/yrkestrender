@@ -1,0 +1,39 @@
+---
+// Mark: a trend line rising across three rows of a job-ad listing, ending in a dot.
+// Wordmark: the name set in the site typeface.
+interface Props {
+  size?: number;
+}
+const { size = 28 } = Astro.props;
+---
+
+<span class="logo">
+  <svg width={size} height={size} viewBox="0 0 32 32" aria-hidden="true">
+    <rect width="32" height="32" rx="7" fill="var(--primary)"></rect>
+    <g stroke="var(--bg)" stroke-opacity="0.28" stroke-width="2" stroke-linecap="round">
+      <line x1="7" y1="10" x2="25" y2="10"></line>
+      <line x1="7" y1="16" x2="25" y2="16"></line>
+      <line x1="7" y1="22" x2="25" y2="22"></line>
+    </g>
+    <polyline points="7,23 13,18 18,19.5 24,10" fill="none" stroke="var(--bg)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"></polyline>
+    <circle cx="24" cy="10" r="2.9" fill="var(--bg)"></circle>
+  </svg>
+  <span class="word">Yrkestrender</span>
+</span>
+
+<style>
+  .logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+  }
+  svg {
+    flex: none;
+  }
+  .word {
+    font-weight: 700;
+    font-size: 1.15rem;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+</style>

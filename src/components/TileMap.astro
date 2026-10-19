@@ -1,0 +1,182 @@
+---
+// Sweden's 21 counties as a tile map: one equal square per county, placed
+// roughly where it lies. Shading shows the value; every tile links to the
+// county page, and the full numbers are in a visually hidden table.
+import { regionIndex } from '../lib/data';
+import { url } from '../lib/url';
+
+interface Props {
+  values: Record<string, number | null | undefined>;
+  format: (v: number) => string;
+  title: string;
+  legend: string;
+  /** Fixed domain for a linear scale; without it, counties are shaded in five equal-sized groups by rank. */
+  domain?: [number, number];
+}
+const { values, format, title, legend, domain } = Astro.props;
+
+// [column, row, short label] per county code.
+const TILES: Record<string, [number, number, string]> = {
+  '25': [2, 0, 'Norrbotten'],
+  '24': [2, 1, 'Västerbotten'],
+  '23': [1, 2, 'Jämtland'],
+  '22': [2, 2, 'Västernorrl.'],
+  '20': [1, 3, 'Dalarna'],
+  '21': [2, 3, 'Gävleborg'],
+  '17': [0, 4, 'Värmland'],
+  '18': [1, 4, 'Örebro'],
+  '19': [2, 4, 'Västmanl.'],
+  '03': [3, 4, 'Uppsala'],
+  '14': [0, 5, 'V. Götaland'],
+  '05': [1, 5, 'Östergötl.'],
+  '04': [2, 5, 'Sörmland'],
+  '01': [3, 5, 'Stockholm'],
+  '13': [0, 6, 'Halland'],
+  '06': [1, 6, 'Jönköping'],
+  '08': [2, 6, 'Kalmar'],
+  '09': [3, 6, 'Gotland'],
+  '12': [0, 7, 'Skåne'],
+  '07': [1, 7, 'Kronoberg'],
+  '10': [2, 7, 'Blekinge'],
+};
+const regions = regionIndex();
+const nums = Object.values(values)
+  .filter((v): v is number => v != null)
+  .sort((a, b) => a - b);
+const step = (v: number | null | undefined) => {
+  if (v == null) return 0;
+  if (domain) {
+    const t = (v - domain[0]) / (domain[1] - domain[0] || 1);
+    return Math.max(1, Math.min(5, Math.ceil(t * 5)));
+  }
+  // Quantile classes: rank among counties, so a large county does not wash out the rest.
+  const rank = nums.filter((x) => x < v).length;
+  return Math.min(5, Math.floor((rank / Math.max(1, nums.length)) * 5) + 1);
+};
+const S = 76;
+const G = 4;
+const width = 4 * S + 3 * G;
+const height = 8 * S + 7 * G;
+---
+
+<figure class="tilemap">
+  <svg viewBox={`0 0 ${width} ${height}`} role="img" aria-label={title}>
+    {
+      Object.entries(TILES).map(([code, [c, r, short]]) => {
+        const reg = regions.find((x) => x.code === code);
+        const v = values[code];
+        const s = step(v);
+        return (
+          <a href={reg ? url(`/lan/${reg.id}/`) : undefined}>
+            <g class={`tile s${s}`} transform={`translate(${c * (S + G)},${r * (S + G)})`}>
+              <title>{`${reg?.label ?? code}: ${v == null ? 'uppgift saknas' : format(v)}`}</title>
+              <rect width={S} height={S} rx="5" />
+              <text x="7" y="17" class="name">
+                {short}
+              </text>
+              <text x="7" y={S - 10} class="val">
+                {v == null ? '–' : format(v)}
+              </text>
+            </g>
+          </a>
+        );
+      })
+    }
+  </svg>
+  <figcaption>
+    <span class="scale" aria-hidden="true">
+      {[1, 2, 3, 4, 5].map((s) => <i class={`s${s}`} />)}
+    </span>
+    <span class="small muted">{legend}</span>
+  </figcaption>
+  <div class="visually-hidden"><table>
+    <caption>{title}</caption>
+    <tbody>
+      {
+        Object.keys(TILES).map((code) => (
+          <tr>
+            <th scope="row">{regions.find((x) => x.code === code)?.label ?? code}</th>
+            <td>{values[code] == null ? 'uppgift saknas' : format(values[code] as number)}</td>
+          </tr>
+        ))
+      }
+    </tbody>
+  </table></div>
+</figure>
+
+<style>
+  .tilemap {
+    margin: 0;
+    max-width: 22rem;
+  }
+  svg {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .tile rect {
+    fill: var(--surface-2);
+    stroke: var(--bg);
+  }
+  a:hover .tile rect,
+  a:focus-visible .tile rect {
+    stroke: var(--ink);
+    stroke-width: 2;
+  }
+  .tile .name {
+    font-size: 10.5px;
+    font-weight: 500;
+    fill: var(--ink-2);
+  }
+  .tile .val {
+    font-size: 15px;
+    font-weight: 650;
+    fill: var(--ink);
+    font-variant-numeric: tabular-nums;
+  }
+  .s1 rect,
+  i.s1 {
+    fill: var(--s1);
+    background: var(--s1);
+  }
+  .s2 rect,
+  i.s2 {
+    fill: var(--s2);
+    background: var(--s2);
+  }
+  .s3 rect,
+  i.s3 {
+    fill: var(--s3);
+    background: var(--s3);
+  }
+  .s4 rect,
+  i.s4 {
+    fill: var(--s4);
+    background: var(--s4);
+  }
+  .s5 rect,
+  i.s5 {
+    fill: var(--s5);
+    background: var(--s5);
+  }
+  .s4 .name,
+  .s5 .name,
+  .s4 .val,
+  .s5 .val {
+    fill: var(--bg);
+  }
+  figcaption {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-top: 0.6rem;
+    flex-wrap: wrap;
+  }
+  .scale {
+    display: inline-flex;
+  }
+  .scale i {
+    width: 18px;
+    height: 10px;
+  }
+</style>

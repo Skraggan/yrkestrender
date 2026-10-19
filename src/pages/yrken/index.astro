@@ -2,8 +2,9 @@
 import { url } from '../../lib/url';
 import Base from '../../layouts/Base.astro';
 import Sparkline from '../../components/Sparkline.astro';
+import Change from '../../components/Change.astro';
 import { fields, meta, nationalWindow, occById } from '../../lib/data';
-import { int, rel, relValue, signClass, windowLabel } from '../../lib/format';
+import { int, rel, relValue, windowLabel } from '../../lib/format';
 import { volumeVsMarket } from '../../lib/trend';
 
 const m = meta();
@@ -16,9 +17,9 @@ const vs = (x: { L12: number; B12: number }) => volumeVsMarket(x.L12, x.B12, nat
 
 <Base title="Alla yrken" description={`${m.occupationCount} yrken i ${allFields.length} yrkesområden. Se vad arbetsgivarna efterfrågar i annonserna för varje yrke.`}>
   <div class="wrap">
-    <header class="head">
+    <header class="page-head">
       <h1>Alla yrken</h1>
-      <p class="summary">
+      <p class="lede">
         {`${m.occupationCount} yrkesgrupper enligt Arbetsförmedlingens yrkesindelning, sorterade på antal annonser ${windowLabel(m.windows.L12)}. Förändringen på tre år visas mot arbetsmarknaden i stort (${rel(natL12, natB12)}), totalt bredvid.`}
       </p>
       <label class="filter">
@@ -60,7 +61,7 @@ const vs = (x: { L12: number; B12: number }) => volumeVsMarket(x.L12, x.B12, nat
                       {o.titles.length > 0 && <span class="titles">{o.titles.slice(0, 4).join(', ')}</span>}
                     </th>
                     <td class="num">{int(o.L12)}</td>
-                    <td class={`num strong ${signClass(vs(o), 0.05)}`}>{relValue(vs(o))}</td>
+                    <td class="num"><Change value={vs(o)} unit="rel" threshold={0.05} /></td>
                     <td class="num muted small tot">{rel(o.L12, o.B12)}</td>
                     <td class="spark-col">
                       <Sparkline values={years.map((y) => o.years[y] ?? 0).slice(0, m.partialLastYear ? -1 : undefined)} />
@@ -96,21 +97,13 @@ const vs = (x: { L12: number; B12: number }) => volumeVsMarket(x.L12, x.B12, nat
 </script>
 
 <style>
-  .head {
-    padding-block: 2.5rem 1.5rem;
-  }
-  .summary {
-    font-size: var(--t-md);
-    max-width: 58ch;
-    margin-top: 1rem;
-  }
   .filter input {
     font: inherit;
     width: min(100%, 26rem);
     padding: 0.6rem 0.8rem;
     border: 1px solid var(--rule-strong);
     border-radius: var(--radius);
-    background: var(--paper-raised);
+    background: var(--bg);
     color: var(--ink);
   }
   .toc {
@@ -135,7 +128,7 @@ const vs = (x: { L12: number; B12: number }) => volumeVsMarket(x.L12, x.B12, nat
     display: block;
     font-weight: 400;
     font-size: var(--t-xs);
-    color: var(--graphite);
+    color: var(--muted);
   }
   .spark-col {
     width: 7rem;

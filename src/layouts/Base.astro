@@ -1,7 +1,8 @@
 ---
 import { url } from '../lib/url';
-import '@fontsource-variable/archivo/wdth.css';
+import '@fontsource-variable/schibsted-grotesk/wght.css';
 import '../styles/global.css';
+import Logo from '../components/Logo.astro';
 import Search from '../components/Search.astro';
 import { meta } from '../lib/data';
 import { monthName } from '../lib/format';
@@ -39,14 +40,19 @@ const nav = [
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonical} />
     <meta property="og:locale" content="sv_SE" />
-    <meta name="theme-color" content="#f4f5f1" media="(prefers-color-scheme: light)" />
-    <meta name="theme-color" content="#12181f" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#ffffff" />
+    <script is:inline>
+      // Light by default; dark only if the visitor chose it.
+      try {
+        if (localStorage.getItem('theme') === 'dark') document.documentElement.dataset.theme = 'dark';
+      } catch (e) {}
+    </script>
   </head>
   <body>
     <a class="skip" href="#main">Hoppa till innehållet</a>
     <header class="site">
       <div class="wrap bar">
-        <a class="brand" href={url('/')} aria-label="Yrkestrender, startsida">Yrkestrender</a>
+        <a class="brand" href={url('/')} aria-label="Yrkestrender, startsida"><Logo /></a>
         <nav aria-label="Huvudmeny">
           <ul>
             {
@@ -60,7 +66,13 @@ const nav = [
             }
           </ul>
         </nav>
-        {!hideSearch && <div class="header-search"><Search variant="compact" /></div>}
+        {
+          !hideSearch && (
+            <div class="header-search">
+              <Search variant="compact" />
+            </div>
+          )
+        }
       </div>
     </header>
     <main id="main">
@@ -68,24 +80,64 @@ const nav = [
     </main>
     <footer class="site">
       <div class="wrap foot">
-        <p>
-          {`Byggt på ${m.totalAds.toLocaleString('sv-SE')} platsannonser från Arbetsförmedlingens Platsbanken, ${monthName(m.firstMonth)} – ${monthName(m.lastMonth)}. Annonsdata från `}
-          <a href="https://data.jobtechdev.se/annonser/historiska/">JobTech Development</a> (CC0).
-        </p>
-        <p class="muted small">
-          Siffrorna visar hur ofta annonser nämner något, inte hur många som anställs.{' '}
-          <a href={url('/om/')}>Så räknar vi</a>. Uppdaterad {m.generated}.
-        </p>
+        <div class="foot-brand">
+          <Logo size={24} />
+          <p class="muted small">
+            Vad arbetsgivarna efterfrågar i platsannonser, för varje yrke och län, sedan {m.years[0]}.
+          </p>
+        </div>
+        <div>
+          <h2 class="foot-h">Utforska</h2>
+          <ul>
+            {nav.map((n) => <li><a href={n.href}>{n.label}</a></li>)}
+          </ul>
+        </div>
+        <div>
+          <h2 class="foot-h">Data</h2>
+          <p class="small">
+            {`${m.totalAds.toLocaleString('sv-SE')} platsannonser från Arbetsförmedlingens Platsbanken, ${monthName(m.firstMonth)} – ${monthName(m.lastMonth)}. Källa: `}
+            <a href="https://data.jobtechdev.se/annonser/historiska/">JobTech Development</a> (CC0). Uppdaterad {m.generated}.
+          </p>
+          <p class="small muted">Siffrorna visar vad annonser nämner, inte hur många som anställs. <a href={url('/om/')}>Så räknar vi</a>.</p>
+        </div>
+        <div>
+          <h2 class="foot-h">Visning</h2>
+          <button type="button" class="btn theme-toggle" data-theme-toggle aria-pressed="false">Mörkt läge</button>
+          <p class="small muted src">
+            <a href="https://github.com/Skraggan/yrkestrender">Källkod på GitHub</a>
+          </p>
+        </div>
       </div>
     </footer>
     <script>
+      const toggle = document.querySelector<HTMLButtonElement>('[data-theme-toggle]');
+      const sync = () => {
+        const dark = document.documentElement.dataset.theme === 'dark';
+        if (toggle) {
+          toggle.setAttribute('aria-pressed', String(dark));
+          toggle.textContent = dark ? 'Ljust läge' : 'Mörkt läge';
+        }
+      };
+      sync();
+      toggle?.addEventListener('click', () => {
+        const dark = document.documentElement.dataset.theme !== 'dark';
+        if (dark) document.documentElement.dataset.theme = 'dark';
+        else delete document.documentElement.dataset.theme;
+        try {
+          localStorage.setItem('theme', dark ? 'dark' : 'light');
+        } catch (e) {}
+        sync();
+      });
+
       // Hover readout for LineChart: nearest x value, all series.
       const fmt = (v: number | null, f: string) =>
         v == null
           ? '–'
           : f === 'pct'
-            ? `${(v * 100).toLocaleString('sv-SE', { maximumFractionDigits: v < 0.1 ? 1 : 0 })} %`
-            : Math.round(v).toLocaleString('sv-SE');
+            ? `${(v * 100).toLocaleString('sv-SE', { minimumFractionDigits: 1, maximumFractionDigits: 1 })} %`
+            : f === 'index'
+              ? Math.round(v).toLocaleString('sv-SE')
+              : Math.round(v).toLocaleString('sv-SE');
       const label = (x: string) => {
         if (/^\d{4}-\d{2}$/.test(x)) {
           const m = ['jan', 'feb', 'mar', 'apr', 'maj', 'jun', 'jul', 'aug', 'sep', 'okt', 'nov', 'dec'];
@@ -96,34 +148,51 @@ const nav = [
       document.querySelectorAll<SVGSVGElement>('svg[data-chart]').forEach((svg) => {
         const data = JSON.parse(svg.dataset.chart!);
         const pad = JSON.parse(svg.dataset.pad!);
-        const W = Number(svg.dataset.w), H = Number(svg.dataset.h), max = Number(svg.dataset.max);
+        const W = Number(svg.dataset.w),
+          H = Number(svg.dataset.h),
+          max = Number(svg.dataset.max),
+          min = Number(svg.dataset.min || 0);
         const fig = svg.closest('figure')!;
         const out = fig.querySelector<HTMLElement>('.readout')!;
         const layer = svg.querySelector('.hover')!;
         const n = Math.max(1, data.x.length - 1);
         const colors = Array.from(svg.querySelectorAll<SVGPathElement>('path.line')).map((p) => p.getAttribute('stroke'));
-        const move = (ev: PointerEvent) => {
+        const show = (i: number) => {
           const r = svg.getBoundingClientRect();
-          const px = ((ev.clientX - r.left) / r.width) * W;
-          const i = Math.max(0, Math.min(n, Math.round(((px - pad.l) / (W - pad.l - pad.r)) * n)));
           const cx = pad.l + ((W - pad.l - pad.r) * i) / n;
-          let html = `<strong>${label(data.x[i])}</strong>`;
+          let html = `<strong>${data.labelPrefix ?? ''}${label(data.x[i])}</strong>`;
           let dots = '';
           data.series.forEach((s: { label: string; values: (number | null)[] }, k: number) => {
             const v = s.values[i];
-            html += `<br>${data.series.length > 1 ? s.label + ': ' : ''}${fmt(v, data.format)}`;
-            if (v != null) dots += `<circle cx="${cx}" cy="${pad.t + (H - pad.t - pad.b) * (1 - v / max)}" r="4" fill="${colors[k]}"/>`;
+            html += `<span><i style="background:${colors[k]}"></i>${data.series.length > 1 ? s.label : ''}<b>${fmt(v, data.format)}</b></span>`;
+            if (v != null) dots += `<circle cx="${cx}" cy="${pad.t + (H - pad.t - pad.b) * (1 - (v - min) / (max - min))}" r="4" fill="${colors[k]}"/>`;
           });
           layer.innerHTML = `<line x1="${cx}" x2="${cx}" y1="${pad.t}" y2="${H - pad.b}"/>${dots}`;
           out.innerHTML = html;
           out.classList.add('on');
           const left = (cx / W) * r.width;
-          out.style.left = `${Math.min(r.width - out.offsetWidth, Math.max(0, left - out.offsetWidth / 2))}px`;
-          out.style.top = `-8px`;
-          out.style.transform = 'translateY(-100%)';
+          const w = out.offsetWidth;
+          out.style.left = `${Math.min(r.width - w, Math.max(0, left + (left > r.width / 2 ? -w - 12 : 12)))}px`;
         };
-        svg.addEventListener('pointermove', move);
+        svg.addEventListener('pointermove', (ev) => {
+          const r = svg.getBoundingClientRect();
+          const px = ((ev.clientX - r.left) / r.width) * W;
+          show(Math.max(0, Math.min(n, Math.round(((px - pad.l) / (W - pad.l - pad.r)) * n))));
+        });
         svg.addEventListener('pointerleave', () => {
+          layer.innerHTML = '';
+          out.classList.remove('on');
+        });
+        // Keyboard: focus the chart, then arrow keys.
+        let k = -1;
+        svg.tabIndex = 0;
+        svg.addEventListener('keydown', (ev) => {
+          if (ev.key !== 'ArrowLeft' && ev.key !== 'ArrowRight') return;
+          ev.preventDefault();
+          k = k < 0 ? n : Math.max(0, Math.min(n, k + (ev.key === 'ArrowRight' ? 1 : -1)));
+          show(k);
+        });
+        svg.addEventListener('blur', () => {
           layer.innerHTML = '';
           out.classList.remove('on');
         });
@@ -138,7 +207,7 @@ const nav = [
     left: -999px;
     top: 0;
     background: var(--ink);
-    color: var(--paper);
+    color: var(--bg);
     padding: 0.5rem 1rem;
     z-index: 10;
   }
@@ -147,24 +216,21 @@ const nav = [
   }
   header.site {
     border-bottom: 1px solid var(--rule);
-    background: var(--paper);
+    background: var(--bg);
+    position: sticky;
+    top: 0;
+    z-index: 15;
   }
   .bar {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 0.5rem 1.75rem;
-    padding-block: 0.9rem;
+    gap: 0.5rem 2rem;
+    padding-block: 0.75rem;
   }
   .brand {
-    font-stretch: 125%;
-    font-weight: 850;
-    font-size: 1.2rem;
-    letter-spacing: -0.01em;
-    color: var(--ink);
     text-decoration: none;
-    background: linear-gradient(transparent 62%, var(--signal) 62%, var(--signal) 90%, transparent 90%);
-    padding: 0 0.1em;
+    display: inline-flex;
   }
   nav ul {
     list-style: none;
@@ -172,25 +238,31 @@ const nav = [
     padding: 0;
     display: flex;
     flex-wrap: wrap;
-    gap: 0.25rem 1.25rem;
+    gap: 0.25rem 1.4rem;
   }
   nav a {
-    color: var(--ink);
+    color: var(--ink-2);
     text-decoration: none;
     font-weight: 500;
     font-size: var(--t-sm);
-    padding-block: 0.3rem;
+    padding-block: 0.35rem;
     border-bottom: 2px solid transparent;
   }
-  nav a:hover,
+  nav a:hover {
+    color: var(--ink);
+  }
   nav a[aria-current='page'] {
-    border-bottom-color: var(--ink);
+    color: var(--ink);
+    border-bottom-color: var(--primary);
   }
   .header-search {
     margin-left: auto;
-    width: min(100%, 19rem);
+    width: min(100%, 18rem);
   }
-  @media (max-width: 760px) {
+  @media (max-width: 860px) {
+    header.site {
+      position: static;
+    }
     .header-search {
       width: 100%;
       margin-left: 0;
@@ -198,8 +270,35 @@ const nav = [
   }
   footer.site {
     border-top: 1px solid var(--rule);
-    margin-top: 3rem;
-    padding-block: 2rem 3rem;
+    background: var(--surface);
+    margin-top: 4rem;
+    padding-block: 2.5rem 3rem;
+  }
+  .foot {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+  }
+  .foot-brand p {
+    margin-top: 0.75rem;
+  }
+  .foot-h {
     font-size: var(--t-sm);
+    font-weight: 650;
+    margin-bottom: 0.6rem;
+  }
+  .foot ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.3rem;
+    font-size: var(--t-sm);
+  }
+  .foot ul a {
+    color: var(--ink-2);
+  }
+  .src {
+    margin-top: 0.9rem;
   }
 </style>

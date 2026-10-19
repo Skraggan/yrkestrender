@@ -4,9 +4,9 @@ import Base from '../layouts/Base.astro';
 import Search from '../components/Search.astro';
 import LineChart from '../components/LineChart.astro';
 import SkillList from '../components/SkillList.astro';
-import Sparkline from '../components/Sparkline.astro';
-import { fields, KIND_NOUN, kinds, meta, nationalWindow, occupationIndex, skillById, skillIndex, type SkillIndexItem } from '../lib/data';
-import { int, monthName, pct, rel, relValue, signClass, windowLabel } from '../lib/format';
+import Change from '../components/Change.astro';
+import { fields, KIND_NOUN, kinds, meta, nationalWindow, occupationIndex, regionIndex, skillIndex, type SkillIndexItem } from '../lib/data';
+import { int, monthName, pct, rel, windowLabel } from '../lib/format';
 import { monthRange, smooth } from '../lib/chart';
 import { baseline, excess, volumeVsMarket } from '../lib/trend';
 
@@ -15,15 +15,14 @@ const months = monthRange(m.firstMonth, m.lastMonth);
 const monthly = smooth(months.map((x) => m.nationalMonths[x] ?? null), 1);
 const natL12 = nationalWindow('L12');
 const natB12 = nationalWindow('B12');
+const natP12 = nationalWindow('P12');
 
 // What changed most over three years, per kind, measured against the kind's average change.
 const allSkills = skillIndex();
 const kindBlocks = kinds().map((k) => {
   const items = allSkills.filter((s) => s.kind === k.id && s.sh != null && s.sh3 != null);
   const base = baseline(items);
-  const scored = items
-    .filter((s) => s.L12 >= 300 || s.B12 >= 300)
-    .map((s) => ({ s, r: excess(s.sh, s.sh3, base)! }));
+  const scored = items.filter((s) => s.L12 >= 300 || s.B12 >= 300).map((s) => ({ s, r: excess(s.sh, s.sh3, base)! }));
   const toRow = ({ s, r }: { s: SkillIndexItem; r: number }) => ({
     id: s.id,
     name: s.name,
@@ -36,63 +35,179 @@ const kindBlocks = kinds().map((k) => {
   return {
     kind: k,
     base,
-    up: [...scored].sort((a, b) => b.r - a.r).slice(0, 8).map(toRow),
-    down: [...scored].sort((a, b) => a.r - b.r).slice(0, 8).map(toRow),
+    up: [...scored].sort((a, b) => b.r - a.r).slice(0, 6).map(toRow),
+    down: [...scored].sort((a, b) => a.r - b.r).slice(0, 6).map(toRow),
   };
 });
 
-// Six long-running shifts, shown as small multiples.
-const storyIds = ['distansarbete', 'generativ-ai', 'utdrag-ur-belastningsregistret', 'hallbarhet', 'engelska', 'kollektivavtal'];
-const stories = storyIds.map((id) => skillById(id)).filter((s) => s != null);
-
 const occ = occupationIndex();
-const biggest = occ.slice(0, 10);
 const vs = (o: { L12: number; B12: number }) => volumeVsMarket(o.L12, o.B12, natL12, natB12);
-const growing = occ
-  .filter((o) => o.B12 >= 300 && o.L12 >= 300)
-  .map((o) => ({ o, g: vs(o)! }))
-  .sort((a, b) => b.g - a.g)
-  .slice(0, 10);
-const quick = ['Undersköterska', 'Elektriker', 'Grundskollärare', 'Lastbilsförare', 'Redovisningsekonom', 'Kock'];
-const quickLinks = quick
+const biggest = occ.slice(0, 8);
+const ranked = occ.filter((o) => o.B12 >= 300 && o.L12 >= 300).map((o) => ({ o, g: vs(o)! }));
+const growing = [...ranked].sort((a, b) => b.g - a.g).slice(0, 8);
+const shrinking = [...ranked].sort((a, b) => a.g - b.g).slice(0, 8);
+const popular = ['Undersköterska', 'Elektriker', 'Grundskollärare', 'Lastbilsförare', 'Sjuksköterska', 'Systemutvecklare', 'Kock', 'Ekonomiassistent'];
+const popularLinks = popular
   .map((t) => ({ label: t, o: occ.find((o) => o.titles.some((x) => x.startsWith(t)) || o.label.startsWith(t)) }))
   .filter((q) => q.o != null)
   .map((q) => ({ label: q.label, href: url(`/yrken/${q.o!.id}/`) }));
 const allFields = fields();
 const firstYear = m.years[0];
+const nRegions = regionIndex().length;
+
+const entries = [
+  { q: 'Vad krävs för ett yrke?', a: `Kompetenser, körkort, utbildning och villkor i ${m.occupationCount} yrken.`, href: url('/yrken/'), cta: 'Välj yrke' },
+  { q: 'Vilka yrken efterfrågar en kompetens?', a: `${allSkills.length} kompetenser och krav, och var de efterfrågas.`, href: url('/kompetenser/'), cta: 'Se kompetenser' },
+  { q: 'Hur ser det ut där jag bor?', a: `Yrken och kompetenser som växer i Sveriges ${nRegions} län.`, href: url('/lan/'), cta: 'Välj län' },
+  { q: 'Hur har något förändrats?', a: `Jämför upp till fem saker över tid, sedan ${firstYear}.`, href: url('/jamfor/'), cta: 'Jämför' },
+];
 ---
 
-<Base title="Yrkestrender" description="Se vad arbetsgivare efterfrågar i platsannonser för varje yrke i Sverige, år för år sedan 2006: kompetenser, krav, egenskaper och villkor." hideSearch>
-  <section class="hero wrap">
-    <Search variant="hero" />
-    <p class="lede">
-      {`Skriv ett yrke eller en kompetens och se vad arbetsgivarna har efterfrågat i ${int(m.totalAds)} platsannonser sedan ${firstYear}.`}
-    </p>
-    {
-      quickLinks.length > 0 && (
-        <p class="quick">
-          <span class="muted">Till exempel</span>
-          {quickLinks.map((q) => (
-            <a href={q.href}>{q.label}</a>
-          ))}
+<Base title="Yrkestrender" description={`Se vad arbetsgivare efterfrågar i platsannonser för varje yrke i Sverige, sedan ${firstYear}: kompetenser, krav, egenskaper och villkor.`} hideSearch>
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-main">
+        <h1>Vad efterfrågar arbetsgivarna?</h1>
+        <p class="lede">
+          {`Se vilka kompetenser, krav och villkor som står i platsannonserna för ${m.occupationCount} yrken, och hur det har förändrats sedan ${firstYear}.`}
         </p>
-      )
+        <Search variant="hero" />
+        <p class="popular">
+          <span class="muted">Vanliga sökningar:</span>
+          {popularLinks.map((q) => <a href={q.href}>{q.label}</a>)}
+        </p>
+      </div>
+      <aside class="now panel" aria-labelledby="now-h">
+        <h2 id="now-h" class="now-h">Arbetsmarknaden just nu</h2>
+        <p class="now-num num">{int(natL12)}</p>
+        <p class="now-label">platsannonser de senaste tolv månaderna</p>
+        <dl class="now-facts">
+          <div>
+            <dt>Mot året innan</dt>
+            <dd><Change value={natP12 ? natL12 / natP12 - 1 : null} unit="rel" /></dd>
+          </div>
+          <div>
+            <dt>Mot tre år sedan</dt>
+            <dd><Change value={natB12 ? natL12 / natB12 - 1 : null} unit="rel" /></dd>
+          </div>
+        </dl>
+        <p class="small muted">{windowLabel(m.windows.L12)}. Källa: Platsbanken via JobTech.</p>
+      </aside>
+    </div>
+  </section>
+
+  <section class="wrap entries" aria-label="Utforska">
+    {
+      entries.map((e) => (
+        <a class="entry" href={e.href}>
+          <span class="entry-q">{e.q}</span>
+          <span class="entry-a">{e.a}</span>
+          <span class="entry-cta">{e.cta}</span>
+        </a>
+      ))
+    }
+  </section>
+
+  <section class="section wrap" data-kind-tabs>
+    <div class="section-head split">
+      <div>
+        <h2>Vad som ökar och minskar</h2>
+        <p>
+          De senaste tolv månaderna jämfört med samma period tre år tidigare. Förändringen räknas mot snittet för samma
+          sort, eftersom annonserna med tiden nämner fler saker.
+        </p>
+      </div>
+      <div class="tabs" role="tablist" aria-label="Sort">
+        {
+          kindBlocks.map((b, i) => (
+            <button type="button" class="chip" role="tab" id={`tab-${b.kind.id}`} aria-controls={`panel-${b.kind.id}`} aria-selected={i === 0 ? 'true' : 'false'}>
+              {b.kind.name}
+            </button>
+          ))
+        }
+      </div>
+    </div>
+    {
+      kindBlocks.map((b, i) => (
+        <div class="panel-k" role="tabpanel" id={`panel-${b.kind.id}`} aria-labelledby={`tab-${b.kind.id}`} hidden={i !== 0}>
+          <div class="grid-2">
+            <div>
+              <h3 class="list-h">Nämns oftare</h3>
+              <SkillList rows={b.up} caption={`${b.kind.name} som nämns oftare`} showBar={false} showSpark={false} showDiverge={false} />
+            </div>
+            <div>
+              <h3 class="list-h">Nämns mer sällan</h3>
+              <SkillList rows={b.down} caption={`${b.kind.name} som nämns mer sällan`} showBar={false} showSpark={false} showDiverge={false} />
+            </div>
+          </div>
+          <p class="muted small base-note">
+            {`Snittet: ${KIND_NOUN[b.kind.id]} nämns i genomsnitt ${pct(Math.abs(b.base - 1), 0)} ${b.base >= 1 ? 'oftare' : 'mer sällan'} än för tre år sedan.`}{' '}
+            <a href={url(`/kompetenser/#${b.kind.id}`)}>Alla {KIND_NOUN[b.kind.id]}</a>
+          </p>
+        </div>
+      ))
     }
   </section>
 
   <section class="section wrap">
     <div class="section-head">
-      <h2>Platsannonser per månad</h2>
-      <p>
-        {`${int(m.adsL12)} annonser de senaste tolv månaderna (${windowLabel(m.windows.L12)}), ${rel(natL12, natB12)} jämfört med samma period för tre år sedan.`}
-      </p>
+      <h2>Yrken</h2>
+      <p>{`Antal annonser ${windowLabel(m.windows.L12)}. Förändringen på tre år räknas mot hela arbetsmarknaden (${rel(natL12, natB12)}).`}</p>
+    </div>
+    <div class="occ-cols">
+      <div>
+        <h3 class="list-h">Flest annonser</h3>
+        <ol class="occ">
+          {
+            biggest.map((o) => (
+              <li>
+                <a href={url(`/yrken/${o.id}/`)}>{o.label}</a>
+                <span class="num muted">{int(o.L12)}</span>
+              </li>
+            ))
+          }
+        </ol>
+      </div>
+      <div>
+        <h3 class="list-h">Växer mest mot snittet</h3>
+        <ol class="occ">
+          {
+            growing.map(({ o, g }) => (
+              <li>
+                <a href={url(`/yrken/${o.id}/`)}>{o.label}</a>
+                <Change value={g} unit="rel" />
+              </li>
+            ))
+          }
+        </ol>
+      </div>
+      <div>
+        <h3 class="list-h">Minskar mest mot snittet</h3>
+        <ol class="occ">
+          {
+            shrinking.map(({ o, g }) => (
+              <li>
+                <a href={url(`/yrken/${o.id}/`)}>{o.label}</a>
+                <Change value={g} unit="rel" />
+              </li>
+            ))
+          }
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="section wrap">
+    <div class="section-head">
+      <h2>Platsannonser per månad sedan {firstYear}</h2>
+      <p>Glidande medelvärde över tre månader. Håll muspekaren över diagrammet för exakta tal.</p>
     </div>
     <LineChart
       title={`Antal publicerade platsannonser per månad, ${monthName(m.firstMonth)} till ${monthName(m.lastMonth)}`}
       x={months}
       series={[{ label: 'Annonser', values: monthly }]}
       format="int"
-      height={250}
+      height={240}
       tickEvery={24}
       area
       annotations={[
@@ -102,123 +217,20 @@ const firstYear = m.years[0];
     />
   </section>
 
-  <section class="section wrap" data-kind-tabs>
-    <div class="section-head">
-      <h2>Vad som ökar och minskar</h2>
-      <p>
-        Jämfört med samma tolv månader tre år tidigare. Huvudsiffran visar förändringen utöver snittet för samma sort, eftersom
-        annonserna med tiden nämner fler saker. Totalt visar hela förändringen.
-      </p>
-    </div>
-    <div class="tabs" role="tablist" aria-label="Sort">
-      {
-        kindBlocks.map((b, i) => (
-          <button type="button" class="chip" role="tab" id={`tab-${b.kind.id}`} aria-controls={`panel-${b.kind.id}`} aria-selected={i === 0 ? 'true' : 'false'} aria-pressed={i === 0 ? 'true' : 'false'}>
-            {b.kind.name}
-          </button>
-        ))
-      }
-    </div>
-    {
-      kindBlocks.map((b, i) => (
-        <div class="grid-2 panel" role="tabpanel" id={`panel-${b.kind.id}`} aria-labelledby={`tab-${b.kind.id}`} hidden={i !== 0}>
-          <div>
-            <h3 class="list-h">Nämns oftare</h3>
-            <SkillList rows={b.up} caption={`${b.kind.name} som nämns oftare`} showBar={false} showSpark={false} shareLabel="Andel" />
-          </div>
-          <div>
-            <h3 class="list-h">Nämns mer sällan</h3>
-            <SkillList rows={b.down} caption={`${b.kind.name} som nämns mer sällan`} showBar={false} showSpark={false} shareLabel="Andel" />
-          </div>
-          <p class="muted small base-note">
-            {`I genomsnitt nämns ${KIND_NOUN[b.kind.id]} ${pct(Math.abs(b.base - 1), 0)} ${b.base >= 1 ? 'oftare' : 'mer sällan'} än för tre år sedan.`}
-          </p>
-        </div>
-      ))
-    }
-  </section>
-
-  <section class="section wrap">
-    <div class="section-head">
-      <h2>Sex saker som har ändrats</h2>
-      <p>Andel av alla platsannonser per år som nämner något av det här.</p>
-    </div>
-    <ul class="multiples">
-      {
-        stories.map((s) => (
-          <li>
-            <a href={url(`/kompetenser/${s.id}/`)}>
-              <span class="name">{s.name}</span>
-              <span class="fig num">{pct(s.sh)}</span>
-              <span class="was muted small">
-                {`${pct(s.spark.find((v) => v != null) ?? null)} år ${m.years[s.spark.findIndex((v) => v != null)]}`}
-              </span>
-              <Sparkline values={s.spark} width={220} height={56} label={`${s.name}, andel per år`} />
-            </a>
-          </li>
-        ))
-      }
-    </ul>
-  </section>
-
-  <section class="section wrap">
-    <div class="grid-2">
-      <div>
-        <div class="section-head">
-          <h2>Flest annonser</h2>
-          <p>{windowLabel(m.windows.L12)}</p>
-        </div>
-        <ol class="occ">
-          {
-            biggest.map((o) => (
-              <li>
-                <a href={url(`/yrken/${o.id}/`)}>{o.label}</a>
-                <span class="num">{int(o.L12)}</span>
-              </li>
-            ))
-          }
-        </ol>
-      </div>
-      <div>
-        <div class="section-head">
-          <h2>Växer mest</h2>
-          <p>Antal annonser på tre år jämfört med arbetsmarknaden i stort ({rel(natL12, natB12)}). Totalt inom parentes.</p>
-        </div>
-        <ol class="occ">
-          {
-            growing.map(({ o, g }) => (
-              <li>
-                <a href={url(`/yrken/${o.id}/`)}>{o.label}</a>
-                <span class="num">
-                  <strong class={signClass(g, 0.05)}>{relValue(g)}</strong> <span class="muted small">({rel(o.L12, o.B12)})</span>
-                </span>
-              </li>
-            ))
-          }
-        </ol>
-      </div>
-    </div>
-  </section>
-
   <section class="section wrap">
     <div class="section-head">
       <h2>Yrkesområden</h2>
-      <p>Annonser de senaste tolv månaderna. Förändring på tre år mot arbetsmarknaden i stort, totalt inom parentes.</p>
+      <p>Antal annonser de senaste tolv månaderna och förändring på tre år mot hela arbetsmarknaden.</p>
     </div>
     <ul class="fields">
       {
-        allFields.map((f) => {
-          const g = vs(f);
-          return (
-            <li>
-              <a href={url(`/yrken/#${f.id}`)}>{f.label}</a>
-              <span class="num">{int(f.L12)}</span>
-              <span class="num small">
-                <strong class={signClass(g, 0.05)}>{relValue(g)}</strong> <span class="muted">({rel(f.L12, f.B12)})</span>
-              </span>
-            </li>
-          );
-        })
+        allFields.map((f) => (
+          <li>
+            <a href={url(`/yrken/#${f.id}`)}>{f.label}</a>
+            <span class="num muted">{int(f.L12)}</span>
+            <Change value={vs(f)} unit="rel" />
+          </li>
+        ))
       }
     </ul>
   </section>
@@ -231,7 +243,6 @@ const firstYear = m.years[0];
       tabs.forEach((x) => {
         const on = x === t;
         x.setAttribute('aria-selected', String(on));
-        x.setAttribute('aria-pressed', String(on));
         x.tabIndex = on ? 0 : -1;
         root.querySelector<HTMLElement>(`#${x.getAttribute('aria-controls')}`)!.hidden = !on;
       });
@@ -252,120 +263,177 @@ const firstYear = m.years[0];
 
 <style>
   .hero {
-    padding-block: clamp(3rem, 9vw, 6.5rem) 3rem;
+    background: var(--surface);
+    border-bottom: 1px solid var(--rule);
   }
-  .lede {
+  .hero-grid {
+    display: grid;
+    gap: 2rem 3.5rem;
+    padding-block: clamp(2.5rem, 6vw, 4.5rem);
+    align-items: center;
+  }
+  @media (min-width: 960px) {
+    .hero-grid {
+      grid-template-columns: minmax(0, 1.6fr) minmax(16rem, 1fr);
+    }
+  }
+  .hero h1 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    letter-spacing: -0.025em;
+  }
+  .hero .lede {
     font-size: var(--t-md);
-    margin-top: 1.75rem;
-    max-width: 44ch;
+    color: var(--ink-2);
+    margin: 0.9rem 0 1.5rem;
+    max-width: 52ch;
   }
-  .quick {
+  .popular {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.4rem 1rem;
+    gap: 0.35rem 0.9rem;
     font-size: var(--t-sm);
-    align-items: baseline;
+    margin: 1rem 0 0;
+  }
+  .now {
+    background: var(--bg);
+    border: 1px solid var(--rule);
+  }
+  .now-h {
+    font-size: var(--t-sm);
+    font-weight: 650;
+    color: var(--muted);
+    margin-bottom: 0.75rem;
+  }
+  .now-num {
+    font-size: 2.4rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    margin: 0;
+  }
+  .now-label {
+    color: var(--ink-2);
+    margin: 0.35rem 0 1rem;
+  }
+  .now-facts {
+    display: flex;
+    gap: 1.5rem;
+    margin: 0 0 1rem;
+  }
+  .now-facts dt {
+    font-size: var(--t-xs);
+    color: var(--muted);
+  }
+  .now-facts dd {
+    margin: 0.2rem 0 0;
+  }
+  .entries {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+    padding-block: 2rem 0.5rem;
+  }
+  .entry {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    padding: 1.1rem 1.2rem;
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .entry:hover {
+    border-color: var(--primary);
+  }
+  .entry-q {
+    font-weight: 650;
+    font-size: var(--t-md);
+    line-height: 1.3;
+  }
+  .entry-a {
+    color: var(--muted);
+    font-size: var(--t-sm);
+    flex: 1;
+  }
+  .entry-cta {
+    color: var(--primary);
+    font-weight: 600;
+    font-size: var(--t-sm);
+  }
+  .entry:hover .entry-cta {
+    text-decoration: underline;
+  }
+  .split {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem 2rem;
+    justify-content: space-between;
+    align-items: flex-end;
   }
   .tabs {
     display: flex;
     flex-wrap: wrap;
     gap: 0.4rem;
-    margin-bottom: 1.5rem;
-  }
-  .tabs [aria-selected='true'] {
-    background: var(--ink);
-    color: var(--paper);
-    border-color: var(--ink);
   }
   .list-h {
     margin-bottom: 0.5rem;
   }
   .base-note {
-    grid-column: 1 / -1;
-    margin: 0;
+    margin-top: 1rem;
   }
-  .multiples {
-    list-style: none;
-    margin: 0;
-    padding: 0;
+  .occ-cols {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
-    gap: 2rem 2.5rem;
-  }
-  .multiples a {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 0.1rem 1rem;
-    color: var(--ink);
-    text-decoration: none;
-    padding-top: 0.75rem;
-    border-top: 2px solid var(--ink);
-  }
-  .multiples a:hover .name {
-    text-decoration: underline;
-  }
-  .multiples .name {
-    font-weight: 600;
-  }
-  .multiples .fig {
-    font-stretch: 125%;
-    font-weight: 800;
-    font-size: var(--t-lg);
-    line-height: 1;
-    grid-row: span 2;
-    align-self: start;
-  }
-  .multiples .was {
-    grid-column: 1;
-  }
-  .multiples :global(svg) {
-    grid-column: 1 / -1;
-    margin-top: 0.75rem;
-    width: 100%;
-    height: auto;
+    gap: 2rem 3rem;
+    grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
   }
   .occ {
     margin: 0;
-    padding-left: 1.6rem;
+    padding: 0;
+    list-style: none;
+    counter-reset: rank;
   }
   .occ li {
-    padding: 0.42rem 0;
+    display: grid;
+    grid-template-columns: 1.6rem 1fr auto;
+    gap: 0.75rem;
+    align-items: baseline;
+    padding: 0.5rem 0;
     border-bottom: 1px solid var(--rule);
   }
-  .occ li,
+  .occ li::before {
+    counter-increment: rank;
+    content: counter(rank);
+    color: var(--muted);
+    font-size: var(--t-sm);
+    font-variant-numeric: tabular-nums;
+  }
   .fields li {
     display: flex;
     gap: 1rem;
-    justify-content: space-between;
     align-items: baseline;
-  }
-  .occ li::marker {
-    color: var(--graphite);
-    font-size: var(--t-sm);
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--rule);
+    break-inside: avoid;
   }
   .occ a,
   .fields a {
     color: var(--ink);
+    text-decoration: none;
   }
-  .occ .num {
-    white-space: nowrap;
+  .occ a:hover,
+  .fields a:hover {
+    color: var(--primary);
+    text-decoration: underline;
   }
   .fields {
     list-style: none;
     margin: 0;
     padding: 0;
-    columns: 2 22rem;
+    columns: 2 24rem;
     column-gap: 3rem;
-  }
-  .fields li {
-    break-inside: avoid;
-    padding: 0.45rem 0;
-    border-bottom: 1px solid var(--rule);
   }
   .fields a {
     flex: 1;
-  }
-  .fields .num {
-    white-space: nowrap;
   }
 </style>

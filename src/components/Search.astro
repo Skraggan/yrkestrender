@@ -9,44 +9,24 @@ const id = `sok-${variant}`;
 ---
 
 <div class={`search ${variant}`} data-search>
-  {
-    variant === 'hero' ? (
-      <label class="line" for={id}>
-        <span class="lead">Vi söker en</span>
-        <span class="blank">
-          <input
-            id={id}
-            type="search"
-            autocomplete="off"
-            spellcheck="false"
-            placeholder="kock"
-            aria-label="Vi söker en … (sök yrke eller kompetens)"
-            role="combobox"
-            aria-expanded="false"
-            aria-controls={`${id}-list`}
-            aria-autocomplete="list"
-          />
-        </span>
-      </label>
-    ) : (
-      <>
-        <label class="visually-hidden" for={id}>
-          Sök yrke eller kompetens
-        </label>
-        <input
-          id={id}
-          type="search"
-          autocomplete="off"
-          spellcheck="false"
-          placeholder="Sök yrke eller kompetens"
-          role="combobox"
-          aria-expanded="false"
-          aria-controls={`${id}-list`}
-          aria-autocomplete="list"
-        />
-      </>
-    )
-  }
+  <label class="visually-hidden" for={id}>Sök yrke eller kompetens</label>
+  <span class="field">
+    <svg class="icon" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true">
+      <circle cx="8.5" cy="8.5" r="5.75" fill="none" stroke="currentColor" stroke-width="1.8"></circle>
+      <line x1="13" y1="13" x2="17.5" y2="17.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></line>
+    </svg>
+    <input
+      id={id}
+      type="search"
+      autocomplete="off"
+      spellcheck="false"
+      placeholder="Sök yrke eller kompetens"
+      role="combobox"
+      aria-expanded="false"
+      aria-controls={`${id}-list`}
+      aria-autocomplete="list"
+    />
+  </span>
   <ul id={`${id}-list`} class="results" role="listbox" hidden></ul>
 </div>
 
@@ -172,97 +152,79 @@ const id = `sok-${variant}`;
   .search {
     position: relative;
   }
-  input {
-    font: inherit;
-    color: var(--ink);
-    background: var(--paper-raised);
-    border: 1px solid var(--rule-strong);
-    border-radius: var(--radius);
-    padding: 0.5rem 0.75rem;
-    width: 100%;
-  }
-  input::placeholder {
-    color: var(--graphite);
-  }
-  .hero .line {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: baseline;
-    gap: 0 0.35em;
-    font-stretch: 125%;
-    font-weight: 800;
-    font-size: clamp(2rem, 6vw, 4.2rem);
-    line-height: 1.12;
-    letter-spacing: -0.015em;
-    cursor: text;
-  }
-  .hero .blank {
-    flex: 1 1 8ch;
-    min-width: 8ch;
+  .field {
     position: relative;
+    display: block;
+  }
+  .icon {
+    position: absolute;
+    left: 0.7rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--muted);
+    pointer-events: none;
+  }
+  input {
+    width: 100%;
+    padding-left: 2.2rem;
   }
   .hero input {
-    font: inherit;
-    font-stretch: 125%;
-    border: 0;
-    border-radius: 0;
-    background: linear-gradient(transparent 60%, var(--signal) 60%, var(--signal) 94%, transparent 94%);
-    padding: 0 0.05em;
-    border-bottom: 3px solid var(--ink);
+    font-size: var(--t-md);
+    padding: 0.95rem 1rem 0.95rem 2.75rem;
+    border-radius: var(--radius);
+    border: 1.5px solid var(--rule-strong);
+    box-shadow: 0 1px 2px rgb(0 0 0 / 0.04);
   }
-  .hero input::placeholder {
-    color: color-mix(in oklab, var(--ink) 35%, transparent);
+  .hero .icon {
+    left: 1rem;
+    width: 20px;
+    height: 20px;
   }
-  .hero input:focus-visible {
-    outline: none;
-    border-bottom-color: var(--blue);
+  .hero input:focus {
+    border-color: var(--primary);
+    outline: 3px solid var(--primary-soft);
+    outline-offset: 0;
   }
-  .hero input::-webkit-search-cancel-button {
-    display: none;
+  input::placeholder {
+    color: var(--muted);
   }
   .results {
     position: absolute;
     left: 0;
     right: 0;
     top: calc(100% + 4px);
-    z-index: 20;
+    z-index: 30;
     list-style: none;
     margin: 0;
     padding: 0.3rem;
-    background: var(--paper-raised);
+    background: var(--bg);
     border: 1px solid var(--rule-strong);
     border-radius: var(--radius);
-    box-shadow: 0 10px 30px -12px color-mix(in oklab, var(--ink) 40%, transparent);
+    box-shadow: 0 12px 32px -14px rgb(0 0 0 / 0.35);
     max-height: 26rem;
     overflow: auto;
-    font-size: var(--t-base);
-    font-weight: 400;
-    font-stretch: 100%;
-    letter-spacing: 0;
-  }
-  .hero .results {
-    max-width: 40rem;
   }
   .results :global(a) {
     display: flex;
     justify-content: space-between;
+    align-items: baseline;
     gap: 1rem;
     padding: 0.5rem 0.6rem;
     color: var(--ink);
     text-decoration: none;
-    border-radius: 2px;
+    border-radius: var(--radius-sm);
   }
   .results :global(small) {
-    color: var(--graphite);
+    color: var(--muted);
     font-size: var(--t-xs);
     text-align: right;
   }
   .results :global([aria-selected='true'] a),
   .results :global(a:hover) {
-    background: var(--blue-soft);
+    background: var(--primary-soft);
   }
   .results :global(.empty) {
     padding: 0.6rem;
-    color: var(--graphite);
+    color: var(--muted);
   }
 </style>

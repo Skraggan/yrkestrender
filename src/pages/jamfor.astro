@@ -9,9 +9,9 @@ const occ = [...occupationIndex()].sort((a, b) => a.label.localeCompare(b.label,
 
 <Base title="Jämför" description="Jämför hur ofta olika kompetenser, krav, egenskaper och villkor nämns i platsannonser över tid, i hela landet eller inom ett yrke.">
   <div class="wrap">
-    <header class="head">
+    <header class="page-head">
       <h1>Jämför</h1>
-      <p class="summary">
+      <p class="lede">
         Välj upp till fem kompetenser, krav, egenskaper eller villkor och se hur ofta de nämns i annonserna över tid, i hela
         landet eller inom ett yrke. Håll muspekaren över diagrammet för exakta värden.
       </p>
@@ -60,7 +60,7 @@ const occ = [...occupationIndex()].sort((a, b) => a.label.localeCompare(b.label,
 <script>
   type Series = { id: string; name: string; values: (number | null)[] };
   const BASE = document.documentElement.dataset.base ?? '';
-  const COLORS = ['var(--blue)', 'var(--signal)', 'var(--chart-3)', 'var(--chart-2)', 'var(--chart-4)'];
+  const COLORS = ['var(--c1)', 'var(--c2)', 'var(--c3)', 'var(--c4)', 'var(--c5)'];
   const form = document.querySelector<HTMLFormElement>('[data-compare]')!;
   const add = form.querySelector<HTMLSelectElement>('[data-add]')!;
   const occSel = form.querySelector<HTMLSelectElement>('[data-occ]')!;
@@ -104,7 +104,7 @@ const occ = [...occupationIndex()].sort((a, b) => a.label.localeCompare(b.label,
     const rows = series
       .map((s, k) => ({ s, k, v: s.values[i] }))
       .sort((a, b) => (b.v ?? -1) - (a.v ?? -1));
-    for (const { k, v } of rows) if (v != null) dots += `<circle cx="${cx}" cy="${ys(v)}" r="4.5" fill="${COLORS[k]}" stroke="var(--paper)" stroke-width="2"/>`;
+    for (const { k, v } of rows) if (v != null) dots += `<circle cx="${cx}" cy="${ys(v)}" r="4.5" fill="${COLORS[k]}" stroke="var(--bg)" stroke-width="2"/>`;
     layer.innerHTML = dots;
     readout.innerHTML =
       `<strong>${xLabel(x[i])}</strong>` +
@@ -187,11 +187,11 @@ const occ = [...occupationIndex()].sort((a, b) => a.label.localeCompare(b.label,
     for (let k = 0; k <= steps; k++) {
       const v = step * k;
       out += `<line x1="${pad.l}" x2="${W - pad.r}" y1="${ys(v)}" y2="${ys(v)}" stroke="var(--rule)"/>`;
-      out += `<text x="${pad.l - 8}" y="${ys(v) + 4}" text-anchor="end" fill="var(--graphite)" font-size="12">${pct(v)}</text>`;
+      out += `<text x="${pad.l - 8}" y="${ys(v) + 4}" text-anchor="end" fill="var(--muted)" font-size="12">${pct(v)}</text>`;
     }
     x.forEach((lbl, i) => {
       const t = tick(lbl, i);
-      if (t) out += `<text x="${xs(i)}" y="${H - 8}" text-anchor="middle" fill="var(--graphite)" font-size="12">${t}</text>`;
+      if (t) out += `<text x="${xs(i)}" y="${H - 8}" text-anchor="middle" fill="var(--muted)" font-size="12">${t}</text>`;
     });
     series.forEach((s, k) => {
       let d = '';
@@ -256,14 +256,6 @@ const occ = [...occupationIndex()].sort((a, b) => a.label.localeCompare(b.label,
 </script>
 
 <style>
-  .head {
-    padding-block: 2.5rem 1.5rem;
-  }
-  .summary {
-    font-size: var(--t-md);
-    max-width: 58ch;
-    margin-top: 1rem;
-  }
   .controls .row {
     display: flex;
     flex-wrap: wrap;
@@ -272,7 +264,7 @@ const occ = [...occupationIndex()].sort((a, b) => a.label.localeCompare(b.label,
   label span {
     display: block;
     font-size: var(--t-sm);
-    color: var(--graphite);
+    color: var(--muted);
     margin-bottom: 0.25rem;
   }
   .controls label {
@@ -284,7 +276,7 @@ const occ = [...occupationIndex()].sort((a, b) => a.label.localeCompare(b.label,
     padding: 0.5rem 0.6rem;
     border: 1px solid var(--rule-strong);
     border-radius: var(--radius);
-    background: var(--paper-raised);
+    background: var(--bg);
     color: var(--ink);
     max-width: 22rem;
   }
@@ -315,7 +307,7 @@ const occ = [...occupationIndex()].sort((a, b) => a.label.localeCompare(b.label,
     top: 0.5rem;
     pointer-events: none;
     background: var(--ink);
-    color: var(--paper);
+    color: var(--bg);
     font-size: var(--t-sm);
     padding: 0.5rem 0.7rem;
     border-radius: var(--radius);

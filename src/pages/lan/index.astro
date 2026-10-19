@@ -1,8 +1,10 @@
 ---
 import { url } from '../../lib/url';
 import Base from '../../layouts/Base.astro';
+import Change from '../../components/Change.astro';
+import TileMap from '../../components/TileMap.astro';
 import { meta, nationalWindow, regionIndex } from '../../lib/data';
-import { int, rel, relValue, signClass, windowLabel } from '../../lib/format';
+import { int, rel, windowLabel } from '../../lib/format';
 import { volumeVsMarket } from '../../lib/trend';
 
 const m = meta();
@@ -10,80 +12,93 @@ const regions = [...regionIndex()].sort((a, b) => b.L12 - a.L12);
 const max = Math.max(...regions.map((r) => r.L12));
 const natL12 = nationalWindow('L12');
 const natB12 = nationalWindow('B12');
+const vs = (r: { L12: number; B12: number }) => volumeVsMarket(r.L12, r.B12, natL12, natB12);
+const values = Object.fromEntries(regions.map((r) => [r.code, r.L12]));
 ---
 
-<Base title="Län" description="Platsannonser per län: vilka yrken som annonseras mest, vad som är typiskt för länet och vilka kompetenser som efterfrågas.">
+<Base title="Län" description="Platsannonser per län: vilka yrken som annonseras mest, vad som är typiskt för länet och vilka kompetenser som efterfrågas allt oftare.">
   <div class="wrap">
-    <header class="head">
+    <header class="page-head">
       <h1>Län</h1>
-      <p class="summary">
-        {`Antal platsannonser ${windowLabel(m.windows.L12)}. Förändringen på tre år visas mot hela landet (${rel(natL12, natB12)}), med länets totala förändring bredvid.`}
+      <p class="lede">
+        {`Antal platsannonser ${windowLabel(m.windows.L12)}. Förändringen på tre år räknas mot hela landet (${rel(natL12, natB12)}), med länets totala förändring bredvid.`}
       </p>
     </header>
-    <table>
-      <thead>
-        <tr>
-          <th scope="col">Län</th>
-          <th scope="col" class="num">Annonser</th>
-          <th scope="col" class="bar-col"><span class="visually-hidden">Stapel</span></th>
-          <th scope="col" class="num">Mot snittet</th>
-          <th scope="col" class="num">Totalt</th>
-        </tr>
-      </thead>
-      <tbody>
-        {
-          regions.map((r) => (
-            <tr>
-              <th scope="row">
-                <a href={url(`/lan/${r.id}/`)}>{r.label}</a>
-              </th>
-              <td class="num">{int(r.L12)}</td>
-              <td class="bar-col">
-                <span class="bar" style={`width:${((r.L12 / max) * 100).toFixed(1)}%`} />
-              </td>
-              <td class={`num strong ${signClass(volumeVsMarket(r.L12, r.B12, natL12, natB12), 0.05)}`}>{relValue(volumeVsMarket(r.L12, r.B12, natL12, natB12))}</td>
-              <td class="num muted small">{rel(r.L12, r.B12)}</td>
-            </tr>
-          ))
-        }
-      </tbody>
-    </table>
-    <p class="muted small">Annonser utan angiven arbetsort ingår inte.</p>
+    <div class="layout">
+      <TileMap values={values} format={(v) => int(v)} title="Platsannonser per län, senaste tolv månaderna" legend="Färre till fler annonser, fem lika stora grupper" />
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">Län</th>
+            <th scope="col" class="num">Annonser</th>
+            <th scope="col" class="bar-col"><span class="visually-hidden">Stapel</span></th>
+            <th scope="col" class="num">Mot snittet</th>
+            <th scope="col" class="num tot">Totalt</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            regions.map((r) => (
+              <tr>
+                <th scope="row">
+                  <a href={url(`/lan/${r.id}/`)}>{r.label}</a>
+                </th>
+                <td class="num">{int(r.L12)}</td>
+                <td class="bar-col">
+                  <span class="bar">
+                    <span style={`width:${((r.L12 / max) * 100).toFixed(1)}%`} />
+                  </span>
+                </td>
+                <td class="num">
+                  <Change value={vs(r)} unit="rel" threshold={0.05} />
+                </td>
+                <td class="num muted small tot">{rel(r.L12, r.B12)}</td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+    <p class="muted small note">Annonser utan angiven arbetsort ingår inte.</p>
   </div>
 </Base>
 
 <style>
-  .head {
-    padding-block: 2.5rem 1.5rem;
+  .layout {
+    display: grid;
+    gap: 2.5rem 3.5rem;
+    align-items: start;
   }
-  .summary {
-    font-size: var(--t-md);
-    max-width: 58ch;
-    margin-top: 1rem;
-  }
-  th[scope='row'] {
-    font-weight: 500;
-    font-size: var(--t-base);
-    color: var(--ink);
-    border-bottom: 1px solid var(--rule);
-  }
-  th[scope='row'] a {
-    color: var(--ink);
+  @media (min-width: 900px) {
+    .layout {
+      grid-template-columns: 20rem 1fr;
+    }
   }
   .bar-col {
-    width: 36%;
-  }
-  .strong {
-    font-weight: 700;
+    width: 30%;
   }
   .bar {
     display: block;
-    height: 0.6rem;
-    background: var(--blue);
-    border-radius: 1px;
+    height: 8px;
+    background: var(--surface-2);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .bar span {
+    display: block;
+    height: 100%;
+    background: var(--primary);
+  }
+  .note {
+    margin-top: 1.5rem;
   }
   @media (max-width: 620px) {
     .bar-col {
+      display: none;
+    }
+  }
+  @media (max-width: 420px) {
+    .tot {
       display: none;
     }
   }

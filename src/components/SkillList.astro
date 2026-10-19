@@ -1,8 +1,9 @@
 ---
-// Ranked list of skills/requirements/etc. with share, change against the
-// average (main) and total change (secondary) over three years, and a sparkline.
+// Ranked table of skills/requirements/etc.: share now, change against the
+// average (main, with a diverging bar) and total change (secondary).
 import Sparkline from './Sparkline.astro';
-import { pct, pp, ppValue, signClass, trendClass } from '../lib/format';
+import Change from './Change.astro';
+import { pct, pp } from '../lib/format';
 
 export interface Row {
   id: string;
@@ -26,9 +27,13 @@ interface Props {
   /** Rows shown before "Visa alla". */
   limit?: number;
   showSpark?: boolean;
+  showTotal?: boolean;
+  /** Diverging bar next to the change badge (off in narrow lists). */
+  showDiverge?: boolean;
 }
-const { rows, caption, shareLabel = 'Andel annonser', showBar = true, filters = [], limit = 0, showSpark = true } = Astro.props;
+const { rows, caption, shareLabel = 'Andel', showBar = true, filters = [], limit = 0, showSpark = true, showTotal = true, showDiverge = true } = Astro.props;
 const maxShare = Math.max(...rows.map((r) => r.share ?? 0), 0.0001);
+const maxRel = Math.max(...rows.map((r) => Math.abs(r.rel ?? 0)), 0.005);
 const collapsed = limit > 0 && rows.length > limit;
 ---
 
@@ -37,7 +42,7 @@ const collapsed = limit > 0 && rows.length > limit;
     filters.length > 1 && (
       <div class="filters" role="group" aria-label="Visa kategori">
         <button type="button" class="chip" aria-pressed="true" data-filter="">
-          Allt
+          Alla
         </button>
         {filters.map(([id, name]) => (
           <button type="button" class="chip" aria-pressed="false" data-filter={id}>
@@ -52,9 +57,9 @@ const collapsed = limit > 0 && rows.length > limit;
     <thead>
       <tr>
         <th scope="col">Namn</th>
-        <th scope="col" class="num">{shareLabel}</th>
-        <th scope="col" class="num rel-col" title="Förändring på tre år utöver den genomsnittliga förändringen">Mot snittet</th>
-        <th scope="col" class="num tot-col" title="Hela förändringen på tre år">Totalt</th>
+        <th scope="col" class="num share-col">{shareLabel}</th>
+        <th scope="col" class="rel-col">Mot snittet, 3 år</th>
+        {showTotal && <th scope="col" class="num tot-col">Totalt</th>}
         {showSpark && <th scope="col" class="spark-col">Sedan start</th>}
       </tr>
     </thead>
@@ -66,18 +71,29 @@ const collapsed = limit > 0 && rows.length > limit;
               <a href={r.href}>{r.name}</a>
               {r.note && <span class="note">{r.note}</span>}
             </th>
-            <td class="num share">
-              {showBar && (
-                <span class="bar" aria-hidden="true">
-                  <span style={`width:${(((r.share ?? 0) / maxShare) * 100).toFixed(1)}%`} />
-                </span>
-              )}
-              {pct(r.share)}
+            <td class="num share-col">
+              <span class="share">
+                {showBar && (
+                  <span class="bar" aria-hidden="true">
+                    <span style={`width:${(((r.share ?? 0) / maxShare) * 100).toFixed(1)}%`} />
+                  </span>
+                )}
+                <span class="v">{pct(r.share)}</span>
+              </span>
             </td>
-            <td class={`num delta rel-col ${signClass(r.rel)}`}>
-              <span class="delta-mark">{ppValue(r.rel)}</span>
+            <td class="rel-col">
+              <span class="rel">
+                {showDiverge && (
+                  <span class="div" aria-hidden="true">
+                    {r.rel != null && (
+                      <span class={r.rel >= 0 ? 'pos' : 'neg'} style={`width:${((Math.abs(r.rel) / maxRel) * 50).toFixed(1)}%`} />
+                    )}
+                  </span>
+                )}
+                <Change value={r.rel} unit="pp" />
+              </span>
             </td>
-            <td class={`num tot-col muted ${trendClass(r.share, r.share3)}`}>{pp(r.share, r.share3)}</td>
+            {showTotal && <td class="num tot-col muted">{pp(r.share, r.share3)}</td>}
             {showSpark && (
               <td class="spark-col">
                 <Sparkline values={r.spark} />
@@ -90,7 +106,7 @@ const collapsed = limit > 0 && rows.length > limit;
   </table>
   {
     collapsed && (
-      <button type="button" class="btn ghost more" data-more>
+      <button type="button" class="btn more" data-more>
         Visa alla {rows.length}
       </button>
     )
@@ -152,74 +168,91 @@ const collapsed = limit > 0 && rows.length > limit;
   .empty {
     margin-top: 1rem;
   }
-  .skills th[scope='row'] {
-    font-weight: 500;
-    font-size: var(--t-base);
-    color: var(--ink);
-    border-bottom: 1px solid var(--rule);
-    padding-block: 0.55rem;
-  }
-  .skills th[scope='row'] a {
-    color: var(--ink);
-    text-decoration: none;
-  }
-  .skills th[scope='row'] a:hover {
-    text-decoration: underline;
-  }
   .note {
     display: block;
     font-size: var(--t-xs);
-    color: var(--graphite);
+    color: var(--muted);
     font-weight: 400;
   }
+  .share-col {
+    width: 26%;
+  }
   .share {
-    white-space: nowrap;
-    width: 28%;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    width: 100%;
+    justify-content: flex-end;
+  }
+  .share .v {
+    min-width: 3.4rem;
+    text-align: right;
   }
   .bar {
-    display: inline-block;
-    width: calc(100% - 4.2rem);
-    max-width: 10rem;
-    height: 0.55rem;
-    background: var(--rule);
-    border-radius: 1px;
-    margin-right: 0.6rem;
-    vertical-align: middle;
+    flex: 1;
+    max-width: 9rem;
+    height: 8px;
+    background: var(--surface-2);
+    border-radius: 2px;
     position: relative;
     overflow: hidden;
   }
   .bar span {
     position: absolute;
     inset: 0 auto 0 0;
-    background: var(--blue);
-  }
-  .delta {
-    white-space: nowrap;
-    font-weight: 600;
-  }
-  .delta-mark {
-    padding: 0.05rem 0.3rem;
+    background: var(--primary);
     border-radius: 2px;
+  }
+  .rel-col {
+    width: 24%;
+  }
+  .rel {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    width: 100%;
+  }
+  .div {
+    flex: 1;
+    min-width: 3.5rem;
+    max-width: 6rem;
+    height: 8px;
+    position: relative;
+    background: linear-gradient(var(--rule-strong), var(--rule-strong)) center / 1px 100% no-repeat;
+  }
+  .div .pos,
+  .div .neg {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    border-radius: 2px;
+  }
+  .div .pos {
+    left: 50%;
+    background: var(--up);
+  }
+  .div .neg {
+    right: 50%;
+    background: var(--down);
   }
   .tot-col {
     font-size: var(--t-sm);
   }
   .spark-col {
-    width: 7rem;
+    width: 6.5rem;
   }
-  @media (max-width: 620px) {
+  @media (max-width: 760px) {
     .spark-col,
-    .bar {
+    .bar,
+    .div {
       display: none;
     }
-    .share {
+    .share-col,
+    .rel-col {
       width: auto;
     }
-    .skills th[scope='row'] {
-      font-size: var(--t-sm);
-    }
   }
-  @media (max-width: 420px) {
+  @media (max-width: 440px) {
     .tot-col {
       display: none;
     }

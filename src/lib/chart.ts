@@ -82,3 +82,22 @@ export function monthRange(from: string, to: string): string[] {
   }
   return out;
 }
+
+/**
+ * Rolling 12-month totals for each month in `months`, indexed so that the
+ * 12 months ending in December of `baseYear` = 100. Null until 12 months exist
+ * or when the base is zero. Rolling sums remove the summer dip and other
+ * seasonality, so occupation and market can be compared month by month.
+ */
+export function rollingIndex(counts: Record<string, number>, months: string[], baseYear: number): (number | null)[] {
+  const roll: (number | null)[] = months.map((_, i) => {
+    if (i < 11) return null;
+    let s = 0;
+    for (let j = i - 11; j <= i; j++) s += counts[months[j]] ?? 0;
+    return s;
+  });
+  const bi = months.indexOf(`${baseYear}-12`);
+  const base = bi >= 0 ? roll[bi] : null;
+  if (!base) return months.map(() => null);
+  return roll.map((v) => (v == null ? null : (v / base) * 100));
+}

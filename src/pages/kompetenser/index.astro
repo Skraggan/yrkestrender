@@ -31,9 +31,9 @@ const groups = kinds().map((k) => {
 
 <Base title="Kompetenser och krav" description={`${all.length} kompetenser, krav, personliga egenskaper och villkor som vi följer i platsannonserna sedan ${m.years[0]}.`}>
   <div class="wrap">
-    <header class="head">
+    <header class="page-head">
       <h1>Kompetenser och krav</h1>
-      <p class="summary">
+      <p class="lede">
         {`${all.length} saker som arbetsgivare skriver i annonserna, i fyra sorter. Andelen gäller alla annonser ${windowLabel(m.windows.L12)}. Mot snittet jämför förändringen på tre år med hur sorten ändrats i genomsnitt.`}
       </p>
     </header>
@@ -66,7 +66,7 @@ const groups = kinds().map((k) => {
           {g.cats.map((c) => (
             <section class="section" id={c.id}>
               <h3 class="cat-h">{c.name}</h3>
-              <SkillList rows={c.rows} caption={c.name} shareLabel="Andel av alla annonser" />
+              <SkillList rows={c.rows} caption={c.name} shareLabel="Andel" />
             </section>
           ))}
         </section>
@@ -76,14 +76,6 @@ const groups = kinds().map((k) => {
 </Base>
 
 <style>
-  .head {
-    padding-block: 2.5rem 1.5rem;
-  }
-  .summary {
-    font-size: var(--t-md);
-    max-width: 60ch;
-    margin-top: 1rem;
-  }
   .toc {
     display: grid;
     gap: 0.75rem;
@@ -96,7 +88,7 @@ const groups = kinds().map((k) => {
     margin-right: 0.75rem;
   }
   .toc .small a {
-    color: var(--graphite);
+    color: var(--muted);
   }
   .kind-section {
     border-top: 3px solid var(--ink);

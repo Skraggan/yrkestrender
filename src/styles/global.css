@@ -1,78 +1,88 @@
 /* Yrkestrender – design tokens and base styles.
-   One typeface (Archivo) used at two widths: expanded and heavy for headings,
-   normal for reading. Signal yellow is a highlighter, never a fill colour. */
+
+   A calm data service: light by default, one typeface (Schibsted Grotesk),
+   a deep fjord teal for data and actions, grey for "the average" in every
+   comparison, and conventional green/red only for up/down. */
 
 :root {
-  --paper: #f4f5f1;
-  --paper-raised: #fbfbf8;
-  --ink: #16202a;
-  --graphite: #5a6470;
-  --rule: #d8dcd4;
-  --rule-strong: #b9bfb5;
-  --blue: #2b4c8c;
-  --blue-soft: #dfe6f2;
-  --signal: #f2b705;
-  --signal-soft: #fbe7a3;
-  --down: #9a4a32;
-  --chart-2: #7a8a3a;
-  --chart-3: #8b5a9c;
-  --chart-4: #c06c1c;
-  --focus: #2b4c8c;
+  --bg: #ffffff;
+  --surface: #f4f5f3;
+  --surface-2: #eceeeb;
+  --ink: #1a1d21;
+  --ink-2: #3c434b;
+  --muted: #5d6670;
+  --rule: #e3e6e1;
+  --rule-strong: #c9cec7;
 
-  --font: 'Archivo Variable', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --primary: #0f4c5c;
+  --primary-2: #2c7385;
+  --primary-soft: #e3eef0;
+  --ref: #9aa3ad; /* the average / the market */
+  --up: #1e7a46;
+  --up-soft: #e3f2e8;
+  --down: #b42318;
+  --down-soft: #fbe9e7;
+  --focus: #2c7385;
 
-  /* Modular scale, ratio 1.25 from 17px */
-  --t-xs: 0.8rem;
-  --t-sm: 0.889rem;
+  --c1: #0f4c5c;
+  --c2: #d97a1a;
+  --c3: #6c4f9e;
+  --c4: #2f8f5b;
+  --c5: #b8456b;
+
+  /* Sequential scale for maps (light to dark teal). */
+  --s1: #e3eef0;
+  --s2: #b9d5db;
+  --s3: #7fb0bb;
+  --s4: #3f8597;
+  --s5: #0f4c5c;
+
+  --font: 'Schibsted Grotesk Variable', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  /* Type scale, ratio 1.25 from 16px */
+  --t-xs: 0.78rem;
+  --t-sm: 0.875rem;
   --t-base: 1rem;
-  --t-md: 1.25rem;
-  --t-lg: 1.563rem;
-  --t-xl: 1.953rem;
-  --t-2xl: 2.441rem;
-  --t-3xl: clamp(2.2rem, 5.2vw, 3.815rem);
+  --t-md: 1.125rem;
+  --t-lg: 1.375rem;
+  --t-xl: clamp(1.4rem, 3.2vw, 1.75rem);
+  --t-2xl: clamp(1.9rem, 4.6vw, 2.6rem);
 
-  --gap: 1.5rem;
-  --max: 74rem;
-  --radius: 3px;
+  --max: 72rem;
+  --radius: 6px;
+  --radius-sm: 4px;
   color-scheme: light;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme='light']) {
-    --paper: #12181f;
-    --paper-raised: #182029;
-    --ink: #e9ebe6;
-    --graphite: #9aa3ad;
-    --rule: #28323c;
-    --rule-strong: #3a4652;
-    --blue: #8eaee6;
-    --blue-soft: #1e2b40;
-    --signal: #f2c230;
-    --signal-soft: #4a3d10;
-    --down: #e08a6e;
-    --chart-2: #b8c56a;
-    --chart-3: #c79bd6;
-    --chart-4: #eb9a52;
-    --focus: #f2c230;
-    color-scheme: dark;
-  }
-}
+/* Dark mode only when the visitor chooses it (toggle in the footer). */
 :root[data-theme='dark'] {
-  --paper: #12181f;
-  --paper-raised: #182029;
-  --ink: #e9ebe6;
-  --graphite: #9aa3ad;
-  --rule: #28323c;
-  --rule-strong: #3a4652;
-  --blue: #8eaee6;
-  --blue-soft: #1e2b40;
-  --signal: #f2c230;
-  --signal-soft: #4a3d10;
-  --down: #e08a6e;
-  --chart-2: #b8c56a;
-  --chart-3: #c79bd6;
-  --chart-4: #eb9a52;
-  --focus: #f2c230;
+  --bg: #121619;
+  --surface: #1a2024;
+  --surface-2: #222a2f;
+  --ink: #e8ebe7;
+  --ink-2: #c9ceca;
+  --muted: #9aa4ad;
+  --rule: #2a3238;
+  --rule-strong: #3b454c;
+  --primary: #7cc3d1;
+  --primary-2: #9fd4de;
+  --primary-soft: #1d3138;
+  --ref: #6f7a84;
+  --up: #5cc58a;
+  --up-soft: #183324;
+  --down: #f08a7c;
+  --down-soft: #3a1f1c;
+  --focus: #9fd4de;
+  --c1: #7cc3d1;
+  --c2: #f0a45a;
+  --c3: #b49ae0;
+  --c4: #6fd29a;
+  --c5: #e78aa8;
+  --s1: #1d3138;
+  --s2: #24505a;
+  --s3: #2f7383;
+  --s4: #4f9fb0;
+  --s5: #8fd1de;
   color-scheme: dark;
 }
 
@@ -83,39 +93,37 @@
 }
 
 html {
-  font-size: 106.25%; /* 17px */
   -webkit-text-size-adjust: 100%;
 }
 
 body {
   margin: 0;
-  background: var(--paper);
+  background: var(--bg);
   color: var(--ink);
   font-family: var(--font);
-  font-stretch: 100%;
-  line-height: 1.5;
-  font-feature-settings: 'tnum' 0;
+  font-size: 1rem;
+  line-height: 1.55;
 }
 
 h1,
 h2,
 h3 {
-  font-stretch: 125%;
-  font-weight: 800;
-  line-height: 1.08;
-  letter-spacing: -0.01em;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
   margin: 0;
   text-wrap: balance;
 }
 h1 {
-  font-size: var(--t-3xl);
+  font-size: var(--t-2xl);
 }
 h2 {
-  font-size: clamp(1.45rem, 4.6vw, var(--t-xl));
+  font-size: var(--t-xl);
 }
 h3 {
   font-size: var(--t-md);
-  font-weight: 700;
+  font-weight: 650;
+  letter-spacing: -0.005em;
 }
 p {
   margin: 0 0 1em;
@@ -123,7 +131,7 @@ p {
 }
 
 a {
-  color: var(--blue);
+  color: var(--primary);
   text-decoration-thickness: 1px;
   text-underline-offset: 0.18em;
 }
@@ -131,16 +139,15 @@ a:hover {
   text-decoration-thickness: 2px;
 }
 :focus-visible {
-  outline: 3px solid var(--focus);
+  outline: 2px solid var(--focus);
   outline-offset: 2px;
   border-radius: 2px;
 }
 
-.num,
-td.num,
+/* Tabular figures only where digits must line up; this typeface also widens
+   punctuation in tabular mode, so short labels like "p.e." stay proportional. */
 .tnum {
   font-variant-numeric: tabular-nums;
-  font-feature-settings: 'tnum' 1;
 }
 
 .wrap {
@@ -155,58 +162,76 @@ td.num,
 }
 
 .muted {
-  color: var(--graphite);
+  color: var(--muted);
 }
 .small {
   font-size: var(--t-sm);
 }
 .visually-hidden {
   position: absolute !important;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip: rect(0 0 0 0);
-  white-space: nowrap;
-}
-
-/* Highlighter: the signal yellow under a few characters, as on paper. */
-.mark {
-  background: linear-gradient(transparent 58%, var(--signal) 58%, var(--signal) 92%, transparent 92%);
-  padding: 0 0.08em;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  clip: rect(0 0 0 0) !important;
+  white-space: nowrap !important;
 }
 
 .up {
-  color: var(--ink);
-}
-.up .delta-mark {
-  background: var(--signal-soft);
+  color: var(--up);
 }
 .down {
   color: var(--down);
 }
 
-/* Section rhythm */
+/* Page head used by every page */
+.page-head {
+  padding-block: 2.25rem 1.75rem;
+}
+.page-head .lede {
+  font-size: var(--t-md);
+  color: var(--ink-2);
+  max-width: 62ch;
+  margin-top: 0.75rem;
+}
+.crumbs {
+  font-size: var(--t-sm);
+  color: var(--muted);
+  margin-bottom: 0.6rem;
+}
+.crumbs a {
+  color: var(--muted);
+  text-decoration: none;
+}
+.crumbs a:hover {
+  color: var(--ink);
+  text-decoration: underline;
+}
+
+/* Sections */
 .section {
-  padding-block: 2.75rem;
+  padding-block: 2.5rem;
+}
+.section + .section {
   border-top: 1px solid var(--rule);
 }
 .section-head {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.25rem 1.5rem;
-  align-items: baseline;
-  justify-content: space-between;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.25rem;
 }
 .section-head p {
-  margin: 0;
-  color: var(--graphite);
-  max-width: 52ch;
+  margin: 0.35rem 0 0;
+  color: var(--muted);
+  max-width: 62ch;
+}
+
+.panel {
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 1.25rem;
 }
 
 .grid-2 {
   display: grid;
-  gap: 2.5rem;
+  gap: 2rem 3rem;
 }
 @media (min-width: 900px) {
   .grid-2 {
@@ -219,10 +244,8 @@ td.num,
 .scroll-x {
   overflow-x: auto;
 }
-th[scope='row'] {
-  overflow-wrap: anywhere;
-}
 
+/* Tables */
 table {
   border-collapse: collapse;
   width: 100%;
@@ -230,15 +253,31 @@ table {
 th {
   text-align: left;
   font-weight: 600;
-  font-size: var(--t-sm);
-  color: var(--graphite);
-  padding: 0.4rem 0.75rem 0.4rem 0;
+  font-size: var(--t-xs);
+  color: var(--muted);
+  padding: 0.5rem 0.75rem 0.5rem 0;
   border-bottom: 1px solid var(--rule-strong);
 }
 td {
-  padding: 0.45rem 0.75rem 0.45rem 0;
+  padding: 0.55rem 0.75rem 0.55rem 0;
   border-bottom: 1px solid var(--rule);
   vertical-align: middle;
+}
+th[scope='row'] {
+  font-weight: 500;
+  font-size: var(--t-base);
+  color: var(--ink);
+  border-bottom: 1px solid var(--rule);
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+th[scope='row'] a {
+  color: var(--ink);
+  text-decoration: none;
+}
+th[scope='row'] a:hover {
+  color: var(--primary);
+  text-decoration: underline;
 }
 th.num,
 td.num {
@@ -248,24 +287,51 @@ td.num {
   white-space: nowrap;
 }
 @media (max-width: 520px) {
+  /* Fixed layout lets long names wrap instead of widening the page. */
+  main table {
+    table-layout: fixed;
+  }
+  main table thead th:first-child {
+    width: 46%;
+  }
   th,
   td {
     padding-right: 0.5rem;
-  }
-  th.num {
-    font-size: var(--t-xs);
   }
   td.num {
     font-size: var(--t-sm);
   }
 }
 
+/* Change badges: main comparison (against the average) */
+.change {
+  display: inline-block;
+  font-weight: 600;
+  font-size: var(--t-sm);
+  padding: 0.05rem 0.4rem;
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+}
+.change.up {
+  background: var(--up-soft);
+  color: var(--up);
+}
+.change.down {
+  background: var(--down-soft);
+  color: var(--down);
+}
+.change.flat {
+  background: var(--surface-2);
+  color: var(--muted);
+}
+
+/* Controls */
 .chip {
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
   border: 1px solid var(--rule-strong);
-  background: transparent;
+  background: var(--bg);
   color: var(--ink);
   border-radius: 999px;
   padding: 0.3rem 0.8rem;
@@ -273,27 +339,40 @@ td.num {
   font-size: var(--t-sm);
   cursor: pointer;
 }
-.chip[aria-pressed='true'] {
-  background: var(--ink);
-  color: var(--paper);
-  border-color: var(--ink);
+.chip:hover {
+  border-color: var(--ink-2);
 }
-
+.chip[aria-pressed='true'],
+.chip[aria-selected='true'] {
+  background: var(--primary);
+  color: var(--bg);
+  border-color: var(--primary);
+}
 .btn {
   display: inline-block;
   font: inherit;
   font-weight: 600;
-  padding: 0.55rem 1rem;
-  border-radius: var(--radius);
-  border: 1px solid var(--ink);
-  background: var(--ink);
-  color: var(--paper);
+  font-size: var(--t-sm);
+  padding: 0.5rem 0.95rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--rule-strong);
+  background: var(--bg);
+  color: var(--ink);
   text-decoration: none;
   cursor: pointer;
 }
-.btn.ghost {
-  background: transparent;
+.btn:hover {
+  border-color: var(--ink-2);
+}
+input[type='search'],
+input[type='text'],
+select {
+  font: inherit;
   color: var(--ink);
+  background: var(--bg);
+  border: 1px solid var(--rule-strong);
+  border-radius: var(--radius-sm);
+  padding: 0.55rem 0.75rem;
 }
 
 @media (prefers-reduced-motion: reduce) {

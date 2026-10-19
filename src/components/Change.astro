@@ -1,0 +1,16 @@
+---
+// Signed change badge: green up, red down, grey when about unchanged.
+import { ppValue, relValue } from '../lib/format';
+
+interface Props {
+  value: number | null | undefined;
+  unit: 'pp' | 'rel';
+  /** Changes smaller than this count as unchanged. */
+  threshold?: number;
+}
+const { value, unit, threshold = unit === 'pp' ? 0.002 : 0.03 } = Astro.props;
+const cls = value == null ? 'flat' : value > threshold ? 'up' : value < -threshold ? 'down' : 'flat';
+const text = unit === 'pp' ? ppValue(value) : relValue(value);
+---
+
+<span class={`change ${cls}`}>{text}</span>
