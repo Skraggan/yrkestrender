@@ -1,7 +1,7 @@
 name: Deploy to GitHub Pages
 
-# Free hosting at https://skraggan.github.io/yrkestrender/ until (or alongside)
-# Cloudflare Pages. See SETUP.md.
+# Publishes https://yrkestrender.se (custom domain on GitHub Pages, DNS at
+# Cloudflare). See SETUP.md.
 on:
   push:
     branches: [main]
@@ -28,8 +28,7 @@ jobs:
       - run: npm ci
       - run: npm run build
         env:
-          SITE_URL: https://skraggan.github.io
-          BASE_PATH: /yrkestrender
+          SITE_URL: https://yrkestrender.se
       - uses: actions/upload-pages-artifact@v4
         with:
           path: dist

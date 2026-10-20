@@ -3,40 +3,32 @@
 Allt i koden är klart. Det här behöver göras av dig, eftersom det kräver inloggning
 eller beslut som är dina. Allt ryms i gratisnivåerna.
 
-## 0. Sajten är redan publicerad
+## 0. Sajten är publicerad på <https://yrkestrender.se>
 
-<https://skraggan.github.io/yrkestrender/> byggs och publiceras av
-`.github/workflows/pages.yml` vid varje push till `main` (gratis, ingen inloggning
-behövs). Cloudflare Pages nedan är valfritt men ger kortare adress, egen domän och
-snabbare CDN, precis som för Tentalabbet.
+`.github/workflows/pages.yml` bygger och publicerar sajten på GitHub Pages vid varje
+push till `main`. Domänen är kopplad under **Settings → Pages → Custom domain** i repot,
+och den gamla adressen <https://skraggan.github.io/yrkestrender/> skickas vidare dit.
 
-## 1. Publicera sajten på Cloudflare Pages (valfritt, cirka 5 minuter)
+## 1. DNS hos Cloudflare (engångs)
 
-1. Logga in på <https://dash.cloudflare.com> → **Workers & Pages** → **Create** →
-   **Pages** → **Connect to Git**.
-2. Välj repot **Skraggan/yrkestrender** och produktionsgrenen `main`.
-3. Bygginställningar:
-   - Framework preset: **Astro**
-   - Build command: `npm run build`
-   - Build output directory: `dist`
-   - Miljövariabel (valfri): `SITE_URL` = sajtens adress, t.ex. `https://yrkestrender.se`
-4. Spara. Första bygget tar 1–2 minuter. Sajten hamnar på
-   `https://yrkestrender.pages.dev` (eller ett liknande namn om det är upptaget).
+Under **yrkestrender.se → DNS → Records** i Cloudflare:
 
-Om Cloudflare ger projektet ett annat namn än `yrkestrender`: ändra standardadressen i
-`site.config.mjs` eller sätt `SITE_URL` enligt ovan (robots.txt och sitemap följer med).
+| Typ   | Namn  | Värde                 | Proxy    |
+|-------|-------|-----------------------|----------|
+| A     | `@`   | `185.199.108.153`     | DNS only |
+| A     | `@`   | `185.199.109.153`     | DNS only |
+| A     | `@`   | `185.199.110.153`     | DNS only |
+| A     | `@`   | `185.199.111.153`     | DNS only |
+| CNAME | `www` | `skraggan.github.io`  | DNS only |
 
-När Cloudflare-sajten fungerar kan du stänga av GitHub Pages under
-**Settings → Pages**, eller låta båda ligga kvar.
+Låt proxyn vara avstängd (grå moln) så att GitHub kan utfärda HTTPS-certifikatet. När
+certifikatet finns, kryssa i **Enforce HTTPS** under **Settings → Pages**. Vill du
+sedan slå på Cloudflare-proxyn måste **SSL/TLS** stå på **Full (strict)**, annars blir
+det en omdirigeringsloop.
 
-Varje push till `main` bygger om sajten, även de veckovisa datauppdateringarna.
+## 2. Google Search Console (valfritt)
 
-## 2. Egen domän (valfritt, kostar bara domänen)
-
-1. Köp t.ex. `yrkestrender.se` (kolla först att den är ledig).
-2. Cloudflare Pages → projektet → **Custom domains** → lägg till domänen.
-3. Sätt `SITE_URL=https://yrkestrender.se` i projektets miljövariabler.
-4. Google Search Console: lägg till domänen och skicka in `/sitemap-index.xml`.
+Lägg till domänen och skicka in `https://yrkestrender.se/sitemap-index.xml`.
 
 ## 3. Automatisk uppdatering (redan igång)
 

@@ -20,7 +20,7 @@ data/facts/*.jsonl.gz       en rad per annons: datum, yrke, ort, arbetsgivare,
 data/site/*.json            det sajten byggs av (incheckat)
    │  Astro
    ▼
-dist/                       statisk sajt (Cloudflare Pages)
+dist/                       statisk sajt (GitHub Pages, yrkestrender.se)
 ```
 
 - **Kompetenslistan** finns i `pipeline/vocab/skills.toml`: ~475 saker i 20
@@ -65,6 +65,6 @@ Första körningen från noll laddar ner ungefär 10 GB och tar runt 30 minuter 
 
 `.github/workflows/update.yml` körs varje måndag. Den kollar om JobTech har nya
 eller ändrade filer, extraherar bara dem, laddar upp faktan till releasen `facts`,
-räknar om `data/site` och checkar in. Cloudflare Pages bygger om vid varje push.
+räknar om `data/site` och checkar in. GitHub Pages bygger om vid varje push.
 
 Se [SETUP.md](SETUP.md) för det som behöver göras en gång.
