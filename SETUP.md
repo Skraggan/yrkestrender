@@ -9,17 +9,18 @@ eller beslut som är dina. Allt ryms i gratisnivåerna.
 push till `main`. Domänen är kopplad under **Settings → Pages → Custom domain** i repot,
 och den gamla adressen <https://skraggan.github.io/yrkestrender/> skickas vidare dit.
 
-## 1. DNS hos Cloudflare (engångs)
+## 1. DNS hos Cloudflare (klart)
 
 Under **yrkestrender.se → DNS → Records** i Cloudflare:
 
 | Typ   | Namn  | Värde                 | Proxy    |
 |-------|-------|-----------------------|----------|
-| A     | `@`   | `185.199.108.153`     | DNS only |
-| A     | `@`   | `185.199.109.153`     | DNS only |
-| A     | `@`   | `185.199.110.153`     | DNS only |
-| A     | `@`   | `185.199.111.153`     | DNS only |
+| CNAME | `@`   | `skraggan.github.io`  | DNS only |
 | CNAME | `www` | `skraggan.github.io`  | DNS only |
+
+Cloudflare plattar ut CNAME-posten på roten till GitHubs IP-adresser. Ett CNAME kan
+bara peka på ett värdnamn, aldrig på en sökväg som `/yrkestrender/`; att sajten ligger
+på roten styrs av bygget (`BASE_PATH`), inte av DNS.
 
 Låt proxyn vara avstängd (grå moln) så att GitHub kan utfärda HTTPS-certifikatet. När
 certifikatet finns, kryssa i **Enforce HTTPS** under **Settings → Pages**. Vill du
