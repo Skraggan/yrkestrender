@@ -32,7 +32,7 @@ const together = s.related.filter((r) => r.p < 0.95).slice(0, 12).sort((a, b) =>
 const description = `${s.name} nämns i ${pct(s.share.L12)} av alla platsannonser i Sverige. Se vilka yrken som efterfrågar det, hur det har förändrats sedan ${firstYear} och i vilka län.`;
 ---
 
-<Base title={s.name} description={description}>
+<Base title={`${s.name} i platsannonser: yrken, län och trend`} crumbName={s.name} description={description} crumbs={[{ name: 'Kompetenser och krav', href: url('/kompetenser/') }]}>
   <article>
     <header class="head-band">
       <div class="wrap">

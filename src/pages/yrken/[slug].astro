@@ -85,9 +85,10 @@ const condRows: [keyof (typeof o.conditions)[string], string][] = [
 ];
 const topSkills = sections[0].rows.slice(0, 3);
 const description = `Vad krävs för att jobba som ${o.titles[0]?.t.toLowerCase() ?? o.label.toLowerCase()}? ${topSkills.map((s) => `${s.name} (${pct(s.share)})`).join(', ')}, krav, villkor och efterfrågan sedan ${occFirst}.`;
+// Long official names already fill a search result's title on their own.
 ---
 
-<Base title={o.label} description={description}>
+<Base title={o.label.length > 40 ? o.label : `${o.label}: krav och kompetenser i platsannonser`} crumbName={o.label} description={description} crumbs={[{ name: 'Yrken', href: url('/yrken/') }]}>
   <article>
     <header class="occ-head">
       <div class="wrap">
