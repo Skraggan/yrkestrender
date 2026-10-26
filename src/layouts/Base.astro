@@ -11,8 +11,10 @@ interface Props {
   title: string;
   description: string;
   hideSearch?: boolean;
+  /** Keep the page out of search results (and give it no canonical address). */
+  noindex?: boolean;
 }
-const { title, description, hideSearch = false } = Astro.props;
+const { title, description, hideSearch = false, noindex = false } = Astro.props;
 const m = meta();
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const fullTitle = title === 'Yrkestrender' ? 'Yrkestrender – vad arbetsgivarna efterfrågar' : `${title} – Yrkestrender`;
@@ -33,7 +35,7 @@ const nav = [
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
-    <link rel="canonical" href={canonical} />
+    {noindex ? <meta name="robots" content="noindex" /> : <link rel="canonical" href={canonical} />}
     <link rel="icon" href={url('/favicon.svg')} type="image/svg+xml" />
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />

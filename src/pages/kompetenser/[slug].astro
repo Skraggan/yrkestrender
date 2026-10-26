@@ -79,7 +79,7 @@ const description = `${s.name} nämns i ${pct(s.share.L12)} av alla platsannonse
       <section class="section">
         <div class="section-head">
           <h2>Andel av alla annonser över tid</h2>
-          <p>Per kvartal sedan {firstYear}. Håll muspekaren över diagrammet för exakta värden. <a href={url(`/jamfor/?k=${s.id}`)}>Jämför med andra</a></p>
+          <p>Per kvartal sedan {firstYear}. Håll muspekaren över diagrammet för exakta värden. <a href={url(`/jamfor/#k=${s.id}`)}>Jämför med andra</a></p>
         </div>
         <LineChart title={`Andel av platsannonserna som nämner ${s.name}, per kvartal`} x={qx} series={[{ label: s.name, values: qx.map((q) => s.quarters[q]) }]} format="pct" height={240} tickEvery={8} area />
       </section>
