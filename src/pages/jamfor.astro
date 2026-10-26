@@ -70,7 +70,9 @@ const occ = [...occupationIndex()].sort((a, b) => a.label.localeCompare(b.label,
   const note = document.querySelector<HTMLElement>('[data-note]')!;
   const names = new Map(Array.from(add.querySelectorAll('option')).filter((o) => o.value).map((o) => [o.value, o.textContent!]));
 
-  const params = new URLSearchParams(location.search);
+  // State lives in the fragment (#k=…&yrke=…) so search engines see one /jamfor/ page
+  // instead of one URL per combination. Old ?k=… links still work.
+  const params = new URLSearchParams(location.hash.slice(1) || location.search);
   let picked: string[] = (params.get('k') || 'distansarbete,hybridarbete,ai').split(',').filter((k) => names.has(k)).slice(0, 5);
   occSel.value = params.get('yrke') || '';
 
@@ -143,7 +145,7 @@ const occ = [...occupationIndex()].sort((a, b) => a.label.localeCompare(b.label,
     const p = new URLSearchParams();
     if (picked.length) p.set('k', picked.join(','));
     if (occSel.value) p.set('yrke', occSel.value);
-    history.replaceState(null, '', `${location.pathname}${p.toString() ? '?' + p : ''}`);
+    history.replaceState(null, '', `${location.pathname}${p.toString() ? '#' + p : ''}`);
   }
 
   function renderPicked() {
