@@ -16,7 +16,7 @@ const vs = (r: { L12: number; B12: number }) => volumeVsMarket(r.L12, r.B12, nat
 const values = Object.fromEntries(regions.map((r) => [r.code, r.L12]));
 ---
 
-<Base title="Län" description="Platsannonser per län: vilka yrken som annonseras mest, vad som är typiskt för länet och vilka kompetenser som efterfrågas allt oftare.">
+<Base title="Platsannonser per län" crumbName="Län" crumbs={[]} description="Platsannonser per län: vilka yrken som annonseras mest, vad som är typiskt för länet och vilka kompetenser som efterfrågas allt oftare.">
   <div class="wrap">
     <header class="page-head">
       <h1>Län</h1>

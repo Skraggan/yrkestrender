@@ -15,7 +15,7 @@ const natB12 = nationalWindow('B12');
 const vs = (x: { L12: number; B12: number }) => volumeVsMarket(x.L12, x.B12, natL12, natB12);
 ---
 
-<Base title="Alla yrken" description={`${m.occupationCount} yrken i ${allFields.length} yrkesområden. Se vad arbetsgivarna efterfrågar i annonserna för varje yrke.`}>
+<Base title="Alla yrken: vad arbetsgivarna efterfrågar" crumbName="Yrken" crumbs={[]} description={`${m.occupationCount} yrken i ${allFields.length} yrkesområden. Se vad arbetsgivarna efterfrågar i annonserna för varje yrke.`}>
   <div class="wrap">
     <header class="page-head">
       <h1>Alla yrken</h1>

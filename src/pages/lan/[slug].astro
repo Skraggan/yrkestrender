@@ -44,7 +44,7 @@ const risingSkills = compSkills
   .slice(0, 10);
 ---
 
-<Base title={r.label} description={`Platsannonser i ${r.label}: yrkena med flest annonser, yrken som är typiska för länet och kompetenser som efterfrågas allt oftare.`}>
+<Base title={`Platsannonser i ${r.label}: yrken och kompetenser`} crumbName={r.label} crumbs={[{ name: 'Län', href: url('/lan/') }]} description={`Platsannonser i ${r.label}: yrkena med flest annonser, yrken som är typiska för länet och kompetenser som efterfrågas allt oftare.`}>
   <article>
     <header class="head-band">
       <div class="wrap">

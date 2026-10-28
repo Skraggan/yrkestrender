@@ -13,12 +13,31 @@ interface Props {
   hideSearch?: boolean;
   /** Keep the page out of search results (and give it no canonical address). */
   noindex?: boolean;
+  /** Parent pages for structured breadcrumbs, top first; the current page is added last. */
+  crumbs?: { name: string; href: string }[];
+  /** Short name of this page in breadcrumbs (defaults to the title). */
+  crumbName?: string;
 }
-const { title, description, hideSearch = false, noindex = false } = Astro.props;
+const { title, description, hideSearch = false, noindex = false, crumbs, crumbName = title } = Astro.props;
 const m = meta();
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const fullTitle = title === 'Yrkestrender' ? 'Yrkestrender – vad arbetsgivarna efterfrågar' : `${title} – Yrkestrender`;
 const path = Astro.url.pathname;
+// Structured data: the site itself on the home page, breadcrumbs on pages below it.
+const home = new URL(url('/'), Astro.site).href;
+const jsonLd =
+  canonical.href === home
+    ? { '@context': 'https://schema.org', '@type': 'WebSite', name: 'Yrkestrender', url: home, inLanguage: 'sv-SE' }
+    : crumbs && {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [{ name: 'Yrkestrender', href: home }, ...crumbs, { name: crumbName, href: canonical.href }].map((c, i) => ({
+          '@type': 'ListItem',
+          position: i + 1,
+          name: c.name,
+          item: new URL(c.href, Astro.site).href,
+        })),
+      };
 const nav = [
   { href: url('/yrken/'), label: 'Yrken' },
   { href: url('/kompetenser/'), label: 'Kompetenser och krav' },
@@ -43,6 +62,7 @@ const nav = [
     <meta property="og:url" content={canonical} />
     <meta property="og:locale" content="sv_SE" />
     <meta name="theme-color" content="#ffffff" />
+    {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
     <script is:inline>
       // Light by default; dark only if the visitor chose it.
       try {
